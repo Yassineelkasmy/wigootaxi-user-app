@@ -9,7 +9,7 @@ import 'package:taxidriver/presentation/splash/splash_page.dart';
   AutoRoute(page: HomePage),
   AutoRoute(page: SplashPage),
   AutoRoute(page: PhoneAuthPage),
-  AutoRoute(page: LoginPage, initial: true),
-  AutoRoute(page: SignUpPage),
+  AutoRoute(page: LoginPage),
+  AutoRoute(page: SignUpPage, initial: true),
 ])
 class $AppRouter {}

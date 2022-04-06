@@ -1,7 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 
 class LoginPage extends HookConsumerWidget {
@@ -20,7 +23,6 @@ class LoginPage extends HookConsumerWidget {
   );
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -42,9 +44,6 @@ class LoginPage extends HookConsumerWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              // SizedBox(
-              //   height: size.height * 0.2,
-              // ),
               ReactiveForm(
                 formGroup: loginForm,
                 child: Column(
@@ -112,7 +111,7 @@ class LoginPage extends HookConsumerWidget {
               ),
               RichText(
                 text: TextSpan(
-                    text: "Vous n'a avez pas de compte ?",
+                    text: "Vous n'a avez pas de compte ? ",
                     style: TextStyle(
                       color: Colors.black,
                     ),
@@ -123,6 +122,9 @@ class LoginPage extends HookConsumerWidget {
                           color: FlexColor.blue.light.primary,
                           fontWeight: FontWeight.bold,
                         ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () =>
+                              AutoRouter.of(context).replace(SignUpPageRoute()),
                       )
                     ]),
               ),

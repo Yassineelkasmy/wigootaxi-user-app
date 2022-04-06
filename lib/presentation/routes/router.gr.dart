@@ -44,8 +44,10 @@ class AppRouter extends _i6.RootStackRouter {
           routeData: routeData, child: _i4.LoginPage(key: args.key));
     },
     SignUpPageRoute.name: (routeData) {
+      final args = routeData.argsAs<SignUpPageRouteArgs>(
+          orElse: () => const SignUpPageRouteArgs());
       return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.SignUpPage());
+          routeData: routeData, child: _i5.SignUpPage(key: args.key));
     }
   };
 
@@ -54,8 +56,8 @@ class AppRouter extends _i6.RootStackRouter {
         _i6.RouteConfig(HomePageRoute.name, path: '/home-page'),
         _i6.RouteConfig(SplashPageRoute.name, path: '/splash-page'),
         _i6.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
-        _i6.RouteConfig(LoginPageRoute.name, path: '/'),
-        _i6.RouteConfig(SignUpPageRoute.name, path: '/sign-up-page')
+        _i6.RouteConfig(LoginPageRoute.name, path: '/login-page'),
+        _i6.RouteConfig(SignUpPageRoute.name, path: '/')
       ];
 }
 
@@ -89,7 +91,7 @@ class PhoneAuthPageRoute extends _i6.PageRouteInfo<void> {
 class LoginPageRoute extends _i6.PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({_i7.Key? key})
       : super(LoginPageRoute.name,
-            path: '/', args: LoginPageRouteArgs(key: key));
+            path: '/login-page', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
 }
@@ -107,8 +109,21 @@ class LoginPageRouteArgs {
 
 /// generated route for
 /// [_i5.SignUpPage]
-class SignUpPageRoute extends _i6.PageRouteInfo<void> {
-  const SignUpPageRoute() : super(SignUpPageRoute.name, path: '/sign-up-page');
+class SignUpPageRoute extends _i6.PageRouteInfo<SignUpPageRouteArgs> {
+  SignUpPageRoute({_i7.Key? key})
+      : super(SignUpPageRoute.name,
+            path: '/', args: SignUpPageRouteArgs(key: key));
 
   static const String name = 'SignUpPageRoute';
+}
+
+class SignUpPageRouteArgs {
+  const SignUpPageRouteArgs({this.key});
+
+  final _i7.Key? key;
+
+  @override
+  String toString() {
+    return 'SignUpPageRouteArgs{key: $key}';
+  }
 }
