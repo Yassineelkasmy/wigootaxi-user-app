@@ -30,7 +30,7 @@ packages:
     source: hosted
     version: "2.8.2"
   auto_route:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: auto_route
       url: "https://pub.dartlang.org"
@@ -79,7 +79,7 @@ packages:
     source: hosted
     version: "2.0.6"
   build_runner:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: build_runner
       url: "https://pub.dartlang.org"
@@ -604,6 +604,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1+1"
+  reactive_forms:
+    dependency: "direct main"
+    description:
+      name: reactive_forms
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "11.0.1"
   riverpod:
     dependency: transitive
     description:
