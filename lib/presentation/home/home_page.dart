@@ -1,60 +1,209 @@
+import 'package:enhance_stepper/enhance_stepper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:taxidriver/presentation/home/widgets/app_bar.dart';
 import 'package:taxidriver/presentation/home/widgets/categories_list_view.dart';
+import 'package:taxidriver/presentation/home/widgets/home_button.dart';
+import 'package:taxidriver/presentation/home/widgets/home_icon.dart';
 import 'package:taxidriver/presentation/home/widgets/top_box.dart';
+import 'package:taxidriver/presentation/theme/colors.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends HookConsumerWidget {
   HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _currentIndex = useState<int>(1);
     return Scaffold(
+      bottomNavigationBar: SalomonBottomBar(
+        currentIndex: _currentIndex.value,
+        onTap: (i) => _currentIndex.value = i,
+        items: [
+          SalomonBottomBarItem(
+            icon: Icon(Icons.home),
+            title: Text("Accueil"),
+            selectedColor: kPrimaryColor,
+          ),
+          SalomonBottomBarItem(
+            icon: Icon(Icons.notifications),
+            title: Text("Notifications"),
+            selectedColor: kPrimaryColor,
+          ),
+          SalomonBottomBarItem(
+            icon: Icon(Icons.person),
+            title: Text("Profile"),
+            selectedColor: kPrimaryColor,
+          ),
+          SalomonBottomBarItem(
+            icon: Icon(Icons.help),
+            title: Text("Aide"),
+            selectedColor: kPrimaryColor,
+          ),
+        ],
+      ),
       appBar: buildAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: ListView(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            buildTopBox(context),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: 20,
+                ),
+                buildTopBox(context),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "OPTION",
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => {},
+                      icon: Icon(
+                        Icons.settings,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                buildCategories(),
+                SizedBox(
+                  height: 20,
+                ),
                 Text(
-                  "OPTION",
+                  "Commencez votre voyage",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.black,
+                    fontSize: 16,
                   ),
                 ),
-                IconButton(
-                  onPressed: () => {},
-                  icon: Icon(
-                    Icons.settings,
-                    color: Colors.grey,
+              ],
+            ),
+          ),
+          EnhanceStepper(
+            currentStep: 0,
+            stepIconSize: 36,
+            controlsBuilder: (_, __) {
+              return Row();
+            },
+            physics: ClampingScrollPhysics(),
+            steps: [
+              EnhanceStep(
+                icon: buildHomeIcon('home_icon2'),
+                title: Text(
+                  "Choisissez Votre Point De Retrait",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
+                ),
+                subtitle: Text(
+                  "Tanger, Val Flueri",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 14,
+                  ),
+                ),
+                content: SizedBox(),
+              ),
+              EnhanceStep(
+                icon: buildHomeIcon('home_icon1'),
+                title: Text(
+                  "Choisissez Votre Destination",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                content: Text('content'),
+                subtitle: Text(
+                  "Tanger, Val Flueri",
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Envoyer Ou Faire Une Demande De Credit',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: Row(
+                    children: [
+                      buildHomeIcon('home_icon5'),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Partager Un Traget ?",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "Envoyer Ou Demander De Credit",
+                            style: TextStyle(color: Colors.grey, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    buildHomeButton(
+                      text: "Envoyer un credit",
+                      onPressed: () => {},
+                    ),
+                    buildHomeButton(
+                      text: "Demander un credit",
+                      onPressed: () => {},
+                    ),
+                  ],
                 )
               ],
             ),
-            SizedBox(
-              height: 10,
-            ),
-            buildCategories(),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Commencez votre voyage",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-              ),
-            ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

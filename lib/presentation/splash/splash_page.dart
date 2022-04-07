@@ -1,6 +1,12 @@
+import 'dart:async';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
+
+import '../shared/logo.dart';
 
 class SplashPage extends HookConsumerWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -8,7 +14,8 @@ class SplashPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
-
+    Timer(Duration(seconds: 5),
+        (() => AutoRouter.of(context).push(OnBoardingPageRoute())));
     return Scaffold(
       body: Scaffold(
         body: Stack(
@@ -30,12 +37,10 @@ class SplashPage extends HookConsumerWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "WIGOO TAXI",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
+                    Positioned(
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: buildLogo(),
                       ),
                     ),
                     SizedBox(

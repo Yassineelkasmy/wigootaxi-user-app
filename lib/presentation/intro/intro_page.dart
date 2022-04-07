@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
+import 'package:taxidriver/presentation/shared/logo.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 
@@ -40,21 +41,7 @@ class _IntroPageState extends State<IntroPage> {
             Positioned(
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: size.height * .2,
-                    ),
-                    Text(
-                      "WIGOO TAXI",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
-                    )
-                  ],
-                ),
+                child: buildLogo(),
               ),
             ),
             Positioned(

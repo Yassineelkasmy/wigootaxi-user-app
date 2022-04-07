@@ -9,7 +9,7 @@ AppBar buildAppBar() {
         color: Colors.black,
       ),
     ),
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.transparent,
     leading: Container(
       margin: EdgeInsets.only(left: 10),
       height: 32,

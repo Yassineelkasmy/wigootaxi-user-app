@@ -49,6 +49,8 @@ dependencies:
   flutter_svg: ^1.0.3
   introduction_screen: ^3.0.2
   pin_code_fields: ^7.4.0
+  enhance_stepper: ^0.1.1
+  salomon_bottom_bar: ^3.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

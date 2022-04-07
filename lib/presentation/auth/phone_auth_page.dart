@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
+import 'package:taxidriver/presentation/shared/logo.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 
@@ -9,6 +12,7 @@ class PhoneAuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
@@ -17,14 +21,18 @@ class PhoneAuthPage extends StatelessWidget {
           vertical: 20,
         ),
         width: double.maxFinite,
-        child: SubmitButton(onPressed: () => {}, text: "CONTINUER"),
+        child: SubmitButton(
+            onPressed: () => {
+                  AutoRouter.of(context).push(HomePageRoute()),
+                },
+            text: "CONTINUER"),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            buildLogo(white: false),
             Center(
               child: Text(
                 "Un code a ete envoye a",
