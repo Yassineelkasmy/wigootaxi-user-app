@@ -66,11 +66,11 @@ class AppRouter extends _i8.RootStackRouter {
   @override
   List<_i8.RouteConfig> get routes => [
         _i8.RouteConfig(SplashPageRoute.name, path: '/splash-page'),
-        _i8.RouteConfig(PhoneAuthPageRoute.name, path: '/'),
+        _i8.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
         _i8.RouteConfig(LoginPageRoute.name, path: '/login-page'),
         _i8.RouteConfig(IntroPageRoute.name, path: '/intro-page'),
         _i8.RouteConfig(SignUpPageRoute.name, path: '/sign-up-page'),
-        _i8.RouteConfig(HomePageRoute.name, path: '/home-page'),
+        _i8.RouteConfig(HomePageRoute.name, path: '/'),
         _i8.RouteConfig(OnBoardingPageRoute.name, path: '/on-boarding-page')
       ];
 }
@@ -86,7 +86,8 @@ class SplashPageRoute extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.PhoneAuthPage]
 class PhoneAuthPageRoute extends _i8.PageRouteInfo<void> {
-  const PhoneAuthPageRoute() : super(PhoneAuthPageRoute.name, path: '/');
+  const PhoneAuthPageRoute()
+      : super(PhoneAuthPageRoute.name, path: '/phone-auth-page');
 
   static const String name = 'PhoneAuthPageRoute';
 }
@@ -145,8 +146,7 @@ class SignUpPageRouteArgs {
 /// [_i6.HomePage]
 class HomePageRoute extends _i8.PageRouteInfo<HomePageRouteArgs> {
   HomePageRoute({_i9.Key? key})
-      : super(HomePageRoute.name,
-            path: '/home-page', args: HomePageRouteArgs(key: key));
+      : super(HomePageRoute.name, path: '/', args: HomePageRouteArgs(key: key));
 
   static const String name = 'HomePageRoute';
 }
