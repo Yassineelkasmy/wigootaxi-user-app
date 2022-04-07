@@ -18,7 +18,7 @@ class AppWidget extends HookConsumerWidget {
       title: "WIGO TAXI",
       theme: FlexThemeData.light(
         scheme: FlexScheme.material,
-        // surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+        fontFamily: GoogleFonts.montserrat().fontFamily,
         blendLevel: 18,
         appBarStyle: FlexAppBarStyle.primary,
         appBarOpacity: 0.95,
@@ -30,7 +30,6 @@ class AppWidget extends HookConsumerWidget {
         lightIsWhite: false,
         useSubThemes: true,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-
         subThemesData: const FlexSubThemesData(
           useTextTheme: true,
           fabUseShape: true,
@@ -63,8 +62,7 @@ class AppWidget extends HookConsumerWidget {
         darkIsTrueBlack: false,
         useSubThemes: true,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        // To use playground font, add GoogleFonts package and uncomment:
-        // fontFamily: GoogleFonts.notoSans().fontFamily,
+        fontFamily: GoogleFonts.montserrat().fontFamily,
         subThemesData: const FlexSubThemesData(
           useTextTheme: true,
           fabUseShape: true,
@@ -82,11 +80,12 @@ class AppWidget extends HookConsumerWidget {
           popupMenuOpacity: 0.95,
         ),
       ).copyWith(
-          textTheme:
-              GoogleFonts.montserratTextTheme(ThemeData.light().textTheme),
-          inputDecorationTheme: const InputDecorationTheme(
-            fillColor: Colors.white,
-          )),
+        textTheme:
+            GoogleFonts.rubikBeastlyTextTheme(ThemeData.light().textTheme),
+        inputDecorationTheme: const InputDecorationTheme(
+          fillColor: Colors.white,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }

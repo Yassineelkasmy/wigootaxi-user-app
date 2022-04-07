@@ -48,7 +48,7 @@ dependencies:
   reactive_forms: ^11.0.1
   flutter_svg: ^1.0.3
   introduction_screen: ^3.0.2
-
+  pin_code_fields: ^7.4.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

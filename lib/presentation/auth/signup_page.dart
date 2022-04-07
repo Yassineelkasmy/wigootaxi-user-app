@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:taxidriver/presentation/auth/phone_auth_page.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
@@ -144,7 +145,8 @@ class SignUpPage extends HookConsumerWidget {
                     SizedBox(
                       width: double.maxFinite,
                       child: SubmitButton(
-                        onPressed: () => {},
+                        onPressed: () =>
+                            AutoRouter.of(context).push(PhoneAuthPageRoute()),
                         text: "CRÉER UN COMPTE",
                       ),
                     ),
