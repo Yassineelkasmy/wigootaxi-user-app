@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
+import 'package:taxidriver/presentation/theme/colors.dart';
 
 class LoginPage extends HookConsumerWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -24,6 +25,12 @@ class LoginPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 28,
@@ -119,7 +126,7 @@ class LoginPage extends HookConsumerWidget {
                       TextSpan(
                         text: "S'inscrire",
                         style: TextStyle(
-                          color: FlexColor.blue.light.primary,
+                          color: kPrimaryColor,
                           fontWeight: FontWeight.bold,
                         ),
                         recognizer: TapGestureRecognizer()

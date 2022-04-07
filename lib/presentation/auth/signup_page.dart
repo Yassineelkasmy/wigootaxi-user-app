@@ -2,10 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
+import 'package:taxidriver/presentation/theme/colors.dart';
 
 class SignUpPage extends HookConsumerWidget {
   SignUpPage({Key? key}) : super(key: key);
@@ -39,6 +41,12 @@ class SignUpPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 28,
@@ -143,25 +151,79 @@ class SignUpPage extends HookConsumerWidget {
                   ],
                 ),
               ),
-              RichText(
-                text: TextSpan(
-                    text: "Vous avez déjà un compte ? ",
+              Column(
+                children: [
+                  Text(
+                    "S'INSCRIRE AVEC",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextSpan(
-                        text: "Connexion",
-                        style: TextStyle(
-                          color: FlexColor.blue.light.primary,
-                          fontWeight: FontWeight.bold,
+                      ElevatedButton(
+                        onPressed: () => {},
+                        child: SvgPicture.asset(
+                          "assets/icons/facebook.svg",
+                          color: Colors.white,
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () =>
-                              AutoRouter.of(context).replace(LoginPageRoute()),
-                      )
-                    ]),
-              ),
+                        style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            )),
+                      ),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      ElevatedButton(
+                        onPressed: () => {},
+                        child: SvgPicture.asset(
+                          "assets/icons/google.svg",
+                          color: Colors.white,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          primary: Colors.red,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: "Vous avez déjà un compte ? ",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "Connexion",
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => AutoRouter.of(context)
+                                .replace(LoginPageRoute()),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
