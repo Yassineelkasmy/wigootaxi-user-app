@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:enhance_stepper/enhance_stepper.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:taxidriver/presentation/home/widgets/categories_list_view.dart';
 import 'package:taxidriver/presentation/home/widgets/home_button.dart';
 import 'package:taxidriver/presentation/home/widgets/home_icon.dart';
 import 'package:taxidriver/presentation/home/widgets/top_box.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 
 class Home extends StatelessWidget {
@@ -71,12 +73,17 @@ class Home extends StatelessWidget {
             steps: [
               EnhanceStep(
                 icon: buildHomeIcon('home_icon2'),
-                title: Text(
-                  "Choisissez Votre Point De Retrait",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
+                title: GestureDetector(
+                  onTap: () {
+                    AutoRouter.of(context).push(PickLocationPageRoute());
+                  },
+                  child: Text(
+                    "Choisissez Votre Point De Retrait",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 subtitle: Text(

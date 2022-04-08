@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:taxidriver/presentation/auth/login_page.dart';
 import 'package:taxidriver/presentation/auth/phone_auth_page.dart';
 import 'package:taxidriver/presentation/auth/signup_page.dart';
+import 'package:taxidriver/presentation/home/help/send_message_page.dart';
 import 'package:taxidriver/presentation/home/home_page.dart';
+import 'package:taxidriver/presentation/home/pick_location/pick_location_page.dart';
 import 'package:taxidriver/presentation/intro/intro_page.dart';
 import 'package:taxidriver/presentation/onboarding/onboarding_page.dart';
 import 'package:taxidriver/presentation/splash/splash_page.dart';
@@ -14,6 +16,8 @@ import 'package:taxidriver/presentation/splash/splash_page.dart';
   AutoRoute(page: IntroPage),
   AutoRoute(page: SignUpPage),
   AutoRoute(page: HomePage, initial: true),
+  AutoRoute(page: PickLocationPage),
   AutoRoute(page: OnBoardingPage),
+  AutoRoute(page: SendMessagePage),
 ])
 class $AppRouter {}
