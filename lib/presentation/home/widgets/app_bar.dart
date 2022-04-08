@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar({required void Function() menuPressed}) {
   return AppBar(
     centerTitle: false,
     title: Text(
@@ -24,7 +24,7 @@ AppBar buildAppBar() {
     ),
     actions: [
       IconButton(
-        onPressed: () => {},
+        onPressed: menuPressed,
         icon: Icon(
           Icons.menu,
           color: Colors.black,

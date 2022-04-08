@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Reservation extends StatelessWidget {
@@ -5,9 +6,16 @@ class Reservation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("reserveations"),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        centerTitle: false,
+        title: Text(
+          "Réservations",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
     );
   }

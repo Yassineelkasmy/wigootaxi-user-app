@@ -28,7 +28,7 @@ class BottomNavBar extends HookWidget {
         ),
         SalomonBottomBarItem(
           icon: Icon(Icons.car_rental),
-          title: Text("Resrvations"),
+          title: Text("Réservations"),
           selectedColor: kPrimaryColor,
         ),
         SalomonBottomBarItem(

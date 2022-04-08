@@ -39,7 +39,7 @@ class _NotificationsState extends State<Notifications> {
         children: [
           SizedBox(height: 20),
           DefaultTabController(
-            length: 3,
+            length: 2,
             child: TabBar(
               indicatorColor: kPrimaryColor,
               labelColor: kPrimaryColor,
@@ -47,9 +47,6 @@ class _NotificationsState extends State<Notifications> {
               tabs: [
                 Tab(
                   text: 'Non lu',
-                ),
-                Tab(
-                  text: 'Abonné',
                 ),
                 Tab(
                   text: 'Toute',

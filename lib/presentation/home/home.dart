@@ -1,3 +1,4 @@
+import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:enhance_stepper/enhance_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:taxidriver/presentation/home/widgets/app_bar.dart';
@@ -8,12 +9,20 @@ import 'package:taxidriver/presentation/home/widgets/top_box.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  Home({
+    Key? key,
+    required this.drawerScaffoldController,
+  }) : super(key: key);
+  final DrawerScaffoldController drawerScaffoldController;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: buildAppBar(
+        menuPressed: () {
+          drawerScaffoldController.openDrawer();
+        },
+      ),
       body: ListView(
         children: [
           Padding(
@@ -21,15 +30,11 @@ class Home extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 20,
-                ),
                 buildTopBox(context),
                 SizedBox(
                   height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       "OPTION",
@@ -37,13 +42,6 @@ class Home extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ),
-                    IconButton(
-                      onPressed: () => {},
-                      icon: Icon(
-                        Icons.settings,
-                        color: Colors.grey,
-                      ),
-                    )
                   ],
                 ),
                 SizedBox(
@@ -51,12 +49,12 @@ class Home extends StatelessWidget {
                 ),
                 buildCategories(),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Text(
                   "Commencez votre voyage",
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.indigo,
                     fontSize: 16,
                   ),
                 ),
@@ -116,12 +114,12 @@ class Home extends StatelessWidget {
                 Text(
                   'Envoyer Ou Faire Une Demande De Credit',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.indigo,
                     fontSize: 16,
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
@@ -155,7 +153,7 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -24,7 +24,7 @@ Widget buildTopBox(BuildContext context) {
             child: Align(
               alignment: Alignment.center,
               child: Text(
-                "Commencer Votre Voyage \n Ab Salam",
+                "Commencer Votre Voyage",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,

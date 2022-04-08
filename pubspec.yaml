@@ -52,6 +52,7 @@ dependencies:
   enhance_stepper: ^0.1.1
   salomon_bottom_bar: ^3.3.0
   rive: ^0.8.4
+  drawerbehavior: ^2.2.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
