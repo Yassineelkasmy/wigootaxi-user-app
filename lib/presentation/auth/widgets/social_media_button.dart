@@ -21,9 +21,11 @@ class SocialMedia extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 10),
         Text(
           text,
           style: TextStyle(
+            fontSize: 14,
             color: Colors.grey,
             fontWeight: FontWeight.bold,
           ),
@@ -38,10 +40,12 @@ class SocialMedia extends StatelessWidget {
               onPressed: onFacebookPressed,
               child: SvgPicture.asset(
                 "assets/icons/facebook.svg",
+                height: 32,
+                width: 32,
                 color: Colors.white,
               ),
               style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   )),
@@ -53,10 +57,12 @@ class SocialMedia extends StatelessWidget {
               onPressed: onGooglePressed,
               child: SvgPicture.asset(
                 "assets/icons/google.svg",
+                height: 32,
+                width: 32,
                 color: Colors.white,
               ),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 primary: Colors.red,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),

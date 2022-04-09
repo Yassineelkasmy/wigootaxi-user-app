@@ -26,9 +26,7 @@ class HomePage extends HookConsumerWidget {
     ref.listen<AuthState>(authtProvider, (_, authState) {
       authState.mapOrNull(
         unauthenticated: (unauth) {
-          AutoRouter.of(context).popUntil((route) {
-            return route.isFirst;
-          });
+          AutoRouter.of(context).popUntilRouteWithName(SplashPageRoute.name);
         },
       );
     });

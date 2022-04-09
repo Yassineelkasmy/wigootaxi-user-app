@@ -25,7 +25,7 @@ class PhoneAuthPage extends StatelessWidget {
             onPressed: () => {
                   AutoRouter.of(context).push(HomePageRoute()),
                 },
-            text: "CONTINUER"),
+            text: "CREER UN COMPTE"),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),

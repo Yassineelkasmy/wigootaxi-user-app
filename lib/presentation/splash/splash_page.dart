@@ -19,8 +19,7 @@ class SplashPage extends HookConsumerWidget {
       Timer(Duration(seconds: 2), () {
         nextAuthState.map(
             initial: (_) {},
-            authenticated: (_) =>
-                AutoRouter.of(context).replace(HomePageRoute()),
+            authenticated: (_) => AutoRouter.of(context).push(HomePageRoute()),
             unauthenticated: (unAuth) {
               if (unAuth.isNewUser) {
                 AutoRouter.of(context).push(OnBoardingPageRoute());
