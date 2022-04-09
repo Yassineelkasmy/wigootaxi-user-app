@@ -37,6 +37,18 @@ class _$AuthFailureTearOff {
   UserDisabled userDisabled() {
     return const UserDisabled();
   }
+
+  UserNotVerified userNotVerified() {
+    return const UserNotVerified();
+  }
+
+  InvalidPinCode invalidPinCode() {
+    return const InvalidPinCode();
+  }
+
+  PhoneAlreadyInUse phoneAlreadyInUse() {
+    return const PhoneAlreadyInUse();
+  }
 }
 
 /// @nodoc
@@ -51,6 +63,9 @@ mixin _$AuthFailure {
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidCredentials,
     required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +75,9 @@ mixin _$AuthFailure {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +87,9 @@ mixin _$AuthFailure {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,6 +100,9 @@ mixin _$AuthFailure {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidCredentials value) invalidCredentials,
     required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,6 +112,9 @@ mixin _$AuthFailure {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +124,9 @@ mixin _$AuthFailure {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -164,6 +194,9 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidCredentials,
     required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
   }) {
     return cancelledByUser();
   }
@@ -176,6 +209,9 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
   }) {
     return cancelledByUser?.call();
   }
@@ -188,6 +224,9 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -204,6 +243,9 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidCredentials value) invalidCredentials,
     required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
   }) {
     return cancelledByUser(this);
   }
@@ -216,6 +258,9 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
   }) {
     return cancelledByUser?.call(this);
   }
@@ -228,6 +273,9 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -286,6 +334,9 @@ class _$ServerError implements ServerError {
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidCredentials,
     required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
   }) {
     return serverError();
   }
@@ -298,6 +349,9 @@ class _$ServerError implements ServerError {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
   }) {
     return serverError?.call();
   }
@@ -310,6 +364,9 @@ class _$ServerError implements ServerError {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -326,6 +383,9 @@ class _$ServerError implements ServerError {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidCredentials value) invalidCredentials,
     required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
   }) {
     return serverError(this);
   }
@@ -338,6 +398,9 @@ class _$ServerError implements ServerError {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
   }) {
     return serverError?.call(this);
   }
@@ -350,6 +413,9 @@ class _$ServerError implements ServerError {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -409,6 +475,9 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidCredentials,
     required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
   }) {
     return emailAlreadyInUse();
   }
@@ -421,6 +490,9 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
   }) {
     return emailAlreadyInUse?.call();
   }
@@ -433,6 +505,9 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -449,6 +524,9 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidCredentials value) invalidCredentials,
     required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -461,6 +539,9 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -473,6 +554,9 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -532,6 +616,9 @@ class _$InvalidCredentials implements InvalidCredentials {
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidCredentials,
     required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
   }) {
     return invalidCredentials();
   }
@@ -544,6 +631,9 @@ class _$InvalidCredentials implements InvalidCredentials {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
   }) {
     return invalidCredentials?.call();
   }
@@ -556,6 +646,9 @@ class _$InvalidCredentials implements InvalidCredentials {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -572,6 +665,9 @@ class _$InvalidCredentials implements InvalidCredentials {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidCredentials value) invalidCredentials,
     required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
   }) {
     return invalidCredentials(this);
   }
@@ -584,6 +680,9 @@ class _$InvalidCredentials implements InvalidCredentials {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
   }) {
     return invalidCredentials?.call(this);
   }
@@ -596,6 +695,9 @@ class _$InvalidCredentials implements InvalidCredentials {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -654,6 +756,9 @@ class _$UserDisabled implements UserDisabled {
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidCredentials,
     required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
   }) {
     return userDisabled();
   }
@@ -666,6 +771,9 @@ class _$UserDisabled implements UserDisabled {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
   }) {
     return userDisabled?.call();
   }
@@ -678,6 +786,9 @@ class _$UserDisabled implements UserDisabled {
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidCredentials,
     TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -694,6 +805,9 @@ class _$UserDisabled implements UserDisabled {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidCredentials value) invalidCredentials,
     required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
   }) {
     return userDisabled(this);
   }
@@ -706,6 +820,9 @@ class _$UserDisabled implements UserDisabled {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
   }) {
     return userDisabled?.call(this);
   }
@@ -718,6 +835,9 @@ class _$UserDisabled implements UserDisabled {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidCredentials value)? invalidCredentials,
     TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -729,4 +849,426 @@ class _$UserDisabled implements UserDisabled {
 
 abstract class UserDisabled implements AuthFailure {
   const factory UserDisabled() = _$UserDisabled;
+}
+
+/// @nodoc
+abstract class $UserNotVerifiedCopyWith<$Res> {
+  factory $UserNotVerifiedCopyWith(
+          UserNotVerified value, $Res Function(UserNotVerified) then) =
+      _$UserNotVerifiedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UserNotVerifiedCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $UserNotVerifiedCopyWith<$Res> {
+  _$UserNotVerifiedCopyWithImpl(
+      UserNotVerified _value, $Res Function(UserNotVerified) _then)
+      : super(_value, (v) => _then(v as UserNotVerified));
+
+  @override
+  UserNotVerified get _value => super._value as UserNotVerified;
+}
+
+/// @nodoc
+
+class _$UserNotVerified implements UserNotVerified {
+  const _$UserNotVerified();
+
+  @override
+  String toString() {
+    return 'AuthFailure.userNotVerified()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is UserNotVerified);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidCredentials,
+    required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
+  }) {
+    return userNotVerified();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
+  }) {
+    return userNotVerified?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
+    required TResult orElse(),
+  }) {
+    if (userNotVerified != null) {
+      return userNotVerified();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidCredentials value) invalidCredentials,
+    required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+  }) {
+    return userNotVerified(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidCredentials value)? invalidCredentials,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+  }) {
+    return userNotVerified?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidCredentials value)? invalidCredentials,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    required TResult orElse(),
+  }) {
+    if (userNotVerified != null) {
+      return userNotVerified(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserNotVerified implements AuthFailure {
+  const factory UserNotVerified() = _$UserNotVerified;
+}
+
+/// @nodoc
+abstract class $InvalidPinCodeCopyWith<$Res> {
+  factory $InvalidPinCodeCopyWith(
+          InvalidPinCode value, $Res Function(InvalidPinCode) then) =
+      _$InvalidPinCodeCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$InvalidPinCodeCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements $InvalidPinCodeCopyWith<$Res> {
+  _$InvalidPinCodeCopyWithImpl(
+      InvalidPinCode _value, $Res Function(InvalidPinCode) _then)
+      : super(_value, (v) => _then(v as InvalidPinCode));
+
+  @override
+  InvalidPinCode get _value => super._value as InvalidPinCode;
+}
+
+/// @nodoc
+
+class _$InvalidPinCode implements InvalidPinCode {
+  const _$InvalidPinCode();
+
+  @override
+  String toString() {
+    return 'AuthFailure.invalidPinCode()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is InvalidPinCode);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidCredentials,
+    required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
+  }) {
+    return invalidPinCode();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
+  }) {
+    return invalidPinCode?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
+    required TResult orElse(),
+  }) {
+    if (invalidPinCode != null) {
+      return invalidPinCode();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidCredentials value) invalidCredentials,
+    required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+  }) {
+    return invalidPinCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidCredentials value)? invalidCredentials,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+  }) {
+    return invalidPinCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidCredentials value)? invalidCredentials,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    required TResult orElse(),
+  }) {
+    if (invalidPinCode != null) {
+      return invalidPinCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidPinCode implements AuthFailure {
+  const factory InvalidPinCode() = _$InvalidPinCode;
+}
+
+/// @nodoc
+abstract class $PhoneAlreadyInUseCopyWith<$Res> {
+  factory $PhoneAlreadyInUseCopyWith(
+          PhoneAlreadyInUse value, $Res Function(PhoneAlreadyInUse) then) =
+      _$PhoneAlreadyInUseCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PhoneAlreadyInUseCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $PhoneAlreadyInUseCopyWith<$Res> {
+  _$PhoneAlreadyInUseCopyWithImpl(
+      PhoneAlreadyInUse _value, $Res Function(PhoneAlreadyInUse) _then)
+      : super(_value, (v) => _then(v as PhoneAlreadyInUse));
+
+  @override
+  PhoneAlreadyInUse get _value => super._value as PhoneAlreadyInUse;
+}
+
+/// @nodoc
+
+class _$PhoneAlreadyInUse implements PhoneAlreadyInUse {
+  const _$PhoneAlreadyInUse();
+
+  @override
+  String toString() {
+    return 'AuthFailure.phoneAlreadyInUse()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is PhoneAlreadyInUse);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidCredentials,
+    required TResult Function() userDisabled,
+    required TResult Function() userNotVerified,
+    required TResult Function() invalidPinCode,
+    required TResult Function() phoneAlreadyInUse,
+  }) {
+    return phoneAlreadyInUse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
+  }) {
+    return phoneAlreadyInUse?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? userNotVerified,
+    TResult Function()? invalidPinCode,
+    TResult Function()? phoneAlreadyInUse,
+    required TResult orElse(),
+  }) {
+    if (phoneAlreadyInUse != null) {
+      return phoneAlreadyInUse();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidCredentials value) invalidCredentials,
+    required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(UserNotVerified value) userNotVerified,
+    required TResult Function(InvalidPinCode value) invalidPinCode,
+    required TResult Function(PhoneAlreadyInUse value) phoneAlreadyInUse,
+  }) {
+    return phoneAlreadyInUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidCredentials value)? invalidCredentials,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+  }) {
+    return phoneAlreadyInUse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidCredentials value)? invalidCredentials,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(UserNotVerified value)? userNotVerified,
+    TResult Function(InvalidPinCode value)? invalidPinCode,
+    TResult Function(PhoneAlreadyInUse value)? phoneAlreadyInUse,
+    required TResult orElse(),
+  }) {
+    if (phoneAlreadyInUse != null) {
+      return phoneAlreadyInUse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PhoneAlreadyInUse implements AuthFailure {
+  const factory PhoneAlreadyInUse() = _$PhoneAlreadyInUse;
 }

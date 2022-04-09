@@ -16,28 +16,36 @@ class AuthFormController extends StateNotifier<AuthFormState> {
   }
 
   Future mapEventToState(AuthFormEvent event) {
-    return event.map(
-      signInWithGooglePresseed: (_) async {
-        state = state.copyWith(
-          isSubmitting: true,
-        );
-        final authFailureOrSuccess = await _authFacade.signInWithGoogle();
-        state = state.copyWith(
-          authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
-          isSubmitting: false,
-        );
-        authFailureOrSuccess.map(
-          (r) => checkAuthState(),
-        );
-      },
-      signInWithFacebookPressed: (_) async {
-        checkAuthState();
-        throw UnimplementedError();
-      },
-      signOutPressed: (_) async {
-        await _authFacade.signOut();
-        _authStateController.mapEventToState(AuthEvent.signedOut());
-      },
-    );
+    return event.map(signInWithGooglePresseed: (_) async {
+      state = state.copyWith(
+        isSubmitting: true,
+      );
+      final authFailureOrSuccess = await _authFacade.signInWithGoogle();
+      state = state.copyWith(
+        authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
+        isSubmitting: false,
+      );
+      authFailureOrSuccess.map(
+        (r) => checkAuthState(),
+      );
+    }, signInWithFacebookPressed: (_) async {
+      checkAuthState();
+      throw UnimplementedError();
+    }, signOutPressed: (_) async {
+      await _authFacade.signOut();
+      _authStateController.mapEventToState(AuthEvent.signedOut());
+    }, registerWithGooglePressed: (_) async {
+      state = state.copyWith(
+        isSubmitting: true,
+      );
+      final authFailureOrSuccess = await _authFacade.registerWithGoogle();
+      state = state.copyWith(
+        authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
+        isSubmitting: false,
+      );
+      authFailureOrSuccess.map(
+        (r) => checkAuthState(),
+      );
+    });
   }
 }

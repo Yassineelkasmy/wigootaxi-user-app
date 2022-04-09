@@ -36,6 +36,12 @@ class FireBaseAuthFacade implements IAuthFacade {
         return left(const AuthFailure.cancelledByUser());
       }
 
+      final authMethod = await checkAuthMethod(googleUser.email);
+      print(authMethod);
+      if (authMethod != SignInMethod.google) {
+        return left(AuthFailure.invalidCredentials());
+      }
+
       final googleAuthentication = await googleUser.authentication;
 
       final authCredential = GoogleAuthProvider.credential(
@@ -95,4 +101,64 @@ class FireBaseAuthFacade implements IAuthFacade {
       return left(const AuthFailure.serverError());
     }
   }
+
+  @override
+  Future<Either<AuthFailure, Unit>> registerWithGoogle() async {
+    return signGoogle();
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> sendPhoneVerification(String phoneNumber) {
+    // TODO: implement sendPhoneVerification
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> verifyPhoneNumber(String code) {
+    // TODO: implement verifyPhoneNumber
+    throw UnimplementedError();
+  }
+
+  //GoogleSignIn
+  Future<Either<AuthFailure, Unit>> signGoogle() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        return left(const AuthFailure.cancelledByUser());
+      }
+
+      final googleAuthentication = await googleUser.authentication;
+
+      final authCredential = GoogleAuthProvider.credential(
+        idToken: googleAuthentication.idToken,
+        accessToken: googleAuthentication.accessToken,
+      );
+
+      await _firebaseAuth.signInWithCredential(authCredential);
+      return right(unit);
+    } on FirebaseAuthException catch (_) {
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  Future<SignInMethod> checkAuthMethod(String email) async {
+    final methods = await _firebaseAuth.fetchSignInMethodsForEmail(email);
+    if (methods.isEmpty) {
+      return SignInMethod.unknown;
+    }
+    if (methods[0].contains('google')) {
+      return SignInMethod.google;
+    } else if (methods[0].contains('facebook')) {
+      return SignInMethod.facebook;
+    } else {
+      return SignInMethod.email;
+    }
+  }
+}
+
+enum SignInMethod {
+  google,
+  facebook,
+  email,
+  unknown,
 }

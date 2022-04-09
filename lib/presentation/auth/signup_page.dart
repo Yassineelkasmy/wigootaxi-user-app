@@ -23,6 +23,15 @@ class SignUpPage extends HookConsumerWidget {
           Validators.minLength(8),
         ],
       ),
+      'confirmation': FormControl<String>(
+        validators: [Validators.required, Validators.equals('password')],
+      ),
+      'email': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.email,
+        ],
+      ),
       'username': FormControl<String>(
         validators: [
           Validators.required,
@@ -56,7 +65,6 @@ class SignUpPage extends HookConsumerWidget {
           ),
           child: SizedBox(
             width: double.maxFinite,
-            height: size.height,
             child: Column(
               children: [
                 buildLogo(white: false),
@@ -66,7 +74,7 @@ class SignUpPage extends HookConsumerWidget {
                     children: [
                       ReactiveTextField(
                         decoration: InputDecoration(
-                          hintText: "Nom d'utilisateur ou Email",
+                          hintText: "Nom d'utilisateur",
                           prefixIcon: Icon(Icons.person),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
@@ -80,21 +88,22 @@ class SignUpPage extends HookConsumerWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      // ReactiveTextField(
-                      //   decoration: InputDecoration(
-                      //     hintText: "Numéro de téléphone",
-                      //     prefixIcon: Icon(Icons.phone),
-                      //     border: OutlineInputBorder(
-                      //       borderRadius: BorderRadius.circular(30),
-                      //     ),
-                      //   ),
-                      //   formControlName: 'phone',
-                      //   validationMessages: (control) => {
-                      //     'required':
-                      //         "Numéro de téléphone ne doit pas être vide",
-                      //     'email': 'Numéro de téléphone invalide'
-                      //   },
-                      // ),
+                      ReactiveTextField(
+                        decoration: InputDecoration(
+                          hintText: "Email",
+                          prefixIcon: Icon(Icons.email),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        formControlName: 'email',
+                        validationMessages: (control) => {
+                          'required': "Email ne doit pas être vide",
+                        },
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       ReactiveTextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -122,7 +131,7 @@ class SignUpPage extends HookConsumerWidget {
                           hintText: "Confirmer votre Mot de passe",
                           prefixIcon: Icon(Icons.lock),
                         ),
-                        formControlName: 'password',
+                        formControlName: 'confirmation',
                         obscureText: true,
                         validationMessages: (control) => {
                           'required': 'Le mot de passe ne doit pas être vide',
@@ -136,8 +145,8 @@ class SignUpPage extends HookConsumerWidget {
                       SizedBox(
                         width: double.maxFinite,
                         child: SubmitButton(
-                          onPressed: () =>
-                              AutoRouter.of(context).push(PhoneAuthPageRoute()),
+                          onPressed: () => AutoRouter.of(context)
+                              .push(PhoneVerificationPageRoute()),
                           text: "SUIVANT",
                         ),
                       ),
@@ -151,32 +160,31 @@ class SignUpPage extends HookConsumerWidget {
                   onFacebookPressed: () {},
                   onGooglePressed: () {
                     authController.mapEventToState(
-                        const AuthFormEvent.signInWithGooglePresseed());
+                        const AuthFormEvent.registerWithGooglePressed());
                   },
                   text: "S'INSCRIRE AVEC",
                 ),
-                Expanded(child: Container()),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 25),
-                  child: RichText(
-                    text: TextSpan(
-                      text: "Vous avez déjà un compte ? ",
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "Connexion",
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () => AutoRouter.of(context)
-                                .replace(LoginPageRoute()),
-                        )
-                      ],
+                SizedBox(
+                  height: 15,
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: "Vous avez déjà un compte ? ",
+                    style: TextStyle(
+                      color: Colors.black,
                     ),
+                    children: [
+                      TextSpan(
+                        text: "Connexion",
+                        style: TextStyle(
+                          color: kPrimaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () =>
+                              AutoRouter.of(context).replace(LoginPageRoute()),
+                      )
+                    ],
                   ),
                 ),
               ],

@@ -1,93 +1,59 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:taxidriver/presentation/routes/router.gr.dart';
-import 'package:taxidriver/presentation/shared/logo.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
-import 'package:taxidriver/presentation/theme/colors.dart';
+import 'package:taxidriver/presentation/theme/spacings.dart';
 
 class PhoneAuthPage extends StatelessWidget {
   const PhoneAuthPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
+    final phoneForm = FormGroup({
+      'phone': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.minLength(10),
+        ],
+      ),
+    });
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 28,
-          vertical: 20,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        centerTitle: false,
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Text(
+          'Verification SMS',
+          style: TextStyle(color: Colors.black),
         ),
-        width: double.maxFinite,
-        child: SubmitButton(
-            onPressed: () => {
-                  AutoRouter.of(context).push(HomePageRoute()),
-                },
-            text: "CREER UN COMPTE"),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: kPadding,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buildLogo(white: false),
-            Center(
-              child: Text(
-                "Un code a ete envoye a",
-                style: TextStyle(
-                  fontSize: 18,
+            ReactiveForm(
+              formGroup: phoneForm,
+              child: ReactiveTextField(
+                decoration: InputDecoration(
+                  hintText: "Numéro de téléphone",
+                  prefixIcon: Icon(Icons.phone),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                 ),
+                formControlName: 'phone',
+                validationMessages: (control) => {
+                  'required': "Numéro de téléphone ne doit pas être vide",
+                  'email': 'Numéro de téléphone invalide'
+                },
               ),
             ),
             SizedBox(
-              height: 6,
-            ),
-            Center(
-              child: Text(
-                "+212 600000000",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
+              height: 20,
             ),
             SizedBox(
-              height: 50,
-            ),
-            PinCodeTextField(
-              appContext: context,
-              length: 6,
-              onChanged: (pin) {},
-              keyboardType: TextInputType.number,
-              cursorColor: kPrimaryColor,
-              pinTheme: PinTheme(
-                shape: PinCodeFieldShape.box,
-                borderRadius: BorderRadius.circular(15),
-                activeColor: kPrimaryColor,
-                activeFillColor: Colors.grey.shade300,
-                selectedColor: kPrimaryColor,
-                disabledColor: Colors.grey,
-                inactiveColor: Colors.grey,
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Align(
-              child: Text(
-                "Envoyez un autre code",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: kPrimaryColor,
-                ),
-              ),
-              alignment: Alignment.topCenter,
-            ),
-            SizedBox(
-              height: 15,
+              width: double.maxFinite,
+              child: SubmitButton(onPressed: () {}, text: 'VERIFIER'),
             ),
           ],
         ),

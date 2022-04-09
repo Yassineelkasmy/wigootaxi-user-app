@@ -5,6 +5,9 @@ import 'package:taxidriver/domain/auth/user.dart';
 abstract class IAuthFacade {
   Future<Option<User>> getSignedUser();
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
+  Future<Either<AuthFailure, Unit>> registerWithGoogle();
+  Future<Either<AuthFailure, Unit>> sendPhoneVerification(String phoneNumber);
+  Future<Either<AuthFailure, Unit>> verifyPhoneNumber(String code);
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     required String email,
     required String password,

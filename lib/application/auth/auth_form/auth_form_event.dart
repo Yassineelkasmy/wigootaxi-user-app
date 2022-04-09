@@ -6,6 +6,8 @@ part 'auth_form_event.freezed.dart';
 class AuthFormEvent with _$AuthFormEvent {
   const factory AuthFormEvent.signInWithGooglePresseed() =
       SignInWithGooglePressed;
+  const factory AuthFormEvent.registerWithGooglePressed() =
+      RegisterWithGooglePressed;
   const factory AuthFormEvent.signInWithFacebookPressed() =
       SignInWithFaceboolPressed;
   const factory AuthFormEvent.signOutPressed() = SignOutPressed;
