@@ -63,7 +63,7 @@ class _HelpState extends State<Help> {
               },
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             buildHelpCard(
               icon: Icon(Icons.phone, color: kPrimaryColor),

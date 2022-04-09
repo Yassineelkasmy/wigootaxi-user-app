@@ -102,7 +102,7 @@ class LoginPage extends HookConsumerWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       SizedBox(
                         width: double.maxFinite,

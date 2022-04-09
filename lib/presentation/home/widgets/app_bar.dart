@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-AppBar buildAppBar({required void Function() menuPressed}) {
+AppBar buildAppBar(
+    {required void Function() menuPressed, required String photoURL}) {
   return AppBar(
     centerTitle: false,
     title: Text(
@@ -17,7 +18,7 @@ AppBar buildAppBar({required void Function() menuPressed}) {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(
-          image: AssetImage('assets/images/user.jpeg'),
+          image: NetworkImage(photoURL),
           fit: BoxFit.fitWidth,
         ),
       ),

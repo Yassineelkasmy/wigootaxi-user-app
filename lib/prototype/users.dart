@@ -4,5 +4,6 @@ final protoUser = User(
   uid: "siaudjkasdk",
   email: "user@example.com",
   displayName: "Username",
-  photoURL: "assets/images/user.jpeg",
+  photoURL:
+      "https://cdn.lorem.space/images/face/.cache/500x0/aiony-haust-3TLl_97HNJo-unsplash.jpg",
 );

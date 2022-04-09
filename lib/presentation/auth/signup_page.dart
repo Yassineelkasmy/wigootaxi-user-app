@@ -136,7 +136,7 @@ class SignUpPage extends HookConsumerWidget {
                         },
                       ),
                       SizedBox(
-                        height: 32,
+                        height: 20,
                       ),
                       SizedBox(
                         width: double.maxFinite,

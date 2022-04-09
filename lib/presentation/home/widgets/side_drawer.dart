@@ -30,7 +30,7 @@ SideDrawer buildSideDrawer(User user, Size size, WidgetRef ref) {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: AssetImage(user.photoURL),
+                    image: NetworkImage(user.photoURL),
                     fit: BoxFit.fitWidth,
                   ),
                 ),

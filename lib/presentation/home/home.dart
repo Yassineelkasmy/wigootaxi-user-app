@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:enhance_stepper/enhance_stepper.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/home/widgets/app_bar.dart';
 import 'package:taxidriver/presentation/home/widgets/categories_list_view.dart';
 import 'package:taxidriver/presentation/home/widgets/home_button.dart';
@@ -9,8 +11,9 @@ import 'package:taxidriver/presentation/home/widgets/home_icon.dart';
 import 'package:taxidriver/presentation/home/widgets/top_box.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
+import 'package:taxidriver/prototype/users.dart';
 
-class Home extends StatelessWidget {
+class Home extends HookConsumerWidget {
   Home({
     Key? key,
     required this.drawerScaffoldController,
@@ -18,12 +21,14 @@ class Home extends StatelessWidget {
   final DrawerScaffoldController drawerScaffoldController;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(userProvider);
     return Scaffold(
       appBar: buildAppBar(
         menuPressed: () {
           drawerScaffoldController.openDrawer();
         },
+        photoURL: user?.photoURL ?? protoUser.photoURL,
       ),
       body: ListView(
         children: [
@@ -32,7 +37,9 @@ class Home extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildTopBox(context),
+                buildTopBox(context, () {
+                  AutoRouter.of(context).push(PickLocationPageRoute());
+                }),
                 SizedBox(
                   height: 20,
                 ),

@@ -57,11 +57,9 @@ class _NotificationsState extends State<Notifications> {
           SizedBox(
             height: size.height * .8,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                buildTitle(text: "Vous n'avez aucune notification"),
                 SizedBox(
-                  height: 20,
+                  height: 60,
                 ),
                 SizedBox(
                   height: size.height * .2,
@@ -73,6 +71,10 @@ class _NotificationsState extends State<Notifications> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                buildTitle(text: "Vous n'avez aucune notification"),
               ],
             ),
           )
