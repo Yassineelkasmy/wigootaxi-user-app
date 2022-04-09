@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:taxidriver/presentation/home/widgets/category_item.dart';
 import 'package:taxidriver/prototype/categories.dart';
 
-Widget buildCategories() {
+Widget buildCategories(BuildContext context) {
   return SizedBox(
     height: 96,
     child: ListView(

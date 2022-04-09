@@ -10,12 +10,12 @@ import 'package:taxidriver/presentation/onboarding/onboarding_page.dart';
 import 'package:taxidriver/presentation/splash/splash_page.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
-  AutoRoute(page: SplashPage),
+  AutoRoute(page: SplashPage, initial: true),
   AutoRoute(page: PhoneAuthPage),
   AutoRoute(page: LoginPage),
   AutoRoute(page: IntroPage),
   AutoRoute(page: SignUpPage),
-  AutoRoute(page: HomePage, initial: true),
+  AutoRoute(page: HomePage),
   AutoRoute(page: PickLocationPage),
   AutoRoute(page: OnBoardingPage),
   AutoRoute(page: SendMessagePage),

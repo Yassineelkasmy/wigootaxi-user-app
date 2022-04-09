@@ -23,7 +23,6 @@ class FireBaseAuthFacade implements IAuthFacade {
           email: user.email!,
           displayName: user.displayName!,
           photoURL: user.photoURL!,
-          accessToken: await user.getIdToken(),
         ),
       );
     }
@@ -52,9 +51,11 @@ class FireBaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<void> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    Future.wait([
+      _firebaseAuth.signOut(),
+      _googleSignIn.signOut(),
+    ]);
   }
 
   @override

@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:location/location.dart';
 import 'package:taxidriver/application/location/location_event.dart';

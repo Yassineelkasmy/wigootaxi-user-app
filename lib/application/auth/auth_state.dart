@@ -7,5 +7,5 @@ part 'auth_state.freezed.dart';
 class AuthState with _$AuthState {
   const factory AuthState.initial() = Initial;
   const factory AuthState.authenticated(User user) = Authenticated;
-  const factory AuthState.unauthenticated() = Unauthenticated;
+  const factory AuthState.unauthenticated(bool isNewUser) = Unauthenticated;
 }

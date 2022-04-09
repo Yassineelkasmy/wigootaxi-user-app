@@ -3,6 +3,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
+import 'package:taxidriver/application/providers/auth/auth_providers.dart';
+import 'package:taxidriver/presentation/auth/widgets/social_media_button.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
@@ -25,7 +28,10 @@ class LoginPage extends HookConsumerWidget {
   );
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final authFormController = ref.watch(authFormProvider.notifier);
+    final size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(
@@ -39,9 +45,8 @@ class LoginPage extends HookConsumerWidget {
           ),
           child: SizedBox(
             width: double.maxFinite,
-            height: double.maxFinite,
+            height: size.height,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 buildLogo(white: false),
                 ReactiveForm(
@@ -63,7 +68,7 @@ class LoginPage extends HookConsumerWidget {
                         },
                       ),
                       SizedBox(
-                        height: 16,
+                        height: 10,
                       ),
                       ReactiveTextField(
                         decoration: InputDecoration(
@@ -97,7 +102,7 @@ class LoginPage extends HookConsumerWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 32,
+                        height: 20,
                       ),
                       SizedBox(
                         width: double.maxFinite,
@@ -110,27 +115,37 @@ class LoginPage extends HookConsumerWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 20),
+                SocialMedia(
+                  onFacebookPressed: () {},
+                  onGooglePressed: () {
+                    authFormController.mapEventToState(
+                        const AuthFormEvent.signInWithGooglePresseed());
+                  },
+                  text: "SE CONNECTER AVEC",
+                ),
                 Expanded(child: Container()),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 22),
                   child: RichText(
                     text: TextSpan(
-                        text: "Vous n'a avez pas de compte ? ",
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: "S'inscrire",
-                            style: TextStyle(
-                              color: kPrimaryColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => AutoRouter.of(context)
-                                  .replace(SignUpPageRoute()),
-                          )
-                        ]),
+                      text: "Vous n'a avez pas de compte ? ",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "S'inscrire",
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => AutoRouter.of(context)
+                                .replace(SignUpPageRoute()),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],

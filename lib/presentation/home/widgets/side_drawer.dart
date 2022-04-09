@@ -1,9 +1,13 @@
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
+import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/domain/auth/user.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 
-SideDrawer buildSideDrawer(User user, Size size) {
+SideDrawer buildSideDrawer(User user, Size size, WidgetRef ref) {
+  final autFormController = ref.watch(authFormProvider.notifier);
   return SideDrawer(
     percentage: 0.6,
     direction: Direction.left,
@@ -109,7 +113,10 @@ SideDrawer buildSideDrawer(User user, Size size) {
               ),
             ),
           ),
-          const ListTile(
+          ListTile(
+            onTap: () {
+              autFormController.mapEventToState(AuthFormEvent.signOutPressed());
+            },
             leading: Icon(
               Icons.logout,
               color: Colors.white,

@@ -5,5 +5,4 @@ final protoUser = User(
   email: "user@example.com",
   displayName: "Username",
   photoURL: "assets/images/user.jpeg",
-  accessToken: "askdjaksjdkasjdkas",
 );

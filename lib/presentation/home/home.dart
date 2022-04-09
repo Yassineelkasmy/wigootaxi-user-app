@@ -49,7 +49,7 @@ class Home extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                buildCategories(),
+                buildCategories(context),
                 SizedBox(
                   height: 10,
                 ),

@@ -22,14 +22,12 @@ class _$UserTearOff {
       {required String uid,
       required String email,
       required String displayName,
-      required String photoURL,
-      required String accessToken}) {
+      required String photoURL}) {
     return _User(
       uid: uid,
       email: email,
       displayName: displayName,
       photoURL: photoURL,
-      accessToken: accessToken,
     );
   }
 }
@@ -43,7 +41,6 @@ mixin _$User {
   String get email => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   String get photoURL => throw _privateConstructorUsedError;
-  String get accessToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -53,12 +50,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call(
-      {String uid,
-      String email,
-      String displayName,
-      String photoURL,
-      String accessToken});
+  $Res call({String uid, String email, String displayName, String photoURL});
 }
 
 /// @nodoc
@@ -75,7 +67,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? email = freezed,
     Object? displayName = freezed,
     Object? photoURL = freezed,
-    Object? accessToken = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -94,10 +85,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
               as String,
-      accessToken: accessToken == freezed
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -107,12 +94,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String uid,
-      String email,
-      String displayName,
-      String photoURL,
-      String accessToken});
+  $Res call({String uid, String email, String displayName, String photoURL});
 }
 
 /// @nodoc
@@ -130,7 +112,6 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? email = freezed,
     Object? displayName = freezed,
     Object? photoURL = freezed,
-    Object? accessToken = freezed,
   }) {
     return _then(_User(
       uid: uid == freezed
@@ -149,10 +130,6 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
               as String,
-      accessToken: accessToken == freezed
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -164,8 +141,7 @@ class _$_User implements _User {
       {required this.uid,
       required this.email,
       required this.displayName,
-      required this.photoURL,
-      required this.accessToken});
+      required this.photoURL});
 
   @override
   final String uid;
@@ -175,12 +151,10 @@ class _$_User implements _User {
   final String displayName;
   @override
   final String photoURL;
-  @override
-  final String accessToken;
 
   @override
   String toString() {
-    return 'User(uid: $uid, email: $email, displayName: $displayName, photoURL: $photoURL, accessToken: $accessToken)';
+    return 'User(uid: $uid, email: $email, displayName: $displayName, photoURL: $photoURL)';
   }
 
   @override
@@ -192,9 +166,7 @@ class _$_User implements _User {
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
-            const DeepCollectionEquality().equals(other.photoURL, photoURL) &&
-            const DeepCollectionEquality()
-                .equals(other.accessToken, accessToken));
+            const DeepCollectionEquality().equals(other.photoURL, photoURL));
   }
 
   @override
@@ -203,8 +175,7 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(displayName),
-      const DeepCollectionEquality().hash(photoURL),
-      const DeepCollectionEquality().hash(accessToken));
+      const DeepCollectionEquality().hash(photoURL));
 
   @JsonKey(ignore: true)
   @override
@@ -217,8 +188,7 @@ abstract class _User implements User {
       {required String uid,
       required String email,
       required String displayName,
-      required String photoURL,
-      required String accessToken}) = _$_User;
+      required String photoURL}) = _$_User;
 
   @override
   String get uid;
@@ -228,8 +198,6 @@ abstract class _User implements User {
   String get displayName;
   @override
   String get photoURL;
-  @override
-  String get accessToken;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

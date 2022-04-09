@@ -16,91 +16,83 @@ class IntroPage extends StatefulWidget {
 class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          iconTheme: IconThemeData(
-            color: Colors.white,
+        body: Stack(
+      children: [
+        Positioned.fill(
+          child: Image.asset(
+            'assets/images/intro.png',
+            fit: BoxFit.cover,
           ),
         ),
-        body: Stack(
-          children: [
-            Positioned.fill(
-              child: Image.asset(
-                'assets/images/intro.png',
-                fit: BoxFit.cover,
+        Positioned.fill(
+          child: Container(
+            color: FlexColor.blue.light.primary.withOpacity(0.8),
+          ),
+        ),
+        Positioned(
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: buildLogo(),
+          ),
+        ),
+        Positioned(
+          child: Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 28,
+              ),
+              child: Text(
+                "Find a Best Taxi Drive",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 36,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
             ),
-            Positioned.fill(
-              child: Container(
-                color: FlexColor.blue.light.primary.withOpacity(0.8),
+          ),
+        ),
+        Positioned(
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 28,
+                horizontal: 20,
               ),
-            ),
-            Positioned(
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: buildLogo(),
-              ),
-            ),
-            Positioned(
-              child: Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 28,
-                  ),
-                  child: Text(
-                    "Find a Best Taxi Drive",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36,
-                      fontWeight: FontWeight.w900,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    width: double.maxFinite,
+                    child: SubmitButton(
+                      onPressed: () =>
+                          AutoRouter.of(context).push(LoginPageRoute()),
+                      text: "CONNEXION",
                     ),
                   ),
-                ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: double.maxFinite,
+                    child: SubmitButton(
+                      onPressed: () =>
+                          AutoRouter.of(context).push(SignUpPageRoute()),
+                      text: "CRÉER UN COMPTE",
+                      textColor: kPrimaryColor,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
-            Positioned(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 28,
-                    horizontal: 20,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(
-                        width: double.maxFinite,
-                        child: SubmitButton(
-                          onPressed: () =>
-                              AutoRouter.of(context).push(LoginPageRoute()),
-                          text: "CONNEXION",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        width: double.maxFinite,
-                        child: SubmitButton(
-                          onPressed: () =>
-                              AutoRouter.of(context).push(SignUpPageRoute()),
-                          text: "CRÉER UN COMPTE",
-                          textColor: kPrimaryColor,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
-        ));
+          ),
+        )
+      ],
+    ));
   }
 }

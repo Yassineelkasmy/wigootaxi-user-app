@@ -9,6 +9,5 @@ class User with _$User {
     required String email,
     required String displayName,
     required String photoURL,
-    required String accessToken,
   }) = _User;
 }

@@ -4,9 +4,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:taxidriver/application/auth/auth_state.dart';
+import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
-
-import '../shared/logo.dart';
+import 'package:taxidriver/presentation/shared/logo.dart';
 
 class SplashPage extends HookConsumerWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -14,8 +15,22 @@ class SplashPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
-    Timer(Duration(seconds: 5),
-        (() => AutoRouter.of(context).push(OnBoardingPageRoute())));
+    ref.listen<AuthState>(authtProvider, (_, nextAuthState) {
+      Timer(Duration(seconds: 2), () {
+        nextAuthState.map(
+            initial: (_) {},
+            authenticated: (_) =>
+                AutoRouter.of(context).replace(HomePageRoute()),
+            unauthenticated: (unAuth) {
+              if (unAuth.isNewUser) {
+                AutoRouter.of(context).push(OnBoardingPageRoute());
+              } else {
+                AutoRouter.of(context).push(IntroPageRoute());
+              }
+            });
+      });
+    });
+
     return Scaffold(
       body: Scaffold(
         body: Stack(
