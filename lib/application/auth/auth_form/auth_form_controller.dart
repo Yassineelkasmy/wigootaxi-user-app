@@ -36,7 +36,7 @@ class AuthFormController extends StateNotifier<AuthFormState> {
       },
       signOutPressed: (_) async {
         await _authFacade.signOut();
-        checkAuthState();
+        _authStateController.mapEventToState(AuthEvent.signedOut());
       },
     );
   }

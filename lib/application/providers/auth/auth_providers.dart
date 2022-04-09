@@ -10,8 +10,7 @@ import 'package:taxidriver/domain/auth/user.dart';
 import 'package:taxidriver/infrastructure/auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final firebaseAuthFacadeProvider =
-    Provider.autoDispose<FireBaseAuthFacade>((ref) {
+final firebaseAuthFacadeProvider = Provider<FireBaseAuthFacade>((ref) {
   final firebaseAuth = FirebaseAuth.instance;
   final googleSignIn = GoogleSignIn();
   final fireBaseAuthFacade = FireBaseAuthFacade(
@@ -21,8 +20,7 @@ final firebaseAuthFacadeProvider =
   return fireBaseAuthFacade;
 });
 
-final authtProvider =
-    StateNotifierProvider.autoDispose<AuthController, AuthState>((ref) {
+final authtProvider = StateNotifierProvider<AuthController, AuthState>((ref) {
   final fireBaseAuthFacade = ref.watch(firebaseAuthFacadeProvider);
 
   AuthController authController = AuthController(fireBaseAuthFacade);
@@ -30,7 +28,7 @@ final authtProvider =
 });
 
 final authFormProvider =
-    StateNotifierProvider.autoDispose<AuthFormController, AuthFormState>(
+    StateNotifierProvider<AuthFormController, AuthFormState>(
   (ref) {
     final fireBaseAuthFacade = ref.watch(firebaseAuthFacadeProvider);
     final authController = ref.watch(authtProvider.notifier);
