@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,7 +7,8 @@ import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/domain/auth/user.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 
-SideDrawer buildSideDrawer(User user, Size size, WidgetRef ref) {
+SideDrawer buildSideDrawer(
+    User user, Size size, WidgetRef ref, BuildContext context) {
   final autFormController = ref.watch(authFormProvider.notifier);
   return SideDrawer(
     percentage: 0.6,
@@ -115,7 +117,18 @@ SideDrawer buildSideDrawer(User user, Size size, WidgetRef ref) {
           ),
           ListTile(
             onTap: () {
-              autFormController.mapEventToState(AuthFormEvent.signOutPressed());
+              showOkCancelAlertDialog(
+                context: context,
+                message: 'Êtes-vous sûr de vouloir vous déconnecter',
+                title: 'Confirmation',
+                okLabel: 'Oui',
+                cancelLabel: 'Non',
+              ).then((okCancell) {
+                if (okCancell.index == 0) {
+                  autFormController
+                      .mapEventToState(const AuthFormEvent.signOutPressed());
+                }
+              });
             },
             leading: Icon(
               Icons.logout,

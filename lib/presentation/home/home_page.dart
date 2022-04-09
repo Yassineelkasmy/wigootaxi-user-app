@@ -26,7 +26,9 @@ class HomePage extends HookConsumerWidget {
     ref.listen<AuthState>(authtProvider, (_, authState) {
       authState.mapOrNull(
         unauthenticated: (unauth) {
-          AutoRouter.of(context).replace(SplashPageRoute());
+          AutoRouter.of(context).popUntil((route) {
+            return route.isFirst;
+          });
         },
       );
     });
@@ -43,7 +45,7 @@ class HomePage extends HookConsumerWidget {
     return DrawerScaffold(
       controller: _drawerScaffoldController,
       drawers: [
-        buildSideDrawer(user ?? protoUser, size, ref),
+        buildSideDrawer(user ?? protoUser, size, ref, context),
       ],
       bottomNavigationBar: BottomNavBar(
         onTap: (i) {
