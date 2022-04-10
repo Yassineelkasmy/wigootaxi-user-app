@@ -25,6 +25,7 @@ class _NotificationsState extends State<Notifications> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: false,
         backgroundColor: Colors.transparent,
         title: Text(

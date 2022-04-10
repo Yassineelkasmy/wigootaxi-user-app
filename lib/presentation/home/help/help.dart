@@ -28,6 +28,7 @@ class _HelpState extends State<Help> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         centerTitle: false,
         title: Text(

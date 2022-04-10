@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -96,6 +97,7 @@ class LoginPage extends HookConsumerWidget {
                           onPressed: () => {},
                         ),
                       ),
+                      10.verticalSpace,
                       SizedBox(
                         width: double.maxFinite,
                         child: SubmitButton(
@@ -118,7 +120,7 @@ class LoginPage extends HookConsumerWidget {
                 ),
                 20.verticalSpace,
                 Padding(
-                  padding: EdgeInsets.only(bottom: 22.h),
+                  padding: EdgeInsets.only(bottom: 10.h),
                   child: RichText(
                     text: TextSpan(
                       text: "Vous n'a avez pas de compte ? ",

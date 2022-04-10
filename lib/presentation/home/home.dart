@@ -133,7 +133,7 @@ class Home extends HookConsumerWidget {
                   child: Row(
                     children: [
                       buildHomeIcon('home_icon5'),
-                      10.verticalSpace,
+                      10.horizontalSpace,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

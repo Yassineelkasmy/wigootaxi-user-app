@@ -1,13 +1,13 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final lightTheme = FlexThemeData.light(
-  scheme: FlexScheme.blue,
-  // surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+  scheme: FlexScheme.material,
+  fontFamily: GoogleFonts.montserrat().fontFamily,
   blendLevel: 18,
   appBarStyle: FlexAppBarStyle.primary,
-
   appBarOpacity: 0.95,
   appBarElevation: 0,
   transparentStatusBar: true,
@@ -17,7 +17,6 @@ final lightTheme = FlexThemeData.light(
   lightIsWhite: false,
   useSubThemes: true,
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
-  fontFamily: GoogleFonts.notoSans().fontFamily,
   subThemesData: const FlexSubThemesData(
     useTextTheme: true,
     fabUseShape: true,
@@ -29,18 +28,20 @@ final lightTheme = FlexThemeData.light(
     navigationBarMutedUnselectedIcon: true,
     inputDecoratorIsFilled: true,
     inputDecoratorBorderType: FlexInputBorderType.outline,
-    inputDecoratorFillColor: Colors.white,
-    elevatedButtonElevation: 2,
     inputDecoratorUnfocusedHasBorder: true,
+    inputDecoratorFillColor: Colors.white,
     blendOnColors: true,
     blendTextTheme: true,
     popupMenuOpacity: 0.95,
   ),
-);
+).copyWith(
+    inputDecorationTheme: InputDecorationTheme(
+  hintStyle: TextStyle(fontSize: 14.sp),
+));
 
 final darkTheme = FlexThemeData.dark(
-  scheme: FlexScheme.blue,
-  // surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+  scheme: FlexScheme.material,
+  surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
   blendLevel: 18,
   appBarStyle: FlexAppBarStyle.background,
   appBarOpacity: 0.95,
@@ -52,7 +53,7 @@ final darkTheme = FlexThemeData.dark(
   darkIsTrueBlack: false,
   useSubThemes: true,
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
-  fontFamily: GoogleFonts.notoSans().fontFamily,
+  fontFamily: GoogleFonts.montserrat().fontFamily,
   subThemesData: const FlexSubThemesData(
     useTextTheme: true,
     fabUseShape: true,
@@ -68,5 +69,10 @@ final darkTheme = FlexThemeData.dark(
     blendOnColors: true,
     blendTextTheme: true,
     popupMenuOpacity: 0.95,
+  ),
+).copyWith(
+  textTheme: GoogleFonts.rubikBeastlyTextTheme(ThemeData.light().textTheme),
+  inputDecorationTheme: const InputDecorationTheme(
+    fillColor: Colors.white,
   ),
 );
