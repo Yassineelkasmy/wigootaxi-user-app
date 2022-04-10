@@ -65,5 +65,11 @@
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>This app needs to access location</string>
 		<!-- End of the Google Sign-in Section -->
+
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>fr</string>
+			<string>ar</string>
+		</array>
 	</dict>
 </plist>

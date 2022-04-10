@@ -157,7 +157,10 @@ class SignUpPage extends HookConsumerWidget {
                   ),
                 ),
                 SocialMedia(
-                  onFacebookPressed: () {},
+                  onFacebookPressed: () {
+                    authController.mapEventToState(
+                        const AuthFormEvent.registerWithFacebookPressed());
+                  },
                   onGooglePressed: () {
                     authController.mapEventToState(
                         const AuthFormEvent.registerWithGooglePressed());

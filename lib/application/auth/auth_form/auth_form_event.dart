@@ -10,5 +10,7 @@ class AuthFormEvent with _$AuthFormEvent {
       RegisterWithGooglePressed;
   const factory AuthFormEvent.signInWithFacebookPressed() =
       SignInWithFaceboolPressed;
+  const factory AuthFormEvent.registerWithFacebookPressed() =
+      RegisterWithFaceboolPressed;
   const factory AuthFormEvent.signOutPressed() = SignOutPressed;
 }

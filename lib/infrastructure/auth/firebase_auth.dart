@@ -4,12 +4,18 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:taxidriver/domain/auth/auth_failure.dart';
 import 'package:taxidriver/domain/auth/i_auth_facade.dart';
 import 'package:taxidriver/domain/auth/user.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class FireBaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
+  final FacebookAuth _facebookAuth;
 
-  FireBaseAuthFacade(this._firebaseAuth, this._googleSignIn);
+  FireBaseAuthFacade(
+    this._firebaseAuth,
+    this._googleSignIn,
+    this._facebookAuth,
+  );
 
   @override
   Future<Option<User>> getSignedUser() async {
@@ -104,23 +110,6 @@ class FireBaseAuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithGoogle() async {
-    return signGoogle();
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> sendPhoneVerification(String phoneNumber) {
-    // TODO: implement sendPhoneVerification
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> verifyPhoneNumber(String code) {
-    // TODO: implement verifyPhoneNumber
-    throw UnimplementedError();
-  }
-
-  //GoogleSignIn
-  Future<Either<AuthFailure, Unit>> signGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
@@ -141,6 +130,18 @@ class FireBaseAuthFacade implements IAuthFacade {
     }
   }
 
+  @override
+  Future<Either<AuthFailure, Unit>> sendPhoneVerification(String phoneNumber) {
+    // TODO: implement sendPhoneVerification
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> verifyPhoneNumber(String code) {
+    // TODO: implement verifyPhoneNumber
+    throw UnimplementedError();
+  }
+
   Future<SignInMethod> checkAuthMethod(String email) async {
     final methods = await _firebaseAuth.fetchSignInMethodsForEmail(email);
     if (methods.isEmpty) {
@@ -153,6 +154,38 @@ class FireBaseAuthFacade implements IAuthFacade {
     } else {
       return SignInMethod.email;
     }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> registerWithFacebook() async {
+    try {
+      final LoginResult result = await _facebookAuth.login(
+        permissions: ["public_profile", "email"],
+      );
+
+      if (result.status == LoginStatus.success) {
+        final Map<String, dynamic> facebookUser =
+            await _facebookAuth.getUserData(
+          fields: "email, name",
+        );
+
+        print(facebookUser);
+
+        AccessToken? _token = result.accessToken;
+
+        final facebookCredentials =
+            FacebookAuthProvider.credential(_token!.token);
+      }
+      return right(unit);
+    } on FirebaseAuthException catch (_) {
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signInWithFacebook() {
+    // TODO: implement signInWithFacebook
+    throw UnimplementedError();
   }
 }
 

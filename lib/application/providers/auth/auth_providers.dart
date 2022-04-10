@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:taxidriver/application/auth/auth_event.dart';
@@ -13,10 +14,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 final firebaseAuthFacadeProvider = Provider<FireBaseAuthFacade>((ref) {
   final firebaseAuth = FirebaseAuth.instance;
   final googleSignIn = GoogleSignIn();
-  final fireBaseAuthFacade = FireBaseAuthFacade(
-    firebaseAuth,
-    googleSignIn,
-  );
+  final facebookAuth = FacebookAuth.instance;
+  final fireBaseAuthFacade =
+      FireBaseAuthFacade(firebaseAuth, googleSignIn, facebookAuth);
   return fireBaseAuthFacade;
 });
 

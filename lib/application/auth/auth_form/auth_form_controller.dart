@@ -46,6 +46,9 @@ class AuthFormController extends StateNotifier<AuthFormState> {
       authFailureOrSuccess.map(
         (r) => checkAuthState(),
       );
+    }, registerWithFacebookPressed: (_) async {
+      await _authFacade.registerWithFacebook();
+      checkAuthState();
     });
   }
 }

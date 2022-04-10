@@ -6,12 +6,16 @@ Widget buildHomeButton({
 }) {
   return ElevatedButton(
     style: ElevatedButton.styleFrom(
-      primary: Colors.lightBlue.shade300,
+      primary: Colors.white,
       shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.indigoAccent),
         borderRadius: BorderRadius.circular(10),
       ),
     ),
     onPressed: onPressed,
-    child: Text(text),
+    child: Text(
+      text,
+      style: TextStyle(color: Colors.indigoAccent, fontWeight: FontWeight.bold),
+    ),
   );
 }
