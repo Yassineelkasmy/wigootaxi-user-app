@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/auth/auth_state.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
@@ -39,24 +42,30 @@ class HomePage extends HookConsumerWidget {
       Notifications(),
       Help(),
     ];
-    return DrawerScaffold(
-      controller: _drawerScaffoldController,
-      drawers: [
-        buildSideDrawer(user ?? protoUser, ref, context),
-      ],
-      bottomNavigationBar: BottomNavBar(
-        onTap: (i) {
-          pageController.animateToPage(
-            i,
-            duration: Duration(milliseconds: 200),
-            curve: Curves.linear,
-          );
-        },
-      ),
-      body: PageView(
-        controller: pageController,
-        children: pages,
-        physics: NeverScrollableScrollPhysics(),
+    return WillPopScope(
+      onWillPop: () async {
+        SystemNavigator.pop(animated: true);
+        return false;
+      },
+      child: DrawerScaffold(
+        controller: _drawerScaffoldController,
+        drawers: [
+          buildSideDrawer(user ?? protoUser, ref, context),
+        ],
+        bottomNavigationBar: BottomNavBar(
+          onTap: (i) {
+            pageController.animateToPage(
+              i,
+              duration: Duration(milliseconds: 200),
+              curve: Curves.linear,
+            );
+          },
+        ),
+        body: PageView(
+          controller: pageController,
+          children: pages,
+          physics: NeverScrollableScrollPhysics(),
+        ),
       ),
     );
   }
