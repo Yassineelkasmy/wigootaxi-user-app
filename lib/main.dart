@@ -5,16 +5,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/presentation/core/app_widget.dart';
 
 Future<void> main() async {
-  await EasyLocalization.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
     ProviderScope(
       child: EasyLocalization(
+        fallbackLocale: Locale('fr'),
         child: AppWidget(),
         supportedLocales: [
-          Locale('fr', 'FR'),
-          Locale('ar', 'MA'),
+          Locale('fr'),
+          Locale('ar'),
         ],
         path: 'assets/translations',
       ),

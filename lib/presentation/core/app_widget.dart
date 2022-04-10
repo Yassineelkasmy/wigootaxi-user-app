@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ class AppWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final _appRouter = AppRouter();
     return MaterialApp.router(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
       scrollBehavior: MyCustomScrollBehavior(),
       useInheritedMediaQuery: true,
       routeInformationParser: _appRouter.defaultRouteParser(),
