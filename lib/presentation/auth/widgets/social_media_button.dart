@@ -1,10 +1,6 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../application/auth/auth_form/auth_form_event.dart';
-import '../../routes/router.gr.dart';
-import '../../theme/colors.dart';
 
 class SocialMedia extends StatelessWidget {
   const SocialMedia({
@@ -21,18 +17,16 @@ class SocialMedia extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 10),
+        10.verticalSpace,
         Text(
           text,
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 14.sp,
             color: Colors.grey,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(
-          height: 10,
-        ),
+        10.verticalSpace,
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -40,32 +34,31 @@ class SocialMedia extends StatelessWidget {
               onPressed: onFacebookPressed,
               child: SvgPicture.asset(
                 "assets/icons/facebook.svg",
-                height: 32,
-                width: 32,
+                height: 32.h,
+                width: 32.w,
                 color: Colors.white,
               ),
               style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  )),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.r),
+                ),
+              ),
             ),
-            SizedBox(
-              width: 16,
-            ),
+            16.horizontalSpace,
             ElevatedButton(
               onPressed: onGooglePressed,
               child: SvgPicture.asset(
                 "assets/icons/google.svg",
-                height: 32,
-                width: 32,
+                height: 32.h,
+                width: 32.w,
                 color: Colors.white,
               ),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
                 primary: Colors.red,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(30.r),
                 ),
               ),
             ),

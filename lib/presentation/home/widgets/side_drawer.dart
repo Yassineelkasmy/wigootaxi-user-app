@@ -1,14 +1,14 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/domain/auth/user.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 
-SideDrawer buildSideDrawer(
-    User user, Size size, WidgetRef ref, BuildContext context) {
+SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
   final autFormController = ref.watch(authFormProvider.notifier);
   return SideDrawer(
     percentage: 0.6,
@@ -18,17 +18,17 @@ SideDrawer buildSideDrawer(
     // alignment: Alignment.topLeft,
     color: kPrimaryColor,
     child: Container(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-      height: size.height,
-      width: size.width,
+      padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 30.w),
+      height: 1.sh,
+      width: 1.sw,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Container(
-                height: size.width * 0.15,
-                width: size.width * 0.15,
+                height: .15.sw,
+                width: .15.sw,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -37,9 +37,7 @@ SideDrawer buildSideDrawer(
                   ),
                 ),
               ),
-              SizedBox(
-                width: 10,
-              ),
+              10.horizontalSpace,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -60,15 +58,13 @@ SideDrawer buildSideDrawer(
               ),
             ],
           ),
-          SizedBox(
-            height: 20,
-          ),
-          const ListTile(
+          20.verticalSpace,
+          ListTile(
             leading: Icon(
               Icons.person,
               color: Colors.white,
             ),
-            horizontalTitleGap: 10,
+            horizontalTitleGap: 10.w,
             title: Text(
               "Profile",
               style: TextStyle(
@@ -76,12 +72,12 @@ SideDrawer buildSideDrawer(
               ),
             ),
           ),
-          const ListTile(
+          ListTile(
             leading: Icon(
               Icons.payment,
               color: Colors.white,
             ),
-            horizontalTitleGap: 10,
+            horizontalTitleGap: 10.w,
             title: Text(
               "Portefeuille",
               style: TextStyle(
@@ -89,12 +85,12 @@ SideDrawer buildSideDrawer(
               ),
             ),
           ),
-          const ListTile(
+          ListTile(
             leading: Icon(
               Icons.history_outlined,
               color: Colors.white,
             ),
-            horizontalTitleGap: 10,
+            horizontalTitleGap: 10.w,
             title: Text(
               "Mes Courses",
               style: TextStyle(
@@ -102,12 +98,12 @@ SideDrawer buildSideDrawer(
               ),
             ),
           ),
-          const ListTile(
+          ListTile(
             leading: Icon(
               Icons.settings,
               color: Colors.white,
             ),
-            horizontalTitleGap: 10,
+            horizontalTitleGap: 10.w,
             title: Text(
               "Réglages",
               style: TextStyle(
@@ -134,7 +130,7 @@ SideDrawer buildSideDrawer(
               Icons.logout,
               color: Colors.white,
             ),
-            horizontalTitleGap: 10,
+            horizontalTitleGap: 10.w,
             title: Text(
               "Se déconnecter",
               style: TextStyle(

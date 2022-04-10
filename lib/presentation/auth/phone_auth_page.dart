@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
@@ -38,7 +39,7 @@ class PhoneAuthPage extends StatelessWidget {
                   hintText: "Numéro de téléphone",
                   prefixIcon: Icon(Icons.phone),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(30.r),
                   ),
                 ),
                 formControlName: 'phone',
@@ -48,9 +49,7 @@ class PhoneAuthPage extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            20.verticalSpace,
             SizedBox(
               width: double.maxFinite,
               child: SubmitButton(onPressed: () {}, text: 'VERIFIER'),

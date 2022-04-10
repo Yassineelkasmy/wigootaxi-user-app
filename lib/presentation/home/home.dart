@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:enhance_stepper/enhance_stepper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/home/widgets/app_bar.dart';
@@ -33,16 +34,14 @@ class Home extends HookConsumerWidget {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildTopBox(context, () {
                   AutoRouter.of(context).push(PickLocationPageRoute());
                 }),
-                SizedBox(
-                  height: 20,
-                ),
+                20.verticalSpace,
                 Row(
                   children: [
                     Text(
@@ -53,18 +52,14 @@ class Home extends HookConsumerWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                10.verticalSpace,
                 buildCategories(context),
-                SizedBox(
-                  height: 10,
-                ),
+                10.verticalSpace,
                 Text(
                   "Commencez votre voyage",
                   style: TextStyle(
                     color: Colors.indigo,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   ),
                 ),
               ],
@@ -88,7 +83,7 @@ class Home extends HookConsumerWidget {
                     "Choisissez Votre Point De Retrait",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -97,7 +92,7 @@ class Home extends HookConsumerWidget {
                   "Tanger, Val Flueri",
                   style: TextStyle(
                     color: Colors.grey,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                   ),
                 ),
                 content: SizedBox(),
@@ -107,7 +102,7 @@ class Home extends HookConsumerWidget {
                 title: Text(
                   "Choisissez Votre Destination",
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
@@ -129,20 +124,16 @@ class Home extends HookConsumerWidget {
                   'Envoyer Ou Faire Une Demande De Credit',
                   style: TextStyle(
                     color: Colors.indigo,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                10.verticalSpace,
                 Padding(
-                  padding: const EdgeInsets.only(left: 5),
+                  padding: EdgeInsets.only(left: 5.w),
                   child: Row(
                     children: [
                       buildHomeIcon('home_icon5'),
-                      SizedBox(
-                        width: 10,
-                      ),
+                      10.verticalSpace,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -150,25 +141,22 @@ class Home extends HookConsumerWidget {
                             "Partager Un Traget ?",
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          5.verticalSpace,
                           Text(
                             "Envoyer Ou Demander De Credit",
-                            style: TextStyle(color: Colors.grey, fontSize: 14),
+                            style:
+                                TextStyle(color: Colors.grey, fontSize: 14.sp),
                           ),
                         ],
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                10.verticalSpace,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

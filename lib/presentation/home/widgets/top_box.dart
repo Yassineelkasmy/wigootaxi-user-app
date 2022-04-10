@@ -1,14 +1,14 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget buildTopBox(BuildContext context, void Function() onPressed) {
-  final size = MediaQuery.of(context).size;
   return GestureDetector(
     onTap: onPressed,
     child: ClipRRect(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(15.r),
       child: SizedBox(
-        height: size.height * .2,
+        height: .2.sh,
         child: Stack(
           children: [
             Positioned.fill(
@@ -30,7 +30,7 @@ Widget buildTopBox(BuildContext context, void Function() onPressed) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

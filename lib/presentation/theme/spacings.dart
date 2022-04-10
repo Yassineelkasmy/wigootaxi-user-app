@@ -1,3 +1,4 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-const kPadding = EdgeInsets.symmetric(horizontal: 20);
+final kPadding = EdgeInsets.symmetric(horizontal: 20.w);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 AppBar buildAppBar(
     {required void Function() menuPressed, required String photoURL}) {
@@ -12,9 +13,9 @@ AppBar buildAppBar(
     ),
     backgroundColor: Colors.transparent,
     leading: Container(
-      margin: EdgeInsets.only(left: 10),
-      height: 32,
-      width: 32,
+      margin: EdgeInsets.only(left: 10.w),
+      height: 32.h,
+      width: 32.w,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(

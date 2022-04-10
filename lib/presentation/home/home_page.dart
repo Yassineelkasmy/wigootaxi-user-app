@@ -21,7 +21,6 @@ class HomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final size = MediaQuery.of(context).size;
     final user = ref.watch(userProvider);
     ref.listen<AuthState>(authtProvider, (_, authState) {
       authState.mapOrNull(
@@ -43,7 +42,7 @@ class HomePage extends HookConsumerWidget {
     return DrawerScaffold(
       controller: _drawerScaffoldController,
       drawers: [
-        buildSideDrawer(user ?? protoUser, size, ref, context),
+        buildSideDrawer(user ?? protoUser, ref, context),
       ],
       bottomNavigationBar: BottomNavBar(
         onTap: (i) {

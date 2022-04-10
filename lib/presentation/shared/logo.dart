@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget buildLogo({bool white = true, BoxFit? fit}) {
   final String logoAsset = white ? 'logo_white.png' : 'logo_black.png';
@@ -9,10 +10,11 @@ Widget buildLogo({bool white = true, BoxFit? fit}) {
           fit: fit,
         )
       : Padding(
-          padding: const EdgeInsets.all(60),
+          padding: EdgeInsets.all(60.sp),
           child: Image.asset(
             "assets/images/$logoAsset",
             fit: fit,
+            height: 0.3.sh,
           ),
         );
 }

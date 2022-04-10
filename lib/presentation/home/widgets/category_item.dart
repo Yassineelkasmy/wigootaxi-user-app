@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
@@ -13,13 +14,13 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final raduis = Radius.circular(15);
+    final raduis = Radius.circular(15.r);
     return Padding(
-      padding: const EdgeInsets.only(right: 15),
+      padding: EdgeInsets.only(right: 15.w),
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(15),
+            padding: EdgeInsets.all(15.r),
             decoration: BoxDecoration(
               color: color,
               borderRadius: BorderRadius.only(
@@ -30,19 +31,17 @@ class CategoryItem extends StatelessWidget {
             ),
             child: Image.asset(
               'assets/icons/$icon.png',
-              height: 36,
-              width: 36,
+              height: 36.h,
+              width: 36.w,
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
+          10.verticalSpace,
           Text(
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black87,
-              fontSize: 14,
+              fontSize: 14.sp,
             ),
           )
         ],

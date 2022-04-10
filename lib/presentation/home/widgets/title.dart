@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget buildTitle({
   required String text,
@@ -9,7 +10,7 @@ Widget buildTitle({
     text,
     style: TextStyle(
       color: color ?? Colors.black,
-      fontSize: 18,
+      fontSize: 18.sp,
       fontWeight: fontWeight ?? FontWeight.bold,
     ),
   );
@@ -24,7 +25,7 @@ Widget buildSubTitle({
     text,
     style: TextStyle(
       color: color ?? Colors.black,
-      fontSize: 14,
+      fontSize: 14.sp,
       fontWeight: fontWeight ?? FontWeight.bold,
     ),
   );

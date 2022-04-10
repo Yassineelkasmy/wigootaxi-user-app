@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 
@@ -51,10 +52,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    const bodyStyle = TextStyle(fontSize: 19.0);
+    final bodyStyle = TextStyle(fontSize: 18.sp);
 
-    const pageDecoration = const PageDecoration(
+    final pageDecoration = PageDecoration(
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
@@ -65,22 +65,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     return IntroductionScreen(
       key: introKey,
       globalBackgroundColor: Colors.white,
-      // globalHeader: Align(
-      //   alignment: Alignment.topRight,
-      //   child: SafeArea(
-      //     child: Padding(
-      //       padding: const EdgeInsets.only(top: 16, right: 16),
-      //       child: _buildImage('flutter.png', 100),
-      //     ),
-      //   ),
-      // ),
+
       globalFooter: SizedBox(
         width: double.infinity,
-        height: 60,
+        height: 60.h,
         child: ElevatedButton(
-          child: const Text(
+          child: Text(
             'Passer',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
           ),
           onPressed: () => _onIntroEnd(context),
         ),

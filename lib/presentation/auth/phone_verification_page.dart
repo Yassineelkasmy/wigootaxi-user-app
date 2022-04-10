@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/logo.dart';
@@ -11,14 +12,12 @@ class PhoneVerificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: 28,
-          vertical: 20,
+          horizontal: 28.w,
+          vertical: 20.h,
         ),
         width: double.maxFinite,
         child: SubmitButton(
@@ -28,34 +27,30 @@ class PhoneVerificationPage extends StatelessWidget {
             text: "CREER UN COMPTE"),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             buildLogo(white: false),
             Center(
               child: Text(
                 "Un code a ete envoye a",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
               ),
             ),
-            SizedBox(
-              height: 6,
-            ),
+            6.verticalSpace,
             Center(
               child: Text(
                 "+212 600000000",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
               ),
             ),
-            SizedBox(
-              height: 50,
-            ),
+            50.verticalSpace,
             PinCodeTextField(
               appContext: context,
               length: 6,
@@ -64,7 +59,7 @@ class PhoneVerificationPage extends StatelessWidget {
               cursorColor: kPrimaryColor,
               pinTheme: PinTheme(
                 shape: PinCodeFieldShape.box,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
                 activeColor: kPrimaryColor,
                 activeFillColor: Colors.grey.shade300,
                 selectedColor: kPrimaryColor,
@@ -72,23 +67,19 @@ class PhoneVerificationPage extends StatelessWidget {
                 inactiveColor: Colors.grey,
               ),
             ),
-            SizedBox(
-              height: 15,
-            ),
+            15.verticalSpace,
             Align(
               child: Text(
                 "Envoyez un autre code",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                   color: kPrimaryColor,
                 ),
               ),
               alignment: Alignment.topCenter,
             ),
-            SizedBox(
-              height: 15,
-            ),
+            15.verticalSpace,
           ],
         ),
       ),

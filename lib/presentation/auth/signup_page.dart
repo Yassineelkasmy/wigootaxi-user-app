@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
@@ -49,7 +49,7 @@ class SignUpPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authController = ref.watch(authFormProvider.notifier);
-    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -60,8 +60,8 @@ class SignUpPage extends HookConsumerWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 25,
+          padding: EdgeInsets.symmetric(
+            horizontal: 25.w,
           ),
           child: SizedBox(
             width: double.maxFinite,
@@ -77,7 +77,7 @@ class SignUpPage extends HookConsumerWidget {
                           hintText: "Nom d'utilisateur",
                           prefixIcon: Icon(Icons.person),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(30.r),
                           ),
                         ),
                         formControlName: 'username',
@@ -85,15 +85,13 @@ class SignUpPage extends HookConsumerWidget {
                           'required': "Nom d'utilisateur ne doit pas être vide",
                         },
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      10.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
                           hintText: "Email",
                           prefixIcon: Icon(Icons.email),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(30.r),
                           ),
                         ),
                         formControlName: 'email',
@@ -101,13 +99,11 @@ class SignUpPage extends HookConsumerWidget {
                           'required': "Email ne doit pas être vide",
                         },
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      10.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(30.r),
                           ),
                           hintText: "Mot de passe",
                           prefixIcon: Icon(Icons.lock),
@@ -120,13 +116,11 @@ class SignUpPage extends HookConsumerWidget {
                               'Le mot de passe doit comporter au moins 8 caractères'
                         },
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      10.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(30.r),
                           ),
                           hintText: "Confirmer votre Mot de passe",
                           prefixIcon: Icon(Icons.lock),
@@ -139,9 +133,7 @@ class SignUpPage extends HookConsumerWidget {
                               'Le mot de passe doit comporter au moins 8 caractères'
                         },
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      20.verticalSpace,
                       SizedBox(
                         width: double.maxFinite,
                         child: SubmitButton(
@@ -150,9 +142,7 @@ class SignUpPage extends HookConsumerWidget {
                           text: "SUIVANT",
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      10.verticalSpace,
                     ],
                   ),
                 ),
@@ -167,9 +157,7 @@ class SignUpPage extends HookConsumerWidget {
                   },
                   text: "S'INSCRIRE AVEC",
                 ),
-                SizedBox(
-                  height: 15,
-                ),
+                15.verticalSpace,
                 RichText(
                   text: TextSpan(
                     text: "Vous avez déjà un compte ? ",

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/logo.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
@@ -40,15 +41,15 @@ class _IntroPageState extends State<IntroPage> {
           child: Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 28,
+              padding: EdgeInsets.symmetric(
+                horizontal: 28.w,
               ),
               child: Text(
                 "Find a Best Taxi Drive",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 36,
+                  fontSize: 36.sp,
                   fontWeight: FontWeight.w900,
                 ),
               ),
@@ -60,8 +61,8 @@ class _IntroPageState extends State<IntroPage> {
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: EdgeInsets.symmetric(
-                vertical: 28,
-                horizontal: 20,
+                vertical: 28.h,
+                horizontal: 20.w,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -74,9 +75,7 @@ class _IntroPageState extends State<IntroPage> {
                       text: "CONNEXION",
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  20.verticalSpace,
                   SizedBox(
                     width: double.maxFinite,
                     child: SubmitButton(

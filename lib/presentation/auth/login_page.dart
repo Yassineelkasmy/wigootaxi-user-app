@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
@@ -29,7 +30,7 @@ class LoginPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authFormController = ref.watch(authFormProvider.notifier);
-    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -40,12 +41,11 @@ class LoginPage extends HookConsumerWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 28,
+          padding: EdgeInsets.symmetric(
+            horizontal: 28.w,
           ),
           child: SizedBox(
             width: double.maxFinite,
-            height: size.height,
             child: Column(
               children: [
                 buildLogo(white: false),
@@ -58,7 +58,7 @@ class LoginPage extends HookConsumerWidget {
                           hintText: "Nom d'utilisateur",
                           prefixIcon: Icon(Icons.person),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(30.r),
                           ),
                         ),
                         formControlName: 'email',
@@ -67,13 +67,11 @@ class LoginPage extends HookConsumerWidget {
                           'email': 'Email invalide'
                         },
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      10.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(30.r),
                           ),
                           hintText: "Mot de passe",
                           prefixIcon: Icon(Icons.lock),
@@ -85,9 +83,6 @@ class LoginPage extends HookConsumerWidget {
                           'minLenght':
                               'Le mot de passe doit comporter au moins 8 caractères'
                         },
-                      ),
-                      SizedBox(
-                        height: 8,
                       ),
                       Align(
                         alignment: Alignment.topLeft,
@@ -102,9 +97,6 @@ class LoginPage extends HookConsumerWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
                         width: double.maxFinite,
                         child: SubmitButton(
                           onPressed: () =>
@@ -115,7 +107,7 @@ class LoginPage extends HookConsumerWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                20.verticalSpace,
                 SocialMedia(
                   onFacebookPressed: () {},
                   onGooglePressed: () {
@@ -124,9 +116,9 @@ class LoginPage extends HookConsumerWidget {
                   },
                   text: "SE CONNECTER AVEC",
                 ),
-                Expanded(child: Container()),
+                20.verticalSpace,
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 22),
+                  padding: EdgeInsets.only(bottom: 22.h),
                   child: RichText(
                     text: TextSpan(
                       text: "Vous n'a avez pas de compte ? ",
