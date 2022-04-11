@@ -27,6 +27,7 @@ class _ReservationState extends State<Reservation> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: false,
+        automaticallyImplyLeading: false,
         title: Text(
           "Réservations",
           style: TextStyle(

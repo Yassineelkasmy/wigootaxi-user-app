@@ -23,10 +23,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -55,5 +52,16 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1010420009793',
     projectId: 'taxi-app-user-4800a',
     storageBucket: 'taxi-app-user-4800a.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyB0gp6JLrfczDndptY0k2g5IrtNDhDO60c',
+    appId: '1:1010420009793:ios:715d60669b9df1cdaf2fc0',
+    messagingSenderId: '1010420009793',
+    projectId: 'taxi-app-user-4800a',
+    storageBucket: 'taxi-app-user-4800a.appspot.com',
+    androidClientId: '1010420009793-ic7djdcuk8ijujdrdcovq9hkhlqcs3r8.apps.googleusercontent.com',
+    iosClientId: '1010420009793-o0e40830ujtfjkkhf3d3bkg7b0idgkj3.apps.googleusercontent.com',
+    iosBundleId: 'com.example.taxidriver',
   );
 }

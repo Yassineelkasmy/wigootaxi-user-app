@@ -35,6 +35,8 @@ class LocationController extends StateNotifier<LocationState> {
           locationData: _locationData,
           isRequesting: false,
         );
+
+        print(_locationData);
       },
       locationDetected: (locationDetected) async {},
       permessionDenied: (permessionDenied) async {},

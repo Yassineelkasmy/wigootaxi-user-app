@@ -111,7 +111,7 @@ class Home extends HookConsumerWidget {
                 content: Text('content'),
                 subtitle: Text(
                   "Tanger, Val Flueri",
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
+                  style: TextStyle(color: Colors.grey, fontSize: 14.sp),
                 ),
               ),
             ],

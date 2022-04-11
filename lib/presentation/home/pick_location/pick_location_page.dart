@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/location/location_event.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
@@ -29,18 +30,18 @@ class PickLocationPage extends HookConsumerWidget {
           ? ElevatedButton(
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
               )),
-              child: const Padding(
+              child: Padding(
                 padding: EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 20,
+                  vertical: 10.h,
+                  horizontal: 20.w,
                 ),
                 child: Text(
                   "Continuer",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   ),
                 ),
               ),
@@ -52,17 +53,17 @@ class PickLocationPage extends HookConsumerWidget {
         children: [
           if (locationState.locationData == null)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
               child: Column(
                 children: [
                   Text(
                     "Pour une meilleure expérience, donnez-nous accès à votre position actuelle via votre GPS mobile",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16.sp,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  20.verticalSpace,
                 ],
               ),
             ),
@@ -83,7 +84,7 @@ class PickLocationPage extends HookConsumerWidget {
               ),
             ),
           ],
-          SizedBox(height: 20),
+          20.verticalSpace,
           if (locationState.locationData != null)
             Expanded(
               child: LocationMap(
@@ -118,7 +119,7 @@ class _MapAnimationState extends State<MapAnimation> {
 
     return Expanded(
       child: SizedBox(
-        height: size.height * 0.5,
+        height: 0.5.sh,
         width: size.width,
         child: Center(
           child: RiveAnimation.asset(

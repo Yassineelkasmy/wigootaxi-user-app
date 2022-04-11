@@ -82,7 +82,7 @@ class AppRouter extends _i11.RootStackRouter {
 
   @override
   List<_i11.RouteConfig> get routes => [
-        _i11.RouteConfig(SplashPageRoute.name, path: '/splash-page'),
+        _i11.RouteConfig(SplashPageRoute.name, path: '/'),
         _i11.RouteConfig(PhoneVerificationPageRoute.name,
             path: '/phone-verification-page'),
         _i11.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
@@ -92,7 +92,7 @@ class AppRouter extends _i11.RootStackRouter {
         _i11.RouteConfig(HomePageRoute.name, path: '/home-page'),
         _i11.RouteConfig(PickLocationPageRoute.name,
             path: '/pick-location-page'),
-        _i11.RouteConfig(OnBoardingPageRoute.name, path: '/'),
+        _i11.RouteConfig(OnBoardingPageRoute.name, path: '/on-boarding-page'),
         _i11.RouteConfig(SendMessagePageRoute.name, path: '/send-message-page')
       ];
 }
@@ -100,7 +100,7 @@ class AppRouter extends _i11.RootStackRouter {
 /// generated route for
 /// [_i1.SplashPage]
 class SplashPageRoute extends _i11.PageRouteInfo<void> {
-  const SplashPageRoute() : super(SplashPageRoute.name, path: '/splash-page');
+  const SplashPageRoute() : super(SplashPageRoute.name, path: '/');
 
   static const String name = 'SplashPageRoute';
 }
@@ -207,7 +207,8 @@ class PickLocationPageRoute extends _i11.PageRouteInfo<void> {
 /// generated route for
 /// [_i9.OnBoardingPage]
 class OnBoardingPageRoute extends _i11.PageRouteInfo<void> {
-  const OnBoardingPageRoute() : super(OnBoardingPageRoute.name, path: '/');
+  const OnBoardingPageRoute()
+      : super(OnBoardingPageRoute.name, path: '/on-boarding-page');
 
   static const String name = 'OnBoardingPageRoute';
 }
