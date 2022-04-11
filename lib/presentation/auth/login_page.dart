@@ -11,6 +11,7 @@ import 'package:taxidriver/presentation/auth/widgets/social_media_button.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
+import 'package:taxidriver/presentation/theme/spacings.dart';
 
 import '../shared/logo.dart';
 
@@ -56,6 +57,8 @@ class LoginPage extends HookConsumerWidget {
                     children: [
                       ReactiveTextField(
                         decoration: InputDecoration(
+                          contentPadding: kInputContentPadding,
+                          hintStyle: kHintStyle,
                           hintText: "Nom d'utilisateur",
                           prefixIcon: Icon(Icons.person),
                           border: OutlineInputBorder(
@@ -71,6 +74,8 @@ class LoginPage extends HookConsumerWidget {
                       10.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
+                          contentPadding: kInputContentPadding,
+                          hintStyle: kHintStyle,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.r),
                           ),
@@ -92,6 +97,7 @@ class LoginPage extends HookConsumerWidget {
                             "Mot de passe oublié ?",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 14.sp,
                             ),
                           ),
                           onPressed: () => {},
@@ -126,6 +132,7 @@ class LoginPage extends HookConsumerWidget {
                       text: "Vous n'a avez pas de compte ? ",
                       style: TextStyle(
                         color: Colors.black,
+                        fontSize: 16.sp,
                       ),
                       children: [
                         TextSpan(

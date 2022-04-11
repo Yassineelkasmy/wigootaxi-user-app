@@ -10,6 +10,7 @@ import 'package:taxidriver/presentation/auth/widgets/social_media_button.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
+import 'package:taxidriver/presentation/theme/spacings.dart';
 
 import '../shared/logo.dart';
 
@@ -74,6 +75,8 @@ class SignUpPage extends HookConsumerWidget {
                     children: [
                       ReactiveTextField(
                         decoration: InputDecoration(
+                          contentPadding: kInputContentPadding,
+                          hintStyle: kHintStyle,
                           hintText: "Nom d'utilisateur",
                           prefixIcon: Icon(Icons.person),
                           border: OutlineInputBorder(
@@ -88,6 +91,8 @@ class SignUpPage extends HookConsumerWidget {
                       10.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
+                          contentPadding: kInputContentPadding,
+                          hintStyle: kHintStyle,
                           hintText: "Email",
                           prefixIcon: Icon(Icons.email),
                           border: OutlineInputBorder(
@@ -102,6 +107,8 @@ class SignUpPage extends HookConsumerWidget {
                       10.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
+                          contentPadding: kInputContentPadding,
+                          hintStyle: kHintStyle,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.r),
                           ),
@@ -119,6 +126,8 @@ class SignUpPage extends HookConsumerWidget {
                       10.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
+                          contentPadding: kInputContentPadding,
+                          hintStyle: kHintStyle,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.r),
                           ),
@@ -163,6 +172,7 @@ class SignUpPage extends HookConsumerWidget {
                     text: "Vous avez déjà un compte ? ",
                     style: TextStyle(
                       color: Colors.black,
+                      fontSize: 16.sp,
                     ),
                     children: [
                       TextSpan(

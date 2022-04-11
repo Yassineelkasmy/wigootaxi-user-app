@@ -14,7 +14,7 @@ Widget buildLogo({bool white = true, BoxFit? fit}) {
           child: Image.asset(
             "assets/images/$logoAsset",
             fit: fit,
-            height: 0.3.sh,
+            height: 0.25.sh,
           ),
         );
 }

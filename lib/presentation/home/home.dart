@@ -11,6 +11,7 @@ import 'package:taxidriver/presentation/home/widgets/home_button.dart';
 import 'package:taxidriver/presentation/home/widgets/home_icon.dart';
 import 'package:taxidriver/presentation/home/widgets/top_box.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
+import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 import 'package:taxidriver/prototype/users.dart';
 
@@ -58,7 +59,7 @@ class Home extends HookConsumerWidget {
                 Text(
                   "Commencez votre voyage",
                   style: TextStyle(
-                    color: Colors.indigo,
+                    color: kPrimaryColor,
                     fontSize: 16.sp,
                   ),
                 ),
@@ -123,7 +124,7 @@ class Home extends HookConsumerWidget {
                 Text(
                   'Envoyer Ou Faire Une Demande De Credit',
                   style: TextStyle(
-                    color: Colors.indigo,
+                    color: kPrimaryColor,
                     fontSize: 16.sp,
                   ),
                 ),

@@ -41,6 +41,7 @@ class _LocationMapState extends State<LocationMap> {
   @override
   void initState() {
     initMarker();
+    print(widget.locationData);
     super.initState();
   }
 

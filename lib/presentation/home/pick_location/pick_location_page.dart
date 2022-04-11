@@ -56,7 +56,7 @@ class PickLocationPage extends HookConsumerWidget {
               child: Column(
                 children: [
                   Text(
-                    "Vous n'avez aucune adresse enregistrée",
+                    "Pour une meilleure expérience, donnez-nous accès à votre position actuelle via votre GPS mobile",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,
@@ -78,7 +78,7 @@ class PickLocationPage extends HookConsumerWidget {
                       LocationEvent.locationRequested(),
                     );
                   },
-                  text: 'Localisez-moi',
+                  text: "Autoriser l'accès au GPS",
                 ),
               ),
             ),
