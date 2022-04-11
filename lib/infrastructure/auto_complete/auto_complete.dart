@@ -1,28 +1,29 @@
 import 'package:dio/dio.dart';
+import 'package:taxidriver/domain/auto_complete/auto_complete.dart';
 
-class AutoComplete {
+class AutoCompleteRepository {
   static const apiKey = 'AIzaSyBcUiq4ME8Hc3N7nsoDs0YYC2e4nWwyghU';
   static const url =
-      'https://maps.googleapis.com/maps/api/place/autocomplete/json';
+      'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 
-  Future<dynamic> nearbyPlaces(
+  Future<List<AutoComplete>> nearbyPlaces(
       {required String lat,
       required String long,
       required String query}) async {
     final queryParameters = {
-      'input': query,
+      'keyword': query,
       'location': '$lat,$long',
       'radius': 50000,
       'key': apiKey,
     };
 
     final response = await Dio().get(url, queryParameters: queryParameters);
-    return response.data;
+    return AutoCompleteResult.fromJson(response.data).results;
   }
 }
 
 void main() async {
-  final autoComplete = AutoComplete();
+  final autoComplete = AutoCompleteRepository();
   final data = await autoComplete.nearbyPlaces(
       lat: '37.785834', long: '-122.406417', query: "san");
 
