@@ -4,7 +4,7 @@ import 'package:taxidriver/domain/nearby_search/i_nearby_search_repository.dart'
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search_failure.dart';
 
-class NearbySearchRepository implements INearbySearchRepository {
+class GooglePlacesNearbySearch implements INearbySearchRepository {
   static const apiKey = 'AIzaSyBcUiq4ME8Hc3N7nsoDs0YYC2e4nWwyghU';
   static const url =
       'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
@@ -32,11 +32,10 @@ class NearbySearchRepository implements INearbySearchRepository {
   }
 }
 
-// Testing the AutoComplete class
+// Testing the Repository
 void main() async {
-  final autoComplete = NearbySearchRepository();
+  final autoComplete = GooglePlacesNearbySearch();
   final data = await autoComplete.nearbyPlaces(
       lat: '37.785834', long: '-122.406417', query: "san");
-
-  print(data);
+  data.fold((_) => print('error'), ((nearbyPlaces) => print(nearbyPlaces)));
 }
