@@ -19,7 +19,7 @@ import '../auth/phone_verification_page.dart' as _i2;
 import '../auth/signup_page.dart' as _i6;
 import '../home/help/send_message_page.dart' as _i10;
 import '../home/home_page.dart' as _i7;
-import '../home/pick_location/pick_location_page.dart' as _i8;
+import '../home/pick_location/activate_location_page.dart' as _i8;
 import '../intro/intro_page.dart' as _i5;
 import '../onboarding/onboarding_page.dart' as _i9;
 import '../splash/splash_page.dart' as _i1;
@@ -64,9 +64,9 @@ class AppRouter extends _i11.RootStackRouter {
       return _i11.MaterialPageX<dynamic>(
           routeData: routeData, child: _i7.HomePage(key: args.key));
     },
-    PickLocationPageRoute.name: (routeData) {
+    ActivateLocationPageRoute.name: (routeData) {
       return _i11.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.PickLocationPage());
+          routeData: routeData, child: const _i8.ActivateLocationPage());
     },
     OnBoardingPageRoute.name: (routeData) {
       return _i11.MaterialPageX<dynamic>(
@@ -90,8 +90,8 @@ class AppRouter extends _i11.RootStackRouter {
         _i11.RouteConfig(IntroPageRoute.name, path: '/intro-page'),
         _i11.RouteConfig(SignUpPageRoute.name, path: '/sign-up-page'),
         _i11.RouteConfig(HomePageRoute.name, path: '/home-page'),
-        _i11.RouteConfig(PickLocationPageRoute.name,
-            path: '/pick-location-page'),
+        _i11.RouteConfig(ActivateLocationPageRoute.name,
+            path: '/activate-location-page'),
         _i11.RouteConfig(OnBoardingPageRoute.name, path: '/on-boarding-page'),
         _i11.RouteConfig(SendMessagePageRoute.name, path: '/send-message-page')
       ];
@@ -196,12 +196,12 @@ class HomePageRouteArgs {
 }
 
 /// generated route for
-/// [_i8.PickLocationPage]
-class PickLocationPageRoute extends _i11.PageRouteInfo<void> {
-  const PickLocationPageRoute()
-      : super(PickLocationPageRoute.name, path: '/pick-location-page');
+/// [_i8.ActivateLocationPage]
+class ActivateLocationPageRoute extends _i11.PageRouteInfo<void> {
+  const ActivateLocationPageRoute()
+      : super(ActivateLocationPageRoute.name, path: '/activate-location-page');
 
-  static const String name = 'PickLocationPageRoute';
+  static const String name = 'ActivateLocationPageRoute';
 }
 
 /// generated route for

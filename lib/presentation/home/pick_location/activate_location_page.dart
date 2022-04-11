@@ -8,8 +8,8 @@ import 'package:rive/rive.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 
-class PickLocationPage extends HookConsumerWidget {
-  const PickLocationPage({Key? key}) : super(key: key);
+class ActivateLocationPage extends HookConsumerWidget {
+  const ActivateLocationPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

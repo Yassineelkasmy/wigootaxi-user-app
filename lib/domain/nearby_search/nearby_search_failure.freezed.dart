@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'auto_complete_event.dart';
+part of 'nearby_search_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,103 +15,103 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$AutoCompleteEventTearOff {
-  const _$AutoCompleteEventTearOff();
+class _$NearbySearchFailureTearOff {
+  const _$NearbySearchFailureTearOff();
 
-  StartedTyping startedTyping() {
-    return const StartedTyping();
+  ServerError serverError() {
+    return const ServerError();
   }
 }
 
 /// @nodoc
-const $AutoCompleteEvent = _$AutoCompleteEventTearOff();
+const $NearbySearchFailure = _$NearbySearchFailureTearOff();
 
 /// @nodoc
-mixin _$AutoCompleteEvent {
+mixin _$NearbySearchFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() startedTyping,
+    required TResult Function() serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? startedTyping,
+    TResult Function()? serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? startedTyping,
+    TResult Function()? serverError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StartedTyping value) startedTyping,
+    required TResult Function(ServerError value) serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(ServerError value)? serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(ServerError value)? serverError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AutoCompleteEventCopyWith<$Res> {
-  factory $AutoCompleteEventCopyWith(
-          AutoCompleteEvent value, $Res Function(AutoCompleteEvent) then) =
-      _$AutoCompleteEventCopyWithImpl<$Res>;
+abstract class $NearbySearchFailureCopyWith<$Res> {
+  factory $NearbySearchFailureCopyWith(
+          NearbySearchFailure value, $Res Function(NearbySearchFailure) then) =
+      _$NearbySearchFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AutoCompleteEventCopyWithImpl<$Res>
-    implements $AutoCompleteEventCopyWith<$Res> {
-  _$AutoCompleteEventCopyWithImpl(this._value, this._then);
+class _$NearbySearchFailureCopyWithImpl<$Res>
+    implements $NearbySearchFailureCopyWith<$Res> {
+  _$NearbySearchFailureCopyWithImpl(this._value, this._then);
 
-  final AutoCompleteEvent _value;
+  final NearbySearchFailure _value;
   // ignore: unused_field
-  final $Res Function(AutoCompleteEvent) _then;
+  final $Res Function(NearbySearchFailure) _then;
 }
 
 /// @nodoc
-abstract class $StartedTypingCopyWith<$Res> {
-  factory $StartedTypingCopyWith(
-          StartedTyping value, $Res Function(StartedTyping) then) =
-      _$StartedTypingCopyWithImpl<$Res>;
+abstract class $ServerErrorCopyWith<$Res> {
+  factory $ServerErrorCopyWith(
+          ServerError value, $Res Function(ServerError) then) =
+      _$ServerErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$StartedTypingCopyWithImpl<$Res>
-    extends _$AutoCompleteEventCopyWithImpl<$Res>
-    implements $StartedTypingCopyWith<$Res> {
-  _$StartedTypingCopyWithImpl(
-      StartedTyping _value, $Res Function(StartedTyping) _then)
-      : super(_value, (v) => _then(v as StartedTyping));
+class _$ServerErrorCopyWithImpl<$Res>
+    extends _$NearbySearchFailureCopyWithImpl<$Res>
+    implements $ServerErrorCopyWith<$Res> {
+  _$ServerErrorCopyWithImpl(
+      ServerError _value, $Res Function(ServerError) _then)
+      : super(_value, (v) => _then(v as ServerError));
 
   @override
-  StartedTyping get _value => super._value as StartedTyping;
+  ServerError get _value => super._value as ServerError;
 }
 
 /// @nodoc
 
-class _$StartedTyping implements StartedTyping {
-  const _$StartedTyping();
+class _$ServerError implements ServerError {
+  const _$ServerError();
 
   @override
   String toString() {
-    return 'AutoCompleteEvent.startedTyping()';
+    return 'NearbySearchFailure.serverError()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is StartedTyping);
+        (other.runtimeType == runtimeType && other is ServerError);
   }
 
   @override
@@ -120,27 +120,27 @@ class _$StartedTyping implements StartedTyping {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() startedTyping,
+    required TResult Function() serverError,
   }) {
-    return startedTyping();
+    return serverError();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? startedTyping,
+    TResult Function()? serverError,
   }) {
-    return startedTyping?.call();
+    return serverError?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? startedTyping,
+    TResult Function()? serverError,
     required TResult orElse(),
   }) {
-    if (startedTyping != null) {
-      return startedTyping();
+    if (serverError != null) {
+      return serverError();
     }
     return orElse();
   }
@@ -148,32 +148,32 @@ class _$StartedTyping implements StartedTyping {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StartedTyping value) startedTyping,
+    required TResult Function(ServerError value) serverError,
   }) {
-    return startedTyping(this);
+    return serverError(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(ServerError value)? serverError,
   }) {
-    return startedTyping?.call(this);
+    return serverError?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(ServerError value)? serverError,
     required TResult orElse(),
   }) {
-    if (startedTyping != null) {
-      return startedTyping(this);
+    if (serverError != null) {
+      return serverError(this);
     }
     return orElse();
   }
 }
 
-abstract class StartedTyping implements AutoCompleteEvent {
-  const factory StartedTyping() = _$StartedTyping;
+abstract class ServerError implements NearbySearchFailure {
+  const factory ServerError() = _$ServerError;
 }

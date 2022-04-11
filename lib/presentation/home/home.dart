@@ -40,7 +40,7 @@ class Home extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildTopBox(context, () {
-                  AutoRouter.of(context).push(PickLocationPageRoute());
+                  AutoRouter.of(context).push(ActivateLocationPageRoute());
                 }),
                 20.verticalSpace,
                 Row(
@@ -78,7 +78,7 @@ class Home extends HookConsumerWidget {
                 icon: buildHomeIcon('home_icon2'),
                 title: GestureDetector(
                   onTap: () {
-                    AutoRouter.of(context).push(PickLocationPageRoute());
+                    AutoRouter.of(context).push(ActivateLocationPageRoute());
                   },
                   child: Text(
                     "Choisissez Votre Point De Retrait",
