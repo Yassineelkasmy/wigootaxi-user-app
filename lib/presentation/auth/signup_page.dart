@@ -88,7 +88,7 @@ class SignUpPage extends HookConsumerWidget {
                           'required': "Nom d'utilisateur ne doit pas être vide",
                         },
                       ),
-                      10.verticalSpace,
+                      10.h.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
                           contentPadding: kInputContentPadding,
@@ -104,7 +104,7 @@ class SignUpPage extends HookConsumerWidget {
                           'required': "Email ne doit pas être vide",
                         },
                       ),
-                      10.verticalSpace,
+                      10.h.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
                           contentPadding: kInputContentPadding,
@@ -123,7 +123,7 @@ class SignUpPage extends HookConsumerWidget {
                               'Le mot de passe doit comporter au moins 8 caractères'
                         },
                       ),
-                      10.verticalSpace,
+                      10.h.verticalSpace,
                       ReactiveTextField(
                         decoration: InputDecoration(
                           contentPadding: kInputContentPadding,
@@ -142,7 +142,7 @@ class SignUpPage extends HookConsumerWidget {
                               'Le mot de passe doit comporter au moins 8 caractères'
                         },
                       ),
-                      20.verticalSpace,
+                      20.h.verticalSpace,
                       SizedBox(
                         width: double.maxFinite,
                         child: SubmitButton(
@@ -151,7 +151,7 @@ class SignUpPage extends HookConsumerWidget {
                           text: "SUIVANT",
                         ),
                       ),
-                      10.verticalSpace,
+                      10.h.verticalSpace,
                     ],
                   ),
                 ),
@@ -166,7 +166,7 @@ class SignUpPage extends HookConsumerWidget {
                   },
                   text: "S'INSCRIRE AVEC",
                 ),
-                15.verticalSpace,
+                40.h.verticalSpace,
                 RichText(
                   text: TextSpan(
                     text: "Vous avez déjà un compte ? ",
