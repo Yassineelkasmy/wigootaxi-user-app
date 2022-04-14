@@ -28,8 +28,11 @@ class _$PickUpEventTearOff {
     );
   }
 
-  NearbyLocationsRequested nearbyLocationsRequested() {
-    return const NearbyLocationsRequested();
+  NearbyLocationsRequested nearbyLocationsRequested(double lat, double long) {
+    return NearbyLocationsRequested(
+      lat,
+      long,
+    );
   }
 
   PickupChoosen pickupChoosen(NearbySearch pickup) {
@@ -54,7 +57,7 @@ mixin _$PickUpEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() startedTyping,
     required TResult Function(String query) nearbyQueryChanged,
-    required TResult Function() nearbyLocationsRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
   }) =>
@@ -63,7 +66,7 @@ mixin _$PickUpEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
   }) =>
@@ -72,7 +75,7 @@ mixin _$PickUpEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
     required TResult orElse(),
@@ -173,7 +176,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
   TResult when<TResult extends Object?>({
     required TResult Function() startedTyping,
     required TResult Function(String query) nearbyQueryChanged,
-    required TResult Function() nearbyLocationsRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
   }) {
@@ -185,7 +188,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
   }) {
@@ -197,7 +200,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
     required TResult orElse(),
@@ -331,7 +334,7 @@ class _$NearbyQueryChanged
   TResult when<TResult extends Object?>({
     required TResult Function() startedTyping,
     required TResult Function(String query) nearbyQueryChanged,
-    required TResult Function() nearbyLocationsRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
   }) {
@@ -343,7 +346,7 @@ class _$NearbyQueryChanged
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
   }) {
@@ -355,7 +358,7 @@ class _$NearbyQueryChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
     required TResult orElse(),
@@ -422,6 +425,7 @@ abstract class $NearbyLocationsRequestedCopyWith<$Res> {
   factory $NearbyLocationsRequestedCopyWith(NearbyLocationsRequested value,
           $Res Function(NearbyLocationsRequested) then) =
       _$NearbyLocationsRequestedCopyWithImpl<$Res>;
+  $Res call({double lat, double long});
 }
 
 /// @nodoc
@@ -435,6 +439,23 @@ class _$NearbyLocationsRequestedCopyWithImpl<$Res>
   @override
   NearbyLocationsRequested get _value =>
       super._value as NearbyLocationsRequested;
+
+  @override
+  $Res call({
+    Object? lat = freezed,
+    Object? long = freezed,
+  }) {
+    return _then(NearbyLocationsRequested(
+      lat == freezed
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      long == freezed
+          ? _value.long
+          : long // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
 }
 
 /// @nodoc
@@ -442,40 +463,58 @@ class _$NearbyLocationsRequestedCopyWithImpl<$Res>
 class _$NearbyLocationsRequested
     with DiagnosticableTreeMixin
     implements NearbyLocationsRequested {
-  const _$NearbyLocationsRequested();
+  const _$NearbyLocationsRequested(this.lat, this.long);
+
+  @override
+  final double lat;
+  @override
+  final double long;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PickUpEvent.nearbyLocationsRequested()';
+    return 'PickUpEvent.nearbyLocationsRequested(lat: $lat, long: $long)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(
-          DiagnosticsProperty('type', 'PickUpEvent.nearbyLocationsRequested'));
+      ..add(DiagnosticsProperty('type', 'PickUpEvent.nearbyLocationsRequested'))
+      ..add(DiagnosticsProperty('lat', lat))
+      ..add(DiagnosticsProperty('long', long));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NearbyLocationsRequested);
+        (other.runtimeType == runtimeType &&
+            other is NearbyLocationsRequested &&
+            const DeepCollectionEquality().equals(other.lat, lat) &&
+            const DeepCollectionEquality().equals(other.long, long));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(lat),
+      const DeepCollectionEquality().hash(long));
+
+  @JsonKey(ignore: true)
+  @override
+  $NearbyLocationsRequestedCopyWith<NearbyLocationsRequested> get copyWith =>
+      _$NearbyLocationsRequestedCopyWithImpl<NearbyLocationsRequested>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() startedTyping,
     required TResult Function(String query) nearbyQueryChanged,
-    required TResult Function() nearbyLocationsRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
   }) {
-    return nearbyLocationsRequested();
+    return nearbyLocationsRequested(lat, long);
   }
 
   @override
@@ -483,11 +522,11 @@ class _$NearbyLocationsRequested
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
   }) {
-    return nearbyLocationsRequested?.call();
+    return nearbyLocationsRequested?.call(lat, long);
   }
 
   @override
@@ -495,13 +534,13 @@ class _$NearbyLocationsRequested
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
     required TResult orElse(),
   }) {
     if (nearbyLocationsRequested != null) {
-      return nearbyLocationsRequested();
+      return nearbyLocationsRequested(lat, long);
     }
     return orElse();
   }
@@ -549,7 +588,14 @@ class _$NearbyLocationsRequested
 }
 
 abstract class NearbyLocationsRequested implements PickUpEvent {
-  const factory NearbyLocationsRequested() = _$NearbyLocationsRequested;
+  const factory NearbyLocationsRequested(double lat, double long) =
+      _$NearbyLocationsRequested;
+
+  double get lat;
+  double get long;
+  @JsonKey(ignore: true)
+  $NearbyLocationsRequestedCopyWith<NearbyLocationsRequested> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -635,7 +681,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
   TResult when<TResult extends Object?>({
     required TResult Function() startedTyping,
     required TResult Function(String query) nearbyQueryChanged,
-    required TResult Function() nearbyLocationsRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
   }) {
@@ -647,7 +693,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
   }) {
@@ -659,7 +705,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
     required TResult orElse(),
@@ -804,7 +850,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
   TResult when<TResult extends Object?>({
     required TResult Function() startedTyping,
     required TResult Function(String query) nearbyQueryChanged,
-    required TResult Function() nearbyLocationsRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
   }) {
@@ -816,7 +862,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
   }) {
@@ -828,7 +874,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query)? nearbyQueryChanged,
-    TResult Function()? nearbyLocationsRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
     required TResult orElse(),

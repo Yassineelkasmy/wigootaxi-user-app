@@ -68,7 +68,6 @@ class ActivateLocationPage extends HookConsumerWidget {
               ),
             ),
           if (locationState.locationData == null) ...[
-            MapAnimation(),
             SizedBox(
               width: double.maxFinite,
               child: Padding(
@@ -83,6 +82,7 @@ class ActivateLocationPage extends HookConsumerWidget {
                 ),
               ),
             ),
+            MapAnimation(),
           ],
           20.verticalSpace,
           if (locationState.locationData != null)

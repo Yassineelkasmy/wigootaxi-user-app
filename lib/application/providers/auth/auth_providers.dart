@@ -7,11 +7,12 @@ import 'package:taxidriver/application/auth/auth_form/auth_form_controller.dart'
 import 'package:taxidriver/application/auth/auth_form/auth_form_state.dart';
 import 'package:taxidriver/application/auth/auth_state.dart';
 import 'package:taxidriver/application/auth/auth_controller.dart';
+import 'package:taxidriver/domain/auth/i_auth_facade.dart';
 import 'package:taxidriver/domain/auth/user.dart';
 import 'package:taxidriver/infrastructure/auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final firebaseAuthFacadeProvider = Provider<FireBaseAuthFacade>((ref) {
+final firebaseAuthFacadeProvider = Provider<IAuthFacade>((ref) {
   final firebaseAuth = FirebaseAuth.instance;
   final googleSignIn = GoogleSignIn();
   final facebookAuth = FacebookAuth.instance;

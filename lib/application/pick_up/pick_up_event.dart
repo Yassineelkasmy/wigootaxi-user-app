@@ -9,7 +9,7 @@ class PickUpEvent with _$PickUpEvent {
   const factory PickUpEvent.startedTyping() = StartedTyping;
   const factory PickUpEvent.nearbyQueryChanged(String query) =
       NearbyQueryChanged;
-  const factory PickUpEvent.nearbyLocationsRequested() =
+  const factory PickUpEvent.nearbyLocationsRequested(double lat, double long) =
       NearbyLocationsRequested;
 
   const factory PickUpEvent.pickupChoosen(NearbySearch pickup) = PickupChoosen;

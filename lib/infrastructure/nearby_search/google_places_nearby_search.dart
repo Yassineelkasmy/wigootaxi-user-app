@@ -11,9 +11,9 @@ class GooglePlacesNearbySearch implements INearbySearchRepository {
 
   @override
   Future<Either<NearbySearchFailure, List<NearbySearch>>> nearbyPlaces({
-    required String lat,
-    required String long,
-    required String query,
+    required double lat,
+    required double long,
+    String? query,
   }) async {
     final queryParameters = {
       'keyword': query,
@@ -36,6 +36,9 @@ class GooglePlacesNearbySearch implements INearbySearchRepository {
 void main() async {
   final autoComplete = GooglePlacesNearbySearch();
   final data = await autoComplete.nearbyPlaces(
-      lat: '37.785834', long: '-122.406417', query: "san");
-  data.fold((_) => print('error'), ((nearbyPlaces) => print(nearbyPlaces)));
+    lat: 37.785834,
+    long: -122.406417,
+  );
+  data.fold(
+      (_) => print('error'), ((nearbyPlaces) => print(nearbyPlaces.first)));
 }

@@ -4,8 +4,8 @@ import 'package:taxidriver/domain/nearby_search/nearby_search_failure.dart';
 
 abstract class INearbySearchRepository {
   Future<Either<NearbySearchFailure, List<NearbySearch>>> nearbyPlaces({
-    required String lat,
-    required String long,
-    required String query,
+    required double lat,
+    required double long,
+    String? query,
   });
 }

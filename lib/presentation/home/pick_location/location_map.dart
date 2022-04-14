@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class LocationMap extends StatefulWidget {
   const LocationMap({
@@ -15,6 +16,7 @@ class LocationMap extends StatefulWidget {
 
 class _LocationMapState extends State<LocationMap> {
   Set<Marker> markers = Set();
+  final pickUpPanelController = PanelController();
 
   initMarker() async {
     final marker = await BitmapDescriptor.fromAssetImage(

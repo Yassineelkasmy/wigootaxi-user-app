@@ -61,6 +61,7 @@ dependencies:
   in_app_notification: ^1.1.0
   easy_localization: ^3.0.0
   flutter_screenutil: ^5.3.1
+  sliding_up_panel: ^2.0.0+1
   dio: ^4.0.6
 dev_dependencies:
   flutter_test:

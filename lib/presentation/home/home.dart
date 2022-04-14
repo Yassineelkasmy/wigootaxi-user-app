@@ -40,7 +40,7 @@ class Home extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildTopBox(context, () {
-                  AutoRouter.of(context).push(ActivateLocationPageRoute());
+                  AutoRouter.of(context).push(PickUpRootPageRoute());
                 }),
                 20.verticalSpace,
                 Row(

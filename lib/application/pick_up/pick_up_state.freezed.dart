@@ -22,6 +22,8 @@ class _$PickUpStateTearOff {
       {required bool isGeocodingFromMapLoaidng,
       required bool isNearbyPlacesLoading,
       required String nearbyQuery,
+      required Option<Either<NearbySearchFailure, List<NearbySearch>>>
+          nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
       NearbySearch? pickupPlace,
       required List<NearbySearch> places}) {
@@ -29,6 +31,7 @@ class _$PickUpStateTearOff {
       isGeocodingFromMapLoaidng: isGeocodingFromMapLoaidng,
       isNearbyPlacesLoading: isNearbyPlacesLoading,
       nearbyQuery: nearbyQuery,
+      nearBysearchSuccessOrFailureOption: nearBysearchSuccessOrFailureOption,
       dropoffPlace: dropoffPlace,
       pickupPlace: pickupPlace,
       places: places,
@@ -44,6 +47,9 @@ mixin _$PickUpState {
   bool get isGeocodingFromMapLoaidng => throw _privateConstructorUsedError;
   bool get isNearbyPlacesLoading => throw _privateConstructorUsedError;
   String get nearbyQuery => throw _privateConstructorUsedError;
+  Option<Either<NearbySearchFailure, List<NearbySearch>>>
+      get nearBysearchSuccessOrFailureOption =>
+          throw _privateConstructorUsedError;
   NearbySearch? get dropoffPlace => throw _privateConstructorUsedError;
   NearbySearch? get pickupPlace => throw _privateConstructorUsedError;
   List<NearbySearch> get places => throw _privateConstructorUsedError;
@@ -62,6 +68,8 @@ abstract class $PickUpStateCopyWith<$Res> {
       {bool isGeocodingFromMapLoaidng,
       bool isNearbyPlacesLoading,
       String nearbyQuery,
+      Option<Either<NearbySearchFailure, List<NearbySearch>>>
+          nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
       NearbySearch? pickupPlace,
       List<NearbySearch> places});
@@ -83,6 +91,7 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
     Object? isGeocodingFromMapLoaidng = freezed,
     Object? isNearbyPlacesLoading = freezed,
     Object? nearbyQuery = freezed,
+    Object? nearBysearchSuccessOrFailureOption = freezed,
     Object? dropoffPlace = freezed,
     Object? pickupPlace = freezed,
     Object? places = freezed,
@@ -100,6 +109,11 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
           ? _value.nearbyQuery
           : nearbyQuery // ignore: cast_nullable_to_non_nullable
               as String,
+      nearBysearchSuccessOrFailureOption: nearBysearchSuccessOrFailureOption ==
+              freezed
+          ? _value.nearBysearchSuccessOrFailureOption
+          : nearBysearchSuccessOrFailureOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<NearbySearchFailure, List<NearbySearch>>>,
       dropoffPlace: dropoffPlace == freezed
           ? _value.dropoffPlace
           : dropoffPlace // ignore: cast_nullable_to_non_nullable
@@ -149,6 +163,8 @@ abstract class _$PickUpStateCopyWith<$Res>
       {bool isGeocodingFromMapLoaidng,
       bool isNearbyPlacesLoading,
       String nearbyQuery,
+      Option<Either<NearbySearchFailure, List<NearbySearch>>>
+          nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
       NearbySearch? pickupPlace,
       List<NearbySearch> places});
@@ -174,6 +190,7 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
     Object? isGeocodingFromMapLoaidng = freezed,
     Object? isNearbyPlacesLoading = freezed,
     Object? nearbyQuery = freezed,
+    Object? nearBysearchSuccessOrFailureOption = freezed,
     Object? dropoffPlace = freezed,
     Object? pickupPlace = freezed,
     Object? places = freezed,
@@ -191,6 +208,11 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
           ? _value.nearbyQuery
           : nearbyQuery // ignore: cast_nullable_to_non_nullable
               as String,
+      nearBysearchSuccessOrFailureOption: nearBysearchSuccessOrFailureOption ==
+              freezed
+          ? _value.nearBysearchSuccessOrFailureOption
+          : nearBysearchSuccessOrFailureOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<NearbySearchFailure, List<NearbySearch>>>,
       dropoffPlace: dropoffPlace == freezed
           ? _value.dropoffPlace
           : dropoffPlace // ignore: cast_nullable_to_non_nullable
@@ -214,6 +236,7 @@ class _$_PickUpState implements _PickUpState {
       {required this.isGeocodingFromMapLoaidng,
       required this.isNearbyPlacesLoading,
       required this.nearbyQuery,
+      required this.nearBysearchSuccessOrFailureOption,
       this.dropoffPlace,
       this.pickupPlace,
       required this.places});
@@ -225,6 +248,9 @@ class _$_PickUpState implements _PickUpState {
   @override
   final String nearbyQuery;
   @override
+  final Option<Either<NearbySearchFailure, List<NearbySearch>>>
+      nearBysearchSuccessOrFailureOption;
+  @override
   final NearbySearch? dropoffPlace;
   @override
   final NearbySearch? pickupPlace;
@@ -233,7 +259,7 @@ class _$_PickUpState implements _PickUpState {
 
   @override
   String toString() {
-    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, places: $places)';
+    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, nearBysearchSuccessOrFailureOption: $nearBysearchSuccessOrFailureOption, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, places: $places)';
   }
 
   @override
@@ -247,6 +273,9 @@ class _$_PickUpState implements _PickUpState {
                 .equals(other.isNearbyPlacesLoading, isNearbyPlacesLoading) &&
             const DeepCollectionEquality()
                 .equals(other.nearbyQuery, nearbyQuery) &&
+            const DeepCollectionEquality().equals(
+                other.nearBysearchSuccessOrFailureOption,
+                nearBysearchSuccessOrFailureOption) &&
             const DeepCollectionEquality()
                 .equals(other.dropoffPlace, dropoffPlace) &&
             const DeepCollectionEquality()
@@ -260,6 +289,7 @@ class _$_PickUpState implements _PickUpState {
       const DeepCollectionEquality().hash(isGeocodingFromMapLoaidng),
       const DeepCollectionEquality().hash(isNearbyPlacesLoading),
       const DeepCollectionEquality().hash(nearbyQuery),
+      const DeepCollectionEquality().hash(nearBysearchSuccessOrFailureOption),
       const DeepCollectionEquality().hash(dropoffPlace),
       const DeepCollectionEquality().hash(pickupPlace),
       const DeepCollectionEquality().hash(places));
@@ -275,6 +305,8 @@ abstract class _PickUpState implements PickUpState {
       {required bool isGeocodingFromMapLoaidng,
       required bool isNearbyPlacesLoading,
       required String nearbyQuery,
+      required Option<Either<NearbySearchFailure, List<NearbySearch>>>
+          nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
       NearbySearch? pickupPlace,
       required List<NearbySearch> places}) = _$_PickUpState;
@@ -285,6 +317,9 @@ abstract class _PickUpState implements PickUpState {
   bool get isNearbyPlacesLoading;
   @override
   String get nearbyQuery;
+  @override
+  Option<Either<NearbySearchFailure, List<NearbySearch>>>
+      get nearBysearchSuccessOrFailureOption;
   @override
   NearbySearch? get dropoffPlace;
   @override
