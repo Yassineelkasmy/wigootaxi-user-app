@@ -19,7 +19,7 @@ SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
     color: kPrimaryColor,
     child: Container(
       padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 30.w),
-      height: 1.sh,
+      height: double.maxFinite,
       width: 1.sw,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
