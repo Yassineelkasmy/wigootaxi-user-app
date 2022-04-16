@@ -461,7 +461,7 @@ class PickUpForm extends HookConsumerWidget {
                           SizedBox(
                             width: double.maxFinite,
                             child: SubmitButton(
-                              text: 'YALLA! ${pickUpState.pickupPlace}',
+                              text: 'YALLA!',
                               onPressed: () {},
                             ),
                           )
