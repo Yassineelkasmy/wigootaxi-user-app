@@ -21,7 +21,7 @@ class PickUpRootPage extends HookConsumerWidget {
         ),
         parallaxEnabled: true,
         parallaxOffset: .5,
-        minHeight: .2.sh,
+        minHeight: .3.sh,
         body: ActivateLocationOrMapPage(),
         controller: pickUpPanelController,
       ),

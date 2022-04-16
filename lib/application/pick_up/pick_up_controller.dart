@@ -3,6 +3,7 @@ import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/domain/geocoding/i_geocoding_repository.dart';
 import 'package:taxidriver/domain/nearby_search/i_nearby_search_repository.dart';
+import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 import 'package:taxidriver/domain/ride/ride.dart';
 
 class PickUpController extends StateNotifier<PickUpState> {
@@ -56,7 +57,7 @@ class PickUpController extends StateNotifier<PickUpState> {
       },
       pickupChoosen: (event) async {
         state = state.copyWith(
-          dropoffPlace: event.pickup,
+          pickupPlace: event.pickup,
         );
       },
       dropoffChoosen: (event) async {
@@ -97,6 +98,38 @@ class PickUpController extends StateNotifier<PickUpState> {
           rideDateTime: null,
         );
       },
+      cameraMoved: (event) async {
+        state = state.copyWith(cameraLat: event.lat, cameraLong: event.long);
+      },
+      pickUpChosenFormMap: (event) async {
+        final reverseGeocodingFromMapResult = state.reverseGeocodingResult;
+        if (reverseGeocodingFromMapResult != null) {
+          final reverseGeocodedPlace =
+              reverseGeocodingFromMapResult.results.first;
+          final pickUpPlace = NearbySearch(
+              name: reverseGeocodedPlace.formattedAdress,
+              placeId: reverseGeocodedPlace.placeId,
+              vicinity: reverseGeocodedPlace.formattedAdress,
+              geometry: reverseGeocodedPlace.geometry,
+              types: reverseGeocodedPlace.types);
+          state = state.copyWith(pickupPlace: pickUpPlace);
+        }
+      },
+      dropOffChosenFromMap: (_) async {
+        final reverseGeocodingFromMapResult = state.reverseGeocodingResult;
+        if (reverseGeocodingFromMapResult != null) {
+          final reverseGeocodedPlace =
+              reverseGeocodingFromMapResult.results.first;
+          final dropoffPlace = NearbySearch(
+              name: reverseGeocodedPlace.formattedAdress,
+              placeId: reverseGeocodedPlace.placeId,
+              vicinity: reverseGeocodedPlace.formattedAdress,
+              geometry: reverseGeocodedPlace.geometry,
+              types: reverseGeocodedPlace.types);
+          state = state.copyWith(dropoffPlace: dropoffPlace);
+        }
+      },
+      pickUpChosenFormUserLocation: (event) async {},
     );
   }
 }

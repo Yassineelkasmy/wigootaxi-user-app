@@ -22,6 +22,8 @@ class PickUpState with _$PickUpState {
     required RideType rideType,
     DateTime? rideDateTime,
     required List<NearbySearch> places,
+    double? cameraLat,
+    double? cameraLong,
   }) = _PickUpState;
 
   factory PickUpState.initial() => PickUpState(

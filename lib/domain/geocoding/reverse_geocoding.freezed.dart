@@ -176,10 +176,14 @@ class _$ReverseGeocodingTearOff {
 
   _ReverseGeocoding call(
       {@JsonKey(name: 'formatted_address') required String formattedAdress,
-      @JsonKey(name: 'place_id') required String placeId}) {
+      @JsonKey(name: 'place_id') required String placeId,
+      required NearbyGeometry geometry,
+      required List<String> types}) {
     return _ReverseGeocoding(
       formattedAdress: formattedAdress,
       placeId: placeId,
+      geometry: geometry,
+      types: types,
     );
   }
 
@@ -197,6 +201,8 @@ mixin _$ReverseGeocoding {
   String get formattedAdress => throw _privateConstructorUsedError;
   @JsonKey(name: 'place_id')
   String get placeId => throw _privateConstructorUsedError;
+  NearbyGeometry get geometry => throw _privateConstructorUsedError;
+  List<String> get types => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -211,7 +217,11 @@ abstract class $ReverseGeocodingCopyWith<$Res> {
       _$ReverseGeocodingCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'formatted_address') String formattedAdress,
-      @JsonKey(name: 'place_id') String placeId});
+      @JsonKey(name: 'place_id') String placeId,
+      NearbyGeometry geometry,
+      List<String> types});
+
+  $NearbyGeometryCopyWith<$Res> get geometry;
 }
 
 /// @nodoc
@@ -227,6 +237,8 @@ class _$ReverseGeocodingCopyWithImpl<$Res>
   $Res call({
     Object? formattedAdress = freezed,
     Object? placeId = freezed,
+    Object? geometry = freezed,
+    Object? types = freezed,
   }) {
     return _then(_value.copyWith(
       formattedAdress: formattedAdress == freezed
@@ -237,7 +249,22 @@ class _$ReverseGeocodingCopyWithImpl<$Res>
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
               as String,
+      geometry: geometry == freezed
+          ? _value.geometry
+          : geometry // ignore: cast_nullable_to_non_nullable
+              as NearbyGeometry,
+      types: types == freezed
+          ? _value.types
+          : types // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
+  }
+
+  @override
+  $NearbyGeometryCopyWith<$Res> get geometry {
+    return $NearbyGeometryCopyWith<$Res>(_value.geometry, (value) {
+      return _then(_value.copyWith(geometry: value));
+    });
   }
 }
 
@@ -250,7 +277,12 @@ abstract class _$ReverseGeocodingCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'formatted_address') String formattedAdress,
-      @JsonKey(name: 'place_id') String placeId});
+      @JsonKey(name: 'place_id') String placeId,
+      NearbyGeometry geometry,
+      List<String> types});
+
+  @override
+  $NearbyGeometryCopyWith<$Res> get geometry;
 }
 
 /// @nodoc
@@ -268,6 +300,8 @@ class __$ReverseGeocodingCopyWithImpl<$Res>
   $Res call({
     Object? formattedAdress = freezed,
     Object? placeId = freezed,
+    Object? geometry = freezed,
+    Object? types = freezed,
   }) {
     return _then(_ReverseGeocoding(
       formattedAdress: formattedAdress == freezed
@@ -278,6 +312,14 @@ class __$ReverseGeocodingCopyWithImpl<$Res>
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
               as String,
+      geometry: geometry == freezed
+          ? _value.geometry
+          : geometry // ignore: cast_nullable_to_non_nullable
+              as NearbyGeometry,
+      types: types == freezed
+          ? _value.types
+          : types // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -287,7 +329,9 @@ class __$ReverseGeocodingCopyWithImpl<$Res>
 class _$_ReverseGeocoding implements _ReverseGeocoding {
   const _$_ReverseGeocoding(
       {@JsonKey(name: 'formatted_address') required this.formattedAdress,
-      @JsonKey(name: 'place_id') required this.placeId});
+      @JsonKey(name: 'place_id') required this.placeId,
+      required this.geometry,
+      required this.types});
 
   factory _$_ReverseGeocoding.fromJson(Map<String, dynamic> json) =>
       _$$_ReverseGeocodingFromJson(json);
@@ -298,10 +342,14 @@ class _$_ReverseGeocoding implements _ReverseGeocoding {
   @override
   @JsonKey(name: 'place_id')
   final String placeId;
+  @override
+  final NearbyGeometry geometry;
+  @override
+  final List<String> types;
 
   @override
   String toString() {
-    return 'ReverseGeocoding(formattedAdress: $formattedAdress, placeId: $placeId)';
+    return 'ReverseGeocoding(formattedAdress: $formattedAdress, placeId: $placeId, geometry: $geometry, types: $types)';
   }
 
   @override
@@ -311,14 +359,18 @@ class _$_ReverseGeocoding implements _ReverseGeocoding {
             other is _ReverseGeocoding &&
             const DeepCollectionEquality()
                 .equals(other.formattedAdress, formattedAdress) &&
-            const DeepCollectionEquality().equals(other.placeId, placeId));
+            const DeepCollectionEquality().equals(other.placeId, placeId) &&
+            const DeepCollectionEquality().equals(other.geometry, geometry) &&
+            const DeepCollectionEquality().equals(other.types, types));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(formattedAdress),
-      const DeepCollectionEquality().hash(placeId));
+      const DeepCollectionEquality().hash(placeId),
+      const DeepCollectionEquality().hash(geometry),
+      const DeepCollectionEquality().hash(types));
 
   @JsonKey(ignore: true)
   @override
@@ -333,9 +385,10 @@ class _$_ReverseGeocoding implements _ReverseGeocoding {
 
 abstract class _ReverseGeocoding implements ReverseGeocoding {
   const factory _ReverseGeocoding(
-          {@JsonKey(name: 'formatted_address') required String formattedAdress,
-          @JsonKey(name: 'place_id') required String placeId}) =
-      _$_ReverseGeocoding;
+      {@JsonKey(name: 'formatted_address') required String formattedAdress,
+      @JsonKey(name: 'place_id') required String placeId,
+      required NearbyGeometry geometry,
+      required List<String> types}) = _$_ReverseGeocoding;
 
   factory _ReverseGeocoding.fromJson(Map<String, dynamic> json) =
       _$_ReverseGeocoding.fromJson;
@@ -346,6 +399,10 @@ abstract class _ReverseGeocoding implements ReverseGeocoding {
   @override
   @JsonKey(name: 'place_id')
   String get placeId;
+  @override
+  NearbyGeometry get geometry;
+  @override
+  List<String> get types;
   @override
   @JsonKey(ignore: true)
   _$ReverseGeocodingCopyWith<_ReverseGeocoding> get copyWith =>

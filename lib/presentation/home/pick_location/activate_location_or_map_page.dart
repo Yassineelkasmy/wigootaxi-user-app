@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/location/location_event.dart';
+import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
+import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
 import 'package:taxidriver/presentation/home/pick_location/location_map.dart';
 import 'package:rive/rive.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
@@ -15,6 +19,8 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final locationState = ref.watch(locationProvider);
     final locationController = ref.watch(locationProvider.notifier);
+    final pickUpController = ref.watch(pickUpProvider.notifier);
+    final pickUpState = ref.watch(pickUpProvider);
 
     return Scaffold(
       body: locationState.locationData != null
@@ -23,6 +29,17 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               width: double.maxFinite,
               child: LocationMap(
                 locationData: locationState.locationData!,
+                onCameraMove: (cameraPosition) {
+                  if (pickUpState.pickupPlace == null &&
+                      pickUpState.dropoffPlace != null) {
+                    pickUpController.mapEventToState(
+                      PickUpEvent.reverseGecodingFromMapRequested(
+                        cameraPosition.target.latitude,
+                        cameraPosition.target.longitude,
+                      ),
+                    );
+                  }
+                },
               ),
             )
           : SizedBox(
@@ -91,4 +108,13 @@ class _MapAnimationState extends State<MapAnimation> {
       ),
     );
   }
+}
+
+double calculateDistance(lat1, lon1, lat2, lon2) {
+  var p = 0.017453292519943295;
+  var c = cos;
+  var a = 0.5 -
+      c((lat2 - lat1) * p) / 2 +
+      c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
+  return 12742 * asin(sqrt(a));
 }

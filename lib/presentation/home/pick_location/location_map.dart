@@ -7,8 +7,10 @@ class LocationMap extends StatefulWidget {
   const LocationMap({
     Key? key,
     required this.locationData,
+    required this.onCameraMove,
   }) : super(key: key);
   final LocationData locationData;
+  final void Function(CameraPosition) onCameraMove;
 
   @override
   State<LocationMap> createState() => _LocationMapState();
@@ -17,6 +19,7 @@ class LocationMap extends StatefulWidget {
 class _LocationMapState extends State<LocationMap> {
   Set<Marker> markers = Set();
   final pickUpPanelController = PanelController();
+  late GoogleMapController _googleMapController;
 
   initMarker() async {
     final marker = await BitmapDescriptor.fromAssetImage(
@@ -42,8 +45,7 @@ class _LocationMapState extends State<LocationMap> {
 
   @override
   void initState() {
-    initMarker();
-    print(widget.locationData);
+    // initMarker();
     super.initState();
   }
 
@@ -62,10 +64,22 @@ class _LocationMapState extends State<LocationMap> {
       children: [
         Positioned.fill(
           child: GoogleMap(
+            rotateGesturesEnabled: true,
+            onMapCreated: (mapController) {
+              _googleMapController = mapController;
+            },
             initialCameraPosition: cameraPosition,
-            markers: markers,
+            // markers: markers,
+            onCameraMove: (positon) {
+              widget.onCameraMove(positon);
+              setState(() {});
+            },
           ),
         ),
+        Positioned.fill(
+            child: Center(
+          child: Icon(Icons.person),
+        ))
       ],
     );
   }
