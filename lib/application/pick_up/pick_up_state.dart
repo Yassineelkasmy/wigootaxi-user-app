@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:taxidriver/domain/geocoding/reverse_geocoding.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search_failure.dart';
 
@@ -15,6 +16,7 @@ class PickUpState with _$PickUpState {
         nearBysearchSuccessOrFailureOption,
     NearbySearch? dropoffPlace,
     NearbySearch? pickupPlace,
+    ReverseGeocodingResult? reverseGeocodingResult,
     required List<NearbySearch> places,
   }) = _PickUpState;
 

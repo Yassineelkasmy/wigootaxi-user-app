@@ -11,6 +11,7 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i12;
+import 'package:flutter/foundation.dart' as _i14;
 import 'package:flutter/material.dart' as _i13;
 
 import '../auth/login_page.dart' as _i4;
@@ -19,7 +20,7 @@ import '../auth/phone_verification_page.dart' as _i2;
 import '../auth/signup_page.dart' as _i6;
 import '../home/help/send_message_page.dart' as _i11;
 import '../home/home_page.dart' as _i7;
-import '../home/pick_location/activate_location_page.dart' as _i8;
+import '../home/pick_location/activate_location_or_map_page.dart' as _i8;
 import '../home/pick_location/pick_up_root_page.dart' as _i9;
 import '../intro/intro_page.dart' as _i5;
 import '../onboarding/onboarding_page.dart' as _i10;
@@ -65,9 +66,9 @@ class AppRouter extends _i12.RootStackRouter {
       return _i12.MaterialPageX<dynamic>(
           routeData: routeData, child: _i7.HomePage(key: args.key));
     },
-    ActivateLocationPageRoute.name: (routeData) {
+    ActivateLocationOrMapPageRoute.name: (routeData) {
       return _i12.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.ActivateLocationPage());
+          routeData: routeData, child: const _i8.ActivateLocationOrMapPage());
     },
     PickUpRootPageRoute.name: (routeData) {
       final args = routeData.argsAs<PickUpRootPageRouteArgs>(
@@ -89,16 +90,16 @@ class AppRouter extends _i12.RootStackRouter {
 
   @override
   List<_i12.RouteConfig> get routes => [
-        _i12.RouteConfig(SplashPageRoute.name, path: '/'),
+        _i12.RouteConfig(SplashPageRoute.name, path: '/splash-page'),
         _i12.RouteConfig(PhoneVerificationPageRoute.name,
             path: '/phone-verification-page'),
         _i12.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
         _i12.RouteConfig(LoginPageRoute.name, path: '/login-page'),
         _i12.RouteConfig(IntroPageRoute.name, path: '/intro-page'),
         _i12.RouteConfig(SignUpPageRoute.name, path: '/sign-up-page'),
-        _i12.RouteConfig(HomePageRoute.name, path: '/home-page'),
-        _i12.RouteConfig(ActivateLocationPageRoute.name,
-            path: '/activate-location-page'),
+        _i12.RouteConfig(HomePageRoute.name, path: '/'),
+        _i12.RouteConfig(ActivateLocationOrMapPageRoute.name,
+            path: '/activate-location-or-map-page'),
         _i12.RouteConfig(PickUpRootPageRoute.name, path: '/pick-up-root-page'),
         _i12.RouteConfig(OnBoardingPageRoute.name, path: '/on-boarding-page'),
         _i12.RouteConfig(SendMessagePageRoute.name, path: '/send-message-page')
@@ -108,7 +109,7 @@ class AppRouter extends _i12.RootStackRouter {
 /// generated route for
 /// [_i1.SplashPage]
 class SplashPageRoute extends _i12.PageRouteInfo<void> {
-  const SplashPageRoute() : super(SplashPageRoute.name, path: '/');
+  const SplashPageRoute() : super(SplashPageRoute.name, path: '/splash-page');
 
   static const String name = 'SplashPageRoute';
 }
@@ -135,7 +136,7 @@ class PhoneAuthPageRoute extends _i12.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.LoginPage]
 class LoginPageRoute extends _i12.PageRouteInfo<LoginPageRouteArgs> {
-  LoginPageRoute({_i13.Key? key})
+  LoginPageRoute({_i14.Key? key})
       : super(LoginPageRoute.name,
             path: '/login-page', args: LoginPageRouteArgs(key: key));
 
@@ -145,7 +146,7 @@ class LoginPageRoute extends _i12.PageRouteInfo<LoginPageRouteArgs> {
 class LoginPageRouteArgs {
   const LoginPageRouteArgs({this.key});
 
-  final _i13.Key? key;
+  final _i14.Key? key;
 
   @override
   String toString() {
@@ -164,7 +165,7 @@ class IntroPageRoute extends _i12.PageRouteInfo<void> {
 /// generated route for
 /// [_i6.SignUpPage]
 class SignUpPageRoute extends _i12.PageRouteInfo<SignUpPageRouteArgs> {
-  SignUpPageRoute({_i13.Key? key})
+  SignUpPageRoute({_i14.Key? key})
       : super(SignUpPageRoute.name,
             path: '/sign-up-page', args: SignUpPageRouteArgs(key: key));
 
@@ -174,7 +175,7 @@ class SignUpPageRoute extends _i12.PageRouteInfo<SignUpPageRouteArgs> {
 class SignUpPageRouteArgs {
   const SignUpPageRouteArgs({this.key});
 
-  final _i13.Key? key;
+  final _i14.Key? key;
 
   @override
   String toString() {
@@ -185,9 +186,8 @@ class SignUpPageRouteArgs {
 /// generated route for
 /// [_i7.HomePage]
 class HomePageRoute extends _i12.PageRouteInfo<HomePageRouteArgs> {
-  HomePageRoute({_i13.Key? key})
-      : super(HomePageRoute.name,
-            path: '/home-page', args: HomePageRouteArgs(key: key));
+  HomePageRoute({_i14.Key? key})
+      : super(HomePageRoute.name, path: '/', args: HomePageRouteArgs(key: key));
 
   static const String name = 'HomePageRoute';
 }
@@ -195,7 +195,7 @@ class HomePageRoute extends _i12.PageRouteInfo<HomePageRouteArgs> {
 class HomePageRouteArgs {
   const HomePageRouteArgs({this.key});
 
-  final _i13.Key? key;
+  final _i14.Key? key;
 
   @override
   String toString() {
@@ -204,18 +204,19 @@ class HomePageRouteArgs {
 }
 
 /// generated route for
-/// [_i8.ActivateLocationPage]
-class ActivateLocationPageRoute extends _i12.PageRouteInfo<void> {
-  const ActivateLocationPageRoute()
-      : super(ActivateLocationPageRoute.name, path: '/activate-location-page');
+/// [_i8.ActivateLocationOrMapPage]
+class ActivateLocationOrMapPageRoute extends _i12.PageRouteInfo<void> {
+  const ActivateLocationOrMapPageRoute()
+      : super(ActivateLocationOrMapPageRoute.name,
+            path: '/activate-location-or-map-page');
 
-  static const String name = 'ActivateLocationPageRoute';
+  static const String name = 'ActivateLocationOrMapPageRoute';
 }
 
 /// generated route for
 /// [_i9.PickUpRootPage]
 class PickUpRootPageRoute extends _i12.PageRouteInfo<PickUpRootPageRouteArgs> {
-  PickUpRootPageRoute({_i13.Key? key})
+  PickUpRootPageRoute({_i14.Key? key})
       : super(PickUpRootPageRoute.name,
             path: '/pick-up-root-page',
             args: PickUpRootPageRouteArgs(key: key));
@@ -226,7 +227,7 @@ class PickUpRootPageRoute extends _i12.PageRouteInfo<PickUpRootPageRouteArgs> {
 class PickUpRootPageRouteArgs {
   const PickUpRootPageRouteArgs({this.key});
 
-  final _i13.Key? key;
+  final _i14.Key? key;
 
   @override
   String toString() {
@@ -247,7 +248,7 @@ class OnBoardingPageRoute extends _i12.PageRouteInfo<void> {
 /// [_i11.SendMessagePage]
 class SendMessagePageRoute
     extends _i12.PageRouteInfo<SendMessagePageRouteArgs> {
-  SendMessagePageRoute({_i13.Key? key})
+  SendMessagePageRoute({_i14.Key? key})
       : super(SendMessagePageRoute.name,
             path: '/send-message-page',
             args: SendMessagePageRouteArgs(key: key));
@@ -258,7 +259,7 @@ class SendMessagePageRoute
 class SendMessagePageRouteArgs {
   const SendMessagePageRouteArgs({this.key});
 
-  final _i13.Key? key;
+  final _i14.Key? key;
 
   @override
   String toString() {

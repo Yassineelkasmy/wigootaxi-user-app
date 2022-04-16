@@ -12,7 +12,6 @@ import 'package:taxidriver/presentation/home/home.dart';
 import 'package:taxidriver/presentation/home/notifications/notifications.dart';
 import 'package:taxidriver/presentation/home/reservation.dart';
 import 'package:taxidriver/presentation/home/widgets/bottom_nav_bar.dart';
-import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/prototype/users.dart';
 
 import 'widgets/side_drawer.dart';
@@ -28,7 +27,7 @@ class HomePage extends HookConsumerWidget {
     ref.listen<AuthState>(authtProvider, (_, authState) {
       authState.mapOrNull(
         unauthenticated: (unauth) {
-          AutoRouter.of(context).popUntilRouteWithName(SplashPageRoute.name);
+          // AutoRouter.of(context).popUntilRouteWithName(SplashPageRoute.name);
         },
       );
     });
