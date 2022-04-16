@@ -1,9 +1,9 @@
-import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/domain/geocoding/i_geocoding_repository.dart';
 import 'package:taxidriver/domain/nearby_search/i_nearby_search_repository.dart';
+import 'package:taxidriver/domain/ride/ride.dart';
 
 class PickUpController extends StateNotifier<PickUpState> {
   PickUpController(
@@ -21,7 +21,6 @@ class PickUpController extends StateNotifier<PickUpState> {
           isNearbyPlacesLoading: true,
         );
 
-        print(event.query);
         final nearBysearchSuccessOrFailure =
             await _nearbySearchRepository.nearbyPlaces(
           lat: event.lat,
@@ -55,7 +54,11 @@ class PickUpController extends StateNotifier<PickUpState> {
           isNearbyPlacesLoading: false,
         );
       },
-      pickupChoosen: (_) async {},
+      pickupChoosen: (event) async {
+        state = state.copyWith(
+          dropoffPlace: event.pickup,
+        );
+      },
       dropoffChoosen: (event) async {
         state = state.copyWith(
           dropoffPlace: event.dropoff,
@@ -80,6 +83,18 @@ class PickUpController extends StateNotifier<PickUpState> {
               reverseGeocodingResult: reverseGeocodingResult,
             );
           },
+        );
+      },
+      rideScheduled: (event) async {
+        state = state.copyWith(
+          rideType: RideType.shceduled,
+          rideDateTime: event.rideDateTime,
+        );
+      },
+      rideScheduledToNow: (_) async {
+        state = state.copyWith(
+          rideType: RideType.now,
+          rideDateTime: null,
         );
       },
     );

@@ -26,7 +26,10 @@ class _$PickUpStateTearOff {
           nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
       NearbySearch? pickupPlace,
+      NearbySearch? mainFormLocation,
       ReverseGeocodingResult? reverseGeocodingResult,
+      required RideType rideType,
+      DateTime? rideDateTime,
       required List<NearbySearch> places}) {
     return _PickUpState(
       isGeocodingFromMapLoaidng: isGeocodingFromMapLoaidng,
@@ -35,7 +38,10 @@ class _$PickUpStateTearOff {
       nearBysearchSuccessOrFailureOption: nearBysearchSuccessOrFailureOption,
       dropoffPlace: dropoffPlace,
       pickupPlace: pickupPlace,
+      mainFormLocation: mainFormLocation,
       reverseGeocodingResult: reverseGeocodingResult,
+      rideType: rideType,
+      rideDateTime: rideDateTime,
       places: places,
     );
   }
@@ -54,8 +60,11 @@ mixin _$PickUpState {
           throw _privateConstructorUsedError;
   NearbySearch? get dropoffPlace => throw _privateConstructorUsedError;
   NearbySearch? get pickupPlace => throw _privateConstructorUsedError;
+  NearbySearch? get mainFormLocation => throw _privateConstructorUsedError;
   ReverseGeocodingResult? get reverseGeocodingResult =>
       throw _privateConstructorUsedError;
+  RideType get rideType => throw _privateConstructorUsedError;
+  DateTime? get rideDateTime => throw _privateConstructorUsedError;
   List<NearbySearch> get places => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -76,11 +85,15 @@ abstract class $PickUpStateCopyWith<$Res> {
           nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
       NearbySearch? pickupPlace,
+      NearbySearch? mainFormLocation,
       ReverseGeocodingResult? reverseGeocodingResult,
+      RideType rideType,
+      DateTime? rideDateTime,
       List<NearbySearch> places});
 
   $NearbySearchCopyWith<$Res>? get dropoffPlace;
   $NearbySearchCopyWith<$Res>? get pickupPlace;
+  $NearbySearchCopyWith<$Res>? get mainFormLocation;
   $ReverseGeocodingResultCopyWith<$Res>? get reverseGeocodingResult;
 }
 
@@ -100,7 +113,10 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
     Object? nearBysearchSuccessOrFailureOption = freezed,
     Object? dropoffPlace = freezed,
     Object? pickupPlace = freezed,
+    Object? mainFormLocation = freezed,
     Object? reverseGeocodingResult = freezed,
+    Object? rideType = freezed,
+    Object? rideDateTime = freezed,
     Object? places = freezed,
   }) {
     return _then(_value.copyWith(
@@ -129,10 +145,22 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
           ? _value.pickupPlace
           : pickupPlace // ignore: cast_nullable_to_non_nullable
               as NearbySearch?,
+      mainFormLocation: mainFormLocation == freezed
+          ? _value.mainFormLocation
+          : mainFormLocation // ignore: cast_nullable_to_non_nullable
+              as NearbySearch?,
       reverseGeocodingResult: reverseGeocodingResult == freezed
           ? _value.reverseGeocodingResult
           : reverseGeocodingResult // ignore: cast_nullable_to_non_nullable
               as ReverseGeocodingResult?,
+      rideType: rideType == freezed
+          ? _value.rideType
+          : rideType // ignore: cast_nullable_to_non_nullable
+              as RideType,
+      rideDateTime: rideDateTime == freezed
+          ? _value.rideDateTime
+          : rideDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       places: places == freezed
           ? _value.places
           : places // ignore: cast_nullable_to_non_nullable
@@ -159,6 +187,17 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
 
     return $NearbySearchCopyWith<$Res>(_value.pickupPlace!, (value) {
       return _then(_value.copyWith(pickupPlace: value));
+    });
+  }
+
+  @override
+  $NearbySearchCopyWith<$Res>? get mainFormLocation {
+    if (_value.mainFormLocation == null) {
+      return null;
+    }
+
+    return $NearbySearchCopyWith<$Res>(_value.mainFormLocation!, (value) {
+      return _then(_value.copyWith(mainFormLocation: value));
     });
   }
 
@@ -190,13 +229,18 @@ abstract class _$PickUpStateCopyWith<$Res>
           nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
       NearbySearch? pickupPlace,
+      NearbySearch? mainFormLocation,
       ReverseGeocodingResult? reverseGeocodingResult,
+      RideType rideType,
+      DateTime? rideDateTime,
       List<NearbySearch> places});
 
   @override
   $NearbySearchCopyWith<$Res>? get dropoffPlace;
   @override
   $NearbySearchCopyWith<$Res>? get pickupPlace;
+  @override
+  $NearbySearchCopyWith<$Res>? get mainFormLocation;
   @override
   $ReverseGeocodingResultCopyWith<$Res>? get reverseGeocodingResult;
 }
@@ -219,7 +263,10 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
     Object? nearBysearchSuccessOrFailureOption = freezed,
     Object? dropoffPlace = freezed,
     Object? pickupPlace = freezed,
+    Object? mainFormLocation = freezed,
     Object? reverseGeocodingResult = freezed,
+    Object? rideType = freezed,
+    Object? rideDateTime = freezed,
     Object? places = freezed,
   }) {
     return _then(_PickUpState(
@@ -248,10 +295,22 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
           ? _value.pickupPlace
           : pickupPlace // ignore: cast_nullable_to_non_nullable
               as NearbySearch?,
+      mainFormLocation: mainFormLocation == freezed
+          ? _value.mainFormLocation
+          : mainFormLocation // ignore: cast_nullable_to_non_nullable
+              as NearbySearch?,
       reverseGeocodingResult: reverseGeocodingResult == freezed
           ? _value.reverseGeocodingResult
           : reverseGeocodingResult // ignore: cast_nullable_to_non_nullable
               as ReverseGeocodingResult?,
+      rideType: rideType == freezed
+          ? _value.rideType
+          : rideType // ignore: cast_nullable_to_non_nullable
+              as RideType,
+      rideDateTime: rideDateTime == freezed
+          ? _value.rideDateTime
+          : rideDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       places: places == freezed
           ? _value.places
           : places // ignore: cast_nullable_to_non_nullable
@@ -270,7 +329,10 @@ class _$_PickUpState implements _PickUpState {
       required this.nearBysearchSuccessOrFailureOption,
       this.dropoffPlace,
       this.pickupPlace,
+      this.mainFormLocation,
       this.reverseGeocodingResult,
+      required this.rideType,
+      this.rideDateTime,
       required this.places});
 
   @override
@@ -287,13 +349,19 @@ class _$_PickUpState implements _PickUpState {
   @override
   final NearbySearch? pickupPlace;
   @override
+  final NearbySearch? mainFormLocation;
+  @override
   final ReverseGeocodingResult? reverseGeocodingResult;
+  @override
+  final RideType rideType;
+  @override
+  final DateTime? rideDateTime;
   @override
   final List<NearbySearch> places;
 
   @override
   String toString() {
-    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, nearBysearchSuccessOrFailureOption: $nearBysearchSuccessOrFailureOption, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, reverseGeocodingResult: $reverseGeocodingResult, places: $places)';
+    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, nearBysearchSuccessOrFailureOption: $nearBysearchSuccessOrFailureOption, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, mainFormLocation: $mainFormLocation, reverseGeocodingResult: $reverseGeocodingResult, rideType: $rideType, rideDateTime: $rideDateTime, places: $places)';
   }
 
   @override
@@ -315,7 +383,12 @@ class _$_PickUpState implements _PickUpState {
             const DeepCollectionEquality()
                 .equals(other.pickupPlace, pickupPlace) &&
             const DeepCollectionEquality()
+                .equals(other.mainFormLocation, mainFormLocation) &&
+            const DeepCollectionEquality()
                 .equals(other.reverseGeocodingResult, reverseGeocodingResult) &&
+            const DeepCollectionEquality().equals(other.rideType, rideType) &&
+            const DeepCollectionEquality()
+                .equals(other.rideDateTime, rideDateTime) &&
             const DeepCollectionEquality().equals(other.places, places));
   }
 
@@ -328,7 +401,10 @@ class _$_PickUpState implements _PickUpState {
       const DeepCollectionEquality().hash(nearBysearchSuccessOrFailureOption),
       const DeepCollectionEquality().hash(dropoffPlace),
       const DeepCollectionEquality().hash(pickupPlace),
+      const DeepCollectionEquality().hash(mainFormLocation),
       const DeepCollectionEquality().hash(reverseGeocodingResult),
+      const DeepCollectionEquality().hash(rideType),
+      const DeepCollectionEquality().hash(rideDateTime),
       const DeepCollectionEquality().hash(places));
 
   @JsonKey(ignore: true)
@@ -346,7 +422,10 @@ abstract class _PickUpState implements PickUpState {
           nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
       NearbySearch? pickupPlace,
+      NearbySearch? mainFormLocation,
       ReverseGeocodingResult? reverseGeocodingResult,
+      required RideType rideType,
+      DateTime? rideDateTime,
       required List<NearbySearch> places}) = _$_PickUpState;
 
   @override
@@ -363,7 +442,13 @@ abstract class _PickUpState implements PickUpState {
   @override
   NearbySearch? get pickupPlace;
   @override
+  NearbySearch? get mainFormLocation;
+  @override
   ReverseGeocodingResult? get reverseGeocodingResult;
+  @override
+  RideType get rideType;
+  @override
+  DateTime? get rideDateTime;
   @override
   List<NearbySearch> get places;
   @override

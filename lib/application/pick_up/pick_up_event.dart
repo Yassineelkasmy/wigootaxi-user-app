@@ -17,4 +17,7 @@ class PickUpEvent with _$PickUpEvent {
   const factory PickUpEvent.pickupChoosen(NearbySearch pickup) = PickupChoosen;
   const factory PickUpEvent.dropoffChoosen(NearbySearch dropoff) =
       DropoffChoosen;
+  const factory PickUpEvent.rideScheduled(DateTime rideDateTime) =
+      RideScheduled;
+  const factory PickUpEvent.rideScheduledToNow() = RideScheduledToNow;
 }
