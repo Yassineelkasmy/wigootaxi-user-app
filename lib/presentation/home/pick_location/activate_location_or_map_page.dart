@@ -10,6 +10,7 @@ import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
 import 'package:taxidriver/presentation/home/pick_location/location_map.dart';
 import 'package:rive/rive.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
+import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 
 class ActivateLocationOrMapPage extends HookConsumerWidget {
@@ -27,21 +28,45 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
           ? SizedBox(
               height: double.maxFinite,
               width: double.maxFinite,
-              child: LocationMap(
-                locationData: locationState.locationData!,
-                onCameraMove: (cameraPosition) {
-                  if (pickUpState.pickupPlace == null &&
-                      pickUpState.dropoffPlace != null) {
-                    pickUpController.mapEventToState(
-                      PickUpEvent.reverseGecodingFromMapRequested(
-                        cameraPosition.target.latitude,
-                        cameraPosition.target.longitude,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: LocationMap(
+                      locationData: locationState.locationData!,
+                      onCameraMove: (cameraPosition) {
+                        if (pickUpState.pickupPlace == null &&
+                            pickUpState.dropoffPlace != null) {
+                          pickUpController.mapEventToState(
+                            PickUpEvent.reverseGecodingFromMapRequested(
+                              cameraPosition.target.latitude,
+                              cameraPosition.target.longitude,
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    top: 40.h,
+                    child: Padding(
+                      padding: kPadding,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            color: kPrimaryColor,
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.cancel_outlined,
+                              size: 32,
+                            ),
+                          )
+                        ],
                       ),
-                    );
-                  }
-                },
-              ),
-            )
+                    ),
+                  )
+                ],
+              ))
           : SizedBox(
               height: double.maxFinite,
               child: Column(
