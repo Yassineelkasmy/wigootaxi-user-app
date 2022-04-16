@@ -4,14 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:taxidriver/application/location/location_state.dart';
 import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
 import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
+import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 
 class PickUpForm extends HookConsumerWidget {
-  PickUpForm({Key? key, this.isSlidedUp = false}) : super(key: key);
+  PickUpForm({
+    Key? key,
+    this.isSlidedUp = true,
+    required this.panelController,
+  }) : super(key: key);
   final bool isSlidedUp;
+  final PanelController panelController;
+  final queryController = TextEditingController();
+
   bool checked = false;
 
   @override
@@ -57,7 +66,9 @@ class PickUpForm extends HookConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Where To ?',
+                            pickUpState.dropoffPlace == null
+                                ? 'Where To ?'
+                                : 'Where are you ?',
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -66,21 +77,24 @@ class PickUpForm extends HookConsumerWidget {
                           ),
                           10.h.verticalSpace,
                           TextFormField(
+                            controller: queryController,
                             decoration: InputDecoration(
                               hintText: pickUpState.reverseGeocodingResult
                                   ?.results[0].formattedAdress,
                             ),
                             onChanged: (query) {
-                              if (query != null && query.isNotEmpty) {
+                              if (query.isNotEmpty) {
                                 pickUpController.mapEventToState(
                                   PickUpEvent.nearbyQueryChanged(
-                                      query,
-                                      locationState.locationData!.latitude!,
-                                      locationState.locationData!.longitude!),
+                                    query,
+                                    locationState.locationData!.latitude!,
+                                    locationState.locationData!.longitude!,
+                                  ),
                                 );
                               }
                             },
                           ),
+                          10.h.verticalSpace,
                           Expanded(
                             child: pickUpState.isNearbyPlacesLoading
                                 ? Shimmer.fromColors(
@@ -124,30 +138,59 @@ class PickUpForm extends HookConsumerWidget {
                                 : ListView.builder(
                                     itemCount: pickUpState.places.length,
                                     itemBuilder: ((context, index) {
-                                      return Padding(
-                                        padding: EdgeInsets.only(
-                                          bottom: 5.h,
+                                      final pickedPlace =
+                                          pickUpState.places[index];
+                                      final locationName = pickedPlace.name;
+                                      final locationVicinity =
+                                          pickedPlace.vicinity;
+                                      final placeId = pickedPlace.placeId;
+                                      final locationGeometry =
+                                          pickedPlace.geometry;
+                                      final locationTypes = pickedPlace.types;
+                                      return ListTile(
+                                        onTap: () {
+                                          queryController.text = locationName;
+
+                                          if (pickUpState.dropoffPlace ==
+                                              null) {
+                                            pickUpController.mapEventToState(
+                                              PickUpEvent.dropoffChoosen(
+                                                NearbySearch(
+                                                  name: locationName,
+                                                  placeId: placeId,
+                                                  vicinity: locationVicinity,
+                                                  geometry: locationGeometry,
+                                                  types: locationTypes,
+                                                ),
+                                              ),
+                                            );
+                                          } else if (pickUpState.pickupPlace ==
+                                              null) {
+                                            PickUpEvent.pickupChoosen(
+                                              NearbySearch(
+                                                name: locationName,
+                                                placeId: placeId,
+                                                vicinity: locationVicinity,
+                                                geometry: locationGeometry,
+                                                types: locationTypes,
+                                              ),
+                                            );
+                                          }
+                                          panelController.close();
+                                        },
+                                        title: Text(
+                                          locationName,
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 16.sp,
+                                          ),
                                         ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              pickUpState.places[index].name,
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16.sp,
-                                              ),
-                                            ),
-                                            Text(
-                                              pickUpState
-                                                  .places[index].vicinity,
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 14.sp,
-                                              ),
-                                            )
-                                          ],
+                                        subtitle: Text(
+                                          locationVicinity,
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 14.sp,
+                                          ),
                                         ),
                                       );
                                     }),

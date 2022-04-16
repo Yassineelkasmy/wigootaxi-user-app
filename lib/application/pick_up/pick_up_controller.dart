@@ -56,7 +56,11 @@ class PickUpController extends StateNotifier<PickUpState> {
         );
       },
       pickupChoosen: (_) async {},
-      dropoffChoosen: (_) async {},
+      dropoffChoosen: (event) async {
+        state = state.copyWith(
+          dropoffPlace: event.dropoff,
+        );
+      },
       reverseGecodingFromMapRequested: (event) async {
         state = state.copyWith(
           isGeocodingFromMapLoaidng: true,
