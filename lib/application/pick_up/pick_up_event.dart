@@ -21,6 +21,8 @@ class PickUpEvent with _$PickUpEvent {
       RideScheduled;
   const factory PickUpEvent.rideScheduledToNow() = RideScheduledToNow;
   const factory PickUpEvent.cameraMoved(double lat, double long) = CameraMoved;
+  const factory PickUpEvent.userLocationDetected(double lat, double long) =
+      UserLocationDetected;
   const factory PickUpEvent.dropOffChosenFromMap() = DropOffChosenFromMap;
   const factory PickUpEvent.pickUpChosenFormMap() = PickUpChosenFormMap;
   const factory PickUpEvent.pickUpChosenFormUserLocation(

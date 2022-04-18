@@ -74,6 +74,13 @@ class _$PickUpEventTearOff {
     );
   }
 
+  UserLocationDetected userLocationDetected(double lat, double long) {
+    return UserLocationDetected(
+      lat,
+      long,
+    );
+  }
+
   DropOffChosenFromMap dropOffChosenFromMap() {
     return const DropOffChosenFromMap();
   }
@@ -117,6 +124,7 @@ mixin _$PickUpEvent {
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -136,6 +144,7 @@ mixin _$PickUpEvent {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -154,6 +163,7 @@ mixin _$PickUpEvent {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -175,6 +185,7 @@ mixin _$PickUpEvent {
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -195,6 +206,7 @@ mixin _$PickUpEvent {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -215,6 +227,7 @@ mixin _$PickUpEvent {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -299,6 +312,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -321,6 +335,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -342,6 +357,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -369,6 +385,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -392,6 +409,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -415,6 +433,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -541,6 +560,7 @@ class _$NearbyQueryChanged
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -563,6 +583,7 @@ class _$NearbyQueryChanged
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -584,6 +605,7 @@ class _$NearbyQueryChanged
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -611,6 +633,7 @@ class _$NearbyQueryChanged
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -634,6 +657,7 @@ class _$NearbyQueryChanged
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -657,6 +681,7 @@ class _$NearbyQueryChanged
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -786,6 +811,7 @@ class _$ReverseGecodingFromMapRequested
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -808,6 +834,7 @@ class _$ReverseGecodingFromMapRequested
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -829,6 +856,7 @@ class _$ReverseGecodingFromMapRequested
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -856,6 +884,7 @@ class _$ReverseGecodingFromMapRequested
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -879,6 +908,7 @@ class _$ReverseGecodingFromMapRequested
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -902,6 +932,7 @@ class _$ReverseGecodingFromMapRequested
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -1027,6 +1058,7 @@ class _$NearbyLocationsRequested
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -1049,6 +1081,7 @@ class _$NearbyLocationsRequested
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1070,6 +1103,7 @@ class _$NearbyLocationsRequested
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1097,6 +1131,7 @@ class _$NearbyLocationsRequested
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -1120,6 +1155,7 @@ class _$NearbyLocationsRequested
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -1143,6 +1179,7 @@ class _$NearbyLocationsRequested
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -1261,6 +1298,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -1283,6 +1321,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1304,6 +1343,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1331,6 +1371,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -1354,6 +1395,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -1377,6 +1419,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -1493,6 +1536,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -1515,6 +1559,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1536,6 +1581,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1563,6 +1609,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -1586,6 +1633,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -1609,6 +1657,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -1717,6 +1766,7 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -1739,6 +1789,7 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1760,6 +1811,7 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1787,6 +1839,7 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -1810,6 +1863,7 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -1833,6 +1887,7 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -1918,6 +1973,7 @@ class _$RideScheduledToNow
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -1940,6 +1996,7 @@ class _$RideScheduledToNow
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1961,6 +2018,7 @@ class _$RideScheduledToNow
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -1988,6 +2046,7 @@ class _$RideScheduledToNow
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -2011,6 +2070,7 @@ class _$RideScheduledToNow
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2034,6 +2094,7 @@ class _$RideScheduledToNow
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2147,6 +2208,7 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -2169,6 +2231,7 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -2190,6 +2253,7 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -2217,6 +2281,7 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -2240,6 +2305,7 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2263,6 +2329,7 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2285,6 +2352,252 @@ abstract class CameraMoved implements PickUpEvent {
   double get long;
   @JsonKey(ignore: true)
   $CameraMovedCopyWith<CameraMoved> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserLocationDetectedCopyWith<$Res> {
+  factory $UserLocationDetectedCopyWith(UserLocationDetected value,
+          $Res Function(UserLocationDetected) then) =
+      _$UserLocationDetectedCopyWithImpl<$Res>;
+  $Res call({double lat, double long});
+}
+
+/// @nodoc
+class _$UserLocationDetectedCopyWithImpl<$Res>
+    extends _$PickUpEventCopyWithImpl<$Res>
+    implements $UserLocationDetectedCopyWith<$Res> {
+  _$UserLocationDetectedCopyWithImpl(
+      UserLocationDetected _value, $Res Function(UserLocationDetected) _then)
+      : super(_value, (v) => _then(v as UserLocationDetected));
+
+  @override
+  UserLocationDetected get _value => super._value as UserLocationDetected;
+
+  @override
+  $Res call({
+    Object? lat = freezed,
+    Object? long = freezed,
+  }) {
+    return _then(UserLocationDetected(
+      lat == freezed
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      long == freezed
+          ? _value.long
+          : long // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserLocationDetected
+    with DiagnosticableTreeMixin
+    implements UserLocationDetected {
+  const _$UserLocationDetected(this.lat, this.long);
+
+  @override
+  final double lat;
+  @override
+  final double long;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PickUpEvent.userLocationDetected(lat: $lat, long: $long)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PickUpEvent.userLocationDetected'))
+      ..add(DiagnosticsProperty('lat', lat))
+      ..add(DiagnosticsProperty('long', long));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UserLocationDetected &&
+            const DeepCollectionEquality().equals(other.lat, lat) &&
+            const DeepCollectionEquality().equals(other.long, long));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(lat),
+      const DeepCollectionEquality().hash(long));
+
+  @JsonKey(ignore: true)
+  @override
+  $UserLocationDetectedCopyWith<UserLocationDetected> get copyWith =>
+      _$UserLocationDetectedCopyWithImpl<UserLocationDetected>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() startedTyping,
+    required TResult Function(String query, double lat, double long)
+        nearbyQueryChanged,
+    required TResult Function(double lat, double long)
+        reverseGecodingFromMapRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
+    required TResult Function(NearbySearch pickup) pickupChoosen,
+    required TResult Function(NearbySearch dropoff) dropoffChoosen,
+    required TResult Function(DateTime rideDateTime) rideScheduled,
+    required TResult Function() rideScheduledToNow,
+    required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
+    required TResult Function() dropOffChosenFromMap,
+    required TResult Function() pickUpChosenFormMap,
+    required TResult Function(double lat, double long)
+        pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
+  }) {
+    return userLocationDetected(lat, long);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+  }) {
+    return userLocationDetected?.call(lat, long);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+    required TResult orElse(),
+  }) {
+    if (userLocationDetected != null) {
+      return userLocationDetected(lat, long);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartedTyping value) startedTyping,
+    required TResult Function(NearbyQueryChanged value) nearbyQueryChanged,
+    required TResult Function(ReverseGecodingFromMapRequested value)
+        reverseGecodingFromMapRequested,
+    required TResult Function(NearbyLocationsRequested value)
+        nearbyLocationsRequested,
+    required TResult Function(PickupChoosen value) pickupChoosen,
+    required TResult Function(DropoffChoosen value) dropoffChoosen,
+    required TResult Function(RideScheduled value) rideScheduled,
+    required TResult Function(RideScheduledToNow value) rideScheduledToNow,
+    required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
+    required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
+    required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
+    required TResult Function(PickUpChosenFormUserLocation value)
+        pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
+  }) {
+    return userLocationDetected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+  }) {
+    return userLocationDetected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+    required TResult orElse(),
+  }) {
+    if (userLocationDetected != null) {
+      return userLocationDetected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserLocationDetected implements PickUpEvent {
+  const factory UserLocationDetected(double lat, double long) =
+      _$UserLocationDetected;
+
+  double get lat;
+  double get long;
+  @JsonKey(ignore: true)
+  $UserLocationDetectedCopyWith<UserLocationDetected> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2349,6 +2662,7 @@ class _$DropOffChosenFromMap
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -2371,6 +2685,7 @@ class _$DropOffChosenFromMap
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -2392,6 +2707,7 @@ class _$DropOffChosenFromMap
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -2419,6 +2735,7 @@ class _$DropOffChosenFromMap
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -2442,6 +2759,7 @@ class _$DropOffChosenFromMap
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2465,6 +2783,7 @@ class _$DropOffChosenFromMap
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2545,6 +2864,7 @@ class _$PickUpChosenFormMap
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -2567,6 +2887,7 @@ class _$PickUpChosenFormMap
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -2588,6 +2909,7 @@ class _$PickUpChosenFormMap
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -2615,6 +2937,7 @@ class _$PickUpChosenFormMap
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -2638,6 +2961,7 @@ class _$PickUpChosenFormMap
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2661,6 +2985,7 @@ class _$PickUpChosenFormMap
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2782,6 +3107,7 @@ class _$PickUpChosenFormUserLocation
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -2804,6 +3130,7 @@ class _$PickUpChosenFormUserLocation
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -2825,6 +3152,7 @@ class _$PickUpChosenFormUserLocation
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -2852,6 +3180,7 @@ class _$PickUpChosenFormUserLocation
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -2875,6 +3204,7 @@ class _$PickUpChosenFormUserLocation
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2898,6 +3228,7 @@ class _$PickUpChosenFormUserLocation
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -2981,6 +3312,7 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -3003,6 +3335,7 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -3024,6 +3357,7 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -3051,6 +3385,7 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -3074,6 +3409,7 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -3097,6 +3433,7 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -3173,6 +3510,7 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     required TResult Function(DateTime rideDateTime) rideScheduled,
     required TResult Function() rideScheduledToNow,
     required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
     required TResult Function() dropOffChosenFromMap,
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
@@ -3195,6 +3533,7 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -3216,6 +3555,7 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     TResult Function(DateTime rideDateTime)? rideScheduled,
     TResult Function()? rideScheduledToNow,
     TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
@@ -3243,6 +3583,7 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     required TResult Function(RideScheduled value) rideScheduled,
     required TResult Function(RideScheduledToNow value) rideScheduledToNow,
     required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
     required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
@@ -3266,6 +3607,7 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
@@ -3289,6 +3631,7 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     TResult Function(RideScheduled value)? rideScheduled,
     TResult Function(RideScheduledToNow value)? rideScheduledToNow,
     TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
     TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?

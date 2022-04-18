@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:location/location.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:taxidriver/application/pick_up/pick_up_state.dart';
+import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
+import 'package:taxidriver/presentation/home/pick_location/widgets/user_location_indicator.dart';
+import 'package:taxidriver/presentation/theme/colors.dart';
 
-class LocationMap extends StatefulWidget {
+class LocationMap extends ConsumerStatefulWidget {
   const LocationMap({
     Key? key,
     required this.locationData,
@@ -13,45 +19,41 @@ class LocationMap extends StatefulWidget {
   final void Function(CameraPosition) onCameraMove;
 
   @override
-  State<LocationMap> createState() => _LocationMapState();
+  LocationMapState createState() => LocationMapState();
 }
 
-class _LocationMapState extends State<LocationMap> {
+class LocationMapState extends ConsumerState<LocationMap> {
   Set<Marker> markers = Set();
   final pickUpPanelController = PanelController();
   late GoogleMapController _googleMapController;
+  late PolylinePoints polylinePoints;
 
-  initMarker() async {
-    final marker = await BitmapDescriptor.fromAssetImage(
-      ImageConfiguration(
-        size: Size(32, 32),
-      ),
-      "assets/icons/taxi-stop.png",
-    );
-    markers.add(
-      Marker(
-        markerId: MarkerId("position"),
-        position: LatLng(
-          widget.locationData.latitude!,
-          widget.locationData.longitude!,
-        ),
-        icon: marker,
-        draggable: true,
-      ),
-    );
-
-    setState(() {});
-  }
+  List<LatLng> polylineCoordinates = [];
+  Map<PolylineId, Polyline> polylines = {};
 
   @override
   void initState() {
-    // initMarker();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    initMarker();
+    ref.listen<PickUpState>(pickUpProvider, (previous, next) async {
+      if (next.pickUpChosen) {
+        setState(() {});
+      } else if (next.dropOffChosen) {
+        _googleMapController.animateCamera(
+          CameraUpdate.newCameraPosition(
+            CameraPosition(
+              target: LatLng(
+                next.dropoffPlace!.geometry.location.lat,
+                next.dropoffPlace!.geometry.location.lng,
+              ),
+            ),
+          ),
+        );
+      }
+    });
     final cameraPosition = CameraPosition(
       target: LatLng(
         widget.locationData.latitude!,
@@ -64,22 +66,24 @@ class _LocationMapState extends State<LocationMap> {
       children: [
         Positioned.fill(
           child: GoogleMap(
-            rotateGesturesEnabled: true,
+            polylines: {
+              Polyline(
+                polylineId: PolylineId('route'),
+                color: kPrimaryColor,
+              ),
+            },
             onMapCreated: (mapController) {
               _googleMapController = mapController;
             },
             initialCameraPosition: cameraPosition,
-            // markers: markers,
             onCameraMove: (positon) {
               widget.onCameraMove(positon);
-              // setState(() {});
             },
           ),
         ),
         Positioned.fill(
-            child: Center(
-          child: Icon(Icons.person),
-        ))
+          child: UserLocationIndicator(),
+        ),
       ],
     );
   }

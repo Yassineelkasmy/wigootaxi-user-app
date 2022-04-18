@@ -41,12 +41,7 @@ class PickUpForm extends HookConsumerWidget {
           if (checked == false) {
             checked = true;
             pickUpController.mapEventToState(
-              PickUpEvent.nearbyLocationsRequested(
-                  nextLocationState.locationData!.latitude!,
-                  nextLocationState.locationData!.longitude!),
-            );
-            pickUpController.mapEventToState(
-              PickUpEvent.reverseGecodingFromMapRequested(
+              PickUpEvent.userLocationDetected(
                 nextLocationState.locationData!.latitude!,
                 nextLocationState.locationData!.longitude!,
               ),

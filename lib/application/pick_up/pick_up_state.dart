@@ -24,6 +24,8 @@ class PickUpState with _$PickUpState {
     required List<NearbySearch> places,
     double? cameraLat,
     double? cameraLong,
+    double? userLat,
+    double? userLong,
     required bool dropOffChosen,
     required bool pickUpChosen,
   }) = _PickUpState;
