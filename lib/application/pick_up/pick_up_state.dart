@@ -24,6 +24,8 @@ class PickUpState with _$PickUpState {
     required List<NearbySearch> places,
     double? cameraLat,
     double? cameraLong,
+    required bool dropOffChosen,
+    required bool pickUpChosen,
   }) = _PickUpState;
 
   factory PickUpState.initial() => PickUpState(
@@ -33,5 +35,7 @@ class PickUpState with _$PickUpState {
         nearBysearchSuccessOrFailureOption: none(),
         rideType: RideType.now,
         places: [],
+        dropOffChosen: false,
+        pickUpChosen: false,
       );
 }

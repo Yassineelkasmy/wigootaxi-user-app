@@ -24,5 +24,9 @@ class PickUpEvent with _$PickUpEvent {
   const factory PickUpEvent.dropOffChosenFromMap() = DropOffChosenFromMap;
   const factory PickUpEvent.pickUpChosenFormMap() = PickUpChosenFormMap;
   const factory PickUpEvent.pickUpChosenFormUserLocation(
-      double lat, double long) = PickUpChosenFormUserLocation;
+    double lat,
+    double long,
+  ) = PickUpChosenFormUserLocation;
+  const factory PickUpEvent.pickUpRemoved() = PickUpRemoved;
+  const factory PickUpEvent.dropOffRemoved() = DropOffRemoved;
 }

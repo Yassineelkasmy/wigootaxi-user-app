@@ -89,6 +89,14 @@ class _$PickUpEventTearOff {
       long,
     );
   }
+
+  PickUpRemoved pickUpRemoved() {
+    return const PickUpRemoved();
+  }
+
+  DropOffRemoved dropOffRemoved() {
+    return const DropOffRemoved();
+  }
 }
 
 /// @nodoc
@@ -113,6 +121,8 @@ mixin _$PickUpEvent {
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -129,6 +139,8 @@ mixin _$PickUpEvent {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -145,6 +157,8 @@ mixin _$PickUpEvent {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,6 +179,8 @@ mixin _$PickUpEvent {
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -183,6 +199,8 @@ mixin _$PickUpEvent {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -201,6 +219,8 @@ mixin _$PickUpEvent {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -283,6 +303,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return startedTyping();
   }
@@ -302,6 +324,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return startedTyping?.call();
   }
@@ -321,6 +345,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (startedTyping != null) {
@@ -347,6 +373,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return startedTyping(this);
   }
@@ -368,6 +396,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return startedTyping?.call(this);
   }
@@ -389,6 +419,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (startedTyping != null) {
@@ -513,6 +545,8 @@ class _$NearbyQueryChanged
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return nearbyQueryChanged(query, lat, long);
   }
@@ -532,6 +566,8 @@ class _$NearbyQueryChanged
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return nearbyQueryChanged?.call(query, lat, long);
   }
@@ -551,6 +587,8 @@ class _$NearbyQueryChanged
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (nearbyQueryChanged != null) {
@@ -577,6 +615,8 @@ class _$NearbyQueryChanged
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return nearbyQueryChanged(this);
   }
@@ -598,6 +638,8 @@ class _$NearbyQueryChanged
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return nearbyQueryChanged?.call(this);
   }
@@ -619,6 +661,8 @@ class _$NearbyQueryChanged
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (nearbyQueryChanged != null) {
@@ -746,6 +790,8 @@ class _$ReverseGecodingFromMapRequested
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return reverseGecodingFromMapRequested(lat, long);
   }
@@ -765,6 +811,8 @@ class _$ReverseGecodingFromMapRequested
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return reverseGecodingFromMapRequested?.call(lat, long);
   }
@@ -784,6 +832,8 @@ class _$ReverseGecodingFromMapRequested
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (reverseGecodingFromMapRequested != null) {
@@ -810,6 +860,8 @@ class _$ReverseGecodingFromMapRequested
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return reverseGecodingFromMapRequested(this);
   }
@@ -831,6 +883,8 @@ class _$ReverseGecodingFromMapRequested
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return reverseGecodingFromMapRequested?.call(this);
   }
@@ -852,6 +906,8 @@ class _$ReverseGecodingFromMapRequested
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (reverseGecodingFromMapRequested != null) {
@@ -975,6 +1031,8 @@ class _$NearbyLocationsRequested
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return nearbyLocationsRequested(lat, long);
   }
@@ -994,6 +1052,8 @@ class _$NearbyLocationsRequested
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return nearbyLocationsRequested?.call(lat, long);
   }
@@ -1013,6 +1073,8 @@ class _$NearbyLocationsRequested
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (nearbyLocationsRequested != null) {
@@ -1039,6 +1101,8 @@ class _$NearbyLocationsRequested
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return nearbyLocationsRequested(this);
   }
@@ -1060,6 +1124,8 @@ class _$NearbyLocationsRequested
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return nearbyLocationsRequested?.call(this);
   }
@@ -1081,6 +1147,8 @@ class _$NearbyLocationsRequested
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (nearbyLocationsRequested != null) {
@@ -1197,6 +1265,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return pickupChoosen(pickup);
   }
@@ -1216,6 +1286,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return pickupChoosen?.call(pickup);
   }
@@ -1235,6 +1307,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (pickupChoosen != null) {
@@ -1261,6 +1335,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return pickupChoosen(this);
   }
@@ -1282,6 +1358,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return pickupChoosen?.call(this);
   }
@@ -1303,6 +1381,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (pickupChoosen != null) {
@@ -1417,6 +1497,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return dropoffChoosen(dropoff);
   }
@@ -1436,6 +1518,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return dropoffChoosen?.call(dropoff);
   }
@@ -1455,6 +1539,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (dropoffChoosen != null) {
@@ -1481,6 +1567,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return dropoffChoosen(this);
   }
@@ -1502,6 +1590,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return dropoffChoosen?.call(this);
   }
@@ -1523,6 +1613,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (dropoffChoosen != null) {
@@ -1629,6 +1721,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return rideScheduled(rideDateTime);
   }
@@ -1648,6 +1742,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return rideScheduled?.call(rideDateTime);
   }
@@ -1667,6 +1763,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (rideScheduled != null) {
@@ -1693,6 +1791,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return rideScheduled(this);
   }
@@ -1714,6 +1814,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return rideScheduled?.call(this);
   }
@@ -1735,6 +1837,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (rideScheduled != null) {
@@ -1818,6 +1922,8 @@ class _$RideScheduledToNow
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return rideScheduledToNow();
   }
@@ -1837,6 +1943,8 @@ class _$RideScheduledToNow
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return rideScheduledToNow?.call();
   }
@@ -1856,6 +1964,8 @@ class _$RideScheduledToNow
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (rideScheduledToNow != null) {
@@ -1882,6 +1992,8 @@ class _$RideScheduledToNow
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return rideScheduledToNow(this);
   }
@@ -1903,6 +2015,8 @@ class _$RideScheduledToNow
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return rideScheduledToNow?.call(this);
   }
@@ -1924,6 +2038,8 @@ class _$RideScheduledToNow
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (rideScheduledToNow != null) {
@@ -2035,6 +2151,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return cameraMoved(lat, long);
   }
@@ -2054,6 +2172,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return cameraMoved?.call(lat, long);
   }
@@ -2073,6 +2193,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (cameraMoved != null) {
@@ -2099,6 +2221,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return cameraMoved(this);
   }
@@ -2120,6 +2244,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return cameraMoved?.call(this);
   }
@@ -2141,6 +2267,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (cameraMoved != null) {
@@ -2225,6 +2353,8 @@ class _$DropOffChosenFromMap
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return dropOffChosenFromMap();
   }
@@ -2244,6 +2374,8 @@ class _$DropOffChosenFromMap
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return dropOffChosenFromMap?.call();
   }
@@ -2263,6 +2395,8 @@ class _$DropOffChosenFromMap
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (dropOffChosenFromMap != null) {
@@ -2289,6 +2423,8 @@ class _$DropOffChosenFromMap
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return dropOffChosenFromMap(this);
   }
@@ -2310,6 +2446,8 @@ class _$DropOffChosenFromMap
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return dropOffChosenFromMap?.call(this);
   }
@@ -2331,6 +2469,8 @@ class _$DropOffChosenFromMap
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (dropOffChosenFromMap != null) {
@@ -2409,6 +2549,8 @@ class _$PickUpChosenFormMap
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return pickUpChosenFormMap();
   }
@@ -2428,6 +2570,8 @@ class _$PickUpChosenFormMap
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return pickUpChosenFormMap?.call();
   }
@@ -2447,6 +2591,8 @@ class _$PickUpChosenFormMap
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (pickUpChosenFormMap != null) {
@@ -2473,6 +2619,8 @@ class _$PickUpChosenFormMap
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return pickUpChosenFormMap(this);
   }
@@ -2494,6 +2642,8 @@ class _$PickUpChosenFormMap
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return pickUpChosenFormMap?.call(this);
   }
@@ -2515,6 +2665,8 @@ class _$PickUpChosenFormMap
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (pickUpChosenFormMap != null) {
@@ -2634,6 +2786,8 @@ class _$PickUpChosenFormUserLocation
     required TResult Function() pickUpChosenFormMap,
     required TResult Function(double lat, double long)
         pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
   }) {
     return pickUpChosenFormUserLocation(lat, long);
   }
@@ -2653,6 +2807,8 @@ class _$PickUpChosenFormUserLocation
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
   }) {
     return pickUpChosenFormUserLocation?.call(lat, long);
   }
@@ -2672,6 +2828,8 @@ class _$PickUpChosenFormUserLocation
     TResult Function()? dropOffChosenFromMap,
     TResult Function()? pickUpChosenFormMap,
     TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (pickUpChosenFormUserLocation != null) {
@@ -2698,6 +2856,8 @@ class _$PickUpChosenFormUserLocation
     required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
     required TResult Function(PickUpChosenFormUserLocation value)
         pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
   }) {
     return pickUpChosenFormUserLocation(this);
   }
@@ -2719,6 +2879,8 @@ class _$PickUpChosenFormUserLocation
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
   }) {
     return pickUpChosenFormUserLocation?.call(this);
   }
@@ -2740,6 +2902,8 @@ class _$PickUpChosenFormUserLocation
     TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
     TResult Function(PickUpChosenFormUserLocation value)?
         pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
     required TResult orElse(),
   }) {
     if (pickUpChosenFormUserLocation != null) {
@@ -2758,4 +2922,388 @@ abstract class PickUpChosenFormUserLocation implements PickUpEvent {
   @JsonKey(ignore: true)
   $PickUpChosenFormUserLocationCopyWith<PickUpChosenFormUserLocation>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PickUpRemovedCopyWith<$Res> {
+  factory $PickUpRemovedCopyWith(
+          PickUpRemoved value, $Res Function(PickUpRemoved) then) =
+      _$PickUpRemovedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PickUpRemovedCopyWithImpl<$Res> extends _$PickUpEventCopyWithImpl<$Res>
+    implements $PickUpRemovedCopyWith<$Res> {
+  _$PickUpRemovedCopyWithImpl(
+      PickUpRemoved _value, $Res Function(PickUpRemoved) _then)
+      : super(_value, (v) => _then(v as PickUpRemoved));
+
+  @override
+  PickUpRemoved get _value => super._value as PickUpRemoved;
+}
+
+/// @nodoc
+
+class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
+  const _$PickUpRemoved();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PickUpEvent.pickUpRemoved()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'PickUpEvent.pickUpRemoved'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is PickUpRemoved);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() startedTyping,
+    required TResult Function(String query, double lat, double long)
+        nearbyQueryChanged,
+    required TResult Function(double lat, double long)
+        reverseGecodingFromMapRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
+    required TResult Function(NearbySearch pickup) pickupChoosen,
+    required TResult Function(NearbySearch dropoff) dropoffChoosen,
+    required TResult Function(DateTime rideDateTime) rideScheduled,
+    required TResult Function() rideScheduledToNow,
+    required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function() dropOffChosenFromMap,
+    required TResult Function() pickUpChosenFormMap,
+    required TResult Function(double lat, double long)
+        pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
+  }) {
+    return pickUpRemoved();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+  }) {
+    return pickUpRemoved?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+    required TResult orElse(),
+  }) {
+    if (pickUpRemoved != null) {
+      return pickUpRemoved();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartedTyping value) startedTyping,
+    required TResult Function(NearbyQueryChanged value) nearbyQueryChanged,
+    required TResult Function(ReverseGecodingFromMapRequested value)
+        reverseGecodingFromMapRequested,
+    required TResult Function(NearbyLocationsRequested value)
+        nearbyLocationsRequested,
+    required TResult Function(PickupChoosen value) pickupChoosen,
+    required TResult Function(DropoffChoosen value) dropoffChoosen,
+    required TResult Function(RideScheduled value) rideScheduled,
+    required TResult Function(RideScheduledToNow value) rideScheduledToNow,
+    required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
+    required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
+    required TResult Function(PickUpChosenFormUserLocation value)
+        pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
+  }) {
+    return pickUpRemoved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+  }) {
+    return pickUpRemoved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+    required TResult orElse(),
+  }) {
+    if (pickUpRemoved != null) {
+      return pickUpRemoved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PickUpRemoved implements PickUpEvent {
+  const factory PickUpRemoved() = _$PickUpRemoved;
+}
+
+/// @nodoc
+abstract class $DropOffRemovedCopyWith<$Res> {
+  factory $DropOffRemovedCopyWith(
+          DropOffRemoved value, $Res Function(DropOffRemoved) then) =
+      _$DropOffRemovedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$DropOffRemovedCopyWithImpl<$Res> extends _$PickUpEventCopyWithImpl<$Res>
+    implements $DropOffRemovedCopyWith<$Res> {
+  _$DropOffRemovedCopyWithImpl(
+      DropOffRemoved _value, $Res Function(DropOffRemoved) _then)
+      : super(_value, (v) => _then(v as DropOffRemoved));
+
+  @override
+  DropOffRemoved get _value => super._value as DropOffRemoved;
+}
+
+/// @nodoc
+
+class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
+  const _$DropOffRemoved();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PickUpEvent.dropOffRemoved()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'PickUpEvent.dropOffRemoved'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is DropOffRemoved);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() startedTyping,
+    required TResult Function(String query, double lat, double long)
+        nearbyQueryChanged,
+    required TResult Function(double lat, double long)
+        reverseGecodingFromMapRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
+    required TResult Function(NearbySearch pickup) pickupChoosen,
+    required TResult Function(NearbySearch dropoff) dropoffChoosen,
+    required TResult Function(DateTime rideDateTime) rideScheduled,
+    required TResult Function() rideScheduledToNow,
+    required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function() dropOffChosenFromMap,
+    required TResult Function() pickUpChosenFormMap,
+    required TResult Function(double lat, double long)
+        pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
+  }) {
+    return dropOffRemoved();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+  }) {
+    return dropOffRemoved?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+    required TResult orElse(),
+  }) {
+    if (dropOffRemoved != null) {
+      return dropOffRemoved();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartedTyping value) startedTyping,
+    required TResult Function(NearbyQueryChanged value) nearbyQueryChanged,
+    required TResult Function(ReverseGecodingFromMapRequested value)
+        reverseGecodingFromMapRequested,
+    required TResult Function(NearbyLocationsRequested value)
+        nearbyLocationsRequested,
+    required TResult Function(PickupChoosen value) pickupChoosen,
+    required TResult Function(DropoffChoosen value) dropoffChoosen,
+    required TResult Function(RideScheduled value) rideScheduled,
+    required TResult Function(RideScheduledToNow value) rideScheduledToNow,
+    required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
+    required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
+    required TResult Function(PickUpChosenFormUserLocation value)
+        pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
+  }) {
+    return dropOffRemoved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+  }) {
+    return dropOffRemoved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+    required TResult orElse(),
+  }) {
+    if (dropOffRemoved != null) {
+      return dropOffRemoved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DropOffRemoved implements PickUpEvent {
+  const factory DropOffRemoved() = _$DropOffRemoved;
 }

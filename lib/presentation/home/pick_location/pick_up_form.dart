@@ -65,7 +65,7 @@ class PickUpForm extends HookConsumerWidget {
           child: Column(
             children: [
               Expanded(
-                child: pickUpState.pickupPlace == null
+                child: !pickUpState.dropOffChosen || !pickUpState.pickUpChosen
                     ? Stack(
                         children: [
                           Positioned.fill(
@@ -77,7 +77,7 @@ class PickUpForm extends HookConsumerWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      pickUpState.dropoffPlace == null
+                                      !pickUpState.dropOffChosen
                                           ? 'Where To ?'
                                           : 'Where are you ?',
                                       style: TextStyle(
@@ -94,8 +94,10 @@ class PickUpForm extends HookConsumerWidget {
                                             context,
                                             onConfirm: ((dateTime) {
                                               pickUpController.mapEventToState(
-                                                  PickUpEvent.rideScheduled(
-                                                      dateTime));
+                                                PickUpEvent.rideScheduled(
+                                                  dateTime,
+                                                ),
+                                              );
                                             }),
                                             locale: LocaleType.fr,
                                             theme: DatePickerTheme(
@@ -283,7 +285,7 @@ class PickUpForm extends HookConsumerWidget {
                                                 ),
                                     ),
                                     5.w.horizontalSpace,
-                                    if (pickUpState.dropoffPlace != null)
+                                    if (pickUpState.dropOffChosen)
                                       TextButton(
                                         onPressed: () {
                                           pickUpController.mapEventToState(
@@ -310,18 +312,17 @@ class PickUpForm extends HookConsumerWidget {
                                   SizedBox(
                                     width: double.maxFinite,
                                     child: SubmitButton(
-                                      text: pickUpState.dropoffPlace == null
+                                      text: !pickUpState.dropOffChosen
                                           ? 'Confirm dropoff'
                                           : 'Confirm pickup',
                                       onPressed: () {
-                                        if (pickUpState.dropoffPlace == null) {
+                                        if (!pickUpState.dropOffChosen) {
                                           pickUpController.mapEventToState(
                                             PickUpEvent.dropoffChoosen(
                                               pickUpState.places.first,
                                             ),
                                           );
-                                        } else if (pickUpState.pickupPlace ==
-                                            null) {
+                                        } else if (!pickUpState.pickUpChosen) {
                                           pickUpController.mapEventToState(
                                             PickUpEvent.pickupChoosen(
                                               pickUpState.places.first,
@@ -398,9 +399,8 @@ class PickUpForm extends HookConsumerWidget {
                                                   panelController.close();
                                                   isPanelOpen.value = false;
 
-                                                  if (pickUpState
-                                                          .dropoffPlace ==
-                                                      null) {
+                                                  if (!pickUpState
+                                                      .dropOffChosen) {
                                                     pickUpController
                                                         .mapEventToState(
                                                       PickUpEvent
@@ -416,9 +416,8 @@ class PickUpForm extends HookConsumerWidget {
                                                         ),
                                                       ),
                                                     );
-                                                  } else if (pickUpState
-                                                          .pickupPlace ==
-                                                      null) {
+                                                  } else if (!pickUpState
+                                                      .pickUpChosen) {
                                                     PickUpEvent.pickupChoosen(
                                                       NearbySearch(
                                                         name: locationName,

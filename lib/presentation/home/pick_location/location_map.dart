@@ -57,7 +57,7 @@ class _LocationMapState extends State<LocationMap> {
         widget.locationData.latitude!,
         widget.locationData.longitude!,
       ),
-      zoom: 16,
+      zoom: 18,
     );
 
     return Stack(
@@ -72,7 +72,7 @@ class _LocationMapState extends State<LocationMap> {
             // markers: markers,
             onCameraMove: (positon) {
               widget.onCameraMove(positon);
-              setState(() {});
+              // setState(() {});
             },
           ),
         ),
