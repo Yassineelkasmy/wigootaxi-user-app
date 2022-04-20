@@ -22,6 +22,7 @@ class PickUpState with _$PickUpState {
     required RideType rideType,
     DateTime? rideDateTime,
     required List<NearbySearch> places,
+    required bool isSwipping,
     double? cameraLat,
     double? cameraLong,
     double? userLat,
@@ -39,5 +40,6 @@ class PickUpState with _$PickUpState {
         places: [],
         dropOffChosen: false,
         pickUpChosen: false,
+        isSwipping: false,
       );
 }

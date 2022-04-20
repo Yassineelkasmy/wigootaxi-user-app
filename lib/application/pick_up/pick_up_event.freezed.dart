@@ -30,12 +30,8 @@ class _$PickUpEventTearOff {
     );
   }
 
-  ReverseGecodingFromMapRequested reverseGecodingFromMapRequested(
-      double lat, double long) {
-    return ReverseGecodingFromMapRequested(
-      lat,
-      long,
-    );
+  ReverseGecodingFromMapRequested reverseGecodingFromMapRequested() {
+    return const ReverseGecodingFromMapRequested();
   }
 
   NearbyLocationsRequested nearbyLocationsRequested(double lat, double long) {
@@ -116,8 +112,7 @@ mixin _$PickUpEvent {
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -137,7 +132,7 @@ mixin _$PickUpEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -156,7 +151,7 @@ mixin _$PickUpEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -304,8 +299,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -328,7 +322,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -350,7 +344,7 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -552,8 +546,7 @@ class _$NearbyQueryChanged
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -576,7 +569,7 @@ class _$NearbyQueryChanged
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -598,7 +591,7 @@ class _$NearbyQueryChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -715,7 +708,6 @@ abstract class $ReverseGecodingFromMapRequestedCopyWith<$Res> {
           ReverseGecodingFromMapRequested value,
           $Res Function(ReverseGecodingFromMapRequested) then) =
       _$ReverseGecodingFromMapRequestedCopyWithImpl<$Res>;
-  $Res call({double lat, double long});
 }
 
 /// @nodoc
@@ -730,23 +722,6 @@ class _$ReverseGecodingFromMapRequestedCopyWithImpl<$Res>
   @override
   ReverseGecodingFromMapRequested get _value =>
       super._value as ReverseGecodingFromMapRequested;
-
-  @override
-  $Res call({
-    Object? lat = freezed,
-    Object? long = freezed,
-  }) {
-    return _then(ReverseGecodingFromMapRequested(
-      lat == freezed
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      long == freezed
-          ? _value.long
-          : long // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
 }
 
 /// @nodoc
@@ -754,16 +729,11 @@ class _$ReverseGecodingFromMapRequestedCopyWithImpl<$Res>
 class _$ReverseGecodingFromMapRequested
     with DiagnosticableTreeMixin
     implements ReverseGecodingFromMapRequested {
-  const _$ReverseGecodingFromMapRequested(this.lat, this.long);
-
-  @override
-  final double lat;
-  @override
-  final double long;
+  const _$ReverseGecodingFromMapRequested();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PickUpEvent.reverseGecodingFromMapRequested(lat: $lat, long: $long)';
+    return 'PickUpEvent.reverseGecodingFromMapRequested()';
   }
 
   @override
@@ -771,31 +741,18 @@ class _$ReverseGecodingFromMapRequested
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty(
-          'type', 'PickUpEvent.reverseGecodingFromMapRequested'))
-      ..add(DiagnosticsProperty('lat', lat))
-      ..add(DiagnosticsProperty('long', long));
+          'type', 'PickUpEvent.reverseGecodingFromMapRequested'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ReverseGecodingFromMapRequested &&
-            const DeepCollectionEquality().equals(other.lat, lat) &&
-            const DeepCollectionEquality().equals(other.long, long));
+            other is ReverseGecodingFromMapRequested);
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(lat),
-      const DeepCollectionEquality().hash(long));
-
-  @JsonKey(ignore: true)
-  @override
-  $ReverseGecodingFromMapRequestedCopyWith<ReverseGecodingFromMapRequested>
-      get copyWith => _$ReverseGecodingFromMapRequestedCopyWithImpl<
-          ReverseGecodingFromMapRequested>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -803,8 +760,7 @@ class _$ReverseGecodingFromMapRequested
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -819,7 +775,7 @@ class _$ReverseGecodingFromMapRequested
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
   }) {
-    return reverseGecodingFromMapRequested(lat, long);
+    return reverseGecodingFromMapRequested();
   }
 
   @override
@@ -827,7 +783,7 @@ class _$ReverseGecodingFromMapRequested
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -841,7 +797,7 @@ class _$ReverseGecodingFromMapRequested
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
   }) {
-    return reverseGecodingFromMapRequested?.call(lat, long);
+    return reverseGecodingFromMapRequested?.call();
   }
 
   @override
@@ -849,7 +805,7 @@ class _$ReverseGecodingFromMapRequested
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -865,7 +821,7 @@ class _$ReverseGecodingFromMapRequested
     required TResult orElse(),
   }) {
     if (reverseGecodingFromMapRequested != null) {
-      return reverseGecodingFromMapRequested(lat, long);
+      return reverseGecodingFromMapRequested();
     }
     return orElse();
   }
@@ -949,14 +905,8 @@ class _$ReverseGecodingFromMapRequested
 }
 
 abstract class ReverseGecodingFromMapRequested implements PickUpEvent {
-  const factory ReverseGecodingFromMapRequested(double lat, double long) =
+  const factory ReverseGecodingFromMapRequested() =
       _$ReverseGecodingFromMapRequested;
-
-  double get lat;
-  double get long;
-  @JsonKey(ignore: true)
-  $ReverseGecodingFromMapRequestedCopyWith<ReverseGecodingFromMapRequested>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1050,8 +1000,7 @@ class _$NearbyLocationsRequested
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -1074,7 +1023,7 @@ class _$NearbyLocationsRequested
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -1096,7 +1045,7 @@ class _$NearbyLocationsRequested
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -1290,8 +1239,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -1314,7 +1262,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -1336,7 +1284,7 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -1528,8 +1476,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -1552,7 +1499,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -1574,7 +1521,7 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -1758,8 +1705,7 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -1782,7 +1728,7 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -1804,7 +1750,7 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -1965,8 +1911,7 @@ class _$RideScheduledToNow
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -1989,7 +1934,7 @@ class _$RideScheduledToNow
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -2011,7 +1956,7 @@ class _$RideScheduledToNow
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -2200,8 +2145,7 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -2224,7 +2168,7 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -2246,7 +2190,7 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -2445,8 +2389,7 @@ class _$UserLocationDetected
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -2469,7 +2412,7 @@ class _$UserLocationDetected
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -2491,7 +2434,7 @@ class _$UserLocationDetected
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -2654,8 +2597,7 @@ class _$DropOffChosenFromMap
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -2678,7 +2620,7 @@ class _$DropOffChosenFromMap
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -2700,7 +2642,7 @@ class _$DropOffChosenFromMap
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -2856,8 +2798,7 @@ class _$PickUpChosenFormMap
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -2880,7 +2821,7 @@ class _$PickUpChosenFormMap
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -2902,7 +2843,7 @@ class _$PickUpChosenFormMap
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -3099,8 +3040,7 @@ class _$PickUpChosenFormUserLocation
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -3123,7 +3063,7 @@ class _$PickUpChosenFormUserLocation
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -3145,7 +3085,7 @@ class _$PickUpChosenFormUserLocation
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -3304,8 +3244,7 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -3328,7 +3267,7 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -3350,7 +3289,7 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -3502,8 +3441,7 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     required TResult Function() startedTyping,
     required TResult Function(String query, double lat, double long)
         nearbyQueryChanged,
-    required TResult Function(double lat, double long)
-        reverseGecodingFromMapRequested,
+    required TResult Function() reverseGecodingFromMapRequested,
     required TResult Function(double lat, double long) nearbyLocationsRequested,
     required TResult Function(NearbySearch pickup) pickupChoosen,
     required TResult Function(NearbySearch dropoff) dropoffChoosen,
@@ -3526,7 +3464,7 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,
@@ -3548,7 +3486,7 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startedTyping,
     TResult Function(String query, double lat, double long)? nearbyQueryChanged,
-    TResult Function(double lat, double long)? reverseGecodingFromMapRequested,
+    TResult Function()? reverseGecodingFromMapRequested,
     TResult Function(double lat, double long)? nearbyLocationsRequested,
     TResult Function(NearbySearch pickup)? pickupChoosen,
     TResult Function(NearbySearch dropoff)? dropoffChoosen,

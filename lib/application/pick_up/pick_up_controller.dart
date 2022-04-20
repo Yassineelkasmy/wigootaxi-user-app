@@ -75,14 +75,13 @@ class PickUpController extends StateNotifier<PickUpState> {
         );
         final reverseGeocodingSuccessOrFailure =
             await _geocodingRepository.reverseGeocode(
-          lat: event.lat,
-          long: event.long,
+          lat: state.cameraLat!,
+          long: state.cameraLong!,
         );
 
         reverseGeocodingSuccessOrFailure.fold(
           (failure) => print('errorrr'),
           (reverseGeocodingResult) {
-            print(reverseGeocodingResult);
             state = state.copyWith(
               isGeocodingFromMapLoaidng: false,
               reverseGeocodingResult: reverseGeocodingResult,
@@ -103,27 +102,28 @@ class PickUpController extends StateNotifier<PickUpState> {
         );
       },
       cameraMoved: (event) async {
-        if (state.cameraLat == null || state.cameraLong == null) {
-          state = state.copyWith(cameraLat: event.lat, cameraLong: event.long);
-        } else {
-          final distance = calculateDistance(
-            event.lat,
-            event.long,
-            state.cameraLat,
-            state.cameraLong,
-          );
-          print(distance);
-          if (distance > .1) {
-            state =
-                state.copyWith(cameraLat: event.lat, cameraLong: event.long);
-            mapEventToState(
-              PickUpEvent.reverseGecodingFromMapRequested(
-                event.lat,
-                event.long,
-              ),
-            );
-          }
-        }
+        // if (state.cameraLat == null || state.cameraLong == null) {
+        //   state = state.copyWith(cameraLat: event.lat, cameraLong: event.long);
+        // } else {
+        //   final distance = calculateDistance(
+        //     event.lat,
+        //     event.long,
+        //     state.cameraLat,
+        //     state.cameraLong,
+        //   );
+        //   print(distance);
+        //   if (distance > .1) {
+        //     state =
+        //         state.copyWith(cameraLat: event.lat, cameraLong: event.long);
+        //     mapEventToState(
+        //       PickUpEvent.reverseGecodingFromMapRequested(
+        //         event.lat,
+        //         event.long,
+        //       ),
+        //     );
+        //   }
+        // }
+        state = state.copyWith(cameraLat: event.lat, cameraLong: event.long);
       },
       pickUpChosenFormMap: (event) async {
         final reverseGeocodingFromMapResult = state.reverseGeocodingResult;
@@ -179,8 +179,30 @@ class PickUpController extends StateNotifier<PickUpState> {
         mapEventToState(
           PickUpEvent.nearbyLocationsRequested(event.lat, event.long),
         );
-        mapEventToState(
-          PickUpEvent.reverseGecodingFromMapRequested(event.lat, event.long),
+        // mapEventToState(
+        //   PickUpEvent.reverseGecodingFromMapRequested(
+        //     state.cameraLat!,
+        //     state.cameraLong!,
+        //   ),
+        // );
+
+        state = state.copyWith(
+          isGeocodingFromMapLoaidng: true,
+        );
+        final reverseGeocodingSuccessOrFailure =
+            await _geocodingRepository.reverseGeocode(
+          lat: state.userLat!,
+          long: state.userLong!,
+        );
+
+        reverseGeocodingSuccessOrFailure.fold(
+          (failure) => print('errorrr'),
+          (reverseGeocodingResult) {
+            state = state.copyWith(
+              isGeocodingFromMapLoaidng: false,
+              reverseGeocodingResult: reverseGeocodingResult,
+            );
+          },
         );
       },
     );

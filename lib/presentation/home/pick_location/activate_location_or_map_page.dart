@@ -34,21 +34,23 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                     bottom: .3.sh,
                     child: LocationMap(
                       locationData: locationState.locationData!,
+                      onCameraIdle: () {
+                        if (!pickUpState.pickUpChosen &&
+                            pickUpState.dropOffChosen) {
+                          pickUpController.mapEventToState(
+                            PickUpEvent.reverseGecodingFromMapRequested(),
+                          );
+                        }
+                      },
                       onCameraMove: (cameraPosition) {
                         if (!pickUpState.pickUpChosen &&
                             pickUpState.dropOffChosen) {
-                          // pickUpController.mapEventToState(
-                          //   PickUpEvent.reverseGecodingFromMapRequested(
-                          //     cameraPosition.target.latitude,
-                          //     cameraPosition.target.longitude,
-                          //   ),
-                          // );
-                          pickUpController
-                              .mapEventToState(PickUpEvent.cameraMoved(
-                            cameraPosition.target.latitude,
-                            cameraPosition.target.longitude,
-                          ));
-                          print('Moved');
+                          pickUpController.mapEventToState(
+                            PickUpEvent.cameraMoved(
+                              cameraPosition.target.latitude,
+                              cameraPosition.target.longitude,
+                            ),
+                          );
                         }
                       },
                     ),

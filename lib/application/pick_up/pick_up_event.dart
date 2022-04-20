@@ -9,8 +9,8 @@ class PickUpEvent with _$PickUpEvent {
   const factory PickUpEvent.startedTyping() = StartedTyping;
   const factory PickUpEvent.nearbyQueryChanged(
       String query, double lat, double long) = NearbyQueryChanged;
-  const factory PickUpEvent.reverseGecodingFromMapRequested(
-      double lat, double long) = ReverseGecodingFromMapRequested;
+  const factory PickUpEvent.reverseGecodingFromMapRequested() =
+      ReverseGecodingFromMapRequested;
   const factory PickUpEvent.nearbyLocationsRequested(double lat, double long) =
       NearbyLocationsRequested;
 

@@ -14,9 +14,11 @@ class LocationMap extends ConsumerStatefulWidget {
     Key? key,
     required this.locationData,
     required this.onCameraMove,
+    required this.onCameraIdle,
   }) : super(key: key);
   final LocationData locationData;
   final void Function(CameraPosition) onCameraMove;
+  final void Function() onCameraIdle;
 
   @override
   LocationMapState createState() => LocationMapState();
@@ -42,16 +44,16 @@ class LocationMapState extends ConsumerState<LocationMap> {
       if (next.pickUpChosen) {
         setState(() {});
       } else if (next.dropOffChosen) {
-        _googleMapController.animateCamera(
-          CameraUpdate.newCameraPosition(
-            CameraPosition(
-              target: LatLng(
-                next.dropoffPlace!.geometry.location.lat,
-                next.dropoffPlace!.geometry.location.lng,
-              ),
-            ),
-          ),
-        );
+        // _googleMapController.animateCamera(
+        //   CameraUpdate.newCameraPosition(
+        //     CameraPosition(
+        //       target: LatLng(
+        //         next.dropoffPlace!.geometry.location.lat,
+        //         next.dropoffPlace!.geometry.location.lng,
+        //       ),
+        //     ),
+        //   ),
+        // );
       }
     });
     final cameraPosition = CameraPosition(
@@ -76,6 +78,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
               _googleMapController = mapController;
             },
             initialCameraPosition: cameraPosition,
+            onCameraIdle: widget.onCameraIdle,
             onCameraMove: (positon) {
               widget.onCameraMove(positon);
             },
