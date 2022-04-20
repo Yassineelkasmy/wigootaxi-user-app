@@ -28,7 +28,7 @@ final googlePlacesDirectionsProvider =
   },
 );
 final pickUpProvider =
-    StateNotifierProvider<PickUpController, PickUpState>((ref) {
+    StateNotifierProvider.autoDispose<PickUpController, PickUpState>((ref) {
   final googlePlacesNearbySearch = ref.watch(googlePlacesNearbySearchProvider);
   final googlePlacesGeocoding = ref.watch(googlePlacesGeocodingProvider);
   final pickUpController =
