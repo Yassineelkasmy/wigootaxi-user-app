@@ -35,23 +35,20 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                     child: LocationMap(
                       locationData: locationState.locationData!,
                       onCameraIdle: () {
-                        if (!pickUpState.pickUpChosen &&
-                            pickUpState.dropOffChosen) {
+                        if (!pickUpState.pickUpChosen ||
+                            !pickUpState.dropOffChosen) {
                           pickUpController.mapEventToState(
                             PickUpEvent.reverseGecodingFromMapRequested(),
                           );
                         }
                       },
                       onCameraMove: (cameraPosition) {
-                        if (!pickUpState.pickUpChosen &&
-                            pickUpState.dropOffChosen) {
-                          pickUpController.mapEventToState(
-                            PickUpEvent.cameraMoved(
-                              cameraPosition.target.latitude,
-                              cameraPosition.target.longitude,
-                            ),
-                          );
-                        }
+                        pickUpController.mapEventToState(
+                          PickUpEvent.cameraMoved(
+                            cameraPosition.target.latitude,
+                            cameraPosition.target.longitude,
+                          ),
+                        );
                       },
                     ),
                   ),
@@ -78,33 +75,39 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
               ))
           : SizedBox(
               height: double.maxFinite,
-              child: Column(
-                children: [
-                  40.h.verticalSpace,
-                  Text(
-                    "Pour une meilleure expérience, donnez-nous accès à votre position actuelle via votre GPS mobile",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                  20.h.verticalSpace,
-                  SizedBox(
-                    width: double.maxFinite,
-                    child: Padding(
-                      padding: kPadding,
-                      child: SubmitButton(
-                        onPressed: () {
-                          locationController.mapEventToState(
-                            LocationEvent.locationRequested(),
-                          );
-                        },
-                        text: "Autoriser l'accès au GPS",
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.w,
+                  vertical: 20.h,
+                ),
+                child: Column(
+                  children: [
+                    40.h.verticalSpace,
+                    Text(
+                      "Pour une meilleure expérience, donnez-nous accès à votre position actuelle via votre GPS mobile",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16.sp,
                       ),
                     ),
-                  ),
-                  MapAnimation(),
-                ],
+                    20.h.verticalSpace,
+                    SizedBox(
+                      width: double.maxFinite,
+                      child: Padding(
+                        padding: kPadding,
+                        child: SubmitButton(
+                          onPressed: () {
+                            locationController.mapEventToState(
+                              LocationEvent.locationRequested(),
+                            );
+                          },
+                          text: "Autoriser l'accès au GPS",
+                        ),
+                      ),
+                    ),
+                    MapAnimation(),
+                  ],
+                ),
               ),
             ),
     );

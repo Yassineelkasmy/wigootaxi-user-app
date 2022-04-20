@@ -80,7 +80,7 @@ class PickUpController extends StateNotifier<PickUpState> {
         );
 
         reverseGeocodingSuccessOrFailure.fold(
-          (failure) => print('errorrr'),
+          (failure) => null,
           (reverseGeocodingResult) {
             state = state.copyWith(
               isGeocodingFromMapLoaidng: false,
