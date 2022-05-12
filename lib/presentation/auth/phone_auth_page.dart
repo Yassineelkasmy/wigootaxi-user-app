@@ -30,6 +30,7 @@ class PhoneAuthPage extends HookConsumerWidget {
     });
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         centerTitle: false,
         iconTheme: IconThemeData(color: Colors.black),

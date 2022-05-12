@@ -55,124 +55,151 @@ class Home extends HookConsumerWidget {
                 ),
                 10.verticalSpace,
                 buildCategories(context),
-                10.verticalSpace,
-                Text(
-                  "Commencez votre voyage",
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 16.sp,
-                  ),
-                ),
+                5.h.verticalSpace,
               ],
             ),
           ),
-          EnhanceStepper(
-            currentStep: 0,
-            stepIconSize: 36,
-            controlsBuilder: (_, __) {
-              return Row();
-            },
-            physics: ClampingScrollPhysics(),
-            steps: [
-              EnhanceStep(
-                icon: buildHomeIcon('home_icon2'),
-                title: GestureDetector(
-                  onTap: () {
-                    AutoRouter.of(context)
-                        .push(ActivateLocationOrMapPageRoute());
-                  },
-                  child: Text(
-                    "Choisissez Votre Point De Retrait",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.bold,
+          Container(
+              margin: EdgeInsets.symmetric(horizontal: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  color: kPrimaryColor,
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  10.verticalSpace,
+                  Padding(
+                    padding: kPadding,
+                    child: Text(
+                      "Commencez votre voyage",
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontSize: 16.sp,
+                      ),
                     ),
                   ),
-                ),
-                subtitle: Text(
-                  "Tanger, Val Flueri",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14.sp,
-                  ),
-                ),
-                content: SizedBox(),
-              ),
-              EnhanceStep(
-                icon: buildHomeIcon('home_icon1'),
-                title: Text(
-                  "Choisissez Votre Destination",
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                content: Text('content'),
-                subtitle: Text(
-                  "Tanger, Val Flueri",
-                  style: TextStyle(color: Colors.grey, fontSize: 14.sp),
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: kPadding,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Envoyer Ou Faire Une Demande De Credit',
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 16.sp,
-                  ),
-                ),
-                10.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.only(left: 5.w),
-                  child: Row(
-                    children: [
-                      buildHomeIcon('home_icon5'),
-                      10.horizontalSpace,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Partager Un Traget ?",
+                  EnhanceStepper(
+                    currentStep: 0,
+                    stepIconSize: 36,
+                    controlsBuilder: (_, __) {
+                      return Row();
+                    },
+                    physics: ClampingScrollPhysics(),
+                    steps: [
+                      EnhanceStep(
+                        icon: buildHomeIcon('home_icon2'),
+                        title: GestureDetector(
+                          onTap: () {
+                            AutoRouter.of(context)
+                                .push(ActivateLocationOrMapPageRoute());
+                          },
+                          child: Text(
+                            "Choisissez Votre Point De Retrait",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 14.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          5.verticalSpace,
-                          Text(
-                            "Envoyer Ou Demander De Credit",
-                            style:
-                                TextStyle(color: Colors.grey, fontSize: 14.sp),
+                        ),
+                        subtitle: Text(
+                          "Tanger, Val Flueri",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14.sp,
                           ),
-                        ],
+                        ),
+                        content: SizedBox(),
+                      ),
+                      EnhanceStep(
+                        icon: buildHomeIcon('home_icon1'),
+                        title: Text(
+                          "Choisissez Votre Destination",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        content: Text('content'),
+                        subtitle: Text(
+                          "Tanger, Val Flueri",
+                          style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+                        ),
                       ),
                     ],
                   ),
-                ),
-                10.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildHomeButton(
-                      text: "Envoyer un credit",
-                      onPressed: () => {},
+                ],
+              )),
+          5.h.verticalSpace,
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(
+                color: kPrimaryColor,
+              ),
+            ),
+            child: Padding(
+              padding: kPadding,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Envoyer Ou Faire Une Demande De Credit',
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 16.sp,
                     ),
-                    buildHomeButton(
-                      text: "Demander un credit",
-                      onPressed: () => {},
+                  ),
+                  10.verticalSpace,
+                  Padding(
+                    padding: EdgeInsets.only(left: 5.w),
+                    child: Row(
+                      children: [
+                        buildHomeIcon('home_icon5'),
+                        10.horizontalSpace,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Partager Un Traget ?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            5.verticalSpace,
+                            Text(
+                              "Envoyer Ou Demander De Credit",
+                              style: TextStyle(
+                                  color: Colors.grey, fontSize: 14.sp),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ],
-                )
-              ],
+                  ),
+                  10.verticalSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      buildHomeButton(
+                        text: "Envoyer un credit",
+                        onPressed: () => {},
+                      ),
+                      buildHomeButton(
+                        text: "Demander un credit",
+                        onPressed: () => {},
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           )
         ],
