@@ -119,7 +119,6 @@ class FireBaseAuthFacade {
           email: email, password: password);
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      print(e);
       if (e.code == 'wrong-password' || e.code == 'user-not-found') {
         return left(const AuthFailure.invalidCredentials());
       }
@@ -145,7 +144,20 @@ class FireBaseAuthFacade {
         accessToken: googleAuthentication.accessToken,
       );
 
-      await _firebaseAuth.signInWithCredential(authCredential);
+      final creds = await _firebaseAuth.signInWithCredential(authCredential);
+      if (creds.user != null) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(creds.user!.uid)
+            .set(
+          {
+            'username': creds.user!.displayName,
+            'email': creds.user!.email,
+            'isPhoneVerified': false,
+            'ts': Timestamp.now(),
+          },
+        );
+      }
       return right(unit);
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
