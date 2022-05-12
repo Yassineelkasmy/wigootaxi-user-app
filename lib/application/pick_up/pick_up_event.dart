@@ -31,4 +31,5 @@ class PickUpEvent with _$PickUpEvent {
   ) = PickUpChosenFormUserLocation;
   const factory PickUpEvent.pickUpRemoved() = PickUpRemoved;
   const factory PickUpEvent.dropOffRemoved() = DropOffRemoved;
+  const factory PickUpEvent.formCleared() = FormCleared;
 }

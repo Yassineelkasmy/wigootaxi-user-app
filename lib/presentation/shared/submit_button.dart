@@ -6,6 +6,7 @@ class SubmitButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.text,
+    this.isLoading = false,
     this.color,
     this.textColor,
   }) : super(key: key);
@@ -13,6 +14,7 @@ class SubmitButton extends StatelessWidget {
   final String text;
   final Color? color;
   final Color? textColor;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -24,12 +26,16 @@ class SubmitButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(
-        text,
-        style: TextStyle(
-          color: textColor,
-        ),
-      ),
+      child: isLoading
+          ? CircularProgressIndicator(
+              color: Colors.white,
+            )
+          : Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+              ),
+            ),
     );
   }
 }

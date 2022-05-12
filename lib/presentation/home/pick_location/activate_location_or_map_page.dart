@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -61,7 +59,9 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                         children: [
                           IconButton(
                             color: kPrimaryColor,
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                             icon: Icon(
                               Icons.cancel_outlined,
                               size: 32,

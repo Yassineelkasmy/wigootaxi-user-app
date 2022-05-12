@@ -12,5 +12,17 @@ class AuthFormEvent with _$AuthFormEvent {
       SignInWithFaceboolPressed;
   const factory AuthFormEvent.registerWithFacebookPressed() =
       RegisterWithFaceboolPressed;
+  const factory AuthFormEvent.signInWithEmailAndPasswordPressed(
+    String email,
+    String password,
+  ) = SignWithEmailAndPasswordPressed;
+
+  const factory AuthFormEvent.registerWithEmailAndPasswordPressed(
+    String email,
+    String password,
+    String username,
+  ) = RegisterWithEmailAndPasswordPressed;
   const factory AuthFormEvent.signOutPressed() = SignOutPressed;
+  const factory AuthFormEvent.phoneNumberSubmitted(String phoneNumber) =
+      PhoneNumberSubmitted;
 }

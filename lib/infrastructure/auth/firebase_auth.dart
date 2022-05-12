@@ -1,12 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:taxidriver/domain/auth/auth_failure.dart';
-import 'package:taxidriver/domain/auth/i_auth_facade.dart';
 import 'package:taxidriver/domain/auth/user.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-class FireBaseAuthFacade implements IAuthFacade {
+class FireBaseAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final FacebookAuth _facebookAuth;
@@ -23,12 +23,18 @@ class FireBaseAuthFacade implements IAuthFacade {
     if (user == null) {
       return none();
     } else {
+      final userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+
       return optionOf(
         User(
           uid: user.uid,
           email: user.email!,
-          displayName: user.displayName!,
-          photoURL: user.photoURL!,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          isPhoneVerified: userDoc.data()!['isPhoneVerified'] as bool,
         ),
       );
     }
@@ -70,14 +76,29 @@ class FireBaseAuthFacade implements IAuthFacade {
     ]);
   }
 
-  @override
-  Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
-      {required String email, required String password}) async {
+  Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String username,
+  }) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      final creds = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      if (creds.user != null) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(creds.user!.uid)
+            .set(
+          {
+            'username': username,
+            'email': email,
+            'isPhoneVerified': false,
+            'ts': Timestamp.now(),
+          },
+        );
+      }
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email_already_in_use') {
@@ -98,6 +119,7 @@ class FireBaseAuthFacade implements IAuthFacade {
           email: email, password: password);
       return right(unit);
     } on FirebaseAuthException catch (e) {
+      print(e);
       if (e.code == 'wrong-password' || e.code == 'user-not-found') {
         return left(const AuthFailure.invalidCredentials());
       }

@@ -3,52 +3,81 @@ import 'package:taxidriver/application/auth/auth_event.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_state.dart';
 import 'package:taxidriver/application/auth/auth_controller.dart';
-import 'package:taxidriver/domain/auth/i_auth_facade.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:taxidriver/infrastructure/auth/firebase_auth.dart';
 
 class AuthFormController extends StateNotifier<AuthFormState> {
   AuthFormController(this._authFacade, this._authStateController)
       : super(AuthFormState.initial());
-  final IAuthFacade _authFacade;
+  final FireBaseAuthFacade _authFacade;
   final AuthController _authStateController;
   void checkAuthState() {
     _authStateController.mapEventToState(const AuthEvent.authCheckRequested());
   }
 
   Future mapEventToState(AuthFormEvent event) {
-    return event.map(signInWithGooglePresseed: (_) async {
-      state = state.copyWith(
-        isSubmitting: true,
-      );
-      final authFailureOrSuccess = await _authFacade.signInWithGoogle();
-      state = state.copyWith(
-        authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
-        isSubmitting: false,
-      );
-      authFailureOrSuccess.map(
-        (r) => checkAuthState(),
-      );
-    }, signInWithFacebookPressed: (_) async {
-      checkAuthState();
-      throw UnimplementedError();
-    }, signOutPressed: (_) async {
-      await _authFacade.signOut();
-      _authStateController.mapEventToState(AuthEvent.signedOut());
-    }, registerWithGooglePressed: (_) async {
-      state = state.copyWith(
-        isSubmitting: true,
-      );
-      final authFailureOrSuccess = await _authFacade.registerWithGoogle();
-      state = state.copyWith(
-        authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
-        isSubmitting: false,
-      );
-      authFailureOrSuccess.map(
-        (r) => checkAuthState(),
-      );
-    }, registerWithFacebookPressed: (_) async {
-      await _authFacade.registerWithFacebook();
-      checkAuthState();
-    });
+    return event.map(
+      signInWithGooglePresseed: (_) async {
+        state = state.copyWith(
+          isSubmitting: true,
+        );
+        final authFailureOrSuccess = await _authFacade.signInWithGoogle();
+        state = state.copyWith(
+          authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
+          isSubmitting: false,
+        );
+        authFailureOrSuccess.map(
+          (r) => checkAuthState(),
+        );
+      },
+      signInWithFacebookPressed: (_) async {
+        checkAuthState();
+        throw UnimplementedError();
+      },
+      signOutPressed: (_) async {
+        await _authFacade.signOut();
+        _authStateController.mapEventToState(AuthEvent.signedOut());
+      },
+      registerWithGooglePressed: (_) async {
+        state = state.copyWith(
+          isSubmitting: true,
+        );
+        final authFailureOrSuccess = await _authFacade.registerWithGoogle();
+        state = state.copyWith(
+          authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
+          isSubmitting: false,
+        );
+        authFailureOrSuccess.map(
+          (r) => checkAuthState(),
+        );
+      },
+      registerWithFacebookPressed: (_) async {
+        await _authFacade.registerWithFacebook();
+        checkAuthState();
+      },
+      registerWithEmailAndPasswordPressed: (event) async {
+        state = state.copyWith(isSubmitting: true);
+        final registerWithSuccessOrFailure =
+            await _authFacade.registerWithEmailAndPassword(
+          email: event.email,
+          password: event.email,
+          username: event.username,
+        );
+        state = state.copyWith(isSubmitting: false);
+      },
+      phoneNumberSubmitted: (event) async {
+        state = state.copyWith(isSubmitting: true);
+      },
+      signInWithEmailAndPasswordPressed: (event) async {
+        state = state.copyWith(isSubmitting: true);
+        final successOrFailure = await _authFacade.signInWithEmailAndPassword(
+          email: event.email,
+          password: event.password,
+        );
+        successOrFailure.fold((l) => null, (success) => checkAuthState());
+
+        state = state.copyWith(isSubmitting: false);
+      },
+    );
   }
 }

@@ -1,11 +1,11 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
+import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
 import 'package:taxidriver/presentation/home/pick_location/activate_location_or_map_page.dart';
 import 'package:taxidriver/presentation/home/pick_location/pick_up_form.dart';
 
@@ -15,6 +15,8 @@ class PickUpRootPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locationState = ref.watch(locationProvider);
+    final pickupController = ref.watch(pickUpProvider.notifier);
+    pickupController.mapEventToState(PickUpEvent.formCleared());
     return WillPopScope(
       onWillPop: () async {
         final okCancell = await showOkCancelAlertDialog(

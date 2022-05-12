@@ -205,6 +205,9 @@ class PickUpController extends StateNotifier<PickUpState> {
           },
         );
       },
+      formCleared: (_) async {
+        state = PickUpState.initial();
+      },
     );
   }
 }

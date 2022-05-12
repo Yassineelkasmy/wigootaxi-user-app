@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:taxidriver/application/auth/auth_event.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/auth/widgets/social_media_button.dart';
@@ -16,7 +17,7 @@ import '../shared/logo.dart';
 
 class SignUpPage extends HookConsumerWidget {
   SignUpPage({Key? key}) : super(key: key);
-  final loginForm = FormGroup(
+  final signUpForm = FormGroup(
     {
       'password': FormControl<String>(
         validators: [
@@ -39,17 +40,13 @@ class SignUpPage extends HookConsumerWidget {
           Validators.minLength(3),
         ],
       ),
-      'phone': FormControl<String>(
-        validators: [
-          Validators.required,
-          Validators.minLength(10),
-        ],
-      ),
     },
   );
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authController = ref.watch(authFormProvider.notifier);
+    final authFormController = ref.watch(authFormProvider.notifier);
+    final authFormState = ref.watch(authFormProvider);
+    final authController = ref.watch(authtProvider.notifier);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -70,7 +67,7 @@ class SignUpPage extends HookConsumerWidget {
               children: [
                 buildLogo(white: false),
                 ReactiveForm(
-                  formGroup: loginForm,
+                  formGroup: signUpForm,
                   child: Column(
                     children: [
                       ReactiveTextField(
@@ -146,8 +143,30 @@ class SignUpPage extends HookConsumerWidget {
                       SizedBox(
                         width: double.maxFinite,
                         child: SubmitButton(
-                          onPressed: () => AutoRouter.of(context)
-                              .push(PhoneVerificationPageRoute()),
+                          isLoading: authFormState.isSubmitting,
+                          onPressed: () async {
+                            final username = signUpForm
+                                .findControl('username')!
+                                .value as String;
+
+                            final email = signUpForm.findControl('email')!.value
+                                as String;
+                            final password = signUpForm
+                                .findControl('password')!
+                                .value as String;
+
+                            await authFormController.mapEventToState(
+                              AuthFormEvent.registerWithEmailAndPasswordPressed(
+                                email,
+                                password,
+                                username,
+                              ),
+                            );
+
+                            authController.mapEventToState(
+                              AuthEvent.authCheckRequested(),
+                            );
+                          },
                           text: "SUIVANT",
                         ),
                       ),
@@ -157,11 +176,12 @@ class SignUpPage extends HookConsumerWidget {
                 ),
                 SocialMedia(
                   onFacebookPressed: () {
-                    authController.mapEventToState(
-                        const AuthFormEvent.registerWithFacebookPressed());
+                    authFormController.mapEventToState(
+                      const AuthFormEvent.registerWithFacebookPressed(),
+                    );
                   },
                   onGooglePressed: () {
-                    authController.mapEventToState(
+                    authFormController.mapEventToState(
                         const AuthFormEvent.registerWithGooglePressed());
                   },
                   text: "S'INSCRIRE AVEC",

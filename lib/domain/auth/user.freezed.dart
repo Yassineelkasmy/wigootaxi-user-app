@@ -21,11 +21,13 @@ class _$UserTearOff {
   _User call(
       {required String uid,
       required String email,
-      required String displayName,
-      required String photoURL}) {
+      required bool isPhoneVerified,
+      String? displayName,
+      String? photoURL}) {
     return _User(
       uid: uid,
       email: email,
+      isPhoneVerified: isPhoneVerified,
       displayName: displayName,
       photoURL: photoURL,
     );
@@ -39,8 +41,9 @@ const $User = _$UserTearOff();
 mixin _$User {
   String get uid => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get displayName => throw _privateConstructorUsedError;
-  String get photoURL => throw _privateConstructorUsedError;
+  bool get isPhoneVerified => throw _privateConstructorUsedError;
+  String? get displayName => throw _privateConstructorUsedError;
+  String? get photoURL => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -50,7 +53,12 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String uid, String email, String displayName, String photoURL});
+  $Res call(
+      {String uid,
+      String email,
+      bool isPhoneVerified,
+      String? displayName,
+      String? photoURL});
 }
 
 /// @nodoc
@@ -65,6 +73,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   $Res call({
     Object? uid = freezed,
     Object? email = freezed,
+    Object? isPhoneVerified = freezed,
     Object? displayName = freezed,
     Object? photoURL = freezed,
   }) {
@@ -77,14 +86,18 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      isPhoneVerified: isPhoneVerified == freezed
+          ? _value.isPhoneVerified
+          : isPhoneVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       photoURL: photoURL == freezed
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -94,7 +107,12 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String email, String displayName, String photoURL});
+  $Res call(
+      {String uid,
+      String email,
+      bool isPhoneVerified,
+      String? displayName,
+      String? photoURL});
 }
 
 /// @nodoc
@@ -110,6 +128,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   $Res call({
     Object? uid = freezed,
     Object? email = freezed,
+    Object? isPhoneVerified = freezed,
     Object? displayName = freezed,
     Object? photoURL = freezed,
   }) {
@@ -122,14 +141,18 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      isPhoneVerified: isPhoneVerified == freezed
+          ? _value.isPhoneVerified
+          : isPhoneVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       photoURL: photoURL == freezed
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -140,21 +163,24 @@ class _$_User implements _User {
   const _$_User(
       {required this.uid,
       required this.email,
-      required this.displayName,
-      required this.photoURL});
+      required this.isPhoneVerified,
+      this.displayName,
+      this.photoURL});
 
   @override
   final String uid;
   @override
   final String email;
   @override
-  final String displayName;
+  final bool isPhoneVerified;
   @override
-  final String photoURL;
+  final String? displayName;
+  @override
+  final String? photoURL;
 
   @override
   String toString() {
-    return 'User(uid: $uid, email: $email, displayName: $displayName, photoURL: $photoURL)';
+    return 'User(uid: $uid, email: $email, isPhoneVerified: $isPhoneVerified, displayName: $displayName, photoURL: $photoURL)';
   }
 
   @override
@@ -165,6 +191,8 @@ class _$_User implements _User {
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
+                .equals(other.isPhoneVerified, isPhoneVerified) &&
+            const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
             const DeepCollectionEquality().equals(other.photoURL, photoURL));
   }
@@ -174,6 +202,7 @@ class _$_User implements _User {
       runtimeType,
       const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(isPhoneVerified),
       const DeepCollectionEquality().hash(displayName),
       const DeepCollectionEquality().hash(photoURL));
 
@@ -187,17 +216,20 @@ abstract class _User implements User {
   const factory _User(
       {required String uid,
       required String email,
-      required String displayName,
-      required String photoURL}) = _$_User;
+      required bool isPhoneVerified,
+      String? displayName,
+      String? photoURL}) = _$_User;
 
   @override
   String get uid;
   @override
   String get email;
   @override
-  String get displayName;
+  bool get isPhoneVerified;
   @override
-  String get photoURL;
+  String? get displayName;
+  @override
+  String? get photoURL;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
