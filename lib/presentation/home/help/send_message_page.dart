@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:taxidriver/messages/application/message_event.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
+import 'package:taxidriver/providers/message_provider.dart';
 
-class SendMessagePage extends StatelessWidget {
+class SendMessagePage extends HookConsumerWidget {
   SendMessagePage({Key? key}) : super(key: key);
 
   final helpForm = FormGroup(
     {
       'subject': FormControl<String>(validators: [
         Validators.required,
-        Validators.email,
       ]),
       'message': FormControl<String>(
         validators: [
@@ -20,7 +22,9 @@ class SendMessagePage extends StatelessWidget {
     },
   );
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final messageController = ref.watch(messageProvider.notifier);
+    final messageState = ref.watch(messageProvider);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -49,6 +53,7 @@ class SendMessagePage extends StatelessWidget {
                 children: [
                   ReactiveTextField(
                     decoration: InputDecoration(
+                      fillColor: Colors.white,
                       hintText: "Sujet",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -67,6 +72,7 @@ class SendMessagePage extends StatelessWidget {
                     maxLines: 12,
                     keyboardType: TextInputType.multiline,
                     decoration: InputDecoration(
+                      fillColor: Colors.white,
                       hintText: "Message",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -131,7 +137,22 @@ class SendMessagePage extends StatelessWidget {
             ),
             SizedBox(
               width: double.maxFinite,
-              child: SubmitButton(onPressed: () {}, text: "ENVOYER"),
+              child: SubmitButton(
+                  onPressed: () {
+                    final message = helpForm.value['message'] as String?;
+                    final subject = helpForm.value['subject'] as String?;
+
+                    if (message != null && subject != null) {
+                      messageController.mapEventToState(
+                        MessageEvent.messageSent(
+                          message,
+                          subject,
+                          'attachment',
+                        ),
+                      );
+                    }
+                  },
+                  text: "ENVOYER"),
             ),
           ],
         ),

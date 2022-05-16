@@ -59,13 +59,10 @@ class Home extends HookConsumerWidget {
               ],
             ),
           ),
-          Container(
-              margin: EdgeInsets.symmetric(horizontal: 5),
-              decoration: BoxDecoration(
+          Card(
+              elevation: 2,
+              shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  color: kPrimaryColor,
-                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,13 +132,10 @@ class Home extends HookConsumerWidget {
                 ],
               )),
           5.h.verticalSpace,
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 5),
-            decoration: BoxDecoration(
+          Card(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
-              border: Border.all(
-                color: kPrimaryColor,
-              ),
             ),
             child: Padding(
               padding: kPadding,
