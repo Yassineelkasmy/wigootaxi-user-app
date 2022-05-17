@@ -7,9 +7,11 @@ class MessageService {
   Future<Either<FireStoreFailure, Unit>> sendMessage(Message message) async {
     try {
       await FirebaseFirestore.instance.collection('messages').doc().set({
-        'message': message.text,
+        'text': message.text,
         'subject': message.subject,
         'attachment': message.attachment,
+        'email': message.email,
+        'ts': Timestamp.now(),
       });
       return right(unit);
     } catch (e) {

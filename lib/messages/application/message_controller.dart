@@ -17,9 +17,11 @@ class MessageController extends StateNotifier<MessageState> {
         );
         final successOrFailure = await messageService.sendMessage(
           Message(
-              subject: event.subject,
-              text: event.text,
-              attachment: event.attachment),
+            subject: event.subject,
+            text: event.text,
+            attachment: event.attachment,
+            email: event.user.email,
+          ),
         );
 
         successOrFailure.fold(

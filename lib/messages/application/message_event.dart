@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:taxidriver/domain/auth/user.dart';
 
 part 'message_event.freezed.dart';
 
@@ -8,5 +9,6 @@ class MessageEvent with _$MessageEvent {
     String text,
     String subject,
     String attachment,
+    User user,
   ) = MessageSent;
 }

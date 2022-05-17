@@ -18,11 +18,13 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MessageEventTearOff {
   const _$MessageEventTearOff();
 
-  MessageSent messageSent(String text, String subject, String attachment) {
+  MessageSent messageSent(
+      String text, String subject, String attachment, User user) {
     return MessageSent(
       text,
       subject,
       attachment,
+      user,
     );
   }
 }
@@ -35,22 +37,24 @@ mixin _$MessageEvent {
   String get text => throw _privateConstructorUsedError;
   String get subject => throw _privateConstructorUsedError;
   String get attachment => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text, String subject, String attachment)
+    required TResult Function(
+            String text, String subject, String attachment, User user)
         messageSent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String text, String subject, String attachment)?
+    TResult Function(String text, String subject, String attachment, User user)?
         messageSent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text, String subject, String attachment)?
+    TResult Function(String text, String subject, String attachment, User user)?
         messageSent,
     required TResult orElse(),
   }) =>
@@ -82,7 +86,9 @@ abstract class $MessageEventCopyWith<$Res> {
   factory $MessageEventCopyWith(
           MessageEvent value, $Res Function(MessageEvent) then) =
       _$MessageEventCopyWithImpl<$Res>;
-  $Res call({String text, String subject, String attachment});
+  $Res call({String text, String subject, String attachment, User user});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -98,6 +104,7 @@ class _$MessageEventCopyWithImpl<$Res> implements $MessageEventCopyWith<$Res> {
     Object? text = freezed,
     Object? subject = freezed,
     Object? attachment = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
       text: text == freezed
@@ -112,7 +119,18 @@ class _$MessageEventCopyWithImpl<$Res> implements $MessageEventCopyWith<$Res> {
           ? _value.attachment
           : attachment // ignore: cast_nullable_to_non_nullable
               as String,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
+  }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -123,7 +141,10 @@ abstract class $MessageSentCopyWith<$Res>
           MessageSent value, $Res Function(MessageSent) then) =
       _$MessageSentCopyWithImpl<$Res>;
   @override
-  $Res call({String text, String subject, String attachment});
+  $Res call({String text, String subject, String attachment, User user});
+
+  @override
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -141,6 +162,7 @@ class _$MessageSentCopyWithImpl<$Res> extends _$MessageEventCopyWithImpl<$Res>
     Object? text = freezed,
     Object? subject = freezed,
     Object? attachment = freezed,
+    Object? user = freezed,
   }) {
     return _then(MessageSent(
       text == freezed
@@ -155,6 +177,10 @@ class _$MessageSentCopyWithImpl<$Res> extends _$MessageEventCopyWithImpl<$Res>
           ? _value.attachment
           : attachment // ignore: cast_nullable_to_non_nullable
               as String,
+      user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 }
@@ -162,7 +188,7 @@ class _$MessageSentCopyWithImpl<$Res> extends _$MessageEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MessageSent implements MessageSent {
-  const _$MessageSent(this.text, this.subject, this.attachment);
+  const _$MessageSent(this.text, this.subject, this.attachment, this.user);
 
   @override
   final String text;
@@ -170,10 +196,12 @@ class _$MessageSent implements MessageSent {
   final String subject;
   @override
   final String attachment;
+  @override
+  final User user;
 
   @override
   String toString() {
-    return 'MessageEvent.messageSent(text: $text, subject: $subject, attachment: $attachment)';
+    return 'MessageEvent.messageSent(text: $text, subject: $subject, attachment: $attachment, user: $user)';
   }
 
   @override
@@ -184,7 +212,8 @@ class _$MessageSent implements MessageSent {
             const DeepCollectionEquality().equals(other.text, text) &&
             const DeepCollectionEquality().equals(other.subject, subject) &&
             const DeepCollectionEquality()
-                .equals(other.attachment, attachment));
+                .equals(other.attachment, attachment) &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
@@ -192,7 +221,8 @@ class _$MessageSent implements MessageSent {
       runtimeType,
       const DeepCollectionEquality().hash(text),
       const DeepCollectionEquality().hash(subject),
-      const DeepCollectionEquality().hash(attachment));
+      const DeepCollectionEquality().hash(attachment),
+      const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -202,30 +232,31 @@ class _$MessageSent implements MessageSent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text, String subject, String attachment)
+    required TResult Function(
+            String text, String subject, String attachment, User user)
         messageSent,
   }) {
-    return messageSent(text, subject, attachment);
+    return messageSent(text, subject, attachment, user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String text, String subject, String attachment)?
+    TResult Function(String text, String subject, String attachment, User user)?
         messageSent,
   }) {
-    return messageSent?.call(text, subject, attachment);
+    return messageSent?.call(text, subject, attachment, user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text, String subject, String attachment)?
+    TResult Function(String text, String subject, String attachment, User user)?
         messageSent,
     required TResult orElse(),
   }) {
     if (messageSent != null) {
-      return messageSent(text, subject, attachment);
+      return messageSent(text, subject, attachment, user);
     }
     return orElse();
   }
@@ -260,7 +291,8 @@ class _$MessageSent implements MessageSent {
 }
 
 abstract class MessageSent implements MessageEvent {
-  const factory MessageSent(String text, String subject, String attachment) =
+  const factory MessageSent(
+          String text, String subject, String attachment, User user) =
       _$MessageSent;
 
   @override
@@ -269,6 +301,8 @@ abstract class MessageSent implements MessageEvent {
   String get subject;
   @override
   String get attachment;
+  @override
+  User get user;
   @override
   @JsonKey(ignore: true)
   $MessageSentCopyWith<MessageSent> get copyWith =>

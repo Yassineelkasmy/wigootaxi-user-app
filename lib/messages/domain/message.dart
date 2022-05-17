@@ -8,5 +8,6 @@ class Message with _$Message {
     required String text,
     required String subject,
     required String attachment,
+    required String email,
   }) = _Message;
 }

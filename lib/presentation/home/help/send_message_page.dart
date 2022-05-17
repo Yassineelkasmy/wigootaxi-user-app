@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/messages/application/message_event.dart';
 import 'package:taxidriver/messages/application/message_state.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
@@ -30,6 +31,7 @@ class SendMessagePage extends HookConsumerWidget {
   final ImagePicker _picker = ImagePicker();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(userProvider);
     final isLoading = useState(false);
     final url = useState<String?>(null);
 
@@ -240,6 +242,7 @@ class SendMessagePage extends HookConsumerWidget {
                           message,
                           subject,
                           url.value!,
+                          user!,
                         ),
                       );
                     }
