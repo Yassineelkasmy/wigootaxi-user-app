@@ -71,5 +71,9 @@
 			<string>fr</string>
 			<string>ar</string>
 		</array>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>This app needs to access the gallery</string>
+		<key>NSCameraUsageDescription</key>
+		<string>This app needs to access the gallery</string>
 	</dict>
 </plist>

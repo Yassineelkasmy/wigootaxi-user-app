@@ -1,7 +1,13 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/messages/application/message_event.dart';
+import 'package:taxidriver/messages/application/message_state.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/providers/message_provider.dart';
 
@@ -21,8 +27,18 @@ class SendMessagePage extends HookConsumerWidget {
       ),
     },
   );
+  final ImagePicker _picker = ImagePicker();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isLoading = useState(false);
+    final url = useState<String?>(null);
+
+    final imageFile = useState<XFile?>(null);
+    ref.listen<MessageState>(messageProvider, (previous, next) {
+      if (next.sent) {
+        AutoRouter.of(context).push(MessageSentPageRoute());
+      }
+    });
     final messageController = ref.watch(messageProvider.notifier);
     final messageState = ref.watch(messageProvider);
     return Scaffold(
@@ -102,18 +118,77 @@ class SendMessagePage extends HookConsumerWidget {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () async {
+                                      isLoading.value = true;
+
+                                      imageFile.value = await _picker.pickImage(
+                                        source: ImageSource.gallery,
+                                      );
+
+                                      Navigator.of(context).pop();
+
+                                      if (imageFile.value != null) {
+                                        final bytes = await imageFile.value!
+                                            .readAsBytes();
+
+                                        final reference = FirebaseStorage
+                                            .instance
+                                            .ref()
+                                            .child('leagues')
+                                            .child(imageFile.value!.path
+                                                .split('/')
+                                                .last);
+                                        isLoading.value = true;
+
+                                        final _ref = await reference.putData(
+                                          bytes,
+                                          SettableMetadata(
+                                              contentType: 'image/jpeg'),
+                                        );
+
+                                        url.value =
+                                            await _ref.ref.getDownloadURL();
+                                        print(url.value);
+                                      }
+
+                                      isLoading.value = false;
+                                    },
                                     icon: Icon(Icons.image),
                                     color: Colors.white,
                                   ),
                                   IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.video_camera_front),
-                                    color: Colors.white,
-                                  ),
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.document_scanner),
+                                    onPressed: () async {
+                                      imageFile.value = await _picker.pickImage(
+                                        source: ImageSource.camera,
+                                      );
+
+                                      if (imageFile.value != null) {
+                                        final bytes = await imageFile.value!
+                                            .readAsBytes();
+
+                                        final reference = FirebaseStorage
+                                            .instance
+                                            .ref()
+                                            .child('leagues')
+                                            .child(imageFile.value!.path
+                                                .split('/')
+                                                .last);
+                                        isLoading.value = true;
+
+                                        final _ref = await reference.putData(
+                                          bytes,
+                                          SettableMetadata(
+                                              contentType: 'image/jpeg'),
+                                        );
+
+                                        url.value =
+                                            await _ref.ref.getDownloadURL();
+                                        print(url.value);
+                                      }
+
+                                      Navigator.of(context).pop();
+                                    },
+                                    icon: Icon(Icons.camera_alt),
                                     color: Colors.white,
                                   ),
                                 ],
@@ -124,11 +199,25 @@ class SendMessagePage extends HookConsumerWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("AJOUTER UN FICHIER"),
+                        if (isLoading.value)
+                          CircularProgressIndicator(
+                            color: Colors.white,
+                          ),
+                        if (!isLoading.value)
+                          Text(
+                            url.value == null
+                                ? "AJOUTER UN FICHIER"
+                                : 'IMAGE AJOUTÉE',
+                          ),
                         SizedBox(
                           width: 10,
                         ),
-                        Icon(Icons.file_copy),
+                        if (!isLoading.value)
+                          Icon(
+                            imageFile.value == null
+                                ? Icons.file_copy
+                                : Icons.edit,
+                          ),
                       ],
                     ),
                   )
@@ -138,16 +227,19 @@ class SendMessagePage extends HookConsumerWidget {
             SizedBox(
               width: double.maxFinite,
               child: SubmitButton(
+                  isLoading: messageState.isLoading,
                   onPressed: () {
                     final message = helpForm.value['message'] as String?;
                     final subject = helpForm.value['subject'] as String?;
 
-                    if (message != null && subject != null) {
+                    if (message != null &&
+                        subject != null &&
+                        url.value != null) {
                       messageController.mapEventToState(
                         MessageEvent.messageSent(
                           message,
                           subject,
-                          'attachment',
+                          url.value!,
                         ),
                       );
                     }
