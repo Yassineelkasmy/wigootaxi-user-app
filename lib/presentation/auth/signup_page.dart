@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +12,6 @@ import 'package:taxidriver/presentation/auth/widgets/social_media_button.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
-import 'package:taxidriver/presentation/theme/spacings.dart';
 
 import '../shared/logo.dart';
 
@@ -21,23 +21,26 @@ class SignUpPage extends HookConsumerWidget {
     {
       'password': FormControl<String>(
         validators: [
-          Validators.required,
-          Validators.minLength(8),
+          // Validators.required,
+          // Validators.minLength(8),
         ],
       ),
       'confirmation': FormControl<String>(
-        validators: [Validators.required, Validators.equals('password')],
+        validators: [
+          // Validators.required,
+          // Validators.equals('password'),
+        ],
       ),
       'email': FormControl<String>(
         validators: [
-          Validators.required,
-          Validators.email,
+          // Validators.required,
+          // Validators.email,
         ],
       ),
       'username': FormControl<String>(
         validators: [
-          Validators.required,
-          Validators.minLength(3),
+          // Validators.required,
+          // Validators.minLength(3),
         ],
       ),
     },
@@ -70,74 +73,129 @@ class SignUpPage extends HookConsumerWidget {
                   formGroup: signUpForm,
                   child: Column(
                     children: [
-                      ReactiveTextField(
-                        decoration: InputDecoration(
-                          contentPadding: kInputContentPadding,
-                          hintStyle: kHintStyle,
-                          hintText: "Nom d'utilisateur",
-                          prefixIcon: Icon(Icons.person),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.r),
+                      Material(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              CupertinoIcons.profile_circled,
+                              color: kPrimaryColor,
+                            ),
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            labelText: "Nom d'utilisateur",
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                         ),
-                        formControlName: 'username',
-                        validationMessages: (control) => {
-                          'required': "Nom d'utilisateur ne doit pas être vide",
-                        },
                       ),
                       10.h.verticalSpace,
-                      ReactiveTextField(
-                        decoration: InputDecoration(
-                          contentPadding: kInputContentPadding,
-                          hintStyle: kHintStyle,
-                          hintText: "Email",
-                          prefixIcon: Icon(Icons.email),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.r),
+                      Material(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: ReactiveTextField(
+                          formControlName: 'email',
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              CupertinoIcons.mail,
+                              color: kPrimaryColor,
+                            ),
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            labelText: "Email",
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                         ),
-                        formControlName: 'email',
-                        validationMessages: (control) => {
-                          'required': "Email ne doit pas être vide",
-                        },
                       ),
                       10.h.verticalSpace,
-                      ReactiveTextField(
-                        decoration: InputDecoration(
-                          contentPadding: kInputContentPadding,
-                          hintStyle: kHintStyle,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.r),
-                          ),
-                          hintText: "Mot de passe",
-                          prefixIcon: Icon(Icons.lock),
+                      Material(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
                         ),
-                        formControlName: 'password',
-                        obscureText: true,
-                        validationMessages: (control) => {
-                          'required': 'Le mot de passe ne doit pas être vide',
-                          'minLenght':
-                              'Le mot de passe doit comporter au moins 8 caractères'
-                        },
+                        child: ReactiveTextField(
+                          formControlName: 'password',
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              CupertinoIcons.padlock,
+                              color: kPrimaryColor,
+                            ),
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            labelText: 'Mot de passe',
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ),
                       ),
                       10.h.verticalSpace,
-                      ReactiveTextField(
-                        decoration: InputDecoration(
-                          contentPadding: kInputContentPadding,
-                          hintStyle: kHintStyle,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.r),
-                          ),
-                          hintText: "Confirmer votre Mot de passe",
-                          prefixIcon: Icon(Icons.lock),
+                      Material(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
                         ),
-                        formControlName: 'confirmation',
-                        obscureText: true,
-                        validationMessages: (control) => {
-                          'required': 'Le mot de passe ne doit pas être vide',
-                          'minLenght':
-                              'Le mot de passe doit comporter au moins 8 caractères'
-                        },
+                        child: ReactiveTextField(
+                          formControlName: 'confirmation',
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              CupertinoIcons.padlock,
+                              color: kPrimaryColor,
+                            ),
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            labelText: 'Confirmation du mot de passe',
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ),
                       ),
                       20.h.verticalSpace,
                       SizedBox(

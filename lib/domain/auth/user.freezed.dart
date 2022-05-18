@@ -23,13 +23,15 @@ class _$UserTearOff {
       required String email,
       required bool isPhoneVerified,
       String? displayName,
-      String? photoURL}) {
+      String? photoURL,
+      String? phone}) {
     return _User(
       uid: uid,
       email: email,
       isPhoneVerified: isPhoneVerified,
       displayName: displayName,
       photoURL: photoURL,
+      phone: phone,
     );
   }
 }
@@ -44,6 +46,7 @@ mixin _$User {
   bool get isPhoneVerified => throw _privateConstructorUsedError;
   String? get displayName => throw _privateConstructorUsedError;
   String? get photoURL => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -58,7 +61,8 @@ abstract class $UserCopyWith<$Res> {
       String email,
       bool isPhoneVerified,
       String? displayName,
-      String? photoURL});
+      String? photoURL,
+      String? phone});
 }
 
 /// @nodoc
@@ -76,6 +80,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? isPhoneVerified = freezed,
     Object? displayName = freezed,
     Object? photoURL = freezed,
+    Object? phone = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -98,6 +103,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
               as String?,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -112,7 +121,8 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String email,
       bool isPhoneVerified,
       String? displayName,
-      String? photoURL});
+      String? photoURL,
+      String? phone});
 }
 
 /// @nodoc
@@ -131,6 +141,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? isPhoneVerified = freezed,
     Object? displayName = freezed,
     Object? photoURL = freezed,
+    Object? phone = freezed,
   }) {
     return _then(_User(
       uid: uid == freezed
@@ -153,6 +164,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
               as String?,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -165,7 +180,8 @@ class _$_User implements _User {
       required this.email,
       required this.isPhoneVerified,
       this.displayName,
-      this.photoURL});
+      this.photoURL,
+      this.phone});
 
   @override
   final String uid;
@@ -177,10 +193,12 @@ class _$_User implements _User {
   final String? displayName;
   @override
   final String? photoURL;
+  @override
+  final String? phone;
 
   @override
   String toString() {
-    return 'User(uid: $uid, email: $email, isPhoneVerified: $isPhoneVerified, displayName: $displayName, photoURL: $photoURL)';
+    return 'User(uid: $uid, email: $email, isPhoneVerified: $isPhoneVerified, displayName: $displayName, photoURL: $photoURL, phone: $phone)';
   }
 
   @override
@@ -194,7 +212,8 @@ class _$_User implements _User {
                 .equals(other.isPhoneVerified, isPhoneVerified) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
-            const DeepCollectionEquality().equals(other.photoURL, photoURL));
+            const DeepCollectionEquality().equals(other.photoURL, photoURL) &&
+            const DeepCollectionEquality().equals(other.phone, phone));
   }
 
   @override
@@ -204,7 +223,8 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(isPhoneVerified),
       const DeepCollectionEquality().hash(displayName),
-      const DeepCollectionEquality().hash(photoURL));
+      const DeepCollectionEquality().hash(photoURL),
+      const DeepCollectionEquality().hash(phone));
 
   @JsonKey(ignore: true)
   @override
@@ -218,7 +238,8 @@ abstract class _User implements User {
       required String email,
       required bool isPhoneVerified,
       String? displayName,
-      String? photoURL}) = _$_User;
+      String? photoURL,
+      String? phone}) = _$_User;
 
   @override
   String get uid;
@@ -230,6 +251,8 @@ abstract class _User implements User {
   String? get displayName;
   @override
   String? get photoURL;
+  @override
+  String? get phone;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

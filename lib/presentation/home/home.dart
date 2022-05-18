@@ -13,7 +13,6 @@ import 'package:taxidriver/presentation/home/widgets/top_box.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
-import 'package:taxidriver/prototype/users.dart';
 
 class Home extends HookConsumerWidget {
   Home({

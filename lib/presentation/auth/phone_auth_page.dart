@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
+import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 
 class PhoneAuthPage extends HookConsumerWidget {
@@ -44,22 +46,35 @@ class PhoneAuthPage extends HookConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ReactiveForm(
-              formGroup: phoneForm,
+            Material(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
               child: ReactiveTextField(
-                controller: controller,
+                formControlName: 'phone',
+                obscureText: true,
                 decoration: InputDecoration(
-                  hintText: "Numéro de téléphone",
-                  prefixIcon: Icon(Icons.phone),
+                  prefixIcon: const Icon(
+                    CupertinoIcons.phone,
+                    color: kPrimaryColor,
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide.none,
+                  ),
+                  labelText: 'Numéro de téléphone',
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide.none,
                   ),
                 ),
-                formControlName: 'phone',
-                validationMessages: (control) => {
-                  'required': "Numéro de téléphone ne doit pas être vide",
-                  'email': 'Numéro de téléphone invalide'
-                },
               ),
             ),
             20.verticalSpace,
@@ -72,6 +87,7 @@ class PhoneAuthPage extends HookConsumerWidget {
                   if (phone.length >= 10) {
                     isLoading.value = true;
                     final phoneNumber = '+212${phone.substring(1)}';
+                    print(phoneNumber);
 
                     try {
                       await FirebaseAuth.instance.verifyPhoneNumber(
@@ -80,9 +96,11 @@ class PhoneAuthPage extends HookConsumerWidget {
                             (PhoneAuthCredential credential) {},
                         verificationFailed: (FirebaseAuthException e) {},
                         codeSent: (String verificationId, int? resendToken) {
+                          print(verificationId);
                           AutoRouter.of(context).push(
                             PhoneVerificationPageRoute(
                               phoneNumber: phoneNumber,
+                              phone: phone,
                               verificationId: verificationId,
                             ),
                           );
@@ -90,6 +108,7 @@ class PhoneAuthPage extends HookConsumerWidget {
                         codeAutoRetrievalTimeout: (String verificationId) {},
                       );
                     } catch (e) {
+                      print(e);
                       isLoading.value = false;
                     }
                     isLoading.value = false;

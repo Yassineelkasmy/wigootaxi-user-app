@@ -1,24 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:taxidriver/domain/auth/auth_failure.dart';
 import 'package:taxidriver/domain/auth/user.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class FireBaseAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
-  final FacebookAuth _facebookAuth;
+  final fb = FacebookLogin();
 
   FireBaseAuthFacade(
     this._firebaseAuth,
     this._googleSignIn,
-    this._facebookAuth,
   );
 
-  @override
   Future<Option<User>> getSignedUser() async {
+    // await signOut();
     final user = _firebaseAuth.currentUser;
     if (user == null) {
       return none();
@@ -34,6 +33,7 @@ class FireBaseAuthFacade {
           email: user.email!,
           displayName: user.displayName,
           photoURL: user.photoURL,
+          phone: userDoc.data()?['phone'] as String,
           isPhoneVerified: userDoc.data()!['isPhoneVerified'] as bool,
         ),
       );
@@ -71,6 +71,7 @@ class FireBaseAuthFacade {
   @override
   Future<void> signOut() async {
     Future.wait([
+      fb.logOut(),
       _firebaseAuth.signOut(),
       _googleSignIn.signOut(),
     ]);
@@ -156,6 +157,12 @@ class FireBaseAuthFacade {
             'isPhoneVerified': false,
             'ts': Timestamp.now(),
           },
+          SetOptions(
+            mergeFields: [
+              'isPhoneVerified',
+              'ts',
+            ],
+          ),
         );
       }
       return right(unit);
@@ -190,36 +197,93 @@ class FireBaseAuthFacade {
     }
   }
 
-  @override
-  Future<Either<AuthFailure, Unit>> registerWithFacebook() async {
+  Future<Either<AuthFailure, Unit>> signInWithFacebook() async {
     try {
-      final LoginResult result = await _facebookAuth.login(
-        permissions: ["public_profile", "email"],
-      );
+      final res = await fb.logIn(permissions: [
+        FacebookPermission.publicProfile,
+        FacebookPermission.email,
+      ]);
+      switch (res.status) {
+        case FacebookLoginStatus.success:
+          final FacebookAccessToken accessToken = res.accessToken!;
 
-      if (result.status == LoginStatus.success) {
-        final Map<String, dynamic> facebookUser =
-            await _facebookAuth.getUserData(
-          fields: "email, name",
-        );
+          final email = await fb.getUserEmail();
+          if (email != null) {
+            final FacebookAccessToken? accessToken = res.accessToken;
 
-        print(facebookUser);
+            final facebookAuthCredential =
+                FacebookAuthProvider.credential(accessToken!.token);
+            await _firebaseAuth.signInWithCredential(facebookAuthCredential);
 
-        AccessToken? _token = result.accessToken;
+            return right(unit);
+          }
 
-        final facebookCredentials =
-            FacebookAuthProvider.credential(_token!.token);
+          return right(unit);
+
+        case FacebookLoginStatus.cancel:
+          // User cancel log in
+          break;
+        case FacebookLoginStatus.error:
+          // Log in failed
+          print('Error while log in: ${res.error}');
+          break;
       }
-      return right(unit);
-    } on FirebaseAuthException catch (_) {
-      return left(const AuthFailure.serverError());
+      return left(AuthFailure.serverError());
+    } catch (e) {
+      return left(AuthFailure.serverError());
     }
   }
 
-  @override
-  Future<Either<AuthFailure, Unit>> signInWithFacebook() {
-    // TODO: implement signInWithFacebook
-    throw UnimplementedError();
+  Future<Either<AuthFailure, Unit>> registerWithFacebook() async {
+    try {
+      final res = await fb.logIn(permissions: [
+        FacebookPermission.publicProfile,
+        FacebookPermission.email,
+      ]);
+      switch (res.status) {
+        case FacebookLoginStatus.success:
+          final FacebookAccessToken accessToken = res.accessToken!;
+          print(accessToken);
+
+          final facebookAuthCredential =
+              FacebookAuthProvider.credential(accessToken.token);
+          final creds =
+              await _firebaseAuth.signInWithCredential(facebookAuthCredential);
+
+          if (creds.user != null) {
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(creds.user!.uid)
+                .set(
+              {
+                'username': creds.user!.displayName,
+                'email': creds.user!.email,
+                'isPhoneVerified': false,
+                'ts': Timestamp.now(),
+              },
+              SetOptions(
+                mergeFields: [
+                  'isPhoneVerified',
+                  'ts',
+                  'email',
+                  'username',
+                ],
+              ),
+            );
+            return right(unit);
+          } else {
+            return left(AuthFailure.serverError());
+          }
+
+        case FacebookLoginStatus.cancel:
+          break;
+        case FacebookLoginStatus.error:
+          break;
+      }
+      return left(AuthFailure.serverError());
+    } catch (e) {
+      return left(AuthFailure.serverError());
+    }
   }
 }
 

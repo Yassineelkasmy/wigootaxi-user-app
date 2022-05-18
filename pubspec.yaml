@@ -58,7 +58,6 @@ dependencies:
   location: ^4.3.0
   shared_preferences: ^2.0.13
   adaptive_dialog: ^1.5.0+1
-  flutter_facebook_auth: ^4.1.2
   in_app_notification: ^1.1.0
   easy_localization: ^3.0.0
   flutter_screenutil: ^5.3.1
@@ -70,6 +69,8 @@ dependencies:
   cloud_firestore: ^3.1.14
   firebase_storage: ^10.2.16
   image_picker: ^0.8.5+3
+  flutter_login_facebook: ^1.4.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

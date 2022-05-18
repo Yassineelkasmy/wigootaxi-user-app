@@ -10,5 +10,6 @@ class User with _$User {
     required bool isPhoneVerified,
     String? displayName,
     String? photoURL,
+    String? phone,
   }) = _User;
 }
