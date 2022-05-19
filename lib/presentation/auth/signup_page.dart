@@ -78,7 +78,8 @@ class SignUpPage extends HookConsumerWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        child: TextFormField(
+                        child: ReactiveTextField(
+                          formControlName: 'username',
                           decoration: InputDecoration(
                             prefixIcon: const Icon(
                               CupertinoIcons.profile_circled,

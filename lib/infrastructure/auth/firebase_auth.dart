@@ -33,7 +33,7 @@ class FireBaseAuthFacade {
           email: user.email!,
           displayName: user.displayName,
           photoURL: user.photoURL,
-          phone: userDoc.data()?['phone'] as String,
+          phone: userDoc.data()?['phone'] as String?,
           isPhoneVerified: userDoc.data()!['isPhoneVerified'] as bool,
         ),
       );

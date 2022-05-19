@@ -46,33 +46,37 @@ class PhoneAuthPage extends HookConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Material(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-              child: ReactiveTextField(
-                formControlName: 'phone',
-                obscureText: true,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(
-                    CupertinoIcons.phone,
-                    color: kPrimaryColor,
-                  ),
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: BorderSide.none,
-                  ),
-                  labelText: 'Numéro de téléphone',
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: BorderSide.none,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: BorderSide.none,
+            ReactiveForm(
+              formGroup: phoneForm,
+              child: Material(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: ReactiveTextField(
+                  controller: controller,
+                  formControlName: 'phone',
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(
+                      CupertinoIcons.phone,
+                      color: kPrimaryColor,
+                    ),
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      borderSide: BorderSide.none,
+                    ),
+                    labelText: 'Numéro de téléphone',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      borderSide: BorderSide.none,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      borderSide: BorderSide.none,
+                    ),
                   ),
                 ),
               ),
