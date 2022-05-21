@@ -11,6 +11,7 @@ class MessageService {
         'subject': message.subject,
         'attachment': message.attachment,
         'email': message.email,
+        'phone': message.phone,
         'ts': Timestamp.now(),
       });
       return right(unit);

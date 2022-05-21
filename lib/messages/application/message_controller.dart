@@ -21,6 +21,7 @@ class MessageController extends StateNotifier<MessageState> {
             text: event.text,
             attachment: event.attachment,
             email: event.user.email,
+            phone: event.user.phone!,
           ),
         );
 

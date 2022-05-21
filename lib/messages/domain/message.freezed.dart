@@ -22,12 +22,14 @@ class _$MessageTearOff {
       {required String text,
       required String subject,
       required String attachment,
-      required String email}) {
+      required String email,
+      required String phone}) {
     return _Message(
       text: text,
       subject: subject,
       attachment: attachment,
       email: email,
+      phone: phone,
     );
   }
 }
@@ -41,6 +43,7 @@ mixin _$Message {
   String get subject => throw _privateConstructorUsedError;
   String get attachment => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
@@ -50,7 +53,12 @@ mixin _$Message {
 abstract class $MessageCopyWith<$Res> {
   factory $MessageCopyWith(Message value, $Res Function(Message) then) =
       _$MessageCopyWithImpl<$Res>;
-  $Res call({String text, String subject, String attachment, String email});
+  $Res call(
+      {String text,
+      String subject,
+      String attachment,
+      String email,
+      String phone});
 }
 
 /// @nodoc
@@ -67,6 +75,7 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
     Object? subject = freezed,
     Object? attachment = freezed,
     Object? email = freezed,
+    Object? phone = freezed,
   }) {
     return _then(_value.copyWith(
       text: text == freezed
@@ -85,6 +94,10 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -94,7 +107,12 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
   factory _$MessageCopyWith(_Message value, $Res Function(_Message) then) =
       __$MessageCopyWithImpl<$Res>;
   @override
-  $Res call({String text, String subject, String attachment, String email});
+  $Res call(
+      {String text,
+      String subject,
+      String attachment,
+      String email,
+      String phone});
 }
 
 /// @nodoc
@@ -112,6 +130,7 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
     Object? subject = freezed,
     Object? attachment = freezed,
     Object? email = freezed,
+    Object? phone = freezed,
   }) {
     return _then(_Message(
       text: text == freezed
@@ -130,6 +149,10 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -141,7 +164,8 @@ class _$_Message implements _Message {
       {required this.text,
       required this.subject,
       required this.attachment,
-      required this.email});
+      required this.email,
+      required this.phone});
 
   @override
   final String text;
@@ -151,10 +175,12 @@ class _$_Message implements _Message {
   final String attachment;
   @override
   final String email;
+  @override
+  final String phone;
 
   @override
   String toString() {
-    return 'Message(text: $text, subject: $subject, attachment: $attachment, email: $email)';
+    return 'Message(text: $text, subject: $subject, attachment: $attachment, email: $email, phone: $phone)';
   }
 
   @override
@@ -166,7 +192,8 @@ class _$_Message implements _Message {
             const DeepCollectionEquality().equals(other.subject, subject) &&
             const DeepCollectionEquality()
                 .equals(other.attachment, attachment) &&
-            const DeepCollectionEquality().equals(other.email, email));
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.phone, phone));
   }
 
   @override
@@ -175,7 +202,8 @@ class _$_Message implements _Message {
       const DeepCollectionEquality().hash(text),
       const DeepCollectionEquality().hash(subject),
       const DeepCollectionEquality().hash(attachment),
-      const DeepCollectionEquality().hash(email));
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(phone));
 
   @JsonKey(ignore: true)
   @override
@@ -188,7 +216,8 @@ abstract class _Message implements Message {
       {required String text,
       required String subject,
       required String attachment,
-      required String email}) = _$_Message;
+      required String email,
+      required String phone}) = _$_Message;
 
   @override
   String get text;
@@ -198,6 +227,8 @@ abstract class _Message implements Message {
   String get attachment;
   @override
   String get email;
+  @override
+  String get phone;
   @override
   @JsonKey(ignore: true)
   _$MessageCopyWith<_Message> get copyWith =>

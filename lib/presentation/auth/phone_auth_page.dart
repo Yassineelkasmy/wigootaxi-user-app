@@ -56,7 +56,6 @@ class PhoneAuthPage extends HookConsumerWidget {
                 child: ReactiveTextField(
                   controller: controller,
                   formControlName: 'phone',
-                  obscureText: true,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
                       CupertinoIcons.phone,

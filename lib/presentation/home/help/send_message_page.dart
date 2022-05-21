@@ -33,7 +33,7 @@ class SendMessagePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider);
     final isLoading = useState(false);
-    final url = useState<String?>(null);
+    final url = useState<String?>('');
 
     final imageFile = useState<XFile?>(null);
     ref.listen<MessageState>(messageProvider, (previous, next) {
@@ -207,7 +207,7 @@ class SendMessagePage extends HookConsumerWidget {
                           ),
                         if (!isLoading.value)
                           Text(
-                            url.value == null
+                            url.value == ''
                                 ? "AJOUTER UN FICHIER"
                                 : 'IMAGE AJOUTÉE',
                           ),
