@@ -4,7 +4,7 @@ import 'package:taxidriver/application/location/location_event.dart';
 import 'package:taxidriver/application/location/location_state.dart';
 
 final locationProvider =
-    StateNotifierProvider<LocationController, LocationState>(
+    StateNotifierProvider.autoDispose<LocationController, LocationState>(
   (ref) {
     final locationController = LocationController();
     return locationController

@@ -22,7 +22,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
     final pickUpState = ref.watch(pickUpProvider);
 
     return Scaffold(
-      body: locationState.locationData != null
+      body: locationState.position != null
           ? SizedBox(
               height: double.maxFinite,
               width: double.maxFinite,
@@ -31,7 +31,8 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                   Positioned.fill(
                     bottom: .3.sh,
                     child: LocationMap(
-                      locationData: locationState.locationData!,
+                      lat: locationState.position!.latitude,
+                      long: locationState.position!.longitude,
                       onCameraIdle: () {
                         if (!pickUpState.pickUpChosen ||
                             !pickUpState.dropOffChosen) {

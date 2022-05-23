@@ -208,6 +208,12 @@ class PickUpController extends StateNotifier<PickUpState> {
       formCleared: (_) async {
         state = PickUpState.initial();
       },
+      cameraMustMoveToRequsted: (event) async {
+        state = state.copyWith(
+          cameraLatToMove: event.lat,
+          cameraLongToMove: event.long,
+        );
+      },
     );
   }
 }

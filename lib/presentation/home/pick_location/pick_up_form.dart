@@ -37,13 +37,13 @@ class PickUpForm extends HookConsumerWidget {
     ref.listen<LocationState>(
       locationProvider,
       (prevLocationState, nextLocationState) {
-        if (nextLocationState.locationData != null) {
+        if (nextLocationState.position != null) {
           if (checked == false) {
             checked = true;
             pickUpController.mapEventToState(
               PickUpEvent.userLocationDetected(
-                nextLocationState.locationData!.latitude!,
-                nextLocationState.locationData!.longitude!,
+                nextLocationState.position!.latitude,
+                nextLocationState.position!.longitude,
               ),
             );
           }
@@ -245,11 +245,9 @@ class PickUpForm extends HookConsumerWidget {
                                                         .nearbyQueryChanged(
                                                       query,
                                                       locationState
-                                                          .locationData!
-                                                          .latitude!,
+                                                          .position!.latitude,
                                                       locationState
-                                                          .locationData!
-                                                          .longitude!,
+                                                          .position!.longitude,
                                                     ),
                                                   );
                                                 }
@@ -286,10 +284,8 @@ class PickUpForm extends HookConsumerWidget {
                                           pickUpController.mapEventToState(
                                             PickUpEvent
                                                 .pickUpChosenFormUserLocation(
-                                              locationState
-                                                  .locationData!.latitude!,
-                                              locationState
-                                                  .locationData!.longitude!,
+                                              locationState.position!.latitude,
+                                              locationState.position!.longitude,
                                             ),
                                           );
                                         },
@@ -394,37 +390,47 @@ class PickUpForm extends HookConsumerWidget {
                                                   panelController.close();
                                                   isPanelOpen.value = false;
 
-                                                  if (!pickUpState
-                                                      .dropOffChosen) {
-                                                    pickUpController
-                                                        .mapEventToState(
-                                                      PickUpEvent
-                                                          .dropoffChoosen(
-                                                        NearbySearch(
-                                                          name: locationName,
-                                                          placeId: placeId,
-                                                          vicinity:
-                                                              locationVicinity,
-                                                          geometry:
-                                                              locationGeometry,
-                                                          types: locationTypes,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  } else if (!pickUpState
-                                                      .pickUpChosen) {
-                                                    PickUpEvent.pickupChoosen(
-                                                      NearbySearch(
-                                                        name: locationName,
-                                                        placeId: placeId,
-                                                        vicinity:
-                                                            locationVicinity,
-                                                        geometry:
-                                                            locationGeometry,
-                                                        types: locationTypes,
-                                                      ),
-                                                    );
-                                                  }
+                                                  // if (!pickUpState
+                                                  //     .dropOffChosen) {
+                                                  //   pickUpController
+                                                  //       .mapEventToState(
+                                                  //     PickUpEvent
+                                                  //         .dropoffChoosen(
+                                                  //       NearbySearch(
+                                                  //         name: locationName,
+                                                  //         placeId: placeId,
+                                                  //         vicinity:
+                                                  //             locationVicinity,
+                                                  //         geometry:
+                                                  //             locationGeometry,
+                                                  //         types: locationTypes,
+                                                  //       ),
+                                                  //     ),
+                                                  //   );
+                                                  // } else if (!pickUpState
+                                                  //     .pickUpChosen) {
+                                                  //   PickUpEvent.pickupChoosen(
+                                                  //     NearbySearch(
+                                                  //       name: locationName,
+                                                  //       placeId: placeId,
+                                                  //       vicinity:
+                                                  //           locationVicinity,
+                                                  //       geometry:
+                                                  //           locationGeometry,
+                                                  //       types: locationTypes,
+                                                  //     ),
+                                                  //   );
+                                                  // }
+                                                  pickUpController
+                                                      .mapEventToState(
+                                                    PickUpEvent
+                                                        .cameraMustMoveToRequsted(
+                                                      locationGeometry
+                                                          .location.lat,
+                                                      locationGeometry
+                                                          .location.lng,
+                                                    ),
+                                                  );
                                                   panelController.close();
                                                 },
                                                 title: Text(
