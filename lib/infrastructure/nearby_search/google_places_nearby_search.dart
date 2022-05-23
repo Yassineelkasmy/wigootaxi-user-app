@@ -17,7 +17,7 @@ class GooglePlacesNearbySearch implements INearbySearchRepository {
   }) async {
     final queryParameters = {
       'keyword': query,
-      'language': 'fr',
+      'language': 'ar',
       'location': '$lat,$long',
       'radius': 50000,
       'key': apiKey,

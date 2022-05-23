@@ -91,6 +91,17 @@ class LocationMapState extends ConsumerState<LocationMap> {
       pickUpProvider,
       (previous, next) async {
         if (next.dropOffChosen && next.pickUpChosen) {
+          LatLng dropoffLatLng = LatLng(
+            next.dropoffPlace!.geometry.location.lat,
+            next.dropoffPlace!.geometry.location.lng,
+          );
+
+          LatLng pickupLatLng = LatLng(
+            next.pickupPlace!.geometry.location.lat,
+            next.pickupPlace!.geometry.location.lng,
+          );
+          // LatLngBounds bound =
+          //     LatLngBounds(southwest: dropoffLatLng, northeast: pickupLatLng);
           await _createPolylines(
             next.dropoffPlace!.geometry.location.lat,
             next.dropoffPlace!.geometry.location.lng,

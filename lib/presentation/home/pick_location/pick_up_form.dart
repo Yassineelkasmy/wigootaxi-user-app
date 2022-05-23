@@ -8,13 +8,16 @@ import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:taxidriver/application/location/location_state.dart';
+import 'package:taxidriver/application/pick_up/pick_up_controller.dart';
 import 'package:taxidriver/application/pick_up/pick_up_event.dart';
+import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
 import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
-import 'package:taxidriver/domain/ride/ride.dart';
+import 'package:taxidriver/presentation/home/pick_location/widgets/schedule_button.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
+import 'package:taxidriver/ride/domain/ride.dart';
 
 class PickUpForm extends HookConsumerWidget {
   PickUpForm({
@@ -81,138 +84,9 @@ class PickUpForm extends HookConsumerWidget {
                                         fontSize: 18.sp,
                                       ),
                                     ),
-                                    TextButton(
-                                      onPressed: () {
-                                        if (pickUpState.rideType ==
-                                            RideType.now) {
-                                          DatePicker.showDateTimePicker(
-                                            context,
-                                            onConfirm: ((dateTime) {
-                                              pickUpController.mapEventToState(
-                                                PickUpEvent.rideScheduled(
-                                                  dateTime,
-                                                ),
-                                              );
-                                            }),
-                                            locale: LocaleType.fr,
-                                            theme: DatePickerTheme(
-                                              cancelStyle: TextStyle(
-                                                color: kPrimaryColor,
-                                                fontSize: 16.sp,
-                                              ),
-                                            ),
-                                          );
-                                        } else {
-                                          showModalBottomSheet(
-                                              context: context,
-                                              builder: (context) {
-                                                return Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    10.h.verticalSpace,
-                                                    Text(
-                                                      DateFormat(
-                                                              'MMMM dd, hh:mm')
-                                                          .format(pickUpState
-                                                              .rideDateTime!),
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 16.sp,
-                                                      ),
-                                                    ),
-                                                    10.h.verticalSpace,
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                        DatePicker
-                                                            .showDateTimePicker(
-                                                                context,
-                                                                onConfirm:
-                                                                    ((dateTime) {
-                                                          pickUpController
-                                                              .mapEventToState(
-                                                                  PickUpEvent
-                                                                      .rideScheduled(
-                                                                          dateTime));
-                                                        }),
-                                                                locale:
-                                                                    LocaleType
-                                                                        .fr,
-                                                                theme:
-                                                                    DatePickerTheme(
-                                                                  cancelStyle:
-                                                                      TextStyle(
-                                                                    color:
-                                                                        kPrimaryColor,
-                                                                    fontSize:
-                                                                        16.sp,
-                                                                  ),
-                                                                ));
-                                                      },
-                                                      child: Text(
-                                                        'Change Date',
-                                                        style: TextStyle(
-                                                          color: kPrimaryColor,
-                                                          fontSize: 16.sp,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                        pickUpController
-                                                            .mapEventToState(
-                                                          const PickUpEvent
-                                                              .rideScheduledToNow(),
-                                                        );
-                                                      },
-                                                      child: Text(
-                                                        'Reschedule ride to current datetime',
-                                                        style: TextStyle(
-                                                          color: kPrimaryColor,
-                                                          fontSize: 16.sp,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    10.h.verticalSpace,
-                                                  ],
-                                                );
-                                              });
-                                        }
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.schedule,
-                                            color: kPrimaryColor,
-                                          ),
-                                          4.w.horizontalSpace,
-                                          if (pickUpState.rideType ==
-                                              RideType.now) ...[
-                                            Text(
-                                              'Now',
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Icon(Icons.expand_more)
-                                          ],
-                                          if (pickUpState.rideType ==
-                                              RideType.shceduled)
-                                            Text(
-                                              DateFormat('MMMM dd, hh:mm')
-                                                  .format(pickUpState
-                                                      .rideDateTime!),
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                        ],
-                                      ),
-                                    ),
+                                    ScheduleButton(
+                                        pickUpState: pickUpState,
+                                        pickUpController: pickUpController),
                                   ],
                                 ),
                                 10.h.verticalSpace,
@@ -309,15 +183,11 @@ class PickUpForm extends HookConsumerWidget {
                                       onPressed: () {
                                         if (!pickUpState.dropOffChosen) {
                                           pickUpController.mapEventToState(
-                                            PickUpEvent.dropoffChoosen(
-                                              pickUpState.places.first,
-                                            ),
+                                            PickUpEvent.dropOffChosenFromMap(),
                                           );
                                         } else if (!pickUpState.pickUpChosen) {
                                           pickUpController.mapEventToState(
-                                            PickUpEvent.pickupChoosen(
-                                              pickUpState.places.first,
-                                            ),
+                                            PickUpEvent.pickUpChosenFormMap(),
                                           );
                                         }
                                       },
@@ -458,13 +328,100 @@ class PickUpForm extends HookConsumerWidget {
                       )
                     : Column(
                         children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Détails du trajet',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.sp,
+                                ),
+                              ),
+                              ScheduleButton(
+                                pickUpState: pickUpState,
+                                pickUpController: pickUpController,
+                              ),
+                            ],
+                          ),
+                          10.h.verticalSpace,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Départ:',
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.sp,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 0.5.sw,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      pickUpState.pickupPlace!.name,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    5.h.verticalSpace,
+                                    Text(pickUpState.pickupPlace!.vicinity)
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          10.h.verticalSpace,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Destination:',
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.sp,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 0.5.sw,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      pickUpState.dropoffPlace!.name,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14.sp,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    5.h.verticalSpace,
+                                    Text(
+                                      pickUpState.dropoffPlace!.vicinity,
+                                      overflow: TextOverflow.ellipsis,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          20.h.verticalSpace,
                           SizedBox(
                             width: double.maxFinite,
                             child: SubmitButton(
                               text: 'YALLA!',
                               onPressed: () {},
                             ),
-                          )
+                          ),
                         ],
                       ),
               )

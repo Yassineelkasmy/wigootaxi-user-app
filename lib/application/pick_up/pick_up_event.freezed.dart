@@ -105,6 +105,14 @@ class _$PickUpEventTearOff {
     return const FormCleared();
   }
 
+  DropoffCancelled dropOffCancelled() {
+    return const DropoffCancelled();
+  }
+
+  PickUpCancelled pickupCancelled() {
+    return const PickUpCancelled();
+  }
+
   CametaMustMoveToRequested cameraMustMoveToRequsted(double lat, double long) {
     return CametaMustMoveToRequested(
       lat,
@@ -138,6 +146,8 @@ mixin _$PickUpEvent {
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) =>
       throw _privateConstructorUsedError;
@@ -159,6 +169,8 @@ mixin _$PickUpEvent {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) =>
       throw _privateConstructorUsedError;
@@ -180,6 +192,8 @@ mixin _$PickUpEvent {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) =>
@@ -205,6 +219,8 @@ mixin _$PickUpEvent {
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) =>
@@ -229,6 +245,8 @@ mixin _$PickUpEvent {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) =>
       throw _privateConstructorUsedError;
@@ -252,6 +270,8 @@ mixin _$PickUpEvent {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) =>
@@ -338,6 +358,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return startedTyping();
@@ -362,6 +384,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return startedTyping?.call();
@@ -386,6 +410,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -417,6 +443,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -444,6 +472,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return startedTyping?.call(this);
@@ -470,6 +500,8 @@ class _$StartedTyping with DiagnosticableTreeMixin implements StartedTyping {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -598,6 +630,8 @@ class _$NearbyQueryChanged
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return nearbyQueryChanged(query, lat, long);
@@ -622,6 +656,8 @@ class _$NearbyQueryChanged
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return nearbyQueryChanged?.call(query, lat, long);
@@ -646,6 +682,8 @@ class _$NearbyQueryChanged
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -677,6 +715,8 @@ class _$NearbyQueryChanged
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -704,6 +744,8 @@ class _$NearbyQueryChanged
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return nearbyQueryChanged?.call(this);
@@ -730,6 +772,8 @@ class _$NearbyQueryChanged
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -825,6 +869,8 @@ class _$ReverseGecodingFromMapRequested
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return reverseGecodingFromMapRequested();
@@ -849,6 +895,8 @@ class _$ReverseGecodingFromMapRequested
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return reverseGecodingFromMapRequested?.call();
@@ -873,6 +921,8 @@ class _$ReverseGecodingFromMapRequested
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -904,6 +954,8 @@ class _$ReverseGecodingFromMapRequested
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -931,6 +983,8 @@ class _$ReverseGecodingFromMapRequested
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return reverseGecodingFromMapRequested?.call(this);
@@ -957,6 +1011,8 @@ class _$ReverseGecodingFromMapRequested
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -1078,6 +1134,8 @@ class _$NearbyLocationsRequested
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return nearbyLocationsRequested(lat, long);
@@ -1102,6 +1160,8 @@ class _$NearbyLocationsRequested
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return nearbyLocationsRequested?.call(lat, long);
@@ -1126,6 +1186,8 @@ class _$NearbyLocationsRequested
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -1157,6 +1219,8 @@ class _$NearbyLocationsRequested
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -1184,6 +1248,8 @@ class _$NearbyLocationsRequested
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return nearbyLocationsRequested?.call(this);
@@ -1210,6 +1276,8 @@ class _$NearbyLocationsRequested
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -1330,6 +1398,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return pickupChoosen(pickup);
@@ -1354,6 +1424,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return pickupChoosen?.call(pickup);
@@ -1378,6 +1450,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -1409,6 +1483,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -1436,6 +1512,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return pickupChoosen?.call(this);
@@ -1462,6 +1540,8 @@ class _$PickupChoosen with DiagnosticableTreeMixin implements PickupChoosen {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -1580,6 +1660,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return dropoffChoosen(dropoff);
@@ -1604,6 +1686,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return dropoffChoosen?.call(dropoff);
@@ -1628,6 +1712,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -1659,6 +1745,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -1686,6 +1774,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return dropoffChoosen?.call(this);
@@ -1712,6 +1802,8 @@ class _$DropoffChoosen with DiagnosticableTreeMixin implements DropoffChoosen {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -1822,6 +1914,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return rideScheduled(rideDateTime);
@@ -1846,6 +1940,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return rideScheduled?.call(rideDateTime);
@@ -1870,6 +1966,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -1901,6 +1999,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -1928,6 +2028,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return rideScheduled?.call(this);
@@ -1954,6 +2056,8 @@ class _$RideScheduled with DiagnosticableTreeMixin implements RideScheduled {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -2041,6 +2145,8 @@ class _$RideScheduledToNow
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return rideScheduledToNow();
@@ -2065,6 +2171,8 @@ class _$RideScheduledToNow
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return rideScheduledToNow?.call();
@@ -2089,6 +2197,8 @@ class _$RideScheduledToNow
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -2120,6 +2230,8 @@ class _$RideScheduledToNow
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -2147,6 +2259,8 @@ class _$RideScheduledToNow
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return rideScheduledToNow?.call(this);
@@ -2173,6 +2287,8 @@ class _$RideScheduledToNow
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -2288,6 +2404,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return cameraMoved(lat, long);
@@ -2312,6 +2430,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return cameraMoved?.call(lat, long);
@@ -2336,6 +2456,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -2367,6 +2489,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -2394,6 +2518,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return cameraMoved?.call(this);
@@ -2420,6 +2546,8 @@ class _$CameraMoved with DiagnosticableTreeMixin implements CameraMoved {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -2545,6 +2673,8 @@ class _$UserLocationDetected
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return userLocationDetected(lat, long);
@@ -2569,6 +2699,8 @@ class _$UserLocationDetected
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return userLocationDetected?.call(lat, long);
@@ -2593,6 +2725,8 @@ class _$UserLocationDetected
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -2624,6 +2758,8 @@ class _$UserLocationDetected
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -2651,6 +2787,8 @@ class _$UserLocationDetected
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return userLocationDetected?.call(this);
@@ -2677,6 +2815,8 @@ class _$UserLocationDetected
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -2766,6 +2906,8 @@ class _$DropOffChosenFromMap
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return dropOffChosenFromMap();
@@ -2790,6 +2932,8 @@ class _$DropOffChosenFromMap
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return dropOffChosenFromMap?.call();
@@ -2814,6 +2958,8 @@ class _$DropOffChosenFromMap
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -2845,6 +2991,8 @@ class _$DropOffChosenFromMap
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -2872,6 +3020,8 @@ class _$DropOffChosenFromMap
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return dropOffChosenFromMap?.call(this);
@@ -2898,6 +3048,8 @@ class _$DropOffChosenFromMap
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -2980,6 +3132,8 @@ class _$PickUpChosenFormMap
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return pickUpChosenFormMap();
@@ -3004,6 +3158,8 @@ class _$PickUpChosenFormMap
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return pickUpChosenFormMap?.call();
@@ -3028,6 +3184,8 @@ class _$PickUpChosenFormMap
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -3059,6 +3217,8 @@ class _$PickUpChosenFormMap
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -3086,6 +3246,8 @@ class _$PickUpChosenFormMap
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return pickUpChosenFormMap?.call(this);
@@ -3112,6 +3274,8 @@ class _$PickUpChosenFormMap
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -3235,6 +3399,8 @@ class _$PickUpChosenFormUserLocation
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return pickUpChosenFormUserLocation(lat, long);
@@ -3259,6 +3425,8 @@ class _$PickUpChosenFormUserLocation
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return pickUpChosenFormUserLocation?.call(lat, long);
@@ -3283,6 +3451,8 @@ class _$PickUpChosenFormUserLocation
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -3314,6 +3484,8 @@ class _$PickUpChosenFormUserLocation
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -3341,6 +3513,8 @@ class _$PickUpChosenFormUserLocation
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return pickUpChosenFormUserLocation?.call(this);
@@ -3367,6 +3541,8 @@ class _$PickUpChosenFormUserLocation
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -3452,6 +3628,8 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return pickUpRemoved();
@@ -3476,6 +3654,8 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return pickUpRemoved?.call();
@@ -3500,6 +3680,8 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -3531,6 +3713,8 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -3558,6 +3742,8 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return pickUpRemoved?.call(this);
@@ -3584,6 +3770,8 @@ class _$PickUpRemoved with DiagnosticableTreeMixin implements PickUpRemoved {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -3662,6 +3850,8 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return dropOffRemoved();
@@ -3686,6 +3876,8 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return dropOffRemoved?.call();
@@ -3710,6 +3902,8 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -3741,6 +3935,8 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -3768,6 +3964,8 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return dropOffRemoved?.call(this);
@@ -3794,6 +3992,8 @@ class _$DropOffRemoved with DiagnosticableTreeMixin implements DropOffRemoved {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -3872,6 +4072,8 @@ class _$FormCleared with DiagnosticableTreeMixin implements FormCleared {
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return formCleared();
@@ -3896,6 +4098,8 @@ class _$FormCleared with DiagnosticableTreeMixin implements FormCleared {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return formCleared?.call();
@@ -3920,6 +4124,8 @@ class _$FormCleared with DiagnosticableTreeMixin implements FormCleared {
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -3951,6 +4157,8 @@ class _$FormCleared with DiagnosticableTreeMixin implements FormCleared {
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -3978,6 +4186,8 @@ class _$FormCleared with DiagnosticableTreeMixin implements FormCleared {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return formCleared?.call(this);
@@ -4004,6 +4214,8 @@ class _$FormCleared with DiagnosticableTreeMixin implements FormCleared {
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -4016,6 +4228,457 @@ class _$FormCleared with DiagnosticableTreeMixin implements FormCleared {
 
 abstract class FormCleared implements PickUpEvent {
   const factory FormCleared() = _$FormCleared;
+}
+
+/// @nodoc
+abstract class $DropoffCancelledCopyWith<$Res> {
+  factory $DropoffCancelledCopyWith(
+          DropoffCancelled value, $Res Function(DropoffCancelled) then) =
+      _$DropoffCancelledCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$DropoffCancelledCopyWithImpl<$Res>
+    extends _$PickUpEventCopyWithImpl<$Res>
+    implements $DropoffCancelledCopyWith<$Res> {
+  _$DropoffCancelledCopyWithImpl(
+      DropoffCancelled _value, $Res Function(DropoffCancelled) _then)
+      : super(_value, (v) => _then(v as DropoffCancelled));
+
+  @override
+  DropoffCancelled get _value => super._value as DropoffCancelled;
+}
+
+/// @nodoc
+
+class _$DropoffCancelled
+    with DiagnosticableTreeMixin
+    implements DropoffCancelled {
+  const _$DropoffCancelled();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PickUpEvent.dropOffCancelled()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PickUpEvent.dropOffCancelled'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is DropoffCancelled);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() startedTyping,
+    required TResult Function(String query, double lat, double long)
+        nearbyQueryChanged,
+    required TResult Function() reverseGecodingFromMapRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
+    required TResult Function(NearbySearch pickup) pickupChoosen,
+    required TResult Function(NearbySearch dropoff) dropoffChoosen,
+    required TResult Function(DateTime rideDateTime) rideScheduled,
+    required TResult Function() rideScheduledToNow,
+    required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
+    required TResult Function() dropOffChosenFromMap,
+    required TResult Function() pickUpChosenFormMap,
+    required TResult Function(double lat, double long)
+        pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
+    required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
+    required TResult Function(double lat, double long) cameraMustMoveToRequsted,
+  }) {
+    return dropOffCancelled();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function()? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+    TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
+    TResult Function(double lat, double long)? cameraMustMoveToRequsted,
+  }) {
+    return dropOffCancelled?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function()? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+    TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
+    TResult Function(double lat, double long)? cameraMustMoveToRequsted,
+    required TResult orElse(),
+  }) {
+    if (dropOffCancelled != null) {
+      return dropOffCancelled();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartedTyping value) startedTyping,
+    required TResult Function(NearbyQueryChanged value) nearbyQueryChanged,
+    required TResult Function(ReverseGecodingFromMapRequested value)
+        reverseGecodingFromMapRequested,
+    required TResult Function(NearbyLocationsRequested value)
+        nearbyLocationsRequested,
+    required TResult Function(PickupChoosen value) pickupChoosen,
+    required TResult Function(DropoffChoosen value) dropoffChoosen,
+    required TResult Function(RideScheduled value) rideScheduled,
+    required TResult Function(RideScheduledToNow value) rideScheduledToNow,
+    required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
+    required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
+    required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
+    required TResult Function(PickUpChosenFormUserLocation value)
+        pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
+    required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
+    required TResult Function(CametaMustMoveToRequested value)
+        cameraMustMoveToRequsted,
+  }) {
+    return dropOffCancelled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+    TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
+    TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
+  }) {
+    return dropOffCancelled?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+    TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
+    TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
+    required TResult orElse(),
+  }) {
+    if (dropOffCancelled != null) {
+      return dropOffCancelled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DropoffCancelled implements PickUpEvent {
+  const factory DropoffCancelled() = _$DropoffCancelled;
+}
+
+/// @nodoc
+abstract class $PickUpCancelledCopyWith<$Res> {
+  factory $PickUpCancelledCopyWith(
+          PickUpCancelled value, $Res Function(PickUpCancelled) then) =
+      _$PickUpCancelledCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PickUpCancelledCopyWithImpl<$Res>
+    extends _$PickUpEventCopyWithImpl<$Res>
+    implements $PickUpCancelledCopyWith<$Res> {
+  _$PickUpCancelledCopyWithImpl(
+      PickUpCancelled _value, $Res Function(PickUpCancelled) _then)
+      : super(_value, (v) => _then(v as PickUpCancelled));
+
+  @override
+  PickUpCancelled get _value => super._value as PickUpCancelled;
+}
+
+/// @nodoc
+
+class _$PickUpCancelled
+    with DiagnosticableTreeMixin
+    implements PickUpCancelled {
+  const _$PickUpCancelled();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PickUpEvent.pickupCancelled()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'PickUpEvent.pickupCancelled'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is PickUpCancelled);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() startedTyping,
+    required TResult Function(String query, double lat, double long)
+        nearbyQueryChanged,
+    required TResult Function() reverseGecodingFromMapRequested,
+    required TResult Function(double lat, double long) nearbyLocationsRequested,
+    required TResult Function(NearbySearch pickup) pickupChoosen,
+    required TResult Function(NearbySearch dropoff) dropoffChoosen,
+    required TResult Function(DateTime rideDateTime) rideScheduled,
+    required TResult Function() rideScheduledToNow,
+    required TResult Function(double lat, double long) cameraMoved,
+    required TResult Function(double lat, double long) userLocationDetected,
+    required TResult Function() dropOffChosenFromMap,
+    required TResult Function() pickUpChosenFormMap,
+    required TResult Function(double lat, double long)
+        pickUpChosenFormUserLocation,
+    required TResult Function() pickUpRemoved,
+    required TResult Function() dropOffRemoved,
+    required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
+    required TResult Function(double lat, double long) cameraMustMoveToRequsted,
+  }) {
+    return pickupCancelled();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function()? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+    TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
+    TResult Function(double lat, double long)? cameraMustMoveToRequsted,
+  }) {
+    return pickupCancelled?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? startedTyping,
+    TResult Function(String query, double lat, double long)? nearbyQueryChanged,
+    TResult Function()? reverseGecodingFromMapRequested,
+    TResult Function(double lat, double long)? nearbyLocationsRequested,
+    TResult Function(NearbySearch pickup)? pickupChoosen,
+    TResult Function(NearbySearch dropoff)? dropoffChoosen,
+    TResult Function(DateTime rideDateTime)? rideScheduled,
+    TResult Function()? rideScheduledToNow,
+    TResult Function(double lat, double long)? cameraMoved,
+    TResult Function(double lat, double long)? userLocationDetected,
+    TResult Function()? dropOffChosenFromMap,
+    TResult Function()? pickUpChosenFormMap,
+    TResult Function(double lat, double long)? pickUpChosenFormUserLocation,
+    TResult Function()? pickUpRemoved,
+    TResult Function()? dropOffRemoved,
+    TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
+    TResult Function(double lat, double long)? cameraMustMoveToRequsted,
+    required TResult orElse(),
+  }) {
+    if (pickupCancelled != null) {
+      return pickupCancelled();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartedTyping value) startedTyping,
+    required TResult Function(NearbyQueryChanged value) nearbyQueryChanged,
+    required TResult Function(ReverseGecodingFromMapRequested value)
+        reverseGecodingFromMapRequested,
+    required TResult Function(NearbyLocationsRequested value)
+        nearbyLocationsRequested,
+    required TResult Function(PickupChoosen value) pickupChoosen,
+    required TResult Function(DropoffChoosen value) dropoffChoosen,
+    required TResult Function(RideScheduled value) rideScheduled,
+    required TResult Function(RideScheduledToNow value) rideScheduledToNow,
+    required TResult Function(CameraMoved value) cameraMoved,
+    required TResult Function(UserLocationDetected value) userLocationDetected,
+    required TResult Function(DropOffChosenFromMap value) dropOffChosenFromMap,
+    required TResult Function(PickUpChosenFormMap value) pickUpChosenFormMap,
+    required TResult Function(PickUpChosenFormUserLocation value)
+        pickUpChosenFormUserLocation,
+    required TResult Function(PickUpRemoved value) pickUpRemoved,
+    required TResult Function(DropOffRemoved value) dropOffRemoved,
+    required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
+    required TResult Function(CametaMustMoveToRequested value)
+        cameraMustMoveToRequsted,
+  }) {
+    return pickupCancelled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+    TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
+    TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
+  }) {
+    return pickupCancelled?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartedTyping value)? startedTyping,
+    TResult Function(NearbyQueryChanged value)? nearbyQueryChanged,
+    TResult Function(ReverseGecodingFromMapRequested value)?
+        reverseGecodingFromMapRequested,
+    TResult Function(NearbyLocationsRequested value)? nearbyLocationsRequested,
+    TResult Function(PickupChoosen value)? pickupChoosen,
+    TResult Function(DropoffChoosen value)? dropoffChoosen,
+    TResult Function(RideScheduled value)? rideScheduled,
+    TResult Function(RideScheduledToNow value)? rideScheduledToNow,
+    TResult Function(CameraMoved value)? cameraMoved,
+    TResult Function(UserLocationDetected value)? userLocationDetected,
+    TResult Function(DropOffChosenFromMap value)? dropOffChosenFromMap,
+    TResult Function(PickUpChosenFormMap value)? pickUpChosenFormMap,
+    TResult Function(PickUpChosenFormUserLocation value)?
+        pickUpChosenFormUserLocation,
+    TResult Function(PickUpRemoved value)? pickUpRemoved,
+    TResult Function(DropOffRemoved value)? dropOffRemoved,
+    TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
+    TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
+    required TResult orElse(),
+  }) {
+    if (pickupCancelled != null) {
+      return pickupCancelled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PickUpCancelled implements PickUpEvent {
+  const factory PickUpCancelled() = _$PickUpCancelled;
 }
 
 /// @nodoc
@@ -4124,6 +4787,8 @@ class _$CametaMustMoveToRequested
     required TResult Function() pickUpRemoved,
     required TResult Function() dropOffRemoved,
     required TResult Function() formCleared,
+    required TResult Function() dropOffCancelled,
+    required TResult Function() pickupCancelled,
     required TResult Function(double lat, double long) cameraMustMoveToRequsted,
   }) {
     return cameraMustMoveToRequsted(lat, long);
@@ -4148,6 +4813,8 @@ class _$CametaMustMoveToRequested
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
   }) {
     return cameraMustMoveToRequsted?.call(lat, long);
@@ -4172,6 +4839,8 @@ class _$CametaMustMoveToRequested
     TResult Function()? pickUpRemoved,
     TResult Function()? dropOffRemoved,
     TResult Function()? formCleared,
+    TResult Function()? dropOffCancelled,
+    TResult Function()? pickupCancelled,
     TResult Function(double lat, double long)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {
@@ -4203,6 +4872,8 @@ class _$CametaMustMoveToRequested
     required TResult Function(PickUpRemoved value) pickUpRemoved,
     required TResult Function(DropOffRemoved value) dropOffRemoved,
     required TResult Function(FormCleared value) formCleared,
+    required TResult Function(DropoffCancelled value) dropOffCancelled,
+    required TResult Function(PickUpCancelled value) pickupCancelled,
     required TResult Function(CametaMustMoveToRequested value)
         cameraMustMoveToRequsted,
   }) {
@@ -4230,6 +4901,8 @@ class _$CametaMustMoveToRequested
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
   }) {
     return cameraMustMoveToRequsted?.call(this);
@@ -4256,6 +4929,8 @@ class _$CametaMustMoveToRequested
     TResult Function(PickUpRemoved value)? pickUpRemoved,
     TResult Function(DropOffRemoved value)? dropOffRemoved,
     TResult Function(FormCleared value)? formCleared,
+    TResult Function(DropoffCancelled value)? dropOffCancelled,
+    TResult Function(PickUpCancelled value)? pickupCancelled,
     TResult Function(CametaMustMoveToRequested value)? cameraMustMoveToRequsted,
     required TResult orElse(),
   }) {

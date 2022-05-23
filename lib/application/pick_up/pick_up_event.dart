@@ -32,6 +32,8 @@ class PickUpEvent with _$PickUpEvent {
   const factory PickUpEvent.pickUpRemoved() = PickUpRemoved;
   const factory PickUpEvent.dropOffRemoved() = DropOffRemoved;
   const factory PickUpEvent.formCleared() = FormCleared;
+  const factory PickUpEvent.dropOffCancelled() = DropoffCancelled;
+  const factory PickUpEvent.pickupCancelled() = PickUpCancelled;
   const factory PickUpEvent.cameraMustMoveToRequsted(double lat, double long) =
       CametaMustMoveToRequested;
 }

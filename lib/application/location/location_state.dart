@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:location/location.dart';
 import 'package:taxidriver/domain/location/location_failure.dart';
 
 part 'location_state.freezed.dart';

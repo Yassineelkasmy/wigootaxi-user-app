@@ -13,7 +13,7 @@ class GooglePlacesGeocoding implements IGeocodingRepository {
   Future<Either<GeocodingFailure, ReverseGeocodingResult>> reverseGeocode(
       {required double lat, required double long}) async {
     final queryParameters = {
-      'language': 'fr',
+      'language': 'ar',
       'latlng': '$lat,$long',
       'key': apiKey,
     };

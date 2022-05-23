@@ -58,10 +58,24 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                            color: kPrimaryColor,
+                          TextButton.icon(
+                            label: Text(
+                              pickUpState.dropOffChosen
+                                  ? 'Annuler la destination'
+                                  : pickUpState.pickUpChosen
+                                      ? 'Annuler le départ'
+                                      : 'Anuller',
+                            ),
                             onPressed: () {
-                              Navigator.of(context).pop();
+                              if (pickUpState.dropOffChosen) {
+                                pickUpController.mapEventToState(
+                                    PickUpEvent.dropOffCancelled());
+                              } else if (pickUpState.pickUpChosen) {
+                                pickUpController.mapEventToState(
+                                    PickUpEvent.pickupCancelled());
+                              } else {
+                                Navigator.of(context).pop();
+                              }
                             },
                             icon: Icon(
                               Icons.cancel_outlined,

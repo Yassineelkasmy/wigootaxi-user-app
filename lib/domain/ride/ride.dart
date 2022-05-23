@@ -5,7 +5,3 @@
 
 // }
 
-enum RideType {
-  now,
-  shceduled,
-}

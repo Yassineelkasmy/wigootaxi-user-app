@@ -6,7 +6,7 @@ import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/domain/geocoding/i_geocoding_repository.dart';
 import 'package:taxidriver/domain/nearby_search/i_nearby_search_repository.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
-import 'package:taxidriver/domain/ride/ride.dart';
+import 'package:taxidriver/ride/domain/ride.dart';
 
 class PickUpController extends StateNotifier<PickUpState> {
   PickUpController(
@@ -129,7 +129,7 @@ class PickUpController extends StateNotifier<PickUpState> {
         final reverseGeocodingFromMapResult = state.reverseGeocodingResult;
         if (reverseGeocodingFromMapResult != null) {
           final reverseGeocodedPlace =
-              reverseGeocodingFromMapResult.results.first;
+              reverseGeocodingFromMapResult.results.last;
           final pickUpPlace = NearbySearch(
             name: reverseGeocodedPlace.formattedAdress,
             placeId: reverseGeocodedPlace.placeId,
@@ -212,6 +212,18 @@ class PickUpController extends StateNotifier<PickUpState> {
         state = state.copyWith(
           cameraLatToMove: event.lat,
           cameraLongToMove: event.long,
+        );
+      },
+      dropOffCancelled: (event) async {
+        state = state.copyWith(
+          dropOffChosen: false,
+          isSwipping: false,
+        );
+      },
+      pickupCancelled: (event) async {
+        state = state.copyWith(
+          pickUpChosen: false,
+          isSwipping: false,
         );
       },
     );
