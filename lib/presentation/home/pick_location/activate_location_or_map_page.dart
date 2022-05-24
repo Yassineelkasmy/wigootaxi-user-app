@@ -8,7 +8,6 @@ import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
 import 'package:taxidriver/presentation/home/pick_location/location_map.dart';
 import 'package:rive/rive.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
-import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 
 class ActivateLocationOrMapPage extends HookConsumerWidget {
@@ -26,66 +25,75 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
           ? SizedBox(
               height: double.maxFinite,
               width: double.maxFinite,
-              child: Stack(
+              child: Column(
                 children: [
-                  Positioned.fill(
-                    bottom: .3.sh,
-                    child: LocationMap(
-                      lat: locationState.position!.latitude,
-                      long: locationState.position!.longitude,
-                      onCameraIdle: () {
-                        if (!pickUpState.pickUpChosen ||
-                            !pickUpState.dropOffChosen) {
-                          pickUpController.mapEventToState(
-                            PickUpEvent.reverseGecodingFromMapRequested(),
-                          );
-                        }
-                      },
-                      onCameraMove: (cameraPosition) {
-                        pickUpController.mapEventToState(
-                          PickUpEvent.cameraMoved(
-                            cameraPosition.target.latitude,
-                            cameraPosition.target.longitude,
+                  SizedBox(
+                    width: double.maxFinite,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 20.h),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(0),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          20.h.verticalSpace,
+                          Text(
+                            pickUpState.pickUpChosen
+                                ? 'Annuler le départ'
+                                : pickUpState.dropOffChosen
+                                    ? 'Annuler la destination'
+                                    : 'Anuller',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
                           ),
-                        );
+                        ],
+                      ),
+                      onPressed: () {
+                        if (pickUpState.dropOffChosen) {
+                          pickUpController
+                              .mapEventToState(PickUpEvent.dropOffCancelled());
+                        } else if (pickUpState.pickUpChosen) {
+                          pickUpController
+                              .mapEventToState(PickUpEvent.pickupCancelled());
+                        } else {
+                          Navigator.of(context).pop();
+                        }
                       },
                     ),
                   ),
-                  Positioned(
-                    top: 40.h,
-                    child: Padding(
-                      padding: kPadding,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextButton.icon(
-                            label: Text(
-                              pickUpState.dropOffChosen
-                                  ? 'Annuler la destination'
-                                  : pickUpState.pickUpChosen
-                                      ? 'Annuler le départ'
-                                      : 'Anuller',
-                            ),
-                            onPressed: () {
-                              if (pickUpState.dropOffChosen) {
+                  Expanded(
+                    child: Stack(
+                      fit: StackFit.passthrough,
+                      children: [
+                        Positioned.fill(
+                          bottom: .3.sh,
+                          child: LocationMap(
+                            lat: locationState.position!.latitude,
+                            long: locationState.position!.longitude,
+                            onCameraIdle: () {
+                              if (!pickUpState.pickUpChosen ||
+                                  !pickUpState.dropOffChosen) {
                                 pickUpController.mapEventToState(
-                                    PickUpEvent.dropOffCancelled());
-                              } else if (pickUpState.pickUpChosen) {
-                                pickUpController.mapEventToState(
-                                    PickUpEvent.pickupCancelled());
-                              } else {
-                                Navigator.of(context).pop();
+                                  PickUpEvent.reverseGecodingFromMapRequested(),
+                                );
                               }
                             },
-                            icon: Icon(
-                              Icons.cancel_outlined,
-                              size: 32,
-                            ),
-                          )
-                        ],
-                      ),
+                            onCameraMove: (cameraPosition) {
+                              pickUpController.mapEventToState(
+                                PickUpEvent.cameraMoved(
+                                  cameraPosition.target.latitude,
+                                  cameraPosition.target.longitude,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                  )
+                  ),
                 ],
               ))
           : SizedBox(
