@@ -129,7 +129,7 @@ class PickUpController extends StateNotifier<PickUpState> {
         final reverseGeocodingFromMapResult = state.reverseGeocodingResult;
         if (reverseGeocodingFromMapResult != null) {
           final reverseGeocodedPlace =
-              reverseGeocodingFromMapResult.results.last;
+              reverseGeocodingFromMapResult.results.first;
           final pickUpPlace = NearbySearch(
             name: reverseGeocodedPlace.formattedAdress,
             placeId: reverseGeocodedPlace.placeId,
@@ -154,6 +154,7 @@ class PickUpController extends StateNotifier<PickUpState> {
               vicinity: reverseGeocodedPlace.formattedAdress,
               geometry: reverseGeocodedPlace.geometry,
               types: reverseGeocodedPlace.types);
+
           state = state.copyWith(
             dropoffPlace: dropoffPlace,
             dropOffChosen: true,

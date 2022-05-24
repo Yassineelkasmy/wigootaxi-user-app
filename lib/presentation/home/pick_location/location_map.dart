@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -30,19 +31,52 @@ class LocationMapState extends ConsumerState<LocationMap> {
   late GoogleMapController _googleMapController;
   late PolylinePoints polylinePoints;
   Map<PolylineId, Polyline> polylines = {};
+  final Set<Marker> _markers = {};
   List<LatLng> polylineCoordinates = [];
 
+  void check(
+      CameraUpdate cameraUpdate, GoogleMapController mapController) async {
+    mapController.animateCamera(cameraUpdate);
+    _googleMapController.animateCamera(cameraUpdate);
+    LatLngBounds l1 = await mapController.getVisibleRegion();
+    LatLngBounds l2 = await mapController.getVisibleRegion();
+    if (l1.southwest.latitude == -90 || l2.southwest.latitude == -90) {
+      check(cameraUpdate, mapController);
+    }
+  }
+
+  void addMarker(
+      LatLng mLatLng, String mTitle, String mDescription, String id) {
+    _markers.add(
+      Marker(
+        markerId: MarkerId(id),
+        position: mLatLng,
+        infoWindow: InfoWindow(
+          title: mTitle,
+          snippet: mDescription,
+        ),
+        icon: BitmapDescriptor.defaultMarker,
+      ),
+    );
+  }
+
   _createPolylines(
-      double startLat, double startLong, double endLat, double endLong) async {
+    double startLat,
+    double startLong,
+    double endLat,
+    double endLong,
+  ) async {
     polylinePoints = PolylinePoints();
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
       'AIzaSyBcUiq4ME8Hc3N7nsoDs0YYC2e4nWwyghU', // Google Maps API Key
       PointLatLng(startLat, startLong),
       PointLatLng(endLat, endLong),
       travelMode: TravelMode.driving,
+      avoidTolls: true,
     );
-    print(result.status);
     if (result.points.isNotEmpty) {
+      polylineCoordinates = [];
+      polylines.clear();
       result.points.forEach((PointLatLng point) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
       });
@@ -65,6 +99,44 @@ class LocationMapState extends ConsumerState<LocationMap> {
 
   @override
   Widget build(BuildContext context) {
+    //Markers listener
+    ref.listen<PickUpState>(pickUpProvider, (previous, next) {
+      if (previous?.dropOffChosen == next.dropOffChosen) {
+        if (next.dropOffChosen) {
+          addMarker(
+            LatLng(next.dropoffPlace!.geometry.location.lat,
+                next.dropoffPlace!.geometry.location.lng),
+            next.dropoffPlace!.name,
+            next.dropoffPlace!.vicinity,
+            'dropoff',
+          );
+        } else {
+          _markers.removeWhere((mrk) => mrk.mapsId.value == 'dropoff');
+          polylineCoordinates = [];
+          polylines.clear();
+
+          setState(() {});
+        }
+      }
+      if (previous?.pickUpChosen == next.pickUpChosen) {
+        if (next.pickUpChosen) {
+          addMarker(
+            LatLng(next.pickupPlace!.geometry.location.lat,
+                next.pickupPlace!.geometry.location.lng),
+            next.pickupPlace!.name,
+            next.pickupPlace!.vicinity,
+            'pickup',
+          );
+        } else {
+          _markers.removeWhere((mrk) => mrk.mapsId.value == 'pickup');
+          polylineCoordinates = [];
+          polylines.clear();
+
+          setState(() {});
+        }
+      }
+    });
+
     //Camera move listener
     ref.listen<PickUpState>(pickUpProvider, (previous, next) async {
       final prevCameraToMoveLat = previous?.cameraLatToMove;
@@ -87,6 +159,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
       }
     });
 
+    // The camera move listener (just to draw polylines and adjsut the camera accordignly to see both pickup and dropff places )
     ref.listen<PickUpState>(
       pickUpProvider,
       (previous, next) async {
@@ -100,14 +173,38 @@ class LocationMapState extends ConsumerState<LocationMap> {
             next.pickupPlace!.geometry.location.lat,
             next.pickupPlace!.geometry.location.lng,
           );
-          // LatLngBounds bound =
-          //     LatLngBounds(southwest: dropoffLatLng, northeast: pickupLatLng);
+          LatLngBounds bound;
+          if (dropoffLatLng.latitude > pickupLatLng.latitude &&
+              dropoffLatLng.longitude > pickupLatLng.longitude) {
+            bound =
+                LatLngBounds(southwest: pickupLatLng, northeast: dropoffLatLng);
+          } else if (dropoffLatLng.longitude > pickupLatLng.longitude) {
+            bound = LatLngBounds(
+                southwest:
+                    LatLng(dropoffLatLng.latitude, pickupLatLng.longitude),
+                northeast:
+                    LatLng(pickupLatLng.latitude, dropoffLatLng.longitude));
+          } else if (dropoffLatLng.latitude > pickupLatLng.latitude) {
+            bound = LatLngBounds(
+                southwest:
+                    LatLng(pickupLatLng.latitude, dropoffLatLng.longitude),
+                northeast:
+                    LatLng(dropoffLatLng.latitude, pickupLatLng.longitude));
+          } else {
+            bound =
+                LatLngBounds(southwest: dropoffLatLng, northeast: pickupLatLng);
+          }
           await _createPolylines(
             next.dropoffPlace!.geometry.location.lat,
             next.dropoffPlace!.geometry.location.lng,
             next.pickupPlace!.geometry.location.lat,
             next.pickupPlace!.geometry.location.lng,
           );
+
+          CameraUpdate u2 = CameraUpdate.newLatLngBounds(bound, 70);
+          _googleMapController.animateCamera(u2).then((void v) {
+            check(u2, _googleMapController);
+          });
           setState(() {});
         }
       },
@@ -124,10 +221,12 @@ class LocationMapState extends ConsumerState<LocationMap> {
       children: [
         Positioned.fill(
           child: GoogleMap(
+            markers: _markers,
             onMapCreated: (mapController) {
               _googleMapController = mapController;
             },
             mapType: MapType.normal,
+            trafficEnabled: true,
             zoomGesturesEnabled: true,
             zoomControlsEnabled: false,
             polylines: Set<Polyline>.of(polylines.values),
