@@ -6,15 +6,18 @@ import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/domain/geocoding/i_geocoding_repository.dart';
 import 'package:taxidriver/domain/nearby_search/i_nearby_search_repository.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
+import 'package:taxidriver/infrastructure/matrix/google_matrix_service.dart';
 import 'package:taxidriver/ride/domain/ride.dart';
 
 class PickUpController extends StateNotifier<PickUpState> {
   PickUpController(
     this._nearbySearchRepository,
     this._geocodingRepository,
+    this._googleMatrixService,
   ) : super(PickUpState.initial());
   final INearbySearchRepository _nearbySearchRepository;
   final IGeocodingRepository _geocodingRepository;
+  final GoogleMatrixService _googleMatrixService;
 
   Future mapEventToState(PickUpEvent pickUpEvent) {
     return pickUpEvent.map(
@@ -61,7 +64,23 @@ class PickUpController extends StateNotifier<PickUpState> {
         state = state.copyWith(
           pickupPlace: event.pickup,
           pickUpChosen: true,
+          loadingRideDetails: true,
         );
+        final matrixResponse = await _googleMatrixService.getMatrix(
+          dropoffPlaceId: state.dropoffPlace!.placeId,
+          pickupPlaceId: state.pickupPlace!.placeId,
+        );
+        matrixResponse.fold((failure) => null, (googleMatrix) {
+          print(googleMatrix.rows);
+          final ride = Ride(
+            droppOff: state.dropoffPlace!,
+            pickUp: state.pickupPlace!,
+            type: state.rideType,
+            googelMatrix: googleMatrix,
+          );
+          state.copyWith(ride: ride);
+        });
+        state.copyWith(loadingRideDetails: false);
       },
       dropoffChoosen: (event) async {
         state = state.copyWith(
@@ -140,8 +159,24 @@ class PickUpController extends StateNotifier<PickUpState> {
           state = state.copyWith(
             pickupPlace: pickUpPlace,
             pickUpChosen: true,
+            loadingRideDetails: true,
           );
+
+          final matrixResponse = await _googleMatrixService.getMatrix(
+            dropoffPlaceId: state.dropoffPlace!.placeId,
+            pickupPlaceId: state.pickupPlace!.placeId,
+          );
+          matrixResponse.fold((failure) => null, (googleMatrix) {
+            final ride = Ride(
+              droppOff: state.dropoffPlace!,
+              pickUp: state.pickupPlace!,
+              type: state.rideType,
+              googelMatrix: googleMatrix,
+            );
+            state = state.copyWith(ride: ride);
+          });
         }
+        state = state.copyWith(loadingRideDetails: false);
       },
       dropOffChosenFromMap: (_) async {
         final reverseGeocodingFromMapResult = state.reverseGeocodingResult;
@@ -225,6 +260,7 @@ class PickUpController extends StateNotifier<PickUpState> {
         state = state.copyWith(
           pickUpChosen: false,
           isSwipping: false,
+          ride: null, //Very important
         );
       },
     );

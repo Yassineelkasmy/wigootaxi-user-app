@@ -1,23 +1,16 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:taxidriver/application/location/location_state.dart';
-import 'package:taxidriver/application/pick_up/pick_up_controller.dart';
 import 'package:taxidriver/application/pick_up/pick_up_event.dart';
-import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
 import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
-import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 import 'package:taxidriver/presentation/home/pick_location/widgets/schedule_button.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
-import 'package:taxidriver/ride/domain/ride.dart';
 
 class PickUpForm extends HookConsumerWidget {
   PickUpForm({
@@ -331,14 +324,16 @@ class PickUpForm extends HookConsumerWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                'Détails du trajet',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18.sp,
-                                ),
-                              ),
+                              pickUpState.loadingRideDetails
+                                  ? CircularProgressIndicator()
+                                  : Text(
+                                      '${pickUpState.ride?.googelMatrix.rows.first.elements.first.distance.text}',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18.sp,
+                                      ),
+                                    ),
                               ScheduleButton(
                                 pickUpState: pickUpState,
                                 pickUpController: pickUpController,
@@ -368,7 +363,7 @@ class PickUpForm extends HookConsumerWidget {
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 14.sp,
+                                        fontSize: 12.sp,
                                       ),
                                     ),
                                     5.h.verticalSpace,
@@ -400,7 +395,7 @@ class PickUpForm extends HookConsumerWidget {
                                       pickUpState.dropoffPlace!.name,
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 14.sp,
+                                        fontSize: 12.sp,
                                       ),
                                       overflow: TextOverflow.ellipsis,
                                     ),

@@ -5,6 +5,7 @@ import 'package:taxidriver/domain/geocoding/i_geocoding_repository.dart';
 import 'package:taxidriver/domain/nearby_search/i_nearby_search_repository.dart';
 import 'package:taxidriver/infrastructure/directions/google_places_directions.dart';
 import 'package:taxidriver/infrastructure/geocoding/google_places_geocoding.dart';
+import 'package:taxidriver/infrastructure/matrix/google_matrix_service.dart';
 import 'package:taxidriver/infrastructure/nearby_search/google_places_nearby_search.dart';
 
 final googlePlacesNearbySearchProvider = Provider<INearbySearchRepository>(
@@ -31,7 +32,11 @@ final pickUpProvider =
     StateNotifierProvider<PickUpController, PickUpState>((ref) {
   final googlePlacesNearbySearch = ref.watch(googlePlacesNearbySearchProvider);
   final googlePlacesGeocoding = ref.watch(googlePlacesGeocodingProvider);
-  final pickUpController =
-      PickUpController(googlePlacesNearbySearch, googlePlacesGeocoding);
+  final googleMatrixService = GoogleMatrixService();
+  final pickUpController = PickUpController(
+    googlePlacesNearbySearch,
+    googlePlacesGeocoding,
+    googleMatrixService,
+  );
   return pickUpController;
 });

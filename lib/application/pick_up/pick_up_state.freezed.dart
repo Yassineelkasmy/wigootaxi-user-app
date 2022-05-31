@@ -38,8 +38,10 @@ class _$PickUpStateTearOff {
       double? userLong,
       required bool dropOffChosen,
       required bool pickUpChosen,
+      required bool loadingRideDetails,
       double? cameraLatToMove,
-      double? cameraLongToMove}) {
+      double? cameraLongToMove,
+      Ride? ride}) {
     return _PickUpState(
       isGeocodingFromMapLoaidng: isGeocodingFromMapLoaidng,
       isNearbyPlacesLoading: isNearbyPlacesLoading,
@@ -59,8 +61,10 @@ class _$PickUpStateTearOff {
       userLong: userLong,
       dropOffChosen: dropOffChosen,
       pickUpChosen: pickUpChosen,
+      loadingRideDetails: loadingRideDetails,
       cameraLatToMove: cameraLatToMove,
       cameraLongToMove: cameraLongToMove,
+      ride: ride,
     );
   }
 }
@@ -91,8 +95,10 @@ mixin _$PickUpState {
   double? get userLong => throw _privateConstructorUsedError;
   bool get dropOffChosen => throw _privateConstructorUsedError;
   bool get pickUpChosen => throw _privateConstructorUsedError;
+  bool get loadingRideDetails => throw _privateConstructorUsedError;
   double? get cameraLatToMove => throw _privateConstructorUsedError;
   double? get cameraLongToMove => throw _privateConstructorUsedError;
+  Ride? get ride => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PickUpStateCopyWith<PickUpState> get copyWith =>
@@ -124,13 +130,16 @@ abstract class $PickUpStateCopyWith<$Res> {
       double? userLong,
       bool dropOffChosen,
       bool pickUpChosen,
+      bool loadingRideDetails,
       double? cameraLatToMove,
-      double? cameraLongToMove});
+      double? cameraLongToMove,
+      Ride? ride});
 
   $NearbySearchCopyWith<$Res>? get dropoffPlace;
   $NearbySearchCopyWith<$Res>? get pickupPlace;
   $NearbySearchCopyWith<$Res>? get mainFormLocation;
   $ReverseGeocodingResultCopyWith<$Res>? get reverseGeocodingResult;
+  $RideCopyWith<$Res>? get ride;
 }
 
 /// @nodoc
@@ -161,8 +170,10 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
     Object? userLong = freezed,
     Object? dropOffChosen = freezed,
     Object? pickUpChosen = freezed,
+    Object? loadingRideDetails = freezed,
     Object? cameraLatToMove = freezed,
     Object? cameraLongToMove = freezed,
+    Object? ride = freezed,
   }) {
     return _then(_value.copyWith(
       isGeocodingFromMapLoaidng: isGeocodingFromMapLoaidng == freezed
@@ -238,6 +249,10 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
           ? _value.pickUpChosen
           : pickUpChosen // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadingRideDetails: loadingRideDetails == freezed
+          ? _value.loadingRideDetails
+          : loadingRideDetails // ignore: cast_nullable_to_non_nullable
+              as bool,
       cameraLatToMove: cameraLatToMove == freezed
           ? _value.cameraLatToMove
           : cameraLatToMove // ignore: cast_nullable_to_non_nullable
@@ -246,6 +261,10 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
           ? _value.cameraLongToMove
           : cameraLongToMove // ignore: cast_nullable_to_non_nullable
               as double?,
+      ride: ride == freezed
+          ? _value.ride
+          : ride // ignore: cast_nullable_to_non_nullable
+              as Ride?,
     ));
   }
 
@@ -293,6 +312,17 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
       return _then(_value.copyWith(reverseGeocodingResult: value));
     });
   }
+
+  @override
+  $RideCopyWith<$Res>? get ride {
+    if (_value.ride == null) {
+      return null;
+    }
+
+    return $RideCopyWith<$Res>(_value.ride!, (value) {
+      return _then(_value.copyWith(ride: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -322,8 +352,10 @@ abstract class _$PickUpStateCopyWith<$Res>
       double? userLong,
       bool dropOffChosen,
       bool pickUpChosen,
+      bool loadingRideDetails,
       double? cameraLatToMove,
-      double? cameraLongToMove});
+      double? cameraLongToMove,
+      Ride? ride});
 
   @override
   $NearbySearchCopyWith<$Res>? get dropoffPlace;
@@ -333,6 +365,8 @@ abstract class _$PickUpStateCopyWith<$Res>
   $NearbySearchCopyWith<$Res>? get mainFormLocation;
   @override
   $ReverseGeocodingResultCopyWith<$Res>? get reverseGeocodingResult;
+  @override
+  $RideCopyWith<$Res>? get ride;
 }
 
 /// @nodoc
@@ -365,8 +399,10 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
     Object? userLong = freezed,
     Object? dropOffChosen = freezed,
     Object? pickUpChosen = freezed,
+    Object? loadingRideDetails = freezed,
     Object? cameraLatToMove = freezed,
     Object? cameraLongToMove = freezed,
+    Object? ride = freezed,
   }) {
     return _then(_PickUpState(
       isGeocodingFromMapLoaidng: isGeocodingFromMapLoaidng == freezed
@@ -442,6 +478,10 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
           ? _value.pickUpChosen
           : pickUpChosen // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadingRideDetails: loadingRideDetails == freezed
+          ? _value.loadingRideDetails
+          : loadingRideDetails // ignore: cast_nullable_to_non_nullable
+              as bool,
       cameraLatToMove: cameraLatToMove == freezed
           ? _value.cameraLatToMove
           : cameraLatToMove // ignore: cast_nullable_to_non_nullable
@@ -450,6 +490,10 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
           ? _value.cameraLongToMove
           : cameraLongToMove // ignore: cast_nullable_to_non_nullable
               as double?,
+      ride: ride == freezed
+          ? _value.ride
+          : ride // ignore: cast_nullable_to_non_nullable
+              as Ride?,
     ));
   }
 }
@@ -476,8 +520,10 @@ class _$_PickUpState implements _PickUpState {
       this.userLong,
       required this.dropOffChosen,
       required this.pickUpChosen,
+      required this.loadingRideDetails,
       this.cameraLatToMove,
-      this.cameraLongToMove});
+      this.cameraLongToMove,
+      this.ride});
 
   @override
   final bool isGeocodingFromMapLoaidng;
@@ -517,13 +563,17 @@ class _$_PickUpState implements _PickUpState {
   @override
   final bool pickUpChosen;
   @override
+  final bool loadingRideDetails;
+  @override
   final double? cameraLatToMove;
   @override
   final double? cameraLongToMove;
+  @override
+  final Ride? ride;
 
   @override
   String toString() {
-    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, nearBysearchSuccessOrFailureOption: $nearBysearchSuccessOrFailureOption, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, mainFormLocation: $mainFormLocation, reverseGeocodingResult: $reverseGeocodingResult, rideType: $rideType, rideDateTime: $rideDateTime, places: $places, isSwipping: $isSwipping, cameraLat: $cameraLat, cameraLong: $cameraLong, userLat: $userLat, userLong: $userLong, dropOffChosen: $dropOffChosen, pickUpChosen: $pickUpChosen, cameraLatToMove: $cameraLatToMove, cameraLongToMove: $cameraLongToMove)';
+    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, nearBysearchSuccessOrFailureOption: $nearBysearchSuccessOrFailureOption, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, mainFormLocation: $mainFormLocation, reverseGeocodingResult: $reverseGeocodingResult, rideType: $rideType, rideDateTime: $rideDateTime, places: $places, isSwipping: $isSwipping, cameraLat: $cameraLat, cameraLong: $cameraLong, userLat: $userLat, userLong: $userLong, dropOffChosen: $dropOffChosen, pickUpChosen: $pickUpChosen, loadingRideDetails: $loadingRideDetails, cameraLatToMove: $cameraLatToMove, cameraLongToMove: $cameraLongToMove, ride: $ride)';
   }
 
   @override
@@ -564,9 +614,12 @@ class _$_PickUpState implements _PickUpState {
             const DeepCollectionEquality()
                 .equals(other.pickUpChosen, pickUpChosen) &&
             const DeepCollectionEquality()
+                .equals(other.loadingRideDetails, loadingRideDetails) &&
+            const DeepCollectionEquality()
                 .equals(other.cameraLatToMove, cameraLatToMove) &&
             const DeepCollectionEquality()
-                .equals(other.cameraLongToMove, cameraLongToMove));
+                .equals(other.cameraLongToMove, cameraLongToMove) &&
+            const DeepCollectionEquality().equals(other.ride, ride));
   }
 
   @override
@@ -590,8 +643,10 @@ class _$_PickUpState implements _PickUpState {
         const DeepCollectionEquality().hash(userLong),
         const DeepCollectionEquality().hash(dropOffChosen),
         const DeepCollectionEquality().hash(pickUpChosen),
+        const DeepCollectionEquality().hash(loadingRideDetails),
         const DeepCollectionEquality().hash(cameraLatToMove),
-        const DeepCollectionEquality().hash(cameraLongToMove)
+        const DeepCollectionEquality().hash(cameraLongToMove),
+        const DeepCollectionEquality().hash(ride)
       ]);
 
   @JsonKey(ignore: true)
@@ -621,8 +676,10 @@ abstract class _PickUpState implements PickUpState {
       double? userLong,
       required bool dropOffChosen,
       required bool pickUpChosen,
+      required bool loadingRideDetails,
       double? cameraLatToMove,
-      double? cameraLongToMove}) = _$_PickUpState;
+      double? cameraLongToMove,
+      Ride? ride}) = _$_PickUpState;
 
   @override
   bool get isGeocodingFromMapLoaidng;
@@ -662,9 +719,13 @@ abstract class _PickUpState implements PickUpState {
   @override
   bool get pickUpChosen;
   @override
+  bool get loadingRideDetails;
+  @override
   double? get cameraLatToMove;
   @override
   double? get cameraLongToMove;
+  @override
+  Ride? get ride;
   @override
   @JsonKey(ignore: true)
   _$PickUpStateCopyWith<_PickUpState> get copyWith =>

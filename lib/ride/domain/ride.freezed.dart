@@ -21,11 +21,15 @@ class _$RideTearOff {
   _Ride call(
       {required NearbySearch droppOff,
       required NearbySearch pickUp,
-      required RideType type}) {
+      required RideType type,
+      required MatrixResponse googelMatrix,
+      DateTime? date}) {
     return _Ride(
       droppOff: droppOff,
       pickUp: pickUp,
       type: type,
+      googelMatrix: googelMatrix,
+      date: date,
     );
   }
 }
@@ -38,6 +42,8 @@ mixin _$Ride {
   NearbySearch get droppOff => throw _privateConstructorUsedError;
   NearbySearch get pickUp => throw _privateConstructorUsedError;
   RideType get type => throw _privateConstructorUsedError;
+  MatrixResponse get googelMatrix => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RideCopyWith<Ride> get copyWith => throw _privateConstructorUsedError;
@@ -47,10 +53,16 @@ mixin _$Ride {
 abstract class $RideCopyWith<$Res> {
   factory $RideCopyWith(Ride value, $Res Function(Ride) then) =
       _$RideCopyWithImpl<$Res>;
-  $Res call({NearbySearch droppOff, NearbySearch pickUp, RideType type});
+  $Res call(
+      {NearbySearch droppOff,
+      NearbySearch pickUp,
+      RideType type,
+      MatrixResponse googelMatrix,
+      DateTime? date});
 
   $NearbySearchCopyWith<$Res> get droppOff;
   $NearbySearchCopyWith<$Res> get pickUp;
+  $MatrixResponseCopyWith<$Res> get googelMatrix;
 }
 
 /// @nodoc
@@ -66,6 +78,8 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
     Object? droppOff = freezed,
     Object? pickUp = freezed,
     Object? type = freezed,
+    Object? googelMatrix = freezed,
+    Object? date = freezed,
   }) {
     return _then(_value.copyWith(
       droppOff: droppOff == freezed
@@ -80,6 +94,14 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as RideType,
+      googelMatrix: googelMatrix == freezed
+          ? _value.googelMatrix
+          : googelMatrix // ignore: cast_nullable_to_non_nullable
+              as MatrixResponse,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 
@@ -96,6 +118,13 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
       return _then(_value.copyWith(pickUp: value));
     });
   }
+
+  @override
+  $MatrixResponseCopyWith<$Res> get googelMatrix {
+    return $MatrixResponseCopyWith<$Res>(_value.googelMatrix, (value) {
+      return _then(_value.copyWith(googelMatrix: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -103,12 +132,19 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
   factory _$RideCopyWith(_Ride value, $Res Function(_Ride) then) =
       __$RideCopyWithImpl<$Res>;
   @override
-  $Res call({NearbySearch droppOff, NearbySearch pickUp, RideType type});
+  $Res call(
+      {NearbySearch droppOff,
+      NearbySearch pickUp,
+      RideType type,
+      MatrixResponse googelMatrix,
+      DateTime? date});
 
   @override
   $NearbySearchCopyWith<$Res> get droppOff;
   @override
   $NearbySearchCopyWith<$Res> get pickUp;
+  @override
+  $MatrixResponseCopyWith<$Res> get googelMatrix;
 }
 
 /// @nodoc
@@ -125,6 +161,8 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
     Object? droppOff = freezed,
     Object? pickUp = freezed,
     Object? type = freezed,
+    Object? googelMatrix = freezed,
+    Object? date = freezed,
   }) {
     return _then(_Ride(
       droppOff: droppOff == freezed
@@ -139,6 +177,14 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as RideType,
+      googelMatrix: googelMatrix == freezed
+          ? _value.googelMatrix
+          : googelMatrix // ignore: cast_nullable_to_non_nullable
+              as MatrixResponse,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -147,7 +193,11 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
 
 class _$_Ride implements _Ride {
   const _$_Ride(
-      {required this.droppOff, required this.pickUp, required this.type});
+      {required this.droppOff,
+      required this.pickUp,
+      required this.type,
+      required this.googelMatrix,
+      this.date});
 
   @override
   final NearbySearch droppOff;
@@ -155,10 +205,14 @@ class _$_Ride implements _Ride {
   final NearbySearch pickUp;
   @override
   final RideType type;
+  @override
+  final MatrixResponse googelMatrix;
+  @override
+  final DateTime? date;
 
   @override
   String toString() {
-    return 'Ride(droppOff: $droppOff, pickUp: $pickUp, type: $type)';
+    return 'Ride(droppOff: $droppOff, pickUp: $pickUp, type: $type, googelMatrix: $googelMatrix, date: $date)';
   }
 
   @override
@@ -168,7 +222,10 @@ class _$_Ride implements _Ride {
             other is _Ride &&
             const DeepCollectionEquality().equals(other.droppOff, droppOff) &&
             const DeepCollectionEquality().equals(other.pickUp, pickUp) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.googelMatrix, googelMatrix) &&
+            const DeepCollectionEquality().equals(other.date, date));
   }
 
   @override
@@ -176,7 +233,9 @@ class _$_Ride implements _Ride {
       runtimeType,
       const DeepCollectionEquality().hash(droppOff),
       const DeepCollectionEquality().hash(pickUp),
-      const DeepCollectionEquality().hash(type));
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(googelMatrix),
+      const DeepCollectionEquality().hash(date));
 
   @JsonKey(ignore: true)
   @override
@@ -188,7 +247,9 @@ abstract class _Ride implements Ride {
   const factory _Ride(
       {required NearbySearch droppOff,
       required NearbySearch pickUp,
-      required RideType type}) = _$_Ride;
+      required RideType type,
+      required MatrixResponse googelMatrix,
+      DateTime? date}) = _$_Ride;
 
   @override
   NearbySearch get droppOff;
@@ -196,6 +257,10 @@ abstract class _Ride implements Ride {
   NearbySearch get pickUp;
   @override
   RideType get type;
+  @override
+  MatrixResponse get googelMatrix;
+  @override
+  DateTime? get date;
   @override
   @JsonKey(ignore: true)
   _$RideCopyWith<_Ride> get copyWith => throw _privateConstructorUsedError;

@@ -19,11 +19,18 @@ class SplashPage extends HookConsumerWidget {
       Timer(Duration(seconds: 2), () {
         nextAuthState.map(
             initial: (_) {},
+            // authenticated: (_) {
+            //   if (_.user.isPhoneVerified) {
+            //     AutoRouter.of(context).push(HomePageRoute());
+            //   } else {
+            //     AutoRouter.of(context).push(PhoneAuthPageRoute());
+            //   }
+            // },
             authenticated: (_) {
               if (_.user.isPhoneVerified) {
                 AutoRouter.of(context).push(HomePageRoute());
               } else {
-                AutoRouter.of(context).push(PhoneAuthPageRoute());
+                AutoRouter.of(context).push(HomePageRoute());
               }
             },
             unauthenticated: (unAuth) {

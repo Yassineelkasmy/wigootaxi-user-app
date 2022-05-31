@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:taxidriver/domain/geocoding/reverse_geocoding.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
@@ -31,8 +30,10 @@ class PickUpState with _$PickUpState {
     double? userLong,
     required bool dropOffChosen,
     required bool pickUpChosen,
+    required bool loadingRideDetails,
     double? cameraLatToMove,
     double? cameraLongToMove,
+    Ride? ride,
   }) = _PickUpState;
 
   factory PickUpState.initial() => PickUpState(
@@ -45,5 +46,6 @@ class PickUpState with _$PickUpState {
         dropOffChosen: false,
         pickUpChosen: false,
         isSwipping: false,
+        loadingRideDetails: false,
       );
 }

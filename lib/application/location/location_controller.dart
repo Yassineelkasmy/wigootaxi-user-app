@@ -1,6 +1,5 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:location/location.dart';
 import 'package:taxidriver/application/location/location_event.dart';
 import 'package:taxidriver/application/location/location_state.dart';
 

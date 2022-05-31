@@ -64,7 +64,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
       path: id == 'dropoff'
           ? 'assets/icons/flag.png'
           : 'assets/icons/location-pin.png',
-      width: 150,
+      width: 80,
     );
     _markers.add(
       Marker(
