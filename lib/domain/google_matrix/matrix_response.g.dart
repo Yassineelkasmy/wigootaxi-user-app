@@ -33,15 +33,14 @@ _$_MatrixElement _$$_MatrixElementFromJson(Map<String, dynamic> json) =>
     _$_MatrixElement(
       duration: MatrixData.fromJson(json['duration'] as Map<String, dynamic>),
       distance: MatrixData.fromJson(json['distance'] as Map<String, dynamic>),
-      duration_in_traffic: MatrixData.fromJson(
-          json['duration_in_traffic'] as Map<String, dynamic>),
+      status: json['status'] as String,
     );
 
 Map<String, dynamic> _$$_MatrixElementToJson(_$_MatrixElement instance) =>
     <String, dynamic>{
       'duration': instance.duration,
       'distance': instance.distance,
-      'duration_in_traffic': instance.duration_in_traffic,
+      'status': instance.status,
     };
 
 _$_MatrixData _$$_MatrixDataFromJson(Map<String, dynamic> json) =>

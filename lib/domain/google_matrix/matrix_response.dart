@@ -24,7 +24,8 @@ class MatrixElement with _$MatrixElement {
   const factory MatrixElement({
     required MatrixData duration,
     required MatrixData distance,
-    required MatrixData duration_in_traffic,
+    // required MatrixData duration_in_traffic,
+    required String status,
   }) = _MatrixElement;
 
   factory MatrixElement.fromJson(Map<String, dynamic> json) =>

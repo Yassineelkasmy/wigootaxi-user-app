@@ -320,11 +320,11 @@ class _$MatrixElementTearOff {
   _MatrixElement call(
       {required MatrixData duration,
       required MatrixData distance,
-      required MatrixData duration_in_traffic}) {
+      required String status}) {
     return _MatrixElement(
       duration: duration,
       distance: distance,
-      duration_in_traffic: duration_in_traffic,
+      status: status,
     );
   }
 
@@ -339,8 +339,9 @@ const $MatrixElement = _$MatrixElementTearOff();
 /// @nodoc
 mixin _$MatrixElement {
   MatrixData get duration => throw _privateConstructorUsedError;
-  MatrixData get distance => throw _privateConstructorUsedError;
-  MatrixData get duration_in_traffic => throw _privateConstructorUsedError;
+  MatrixData get distance =>
+      throw _privateConstructorUsedError; // required MatrixData duration_in_traffic,
+  String get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -353,14 +354,10 @@ abstract class $MatrixElementCopyWith<$Res> {
   factory $MatrixElementCopyWith(
           MatrixElement value, $Res Function(MatrixElement) then) =
       _$MatrixElementCopyWithImpl<$Res>;
-  $Res call(
-      {MatrixData duration,
-      MatrixData distance,
-      MatrixData duration_in_traffic});
+  $Res call({MatrixData duration, MatrixData distance, String status});
 
   $MatrixDataCopyWith<$Res> get duration;
   $MatrixDataCopyWith<$Res> get distance;
-  $MatrixDataCopyWith<$Res> get duration_in_traffic;
 }
 
 /// @nodoc
@@ -376,7 +373,7 @@ class _$MatrixElementCopyWithImpl<$Res>
   $Res call({
     Object? duration = freezed,
     Object? distance = freezed,
-    Object? duration_in_traffic = freezed,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       duration: duration == freezed
@@ -387,10 +384,10 @@ class _$MatrixElementCopyWithImpl<$Res>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as MatrixData,
-      duration_in_traffic: duration_in_traffic == freezed
-          ? _value.duration_in_traffic
-          : duration_in_traffic // ignore: cast_nullable_to_non_nullable
-              as MatrixData,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -407,13 +404,6 @@ class _$MatrixElementCopyWithImpl<$Res>
       return _then(_value.copyWith(distance: value));
     });
   }
-
-  @override
-  $MatrixDataCopyWith<$Res> get duration_in_traffic {
-    return $MatrixDataCopyWith<$Res>(_value.duration_in_traffic, (value) {
-      return _then(_value.copyWith(duration_in_traffic: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -423,17 +413,12 @@ abstract class _$MatrixElementCopyWith<$Res>
           _MatrixElement value, $Res Function(_MatrixElement) then) =
       __$MatrixElementCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {MatrixData duration,
-      MatrixData distance,
-      MatrixData duration_in_traffic});
+  $Res call({MatrixData duration, MatrixData distance, String status});
 
   @override
   $MatrixDataCopyWith<$Res> get duration;
   @override
   $MatrixDataCopyWith<$Res> get distance;
-  @override
-  $MatrixDataCopyWith<$Res> get duration_in_traffic;
 }
 
 /// @nodoc
@@ -451,7 +436,7 @@ class __$MatrixElementCopyWithImpl<$Res>
   $Res call({
     Object? duration = freezed,
     Object? distance = freezed,
-    Object? duration_in_traffic = freezed,
+    Object? status = freezed,
   }) {
     return _then(_MatrixElement(
       duration: duration == freezed
@@ -462,10 +447,10 @@ class __$MatrixElementCopyWithImpl<$Res>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as MatrixData,
-      duration_in_traffic: duration_in_traffic == freezed
-          ? _value.duration_in_traffic
-          : duration_in_traffic // ignore: cast_nullable_to_non_nullable
-              as MatrixData,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -474,9 +459,7 @@ class __$MatrixElementCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MatrixElement implements _MatrixElement {
   const _$_MatrixElement(
-      {required this.duration,
-      required this.distance,
-      required this.duration_in_traffic});
+      {required this.duration, required this.distance, required this.status});
 
   factory _$_MatrixElement.fromJson(Map<String, dynamic> json) =>
       _$$_MatrixElementFromJson(json);
@@ -485,12 +468,12 @@ class _$_MatrixElement implements _MatrixElement {
   final MatrixData duration;
   @override
   final MatrixData distance;
-  @override
-  final MatrixData duration_in_traffic;
+  @override // required MatrixData duration_in_traffic,
+  final String status;
 
   @override
   String toString() {
-    return 'MatrixElement(duration: $duration, distance: $distance, duration_in_traffic: $duration_in_traffic)';
+    return 'MatrixElement(duration: $duration, distance: $distance, status: $status)';
   }
 
   @override
@@ -500,8 +483,7 @@ class _$_MatrixElement implements _MatrixElement {
             other is _MatrixElement &&
             const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality().equals(other.distance, distance) &&
-            const DeepCollectionEquality()
-                .equals(other.duration_in_traffic, duration_in_traffic));
+            const DeepCollectionEquality().equals(other.status, status));
   }
 
   @override
@@ -509,7 +491,7 @@ class _$_MatrixElement implements _MatrixElement {
       runtimeType,
       const DeepCollectionEquality().hash(duration),
       const DeepCollectionEquality().hash(distance),
-      const DeepCollectionEquality().hash(duration_in_traffic));
+      const DeepCollectionEquality().hash(status));
 
   @JsonKey(ignore: true)
   @override
@@ -526,7 +508,7 @@ abstract class _MatrixElement implements MatrixElement {
   const factory _MatrixElement(
       {required MatrixData duration,
       required MatrixData distance,
-      required MatrixData duration_in_traffic}) = _$_MatrixElement;
+      required String status}) = _$_MatrixElement;
 
   factory _MatrixElement.fromJson(Map<String, dynamic> json) =
       _$_MatrixElement.fromJson;
@@ -535,8 +517,8 @@ abstract class _MatrixElement implements MatrixElement {
   MatrixData get duration;
   @override
   MatrixData get distance;
-  @override
-  MatrixData get duration_in_traffic;
+  @override // required MatrixData duration_in_traffic,
+  String get status;
   @override
   @JsonKey(ignore: true)
   _$MatrixElementCopyWith<_MatrixElement> get copyWith =>
