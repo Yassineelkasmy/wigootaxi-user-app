@@ -358,15 +358,6 @@ class PickUpForm extends HookConsumerWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Text(
-                                      pickUpState.pickupPlace!.name,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 12.sp,
-                                      ),
-                                    ),
-                                    5.h.verticalSpace,
                                     Text(pickUpState.pickupPlace!.vicinity)
                                   ],
                                 ),
@@ -392,15 +383,6 @@ class PickUpForm extends HookConsumerWidget {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
-                                      pickUpState.dropoffPlace!.name,
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 12.sp,
-                                      ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    5.h.verticalSpace,
-                                    Text(
                                       pickUpState.dropoffPlace!.vicinity,
                                       overflow: TextOverflow.ellipsis,
                                     )
@@ -410,13 +392,14 @@ class PickUpForm extends HookConsumerWidget {
                             ],
                           ),
                           20.h.verticalSpace,
-                          SizedBox(
-                            width: double.maxFinite,
-                            child: SubmitButton(
-                              text: 'YALLA!',
-                              onPressed: () {},
+                          if (pickUpState.ride != null)
+                            SizedBox(
+                              width: double.maxFinite,
+                              child: SubmitButton(
+                                text: 'YALLA!',
+                                onPressed: () {},
+                              ),
                             ),
-                          ),
                         ],
                       ),
               )

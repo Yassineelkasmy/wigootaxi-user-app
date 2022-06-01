@@ -276,6 +276,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
             buildingsEnabled: false,
             zoomGesturesEnabled: true,
             zoomControlsEnabled: false,
+            myLocationEnabled: true,
             indoorViewEnabled: true,
             polylines: Set<Polyline>.of(polylines.values),
             initialCameraPosition: cameraPosition,

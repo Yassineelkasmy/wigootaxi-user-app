@@ -11,6 +11,8 @@ class Ride with _$Ride {
     required NearbySearch pickUp,
     required RideType type,
     required MatrixResponse googelMatrix,
+    required int duration,
+    required int distance,
     DateTime? date,
   }) = _Ride;
 }

@@ -60,6 +60,7 @@ class PickUpController extends StateNotifier<PickUpState> {
           isNearbyPlacesLoading: false,
         );
       },
+      //This event will probably not be used
       pickupChoosen: (event) async {
         state = state.copyWith(
           pickupPlace: event.pickup,
@@ -77,11 +78,14 @@ class PickUpController extends StateNotifier<PickUpState> {
             pickUp: state.pickupPlace!,
             type: state.rideType,
             googelMatrix: googleMatrix,
+            distance: googleMatrix.rows.first.elements.first.distance.value,
+            duration: googleMatrix.rows.first.elements.first.duration.value,
           );
           state.copyWith(ride: ride);
         });
         state.copyWith(loadingRideDetails: false);
       },
+      //This event will probably not be used
       dropoffChoosen: (event) async {
         state = state.copyWith(
           dropoffPlace: event.dropoff,
@@ -113,12 +117,26 @@ class PickUpController extends StateNotifier<PickUpState> {
           rideType: RideType.shceduled,
           rideDateTime: event.rideDateTime,
         );
+        if (state.ride != null) {
+          state = state.copyWith(
+              ride: state.ride!.copyWith(
+            date: event.rideDateTime,
+            type: RideType.shceduled,
+          ));
+        }
       },
       rideScheduledToNow: (_) async {
         state = state.copyWith(
           rideType: RideType.now,
           rideDateTime: null,
         );
+        if (state.ride != null) {
+          state = state.copyWith(
+              ride: state.ride!.copyWith(
+            date: null,
+            type: RideType.now,
+          ));
+        }
       },
       cameraMoved: (event) async {
         // if (state.cameraLat == null || state.cameraLong == null) {
@@ -172,6 +190,8 @@ class PickUpController extends StateNotifier<PickUpState> {
               pickUp: state.pickupPlace!,
               type: state.rideType,
               googelMatrix: googleMatrix,
+              distance: googleMatrix.rows.first.elements.first.distance.value,
+              duration: googleMatrix.rows.first.elements.first.duration.value,
             );
             state = state.copyWith(ride: ride);
           });

@@ -26,21 +26,23 @@ class FireBaseAuthFacade {
           .collection('users')
           .doc(user.uid)
           .get();
-
-      return optionOf(
-        User(
-          uid: user.uid,
-          email: user.email!,
-          displayName: user.displayName,
-          photoURL: user.photoURL,
-          phone: userDoc.data()?['phone'] as String?,
-          isPhoneVerified: userDoc.data()!['isPhoneVerified'] as bool,
-        ),
-      );
+      try {
+        return optionOf(
+          User(
+            uid: user.uid,
+            email: user.email!,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            phone: userDoc.data()?['phone'] as String?,
+            isPhoneVerified: userDoc.data()!['isPhoneVerified'] as bool,
+          ),
+        );
+      } catch (e) {
+        return none();
+      }
     }
   }
 
-  @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
@@ -49,7 +51,6 @@ class FireBaseAuthFacade {
       }
 
       final authMethod = await checkAuthMethod(googleUser.email);
-      print(authMethod);
       if (authMethod != SignInMethod.google) {
         return left(AuthFailure.invalidCredentials());
       }
@@ -61,14 +62,13 @@ class FireBaseAuthFacade {
         accessToken: googleAuthentication.accessToken,
       );
 
-      await _firebaseAuth.signInWithCredential(authCredential);
+      final d = await _firebaseAuth.signInWithCredential(authCredential);
       return right(unit);
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }
 
-  @override
   Future<void> signOut() async {
     Future.wait([
       fb.logOut(),
@@ -116,10 +116,14 @@ class FireBaseAuthFacade {
     required String password,
   }) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+      final d = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
       return right(unit);
     } on FirebaseAuthException catch (e) {
+      print(e);
       if (e.code == 'wrong-password' || e.code == 'user-not-found') {
         return left(const AuthFailure.invalidCredentials());
       }
