@@ -19,7 +19,7 @@ class BookingService {
       'dest_name': ride.droppOff.name,
       'dest_lat': ride.droppOff.geometry.location.lat,
       'dest_lng': ride.droppOff.geometry.location.lng,
-      'type': ride.type.toString(),
+      'type': ride.type.name,
       'phone': phone,
       'date': ride.date != null ? Timestamp.fromDate(ride.date!) : null,
       'ts': Timestamp.fromDate(DateTime.now()),

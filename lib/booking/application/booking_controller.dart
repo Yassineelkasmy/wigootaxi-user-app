@@ -8,17 +8,14 @@ import 'package:taxidriver/booking/services/booking_service.dart';
 import '../../domain/auth/user.dart';
 
 class BookingController extends StateNotifier<BookingState> {
-  BookingController({
-    required this.ride,
-    required this.user,
-  }) : super(BookingState.initial());
+  BookingController() : super(BookingState.initial());
 
   final _bookingService = BookingService();
-  final Ride ride;
-  final User user;
 
   Future mapEventToState(BookingEvent event) {
     return event.map(bookRideRequested: (event) async {
+      final ride = event.ride;
+      final user = event.user;
       state = state.copyWith(bookingRide: true);
       final successOrFailureOption = await _bookingService.bookRide(
         ride: ride,

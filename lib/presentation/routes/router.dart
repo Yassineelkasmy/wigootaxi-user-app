@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:taxidriver/booking/ui/booking_page.dart';
 import 'package:taxidriver/presentation/auth/login_page.dart';
 import 'package:taxidriver/presentation/auth/phone_auth_page.dart';
 import 'package:taxidriver/presentation/auth/phone_verification_page.dart';
@@ -22,6 +23,7 @@ import 'package:taxidriver/presentation/splash/splash_page.dart';
   AutoRoute(page: HomePage),
   AutoRoute(page: ActivateLocationOrMapPage),
   AutoRoute(page: PickUpRootPage),
+  AutoRoute(page: BookingPage),
   AutoRoute(page: OnBoardingPage),
   AutoRoute(page: SendMessagePage),
   AutoRoute(page: MessageSentPage),

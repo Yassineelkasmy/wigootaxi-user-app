@@ -17,6 +17,10 @@ class Ride with _$Ride {
   }) = _Ride;
 }
 
+String typeToString(Ride ride) {
+  return ride.type == RideType.now ? 'Maintenant' : 'Prévu le';
+}
+
 enum RideType {
   now,
   shceduled,
