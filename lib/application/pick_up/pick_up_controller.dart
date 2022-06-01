@@ -7,7 +7,7 @@ import 'package:taxidriver/domain/geocoding/i_geocoding_repository.dart';
 import 'package:taxidriver/domain/nearby_search/i_nearby_search_repository.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 import 'package:taxidriver/infrastructure/matrix/google_matrix_service.dart';
-import 'package:taxidriver/ride/domain/ride.dart';
+import 'package:taxidriver/booking/domain/ride.dart';
 
 class PickUpController extends StateNotifier<PickUpState> {
   PickUpController(

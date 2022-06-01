@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:taxidriver/domain/geocoding/reverse_geocoding.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search_failure.dart';
-import 'package:taxidriver/ride/domain/ride.dart';
+import 'package:taxidriver/booking/domain/ride.dart';
 
 part 'pick_up_state.freezed.dart';
 
