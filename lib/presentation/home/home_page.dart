@@ -10,7 +10,7 @@ import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/home/help/help.dart';
 import 'package:taxidriver/presentation/home/home.dart';
 import 'package:taxidriver/presentation/home/notifications/notifications.dart';
-import 'package:taxidriver/presentation/home/reservation.dart';
+import 'package:taxidriver/presentation/home/reservation_page.dart';
 import 'package:taxidriver/presentation/home/widgets/bottom_nav_bar.dart';
 import 'package:taxidriver/prototype/users.dart';
 
@@ -37,7 +37,7 @@ class HomePage extends HookConsumerWidget {
       Home(
         drawerScaffoldController: _drawerScaffoldController,
       ),
-      Reservation(),
+      ReservationPage(),
       Notifications(),
       Help(),
     ];

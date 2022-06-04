@@ -20,10 +20,14 @@ class _$BookingStateTearOff {
 
   _BookingState call(
       {required bool bookingRide,
+      required bool loadingMyBookings,
+      required List<Booking> bookings,
       required Option<Either<BookingFailure, Unit>>
           bookingFailureOrSuccessOption}) {
     return _BookingState(
       bookingRide: bookingRide,
+      loadingMyBookings: loadingMyBookings,
+      bookings: bookings,
       bookingFailureOrSuccessOption: bookingFailureOrSuccessOption,
     );
   }
@@ -35,6 +39,8 @@ const $BookingState = _$BookingStateTearOff();
 /// @nodoc
 mixin _$BookingState {
   bool get bookingRide => throw _privateConstructorUsedError;
+  bool get loadingMyBookings => throw _privateConstructorUsedError;
+  List<Booking> get bookings => throw _privateConstructorUsedError;
   Option<Either<BookingFailure, Unit>> get bookingFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -50,6 +56,8 @@ abstract class $BookingStateCopyWith<$Res> {
       _$BookingStateCopyWithImpl<$Res>;
   $Res call(
       {bool bookingRide,
+      bool loadingMyBookings,
+      List<Booking> bookings,
       Option<Either<BookingFailure, Unit>> bookingFailureOrSuccessOption});
 }
 
@@ -64,6 +72,8 @@ class _$BookingStateCopyWithImpl<$Res> implements $BookingStateCopyWith<$Res> {
   @override
   $Res call({
     Object? bookingRide = freezed,
+    Object? loadingMyBookings = freezed,
+    Object? bookings = freezed,
     Object? bookingFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -71,6 +81,14 @@ class _$BookingStateCopyWithImpl<$Res> implements $BookingStateCopyWith<$Res> {
           ? _value.bookingRide
           : bookingRide // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadingMyBookings: loadingMyBookings == freezed
+          ? _value.loadingMyBookings
+          : loadingMyBookings // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bookings: bookings == freezed
+          ? _value.bookings
+          : bookings // ignore: cast_nullable_to_non_nullable
+              as List<Booking>,
       bookingFailureOrSuccessOption: bookingFailureOrSuccessOption == freezed
           ? _value.bookingFailureOrSuccessOption
           : bookingFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -88,6 +106,8 @@ abstract class _$BookingStateCopyWith<$Res>
   @override
   $Res call(
       {bool bookingRide,
+      bool loadingMyBookings,
+      List<Booking> bookings,
       Option<Either<BookingFailure, Unit>> bookingFailureOrSuccessOption});
 }
 
@@ -104,6 +124,8 @@ class __$BookingStateCopyWithImpl<$Res> extends _$BookingStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bookingRide = freezed,
+    Object? loadingMyBookings = freezed,
+    Object? bookings = freezed,
     Object? bookingFailureOrSuccessOption = freezed,
   }) {
     return _then(_BookingState(
@@ -111,6 +133,14 @@ class __$BookingStateCopyWithImpl<$Res> extends _$BookingStateCopyWithImpl<$Res>
           ? _value.bookingRide
           : bookingRide // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadingMyBookings: loadingMyBookings == freezed
+          ? _value.loadingMyBookings
+          : loadingMyBookings // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bookings: bookings == freezed
+          ? _value.bookings
+          : bookings // ignore: cast_nullable_to_non_nullable
+              as List<Booking>,
       bookingFailureOrSuccessOption: bookingFailureOrSuccessOption == freezed
           ? _value.bookingFailureOrSuccessOption
           : bookingFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -123,16 +153,23 @@ class __$BookingStateCopyWithImpl<$Res> extends _$BookingStateCopyWithImpl<$Res>
 
 class _$_BookingState implements _BookingState {
   const _$_BookingState(
-      {required this.bookingRide, required this.bookingFailureOrSuccessOption});
+      {required this.bookingRide,
+      required this.loadingMyBookings,
+      required this.bookings,
+      required this.bookingFailureOrSuccessOption});
 
   @override
   final bool bookingRide;
+  @override
+  final bool loadingMyBookings;
+  @override
+  final List<Booking> bookings;
   @override
   final Option<Either<BookingFailure, Unit>> bookingFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'BookingState(bookingRide: $bookingRide, bookingFailureOrSuccessOption: $bookingFailureOrSuccessOption)';
+    return 'BookingState(bookingRide: $bookingRide, loadingMyBookings: $loadingMyBookings, bookings: $bookings, bookingFailureOrSuccessOption: $bookingFailureOrSuccessOption)';
   }
 
   @override
@@ -142,6 +179,9 @@ class _$_BookingState implements _BookingState {
             other is _BookingState &&
             const DeepCollectionEquality()
                 .equals(other.bookingRide, bookingRide) &&
+            const DeepCollectionEquality()
+                .equals(other.loadingMyBookings, loadingMyBookings) &&
+            const DeepCollectionEquality().equals(other.bookings, bookings) &&
             const DeepCollectionEquality().equals(
                 other.bookingFailureOrSuccessOption,
                 bookingFailureOrSuccessOption));
@@ -151,6 +191,8 @@ class _$_BookingState implements _BookingState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(bookingRide),
+      const DeepCollectionEquality().hash(loadingMyBookings),
+      const DeepCollectionEquality().hash(bookings),
       const DeepCollectionEquality().hash(bookingFailureOrSuccessOption));
 
   @JsonKey(ignore: true)
@@ -162,11 +204,17 @@ class _$_BookingState implements _BookingState {
 abstract class _BookingState implements BookingState {
   const factory _BookingState(
       {required bool bookingRide,
+      required bool loadingMyBookings,
+      required List<Booking> bookings,
       required Option<Either<BookingFailure, Unit>>
           bookingFailureOrSuccessOption}) = _$_BookingState;
 
   @override
   bool get bookingRide;
+  @override
+  bool get loadingMyBookings;
+  @override
+  List<Booking> get bookings;
   @override
   Option<Either<BookingFailure, Unit>> get bookingFailureOrSuccessOption;
   @override

@@ -10,35 +10,43 @@ class UserLocationIndicator extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pickUpState = ref.watch(pickUpProvider);
-    return Center(
-      child: pickUpState.isGeocodingFromMapLoaidng ||
-              pickUpState.loadingRideDetails
-          ? CircularProgressIndicator()
-          : pickUpState.ride != null
-              ? TextButton.icon(
-                  style: TextButton.styleFrom(
-                      elevation: 8,
-                      backgroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 15,
-                      )),
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.timer,
-                    size: 32,
-                  ),
-                  label: Text(
-                    pickUpState.ride!.googelMatrix.rows.first.elements.first
-                        .duration.text,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                )
-              : Icon(
-                  Icons.person,
+    return pickUpState.ride != null
+        ? Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              padding: EdgeInsets.only(
+                top: 20.h,
+              ),
+              child: TextButton.icon(
+                style: TextButton.styleFrom(
+                    elevation: 8,
+                    backgroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 15,
+                    )),
+                onPressed: () {},
+                icon: Icon(
+                  Icons.timer,
+                  size: 32,
                 ),
-    );
+                label: Text(
+                  pickUpState.ride!.googelMatrix.rows.first.elements.first
+                      .duration.text,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+            ),
+          )
+        : Center(
+            child: pickUpState.isGeocodingFromMapLoaidng ||
+                    pickUpState.loadingRideDetails
+                ? CircularProgressIndicator()
+                : Icon(
+                    Icons.person,
+                  ),
+          );
   }
 }

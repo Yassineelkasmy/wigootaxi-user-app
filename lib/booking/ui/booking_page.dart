@@ -1,10 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
+import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
 import 'package:taxidriver/booking/application/booking_event.dart';
+import 'package:taxidriver/booking/application/booking_state.dart';
 import 'package:taxidriver/booking/domain/ride.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
@@ -28,6 +33,15 @@ class BookingPage extends HookConsumerWidget {
     final bookingController = ref.watch(bookingProvider.notifier);
     final bookingState = ref.watch(bookingProvider);
     final user = ref.watch(userProvider);
+    ref.listen<BookingState>(bookingProvider, ((previous, next) {
+      next.bookingFailureOrSuccessOption.map((option) => option.fold(
+            (l) => null,
+            (success) {
+              AutoRouter.of(context)
+                  .replace(BookingsPageRoute(fromBooking: true));
+            },
+          ));
+    }));
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(

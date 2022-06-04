@@ -1,17 +1,20 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:taxidriver/booking/ui/bookings_page.dart';
 import 'package:taxidriver/presentation/home/help/widgets/help_card.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 
-class Reservation extends StatefulWidget {
-  const Reservation({Key? key}) : super(key: key);
+class ReservationPage extends StatefulWidget {
+  const ReservationPage({Key? key}) : super(key: key);
 
   @override
-  State<Reservation> createState() => _ReservationState();
+  State<ReservationPage> createState() => _ReservationPageState();
 }
 
-class _ReservationState extends State<Reservation> {
+class _ReservationPageState extends State<ReservationPage> {
   late RiveAnimationController _controller;
 
   @override
@@ -64,12 +67,15 @@ class _ReservationState extends State<Reservation> {
               height: 10,
             ),
             buildHelpCard(
-                icon: Icon(
-                  Icons.history,
-                  color: kPrimaryColor,
-                ),
-                text: 'Mes Reservations',
-                onPressed: () {}),
+              icon: Icon(
+                Icons.history,
+                color: kPrimaryColor,
+              ),
+              text: 'Mes Reservations',
+              onPressed: () {
+                AutoRouter.of(context).push(BookingsPageRoute());
+              },
+            ),
           ],
         ),
       ),

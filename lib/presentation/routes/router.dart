@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:taxidriver/booking/ui/booking_page.dart';
+import 'package:taxidriver/booking/ui/bookings_page.dart';
 import 'package:taxidriver/presentation/auth/login_page.dart';
 import 'package:taxidriver/presentation/auth/phone_auth_page.dart';
 import 'package:taxidriver/presentation/auth/phone_verification_page.dart';
@@ -9,6 +10,7 @@ import 'package:taxidriver/presentation/home/help/send_message_page.dart';
 import 'package:taxidriver/presentation/home/home_page.dart';
 import 'package:taxidriver/presentation/home/pick_location/activate_location_or_map_page.dart';
 import 'package:taxidriver/presentation/home/pick_location/pick_up_root_page.dart';
+import 'package:taxidriver/presentation/home/reservation_page.dart';
 import 'package:taxidriver/presentation/intro/intro_page.dart';
 import 'package:taxidriver/presentation/onboarding/onboarding_page.dart';
 import 'package:taxidriver/presentation/splash/splash_page.dart';
@@ -24,6 +26,8 @@ import 'package:taxidriver/presentation/splash/splash_page.dart';
   AutoRoute(page: ActivateLocationOrMapPage),
   AutoRoute(page: PickUpRootPage),
   AutoRoute(page: BookingPage),
+  AutoRoute(page: ReservationPage),
+  AutoRoute(page: BookingsPage),
   AutoRoute(page: OnBoardingPage),
   AutoRoute(page: SendMessagePage),
   AutoRoute(page: MessageSentPage),

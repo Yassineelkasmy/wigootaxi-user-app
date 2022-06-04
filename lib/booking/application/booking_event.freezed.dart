@@ -25,6 +25,12 @@ class _$BookingEventTearOff {
       user: user,
     );
   }
+
+  BookignsRequested bookingsRequested(String userUid) {
+    return BookignsRequested(
+      userUid,
+    );
+  }
 }
 
 /// @nodoc
@@ -32,44 +38,43 @@ const $BookingEvent = _$BookingEventTearOff();
 
 /// @nodoc
 mixin _$BookingEvent {
-  Ride get ride => throw _privateConstructorUsedError;
-  User get user => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Ride ride, User user) bookRideRequested,
+    required TResult Function(String userUid) bookingsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Ride ride, User user)? bookRideRequested,
+    TResult Function(String userUid)? bookingsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Ride ride, User user)? bookRideRequested,
+    TResult Function(String userUid)? bookingsRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BookRideRequested value) bookRideRequested,
+    required TResult Function(BookignsRequested value) bookingsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
+    TResult Function(BookignsRequested value)? bookingsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
+    TResult Function(BookignsRequested value)? bookingsRequested,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $BookingEventCopyWith<BookingEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -78,10 +83,6 @@ abstract class $BookingEventCopyWith<$Res> {
   factory $BookingEventCopyWith(
           BookingEvent value, $Res Function(BookingEvent) then) =
       _$BookingEventCopyWithImpl<$Res>;
-  $Res call({Ride ride, User user});
-
-  $RideCopyWith<$Res> get ride;
-  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -91,51 +92,16 @@ class _$BookingEventCopyWithImpl<$Res> implements $BookingEventCopyWith<$Res> {
   final BookingEvent _value;
   // ignore: unused_field
   final $Res Function(BookingEvent) _then;
-
-  @override
-  $Res call({
-    Object? ride = freezed,
-    Object? user = freezed,
-  }) {
-    return _then(_value.copyWith(
-      ride: ride == freezed
-          ? _value.ride
-          : ride // ignore: cast_nullable_to_non_nullable
-              as Ride,
-      user: user == freezed
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
-    ));
-  }
-
-  @override
-  $RideCopyWith<$Res> get ride {
-    return $RideCopyWith<$Res>(_value.ride, (value) {
-      return _then(_value.copyWith(ride: value));
-    });
-  }
-
-  @override
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class $BookRideRequestedCopyWith<$Res>
-    implements $BookingEventCopyWith<$Res> {
+abstract class $BookRideRequestedCopyWith<$Res> {
   factory $BookRideRequestedCopyWith(
           BookRideRequested value, $Res Function(BookRideRequested) then) =
       _$BookRideRequestedCopyWithImpl<$Res>;
-  @override
   $Res call({Ride ride, User user});
 
-  @override
   $RideCopyWith<$Res> get ride;
-  @override
   $UserCopyWith<$Res> get user;
 }
 
@@ -165,6 +131,20 @@ class _$BookRideRequestedCopyWithImpl<$Res>
           : user // ignore: cast_nullable_to_non_nullable
               as User,
     ));
+  }
+
+  @override
+  $RideCopyWith<$Res> get ride {
+    return $RideCopyWith<$Res>(_value.ride, (value) {
+      return _then(_value.copyWith(ride: value));
+    });
+  }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -207,6 +187,7 @@ class _$BookRideRequested implements BookRideRequested {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Ride ride, User user) bookRideRequested,
+    required TResult Function(String userUid) bookingsRequested,
   }) {
     return bookRideRequested(ride, user);
   }
@@ -215,6 +196,7 @@ class _$BookRideRequested implements BookRideRequested {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Ride ride, User user)? bookRideRequested,
+    TResult Function(String userUid)? bookingsRequested,
   }) {
     return bookRideRequested?.call(ride, user);
   }
@@ -223,6 +205,7 @@ class _$BookRideRequested implements BookRideRequested {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Ride ride, User user)? bookRideRequested,
+    TResult Function(String userUid)? bookingsRequested,
     required TResult orElse(),
   }) {
     if (bookRideRequested != null) {
@@ -235,6 +218,7 @@ class _$BookRideRequested implements BookRideRequested {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BookRideRequested value) bookRideRequested,
+    required TResult Function(BookignsRequested value) bookingsRequested,
   }) {
     return bookRideRequested(this);
   }
@@ -243,6 +227,7 @@ class _$BookRideRequested implements BookRideRequested {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
+    TResult Function(BookignsRequested value)? bookingsRequested,
   }) {
     return bookRideRequested?.call(this);
   }
@@ -251,6 +236,7 @@ class _$BookRideRequested implements BookRideRequested {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
+    TResult Function(BookignsRequested value)? bookingsRequested,
     required TResult orElse(),
   }) {
     if (bookRideRequested != null) {
@@ -264,12 +250,143 @@ abstract class BookRideRequested implements BookingEvent {
   const factory BookRideRequested({required Ride ride, required User user}) =
       _$BookRideRequested;
 
-  @override
   Ride get ride;
-  @override
   User get user;
-  @override
   @JsonKey(ignore: true)
   $BookRideRequestedCopyWith<BookRideRequested> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BookignsRequestedCopyWith<$Res> {
+  factory $BookignsRequestedCopyWith(
+          BookignsRequested value, $Res Function(BookignsRequested) then) =
+      _$BookignsRequestedCopyWithImpl<$Res>;
+  $Res call({String userUid});
+}
+
+/// @nodoc
+class _$BookignsRequestedCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res>
+    implements $BookignsRequestedCopyWith<$Res> {
+  _$BookignsRequestedCopyWithImpl(
+      BookignsRequested _value, $Res Function(BookignsRequested) _then)
+      : super(_value, (v) => _then(v as BookignsRequested));
+
+  @override
+  BookignsRequested get _value => super._value as BookignsRequested;
+
+  @override
+  $Res call({
+    Object? userUid = freezed,
+  }) {
+    return _then(BookignsRequested(
+      userUid == freezed
+          ? _value.userUid
+          : userUid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BookignsRequested implements BookignsRequested {
+  const _$BookignsRequested(this.userUid);
+
+  @override
+  final String userUid;
+
+  @override
+  String toString() {
+    return 'BookingEvent.bookingsRequested(userUid: $userUid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is BookignsRequested &&
+            const DeepCollectionEquality().equals(other.userUid, userUid));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userUid));
+
+  @JsonKey(ignore: true)
+  @override
+  $BookignsRequestedCopyWith<BookignsRequested> get copyWith =>
+      _$BookignsRequestedCopyWithImpl<BookignsRequested>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Ride ride, User user) bookRideRequested,
+    required TResult Function(String userUid) bookingsRequested,
+  }) {
+    return bookingsRequested(userUid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Ride ride, User user)? bookRideRequested,
+    TResult Function(String userUid)? bookingsRequested,
+  }) {
+    return bookingsRequested?.call(userUid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Ride ride, User user)? bookRideRequested,
+    TResult Function(String userUid)? bookingsRequested,
+    required TResult orElse(),
+  }) {
+    if (bookingsRequested != null) {
+      return bookingsRequested(userUid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BookRideRequested value) bookRideRequested,
+    required TResult Function(BookignsRequested value) bookingsRequested,
+  }) {
+    return bookingsRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(BookRideRequested value)? bookRideRequested,
+    TResult Function(BookignsRequested value)? bookingsRequested,
+  }) {
+    return bookingsRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BookRideRequested value)? bookRideRequested,
+    TResult Function(BookignsRequested value)? bookingsRequested,
+    required TResult orElse(),
+  }) {
+    if (bookingsRequested != null) {
+      return bookingsRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BookignsRequested implements BookingEvent {
+  const factory BookignsRequested(String userUid) = _$BookignsRequested;
+
+  String get userUid;
+  @JsonKey(ignore: true)
+  $BookignsRequestedCopyWith<BookignsRequested> get copyWith =>
       throw _privateConstructorUsedError;
 }

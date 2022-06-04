@@ -10,4 +10,7 @@ class BookingEvent with _$BookingEvent {
     required Ride ride,
     required User user,
   }) = BookRideRequested;
+
+  const factory BookingEvent.bookingsRequested(String userUid) =
+      BookignsRequested;
 }
