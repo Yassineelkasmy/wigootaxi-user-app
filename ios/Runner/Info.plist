@@ -111,6 +111,6 @@
 			<string>fbshareextension</string>
 		</array>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-</dict>
+		<true/>
+	</dict>
 </plist>

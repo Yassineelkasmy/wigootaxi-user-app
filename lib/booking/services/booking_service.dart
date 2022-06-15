@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:taxidriver/booking/domain/booking.dart';
 import 'package:taxidriver/booking/domain/booking_failure.dart';
 import 'package:taxidriver/booking/domain/ride.dart';
 
 class BookingService {
+  final geo = Geoflutterfire();
+
   final firestore = FirebaseFirestore.instance;
   Future<Either<BookingFailure, Unit>> bookRide({
     required Ride ride,
@@ -15,12 +17,20 @@ class BookingService {
     final rideData = {
       'start_place_id': ride.pickUp.placeId,
       'start_name': ride.pickUp.name,
-      'start_lat': ride.pickUp.geometry.location.lat,
-      'start_lng': ride.pickUp.geometry.location.lng,
+      'start': geo
+          .point(
+            latitude: ride.pickUp.geometry.location.lat,
+            longitude: ride.pickUp.geometry.location.lng,
+          )
+          .data,
+      'destination': geo
+          .point(
+            latitude: ride.droppOff.geometry.location.lat,
+            longitude: ride.droppOff.geometry.location.lng,
+          )
+          .data,
       'dest_place_id': ride.droppOff.placeId,
       'dest_name': ride.droppOff.name,
-      'dest_lat': ride.droppOff.geometry.location.lat,
-      'dest_lng': ride.droppOff.geometry.location.lng,
       'distance': ride.distance,
       'duration': ride.duration,
       'disttext': ride.googelMatrix.rows.first.elements.first.distance.text,

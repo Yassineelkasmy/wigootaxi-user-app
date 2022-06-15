@@ -71,8 +71,8 @@ class PickUpForm extends HookConsumerWidget {
                                   children: [
                                     Text(
                                       !pickUpState.dropOffChosen
-                                          ? 'Where To ?'
-                                          : 'Where are you ?',
+                                          ? 'Où aller ?'
+                                          : 'Où êtes-vous ?',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
@@ -173,8 +173,8 @@ class PickUpForm extends HookConsumerWidget {
                                     width: double.maxFinite,
                                     child: SubmitButton(
                                       text: !pickUpState.dropOffChosen
-                                          ? 'Confirm dropoff'
-                                          : 'Confirm pickup',
+                                          ? 'Confirmer le point de destination'
+                                          : 'Confirmer le point de retrait',
                                       onPressed: () {
                                         if (!pickUpState.dropOffChosen) {
                                           pickUpController.mapEventToState(
