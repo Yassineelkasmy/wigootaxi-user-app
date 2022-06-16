@@ -1,11 +1,14 @@
 import 'dart:math';
-
+import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/domain/geocoding/i_geocoding_repository.dart';
 import 'package:taxidriver/domain/nearby_search/i_nearby_search_repository.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
+import 'package:taxidriver/driver/domain/driver.dart';
+import 'package:taxidriver/driver/services/driver_service.dart';
 import 'package:taxidriver/infrastructure/matrix/google_matrix_service.dart';
 import 'package:taxidriver/booking/domain/ride.dart';
 
@@ -14,10 +17,38 @@ class PickUpController extends StateNotifier<PickUpState> {
     this._nearbySearchRepository,
     this._geocodingRepository,
     this._googleMatrixService,
-  ) : super(PickUpState.initial());
+    this._driverService,
+  ) : super(PickUpState.initial()) {
+    //intitializeStream();
+  }
   final INearbySearchRepository _nearbySearchRepository;
   final IGeocodingRepository _geocodingRepository;
   final GoogleMatrixService _googleMatrixService;
+  final DriverService _driverService;
+  late StreamSubscription<List<DocumentSnapshot<Object?>>> _subscription;
+
+  intitializeStream() {
+    _subscription = _driverService
+        .nearbyDriversStream(
+      lat: state.userLat!,
+      lng: state.userLong!,
+    )
+        .listen(
+      (docSnapshots) {
+        List<Driver> nearbyDrivers = [];
+        for (var doc in docSnapshots) {
+          final location = doc.get('location')['geopoint'] as GeoPoint;
+
+          final driver =
+              Driver(lat: location.latitude, lng: location.longitude);
+          nearbyDrivers.add(driver);
+        }
+        state = state.copyWith(nearbyDrivers: nearbyDrivers);
+
+        print('drooooooovers');
+      },
+    );
+  }
 
   Future mapEventToState(PickUpEvent pickUpEvent) {
     return pickUpEvent.map(
@@ -232,6 +263,8 @@ class PickUpController extends StateNotifier<PickUpState> {
           userLat: event.lat,
           userLong: event.long,
         );
+        intitializeStream();
+
         mapEventToState(
           PickUpEvent.nearbyLocationsRequested(event.lat, event.long),
         );

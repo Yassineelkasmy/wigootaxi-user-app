@@ -44,7 +44,7 @@ class ActivateLocationOrMapPage extends HookConsumerWidget {
                                 ? 'Annuler le départ'
                                 : pickUpState.dropOffChosen
                                     ? 'Annuler la destination'
-                                    : 'Anuller',
+                                    : 'Annuler',
                             style: TextStyle(
                               fontSize: 18,
                             ),

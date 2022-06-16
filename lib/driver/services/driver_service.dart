@@ -8,13 +8,16 @@ class DriverService {
 
   final geo = Geoflutterfire();
   final locationField = 'location';
-  double radius = 100;
+  double radius = 1000;
 
   late Query<Map<String, dynamic>> collectionRef;
 
-  Stream<List<DocumentSnapshot>> nearbyDriversStream(
+  Stream<List<DocumentSnapshot<Object?>>> nearbyDriversStream(
       {required double lat, required double lng}) {
     final center = geo.point(latitude: lat, longitude: lng);
+
+    print('center laaat $lat');
+    print('center looong $lng');
 
     Stream<List<DocumentSnapshot>> stream = geo
         .collection(

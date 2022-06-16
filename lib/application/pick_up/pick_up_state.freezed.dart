@@ -22,6 +22,7 @@ class _$PickUpStateTearOff {
       {required bool isGeocodingFromMapLoaidng,
       required bool isNearbyPlacesLoading,
       required String nearbyQuery,
+      required List<Driver> nearbyDrivers,
       required Option<Either<NearbySearchFailure, List<NearbySearch>>>
           nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
@@ -46,6 +47,7 @@ class _$PickUpStateTearOff {
       isGeocodingFromMapLoaidng: isGeocodingFromMapLoaidng,
       isNearbyPlacesLoading: isNearbyPlacesLoading,
       nearbyQuery: nearbyQuery,
+      nearbyDrivers: nearbyDrivers,
       nearBysearchSuccessOrFailureOption: nearBysearchSuccessOrFailureOption,
       dropoffPlace: dropoffPlace,
       pickupPlace: pickupPlace,
@@ -77,6 +79,7 @@ mixin _$PickUpState {
   bool get isGeocodingFromMapLoaidng => throw _privateConstructorUsedError;
   bool get isNearbyPlacesLoading => throw _privateConstructorUsedError;
   String get nearbyQuery => throw _privateConstructorUsedError;
+  List<Driver> get nearbyDrivers => throw _privateConstructorUsedError;
   Option<Either<NearbySearchFailure, List<NearbySearch>>>
       get nearBysearchSuccessOrFailureOption =>
           throw _privateConstructorUsedError;
@@ -114,6 +117,7 @@ abstract class $PickUpStateCopyWith<$Res> {
       {bool isGeocodingFromMapLoaidng,
       bool isNearbyPlacesLoading,
       String nearbyQuery,
+      List<Driver> nearbyDrivers,
       Option<Either<NearbySearchFailure, List<NearbySearch>>>
           nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
@@ -155,6 +159,7 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
     Object? isGeocodingFromMapLoaidng = freezed,
     Object? isNearbyPlacesLoading = freezed,
     Object? nearbyQuery = freezed,
+    Object? nearbyDrivers = freezed,
     Object? nearBysearchSuccessOrFailureOption = freezed,
     Object? dropoffPlace = freezed,
     Object? pickupPlace = freezed,
@@ -188,6 +193,10 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
           ? _value.nearbyQuery
           : nearbyQuery // ignore: cast_nullable_to_non_nullable
               as String,
+      nearbyDrivers: nearbyDrivers == freezed
+          ? _value.nearbyDrivers
+          : nearbyDrivers // ignore: cast_nullable_to_non_nullable
+              as List<Driver>,
       nearBysearchSuccessOrFailureOption: nearBysearchSuccessOrFailureOption ==
               freezed
           ? _value.nearBysearchSuccessOrFailureOption
@@ -336,6 +345,7 @@ abstract class _$PickUpStateCopyWith<$Res>
       {bool isGeocodingFromMapLoaidng,
       bool isNearbyPlacesLoading,
       String nearbyQuery,
+      List<Driver> nearbyDrivers,
       Option<Either<NearbySearchFailure, List<NearbySearch>>>
           nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
@@ -384,6 +394,7 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
     Object? isGeocodingFromMapLoaidng = freezed,
     Object? isNearbyPlacesLoading = freezed,
     Object? nearbyQuery = freezed,
+    Object? nearbyDrivers = freezed,
     Object? nearBysearchSuccessOrFailureOption = freezed,
     Object? dropoffPlace = freezed,
     Object? pickupPlace = freezed,
@@ -417,6 +428,10 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
           ? _value.nearbyQuery
           : nearbyQuery // ignore: cast_nullable_to_non_nullable
               as String,
+      nearbyDrivers: nearbyDrivers == freezed
+          ? _value.nearbyDrivers
+          : nearbyDrivers // ignore: cast_nullable_to_non_nullable
+              as List<Driver>,
       nearBysearchSuccessOrFailureOption: nearBysearchSuccessOrFailureOption ==
               freezed
           ? _value.nearBysearchSuccessOrFailureOption
@@ -505,6 +520,7 @@ class _$_PickUpState implements _PickUpState {
       {required this.isGeocodingFromMapLoaidng,
       required this.isNearbyPlacesLoading,
       required this.nearbyQuery,
+      required this.nearbyDrivers,
       required this.nearBysearchSuccessOrFailureOption,
       this.dropoffPlace,
       this.pickupPlace,
@@ -531,6 +547,8 @@ class _$_PickUpState implements _PickUpState {
   final bool isNearbyPlacesLoading;
   @override
   final String nearbyQuery;
+  @override
+  final List<Driver> nearbyDrivers;
   @override
   final Option<Either<NearbySearchFailure, List<NearbySearch>>>
       nearBysearchSuccessOrFailureOption;
@@ -573,7 +591,7 @@ class _$_PickUpState implements _PickUpState {
 
   @override
   String toString() {
-    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, nearBysearchSuccessOrFailureOption: $nearBysearchSuccessOrFailureOption, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, mainFormLocation: $mainFormLocation, reverseGeocodingResult: $reverseGeocodingResult, rideType: $rideType, rideDateTime: $rideDateTime, places: $places, isSwipping: $isSwipping, cameraLat: $cameraLat, cameraLong: $cameraLong, userLat: $userLat, userLong: $userLong, dropOffChosen: $dropOffChosen, pickUpChosen: $pickUpChosen, loadingRideDetails: $loadingRideDetails, cameraLatToMove: $cameraLatToMove, cameraLongToMove: $cameraLongToMove, ride: $ride)';
+    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, nearbyDrivers: $nearbyDrivers, nearBysearchSuccessOrFailureOption: $nearBysearchSuccessOrFailureOption, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, mainFormLocation: $mainFormLocation, reverseGeocodingResult: $reverseGeocodingResult, rideType: $rideType, rideDateTime: $rideDateTime, places: $places, isSwipping: $isSwipping, cameraLat: $cameraLat, cameraLong: $cameraLong, userLat: $userLat, userLong: $userLong, dropOffChosen: $dropOffChosen, pickUpChosen: $pickUpChosen, loadingRideDetails: $loadingRideDetails, cameraLatToMove: $cameraLatToMove, cameraLongToMove: $cameraLongToMove, ride: $ride)';
   }
 
   @override
@@ -587,6 +605,8 @@ class _$_PickUpState implements _PickUpState {
                 .equals(other.isNearbyPlacesLoading, isNearbyPlacesLoading) &&
             const DeepCollectionEquality()
                 .equals(other.nearbyQuery, nearbyQuery) &&
+            const DeepCollectionEquality()
+                .equals(other.nearbyDrivers, nearbyDrivers) &&
             const DeepCollectionEquality().equals(
                 other.nearBysearchSuccessOrFailureOption,
                 nearBysearchSuccessOrFailureOption) &&
@@ -628,6 +648,7 @@ class _$_PickUpState implements _PickUpState {
         const DeepCollectionEquality().hash(isGeocodingFromMapLoaidng),
         const DeepCollectionEquality().hash(isNearbyPlacesLoading),
         const DeepCollectionEquality().hash(nearbyQuery),
+        const DeepCollectionEquality().hash(nearbyDrivers),
         const DeepCollectionEquality().hash(nearBysearchSuccessOrFailureOption),
         const DeepCollectionEquality().hash(dropoffPlace),
         const DeepCollectionEquality().hash(pickupPlace),
@@ -660,6 +681,7 @@ abstract class _PickUpState implements PickUpState {
       {required bool isGeocodingFromMapLoaidng,
       required bool isNearbyPlacesLoading,
       required String nearbyQuery,
+      required List<Driver> nearbyDrivers,
       required Option<Either<NearbySearchFailure, List<NearbySearch>>>
           nearBysearchSuccessOrFailureOption,
       NearbySearch? dropoffPlace,
@@ -687,6 +709,8 @@ abstract class _PickUpState implements PickUpState {
   bool get isNearbyPlacesLoading;
   @override
   String get nearbyQuery;
+  @override
+  List<Driver> get nearbyDrivers;
   @override
   Option<Either<NearbySearchFailure, List<NearbySearch>>>
       get nearBysearchSuccessOrFailureOption;

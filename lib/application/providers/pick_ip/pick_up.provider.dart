@@ -3,6 +3,7 @@ import 'package:taxidriver/application/pick_up/pick_up_controller.dart';
 import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/domain/geocoding/i_geocoding_repository.dart';
 import 'package:taxidriver/domain/nearby_search/i_nearby_search_repository.dart';
+import 'package:taxidriver/driver/services/driver_service.dart';
 import 'package:taxidriver/infrastructure/directions/google_places_directions.dart';
 import 'package:taxidriver/infrastructure/geocoding/google_places_geocoding.dart';
 import 'package:taxidriver/infrastructure/matrix/google_matrix_service.dart';
@@ -33,10 +34,12 @@ final pickUpProvider =
   final googlePlacesNearbySearch = ref.watch(googlePlacesNearbySearchProvider);
   final googlePlacesGeocoding = ref.watch(googlePlacesGeocodingProvider);
   final googleMatrixService = GoogleMatrixService();
+  final driverService = DriverService();
   final pickUpController = PickUpController(
     googlePlacesNearbySearch,
     googlePlacesGeocoding,
     googleMatrixService,
+    driverService,
   );
   return pickUpController;
 });

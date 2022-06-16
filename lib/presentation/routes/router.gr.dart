@@ -11,10 +11,9 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i16;
-import 'package:flutter/foundation.dart' as _i18;
 import 'package:flutter/material.dart' as _i17;
 
-import '../../booking/domain/ride.dart' as _i19;
+import '../../booking/domain/ride.dart' as _i18;
 import '../../booking/ui/booking_page.dart' as _i10;
 import '../../booking/ui/bookings_page.dart' as _i12;
 import '../auth/login_page.dart' as _i4;
@@ -158,7 +157,7 @@ class SplashPageRoute extends _i16.PageRouteInfo<void> {
 class PhoneVerificationPageRoute
     extends _i16.PageRouteInfo<PhoneVerificationPageRouteArgs> {
   PhoneVerificationPageRoute(
-      {_i18.Key? key,
+      {_i17.Key? key,
       required String phoneNumber,
       required String phone,
       required String verificationId})
@@ -180,7 +179,7 @@ class PhoneVerificationPageRouteArgs {
       required this.phone,
       required this.verificationId});
 
-  final _i18.Key? key;
+  final _i17.Key? key;
 
   final String phoneNumber;
 
@@ -197,7 +196,7 @@ class PhoneVerificationPageRouteArgs {
 /// generated route for
 /// [_i3.PhoneAuthPage]
 class PhoneAuthPageRoute extends _i16.PageRouteInfo<PhoneAuthPageRouteArgs> {
-  PhoneAuthPageRoute({_i18.Key? key})
+  PhoneAuthPageRoute({_i17.Key? key})
       : super(PhoneAuthPageRoute.name,
             path: '/phone-auth-page', args: PhoneAuthPageRouteArgs(key: key));
 
@@ -207,7 +206,7 @@ class PhoneAuthPageRoute extends _i16.PageRouteInfo<PhoneAuthPageRouteArgs> {
 class PhoneAuthPageRouteArgs {
   const PhoneAuthPageRouteArgs({this.key});
 
-  final _i18.Key? key;
+  final _i17.Key? key;
 
   @override
   String toString() {
@@ -218,7 +217,7 @@ class PhoneAuthPageRouteArgs {
 /// generated route for
 /// [_i4.LoginPage]
 class LoginPageRoute extends _i16.PageRouteInfo<LoginPageRouteArgs> {
-  LoginPageRoute({_i18.Key? key})
+  LoginPageRoute({_i17.Key? key})
       : super(LoginPageRoute.name,
             path: '/login-page', args: LoginPageRouteArgs(key: key));
 
@@ -228,7 +227,7 @@ class LoginPageRoute extends _i16.PageRouteInfo<LoginPageRouteArgs> {
 class LoginPageRouteArgs {
   const LoginPageRouteArgs({this.key});
 
-  final _i18.Key? key;
+  final _i17.Key? key;
 
   @override
   String toString() {
@@ -247,7 +246,7 @@ class IntroPageRoute extends _i16.PageRouteInfo<void> {
 /// generated route for
 /// [_i6.SignUpPage]
 class SignUpPageRoute extends _i16.PageRouteInfo<SignUpPageRouteArgs> {
-  SignUpPageRoute({_i18.Key? key})
+  SignUpPageRoute({_i17.Key? key})
       : super(SignUpPageRoute.name,
             path: '/sign-up-page', args: SignUpPageRouteArgs(key: key));
 
@@ -257,7 +256,7 @@ class SignUpPageRoute extends _i16.PageRouteInfo<SignUpPageRouteArgs> {
 class SignUpPageRouteArgs {
   const SignUpPageRouteArgs({this.key});
 
-  final _i18.Key? key;
+  final _i17.Key? key;
 
   @override
   String toString() {
@@ -268,7 +267,7 @@ class SignUpPageRouteArgs {
 /// generated route for
 /// [_i7.HomePage]
 class HomePageRoute extends _i16.PageRouteInfo<HomePageRouteArgs> {
-  HomePageRoute({_i18.Key? key})
+  HomePageRoute({_i17.Key? key})
       : super(HomePageRoute.name,
             path: '/home-page', args: HomePageRouteArgs(key: key));
 
@@ -278,7 +277,7 @@ class HomePageRoute extends _i16.PageRouteInfo<HomePageRouteArgs> {
 class HomePageRouteArgs {
   const HomePageRouteArgs({this.key});
 
-  final _i18.Key? key;
+  final _i17.Key? key;
 
   @override
   String toString() {
@@ -299,7 +298,7 @@ class ActivateLocationOrMapPageRoute extends _i16.PageRouteInfo<void> {
 /// generated route for
 /// [_i9.PickUpRootPage]
 class PickUpRootPageRoute extends _i16.PageRouteInfo<PickUpRootPageRouteArgs> {
-  PickUpRootPageRoute({_i18.Key? key})
+  PickUpRootPageRoute({_i17.Key? key})
       : super(PickUpRootPageRoute.name,
             path: '/pick-up-root-page',
             args: PickUpRootPageRouteArgs(key: key));
@@ -310,7 +309,7 @@ class PickUpRootPageRoute extends _i16.PageRouteInfo<PickUpRootPageRouteArgs> {
 class PickUpRootPageRouteArgs {
   const PickUpRootPageRouteArgs({this.key});
 
-  final _i18.Key? key;
+  final _i17.Key? key;
 
   @override
   String toString() {
@@ -321,7 +320,7 @@ class PickUpRootPageRouteArgs {
 /// generated route for
 /// [_i10.BookingPage]
 class BookingPageRoute extends _i16.PageRouteInfo<BookingPageRouteArgs> {
-  BookingPageRoute({_i18.Key? key, required _i19.Ride ride})
+  BookingPageRoute({_i17.Key? key, required _i18.Ride ride})
       : super(BookingPageRoute.name,
             path: '/booking-page',
             args: BookingPageRouteArgs(key: key, ride: ride));
@@ -332,9 +331,9 @@ class BookingPageRoute extends _i16.PageRouteInfo<BookingPageRouteArgs> {
 class BookingPageRouteArgs {
   const BookingPageRouteArgs({this.key, required this.ride});
 
-  final _i18.Key? key;
+  final _i17.Key? key;
 
-  final _i19.Ride ride;
+  final _i18.Ride ride;
 
   @override
   String toString() {
@@ -354,7 +353,7 @@ class ReservationPageRoute extends _i16.PageRouteInfo<void> {
 /// generated route for
 /// [_i12.BookingsPage]
 class BookingsPageRoute extends _i16.PageRouteInfo<BookingsPageRouteArgs> {
-  BookingsPageRoute({_i18.Key? key, bool fromBooking = false})
+  BookingsPageRoute({_i17.Key? key, bool fromBooking = false})
       : super(BookingsPageRoute.name,
             path: '/bookings-page',
             args: BookingsPageRouteArgs(key: key, fromBooking: fromBooking));
@@ -365,7 +364,7 @@ class BookingsPageRoute extends _i16.PageRouteInfo<BookingsPageRouteArgs> {
 class BookingsPageRouteArgs {
   const BookingsPageRouteArgs({this.key, this.fromBooking = false});
 
-  final _i18.Key? key;
+  final _i17.Key? key;
 
   final bool fromBooking;
 
@@ -388,7 +387,7 @@ class OnBoardingPageRoute extends _i16.PageRouteInfo<void> {
 /// [_i14.SendMessagePage]
 class SendMessagePageRoute
     extends _i16.PageRouteInfo<SendMessagePageRouteArgs> {
-  SendMessagePageRoute({_i18.Key? key})
+  SendMessagePageRoute({_i17.Key? key})
       : super(SendMessagePageRoute.name,
             path: '/send-message-page',
             args: SendMessagePageRouteArgs(key: key));
@@ -399,7 +398,7 @@ class SendMessagePageRoute
 class SendMessagePageRouteArgs {
   const SendMessagePageRouteArgs({this.key});
 
-  final _i18.Key? key;
+  final _i17.Key? key;
 
   @override
   String toString() {

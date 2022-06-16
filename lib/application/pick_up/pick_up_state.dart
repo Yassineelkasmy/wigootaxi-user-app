@@ -4,6 +4,7 @@ import 'package:taxidriver/domain/geocoding/reverse_geocoding.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search_failure.dart';
 import 'package:taxidriver/booking/domain/ride.dart';
+import 'package:taxidriver/driver/domain/driver.dart';
 
 part 'pick_up_state.freezed.dart';
 
@@ -13,6 +14,7 @@ class PickUpState with _$PickUpState {
     required bool isGeocodingFromMapLoaidng,
     required bool isNearbyPlacesLoading,
     required String nearbyQuery,
+    required List<Driver> nearbyDrivers,
     required Option<Either<NearbySearchFailure, List<NearbySearch>>>
         nearBysearchSuccessOrFailureOption,
     NearbySearch? dropoffPlace,
@@ -37,6 +39,7 @@ class PickUpState with _$PickUpState {
 
   factory PickUpState.initial() => PickUpState(
         isGeocodingFromMapLoaidng: false,
+        nearbyDrivers: [],
         isNearbyPlacesLoading: false,
         nearbyQuery: '',
         nearBysearchSuccessOrFailureOption: none(),

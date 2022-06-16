@@ -59,11 +59,19 @@ class LocationMapState extends ConsumerState<LocationMap> {
   }
 
   void addMarker(
-      LatLng mLatLng, String mTitle, String mDescription, String id) async {
+      LatLng mLatLng, String? mTitle, String? mDescription, String id) async {
+    String assetPath = '';
+    if (id == 'dropoff') {
+      assetPath = 'assets/icons/flag.png';
+    }
+    if (id == 'pickup') {
+      assetPath = 'assets/icons/location-pin.png';
+    } else {
+      assetPath = 'assets/icons/car1.png';
+    }
+
     final Uint8List markerBytes = await getBytesFromAsset(
-      path: id == 'dropoff'
-          ? 'assets/icons/flag.png'
-          : 'assets/icons/location-pin.png',
+      path: assetPath,
       width: 80,
     );
     _markers.add(
@@ -178,6 +186,21 @@ class LocationMapState extends ConsumerState<LocationMap> {
           polylines.clear();
 
           setState(() {});
+        }
+      }
+      if (previous?.nearbyDrivers.hashCode != next.nearbyDrivers.hashCode) {
+        print('droooooo:${next.nearbyDrivers.length}');
+        for (var driver in next.nearbyDrivers) {
+          addMarker(
+            LatLng(
+              driver.lat,
+              driver.lng,
+            ),
+            null,
+            null,
+            // next.dropoffPlace!.vicinity,
+            'driver',
+          );
         }
       }
     });
