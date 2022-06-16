@@ -39,8 +39,11 @@ class PickUpController extends StateNotifier<PickUpState> {
         for (var doc in docSnapshots) {
           final location = doc.get('location')['geopoint'] as GeoPoint;
 
-          final driver =
-              Driver(lat: location.latitude, lng: location.longitude);
+          final driver = Driver(
+            lat: location.latitude,
+            lng: location.longitude,
+            id: doc.id,
+          );
           nearbyDrivers.add(driver);
         }
         state = state.copyWith(nearbyDrivers: nearbyDrivers);

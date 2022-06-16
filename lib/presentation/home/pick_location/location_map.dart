@@ -63,8 +63,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
     String assetPath = '';
     if (id == 'dropoff') {
       assetPath = 'assets/icons/flag.png';
-    }
-    if (id == 'pickup') {
+    } else if (id == 'pickup') {
       assetPath = 'assets/icons/location-pin.png';
     } else {
       assetPath = 'assets/icons/car1.png';
@@ -85,7 +84,6 @@ class LocationMapState extends ConsumerState<LocationMap> {
         icon: BitmapDescriptor.fromBytes(markerBytes),
       ),
     );
-    setState(() {});
   }
 
   _createPolylines(
@@ -161,14 +159,14 @@ class LocationMapState extends ConsumerState<LocationMap> {
             next.dropoffPlace!.vicinity,
             'dropoff',
           );
+
           _googleMapController.showMarkerInfoWindow(MarkerId('dropoff'));
         } else {
           _markers.removeWhere((mrk) => mrk.mapsId.value == 'dropoff');
           polylineCoordinates = [];
           polylines.clear();
-
-          setState(() {});
         }
+        setState(() {});
       }
       if (previous?.pickUpChosen == next.pickUpChosen) {
         if (next.pickUpChosen) {
@@ -184,9 +182,8 @@ class LocationMapState extends ConsumerState<LocationMap> {
           _markers.removeWhere((mrk) => mrk.mapsId.value == 'pickup');
           polylineCoordinates = [];
           polylines.clear();
-
-          setState(() {});
         }
+        setState(() {});
       }
       if (previous?.nearbyDrivers.hashCode != next.nearbyDrivers.hashCode) {
         print('droooooo:${next.nearbyDrivers.length}');
@@ -199,9 +196,16 @@ class LocationMapState extends ConsumerState<LocationMap> {
             null,
             null,
             // next.dropoffPlace!.vicinity,
-            'driver',
+            driver.id,
           );
         }
+        for (var driver in previous?.nearbyDrivers ?? []) {
+          if (!next.nearbyDrivers.contains(driver)) {
+            _markers.removeWhere((mrk) => mrk.mapsId.value == driver.id);
+          }
+        }
+
+        setState(() {});
       }
     });
 
