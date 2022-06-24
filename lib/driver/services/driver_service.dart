@@ -21,7 +21,9 @@ class DriverService {
 
     Stream<List<DocumentSnapshot>> stream = geo
         .collection(
-          collectionRef: collectionRef,
+          collectionRef: collectionRef.where(
+            'lastSeconds',
+          ),
         )
         .within(
           center: center,

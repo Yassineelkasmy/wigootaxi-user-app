@@ -33,6 +33,8 @@ class BookingController extends StateNotifier<BookingState> {
           ride: ride,
           userUid: user.uid,
           phone: user.phone!,
+          driverId: event.driverId,
+          candidatesUids: event.cnadidatesUids,
         );
         state = state.copyWith(
           bookingRide: false,

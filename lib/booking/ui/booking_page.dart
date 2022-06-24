@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
-import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
 import 'package:taxidriver/booking/application/booking_event.dart';
 import 'package:taxidriver/booking/application/booking_state.dart';
 import 'package:taxidriver/booking/domain/ride.dart';
@@ -19,9 +17,13 @@ class BookingPage extends HookConsumerWidget {
   const BookingPage({
     Key? key,
     required this.ride,
+    required this.driverId,
+    required this.cnadidatesUids,
   }) : super(key: key);
 
   final Ride ride;
+  final String driverId;
+  final List<String> cnadidatesUids;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -53,7 +55,12 @@ class BookingPage extends HookConsumerWidget {
             isLoading: bookingState.bookingRide,
             onPressed: () {
               bookingController.mapEventToState(
-                BookingEvent.bookRideRequested(ride: ride, user: user!),
+                BookingEvent.bookRideRequested(
+                  ride: ride,
+                  user: user!,
+                  driverId: driverId,
+                  cnadidatesUids: cnadidatesUids,
+                ),
               );
             },
           ),

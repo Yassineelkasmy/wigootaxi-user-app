@@ -13,6 +13,8 @@ class BookingService {
     required Ride ride,
     required String userUid,
     required String phone,
+    required String driverId,
+    required List<String> candidatesUids,
   }) async {
     final rideData = {
       'start_place_id': ride.pickUp.placeId,
@@ -37,8 +39,11 @@ class BookingService {
       'durtext': ride.googelMatrix.rows.first.elements.first.duration.text,
       'type': ride.type.name,
       'phone': phone,
+      'driverId': driverId,
       'date': ride.date != null ? Timestamp.fromDate(ride.date!) : null,
       'ts': Timestamp.fromDate(DateTime.now()),
+      'candidatesUids': candidatesUids,
+      'userUid': userUid,
     };
     try {
       final userDoc = await firestore
@@ -48,6 +53,13 @@ class BookingService {
           .doc()
           .set(rideData);
       await firestore.collection('booking').doc().set(rideData);
+
+      await firestore
+          .collection('drivers')
+          .doc(driverId)
+          .collection('rides')
+          .doc()
+          .set(rideData);
 
       return right(unit);
     } catch (e) {

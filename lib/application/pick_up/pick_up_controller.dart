@@ -38,13 +38,21 @@ class PickUpController extends StateNotifier<PickUpState> {
         List<Driver> nearbyDrivers = [];
         for (var doc in docSnapshots) {
           final location = doc.get('location')['geopoint'] as GeoPoint;
+          int lastSeconds = 100;
+          try {
+            lastSeconds = doc.get('lastSeconds') as int;
+          } catch (e) {}
 
           final driver = Driver(
             lat: location.latitude,
             lng: location.longitude,
             id: doc.id,
+            lastSeconds: lastSeconds,
           );
-          nearbyDrivers.add(driver);
+          if (driver.lastSeconds >
+              (DateTime.now().millisecondsSinceEpoch / 1000).round() - 40) {
+            nearbyDrivers.add(driver);
+          }
         }
         state = state.copyWith(nearbyDrivers: nearbyDrivers);
 
@@ -124,6 +132,10 @@ class PickUpController extends StateNotifier<PickUpState> {
         state = state.copyWith(
           dropoffPlace: event.dropoff,
           dropOffChosen: true,
+        );
+        state = state.copyWith(
+          cameraLatToMove: state.userLat!,
+          cameraLongToMove: state.userLong!,
         );
       },
       reverseGecodingFromMapRequested: (event) async {
@@ -247,6 +259,10 @@ class PickUpController extends StateNotifier<PickUpState> {
           state = state.copyWith(
             dropoffPlace: dropoffPlace,
             dropOffChosen: true,
+          );
+          state = state.copyWith(
+            cameraLatToMove: state.userLat!,
+            cameraLongToMove: state.userLong!,
           );
         }
       },

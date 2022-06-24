@@ -398,10 +398,19 @@ class PickUpForm extends HookConsumerWidget {
                             SizedBox(
                               width: double.maxFinite,
                               child: SubmitButton(
+                                isLoading: pickUpState.nearbyDrivers.isEmpty,
                                 text: 'YALLA!',
                                 onPressed: () {
-                                  AutoRouter.of(context).push(BookingPageRoute(
-                                      ride: pickUpState.ride!));
+                                  AutoRouter.of(context).push(
+                                    BookingPageRoute(
+                                      ride: pickUpState.ride!,
+                                      driverId:
+                                          pickUpState.nearbyDrivers.first.id,
+                                      cnadidatesUids: pickUpState.nearbyDrivers
+                                          .map((candidate) => candidate.id)
+                                          .toList(),
+                                    ),
+                                  );
                                 },
                               ),
                             ),

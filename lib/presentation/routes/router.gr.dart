@@ -92,7 +92,11 @@ class AppRouter extends _i16.RootStackRouter {
       final args = routeData.argsAs<BookingPageRouteArgs>();
       return _i16.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i10.BookingPage(key: args.key, ride: args.ride));
+          child: _i10.BookingPage(
+              key: args.key,
+              ride: args.ride,
+              driverId: args.driverId,
+              cnadidatesUids: args.cnadidatesUids));
     },
     ReservationPageRoute.name: (routeData) {
       return _i16.MaterialPageX<dynamic>(
@@ -320,24 +324,40 @@ class PickUpRootPageRouteArgs {
 /// generated route for
 /// [_i10.BookingPage]
 class BookingPageRoute extends _i16.PageRouteInfo<BookingPageRouteArgs> {
-  BookingPageRoute({_i17.Key? key, required _i18.Ride ride})
+  BookingPageRoute(
+      {_i17.Key? key,
+      required _i18.Ride ride,
+      required String driverId,
+      required List<String> cnadidatesUids})
       : super(BookingPageRoute.name,
             path: '/booking-page',
-            args: BookingPageRouteArgs(key: key, ride: ride));
+            args: BookingPageRouteArgs(
+                key: key,
+                ride: ride,
+                driverId: driverId,
+                cnadidatesUids: cnadidatesUids));
 
   static const String name = 'BookingPageRoute';
 }
 
 class BookingPageRouteArgs {
-  const BookingPageRouteArgs({this.key, required this.ride});
+  const BookingPageRouteArgs(
+      {this.key,
+      required this.ride,
+      required this.driverId,
+      required this.cnadidatesUids});
 
   final _i17.Key? key;
 
   final _i18.Ride ride;
 
+  final String driverId;
+
+  final List<String> cnadidatesUids;
+
   @override
   String toString() {
-    return 'BookingPageRouteArgs{key: $key, ride: $ride}';
+    return 'BookingPageRouteArgs{key: $key, ride: $ride, driverId: $driverId, cnadidatesUids: $cnadidatesUids}';
   }
 }
 

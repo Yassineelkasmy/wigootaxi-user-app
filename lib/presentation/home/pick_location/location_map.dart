@@ -199,11 +199,11 @@ class LocationMapState extends ConsumerState<LocationMap> {
             driver.id,
           );
         }
-        for (var driver in previous?.nearbyDrivers ?? []) {
-          if (!next.nearbyDrivers.contains(driver)) {
-            _markers.removeWhere((mrk) => mrk.mapsId.value == driver.id);
-          }
-        }
+        // for (var driver in previous?.nearbyDrivers ?? []) {
+        //   if (!next.nearbyDrivers.contains(driver)) {
+        //     _markers.removeWhere((mrk) => mrk.mapsId.value == driver.id);
+        //   }
+        // }
 
         setState(() {});
       }

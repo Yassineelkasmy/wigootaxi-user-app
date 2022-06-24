@@ -9,8 +9,11 @@ class BookingEvent with _$BookingEvent {
   const factory BookingEvent.bookRideRequested({
     required Ride ride,
     required User user,
+    required String driverId,
+    required List<String> cnadidatesUids,
   }) = BookRideRequested;
 
-  const factory BookingEvent.bookingsRequested(String userUid) =
-      BookignsRequested;
+  const factory BookingEvent.bookingsRequested(
+    String userUid,
+  ) = BookignsRequested;
 }
