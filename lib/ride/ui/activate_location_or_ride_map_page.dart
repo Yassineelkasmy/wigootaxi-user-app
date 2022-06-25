@@ -7,6 +7,7 @@ import 'package:taxidriver/booking/domain/booking.dart';
 import 'package:taxidriver/driver/domain/driver_record.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
+import 'package:taxidriver/ride/ui/ride_map.dart';
 import 'package:taxidriver/shared/ui/map_animation.dart';
 
 class ActivateLocationOrRideMapPage extends HookConsumerWidget {
@@ -71,29 +72,15 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
                     child: Stack(
                       fit: StackFit.passthrough,
                       children: [
-                        // Positioned.fill(
-                        //   bottom: .3.sh,
-                        //   child: LocationMap(
-                        //     lat: locationState.position!.latitude,
-                        //     long: locationState.position!.longitude,
-                        //     onCameraIdle: () {
-                        //       if (!pickUpState.pickUpChosen ||
-                        //           !pickUpState.dropOffChosen) {
-                        //         pickUpController.mapEventToState(
-                        //           PickUpEvent.reverseGecodingFromMapRequested(),
-                        //         );
-                        //       }
-                        //     },
-                        //     onCameraMove: (cameraPosition) {
-                        //       pickUpController.mapEventToState(
-                        //         PickUpEvent.cameraMoved(
-                        //           cameraPosition.target.latitude,
-                        //           cameraPosition.target.longitude,
-                        //         ),
-                        //       );
-                        //     },
-                        //   ),
-                        // ),
+                        Positioned.fill(
+                          bottom: .3.sh,
+                          child: RideMap(
+                            lat: locationState.position!.latitude,
+                            long: locationState.position!.longitude,
+                            onCameraIdle: () {},
+                            onCameraMove: (cameraPosition) {},
+                          ),
+                        ),
                       ],
                     ),
                   ),
