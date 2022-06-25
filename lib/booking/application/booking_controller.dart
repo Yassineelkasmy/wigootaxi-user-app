@@ -5,11 +5,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/booking/application/booking_event.dart';
 import 'package:taxidriver/booking/application/booking_state.dart';
 import 'package:taxidriver/booking/domain/booking.dart';
+import 'package:taxidriver/booking/domain/booking_failure.dart';
 import 'package:taxidriver/booking/services/booking_service.dart';
+import 'package:taxidriver/driver/domain/driver_record.dart';
 
 class BookingController extends StateNotifier<BookingState> {
   BookingController() : super(BookingState.initial());
   late StreamSubscription<List<Booking>> _subscription;
+  late StreamSubscription<Booking> bookingSubscription;
 
   initializeStream(String userUid) {
     _subscription = _bookingService.requestsStream(userUid).listen(
@@ -33,13 +36,25 @@ class BookingController extends StateNotifier<BookingState> {
           ride: ride,
           userUid: user.uid,
           phone: user.phone!,
-          driverId: event.driverId,
           candidatesUids: event.cnadidatesUids,
         );
-        state = state.copyWith(
-          bookingRide: false,
-          bookingFailureOrSuccessOption: optionOf(successOrFailureOption),
-        );
+        successOrFailureOption.fold((l) => null, (rideId) {
+          bookingSubscription = _bookingService
+              .bookingStram(rideId: rideId)
+              .listen((booking) async {
+            final bookingRide = booking.driverId == null;
+            Either<BookingFailure, DriverRecord>? driverFoundOrFailure;
+            if (!bookingRide) {
+              driverFoundOrFailure = await _bookingService.getDriverRecord(
+                  driverId: booking.driverId!);
+            }
+            state = state.copyWith(
+              currentBooking: booking,
+              bookingRide: bookingRide,
+              driverFoundOrFailure: optionOf(driverFoundOrFailure),
+            );
+          });
+        });
       },
       bookingsRequested: (event) async {
         initializeStream(event.userUid);

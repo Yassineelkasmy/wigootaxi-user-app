@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -36,11 +37,17 @@ class BookingPage extends HookConsumerWidget {
     final bookingState = ref.watch(bookingProvider);
     final user = ref.watch(userProvider);
     ref.listen<BookingState>(bookingProvider, ((previous, next) {
-      next.bookingFailureOrSuccessOption.map((option) => option.fold(
+      next.driverFoundOrFailure.map((option) => option.fold(
             (l) => null,
             (success) {
-              AutoRouter.of(context)
-                  .replace(BookingsPageRoute(fromBooking: true));
+              showCupertinoDialog(
+                  context: context,
+                  builder: (context) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [],
+                    );
+                  });
             },
           ));
     }));
@@ -51,7 +58,9 @@ class BookingPage extends HookConsumerWidget {
         child: SizedBox(
           width: double.maxFinite,
           child: SubmitButton(
-            text: 'Réserver',
+            text: ride.type == RideType.now
+                ? 'Trouvez votre capitaine'
+                : 'Réserver',
             isLoading: bookingState.bookingRide,
             onPressed: () {
               bookingController.mapEventToState(

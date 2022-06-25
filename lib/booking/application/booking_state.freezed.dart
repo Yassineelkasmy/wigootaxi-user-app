@@ -21,13 +21,18 @@ class _$BookingStateTearOff {
   _BookingState call(
       {required bool bookingRide,
       required bool loadingMyBookings,
+      required Option<Either<BookingFailure, DriverRecord>>
+          driverFoundOrFailure,
       required List<Booking> bookings,
-      required Option<Either<BookingFailure, Unit>>
+      Booking? currentBooking,
+      required Option<Either<BookingFailure, String>>
           bookingFailureOrSuccessOption}) {
     return _BookingState(
       bookingRide: bookingRide,
       loadingMyBookings: loadingMyBookings,
+      driverFoundOrFailure: driverFoundOrFailure,
       bookings: bookings,
+      currentBooking: currentBooking,
       bookingFailureOrSuccessOption: bookingFailureOrSuccessOption,
     );
   }
@@ -40,8 +45,11 @@ const $BookingState = _$BookingStateTearOff();
 mixin _$BookingState {
   bool get bookingRide => throw _privateConstructorUsedError;
   bool get loadingMyBookings => throw _privateConstructorUsedError;
+  Option<Either<BookingFailure, DriverRecord>> get driverFoundOrFailure =>
+      throw _privateConstructorUsedError;
   List<Booking> get bookings => throw _privateConstructorUsedError;
-  Option<Either<BookingFailure, Unit>> get bookingFailureOrSuccessOption =>
+  Booking? get currentBooking => throw _privateConstructorUsedError;
+  Option<Either<BookingFailure, String>> get bookingFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -57,8 +65,12 @@ abstract class $BookingStateCopyWith<$Res> {
   $Res call(
       {bool bookingRide,
       bool loadingMyBookings,
+      Option<Either<BookingFailure, DriverRecord>> driverFoundOrFailure,
       List<Booking> bookings,
-      Option<Either<BookingFailure, Unit>> bookingFailureOrSuccessOption});
+      Booking? currentBooking,
+      Option<Either<BookingFailure, String>> bookingFailureOrSuccessOption});
+
+  $BookingCopyWith<$Res>? get currentBooking;
 }
 
 /// @nodoc
@@ -73,7 +85,9 @@ class _$BookingStateCopyWithImpl<$Res> implements $BookingStateCopyWith<$Res> {
   $Res call({
     Object? bookingRide = freezed,
     Object? loadingMyBookings = freezed,
+    Object? driverFoundOrFailure = freezed,
     Object? bookings = freezed,
+    Object? currentBooking = freezed,
     Object? bookingFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -85,15 +99,34 @@ class _$BookingStateCopyWithImpl<$Res> implements $BookingStateCopyWith<$Res> {
           ? _value.loadingMyBookings
           : loadingMyBookings // ignore: cast_nullable_to_non_nullable
               as bool,
+      driverFoundOrFailure: driverFoundOrFailure == freezed
+          ? _value.driverFoundOrFailure
+          : driverFoundOrFailure // ignore: cast_nullable_to_non_nullable
+              as Option<Either<BookingFailure, DriverRecord>>,
       bookings: bookings == freezed
           ? _value.bookings
           : bookings // ignore: cast_nullable_to_non_nullable
               as List<Booking>,
+      currentBooking: currentBooking == freezed
+          ? _value.currentBooking
+          : currentBooking // ignore: cast_nullable_to_non_nullable
+              as Booking?,
       bookingFailureOrSuccessOption: bookingFailureOrSuccessOption == freezed
           ? _value.bookingFailureOrSuccessOption
           : bookingFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<BookingFailure, Unit>>,
+              as Option<Either<BookingFailure, String>>,
     ));
+  }
+
+  @override
+  $BookingCopyWith<$Res>? get currentBooking {
+    if (_value.currentBooking == null) {
+      return null;
+    }
+
+    return $BookingCopyWith<$Res>(_value.currentBooking!, (value) {
+      return _then(_value.copyWith(currentBooking: value));
+    });
   }
 }
 
@@ -107,8 +140,13 @@ abstract class _$BookingStateCopyWith<$Res>
   $Res call(
       {bool bookingRide,
       bool loadingMyBookings,
+      Option<Either<BookingFailure, DriverRecord>> driverFoundOrFailure,
       List<Booking> bookings,
-      Option<Either<BookingFailure, Unit>> bookingFailureOrSuccessOption});
+      Booking? currentBooking,
+      Option<Either<BookingFailure, String>> bookingFailureOrSuccessOption});
+
+  @override
+  $BookingCopyWith<$Res>? get currentBooking;
 }
 
 /// @nodoc
@@ -125,7 +163,9 @@ class __$BookingStateCopyWithImpl<$Res> extends _$BookingStateCopyWithImpl<$Res>
   $Res call({
     Object? bookingRide = freezed,
     Object? loadingMyBookings = freezed,
+    Object? driverFoundOrFailure = freezed,
     Object? bookings = freezed,
+    Object? currentBooking = freezed,
     Object? bookingFailureOrSuccessOption = freezed,
   }) {
     return _then(_BookingState(
@@ -137,14 +177,22 @@ class __$BookingStateCopyWithImpl<$Res> extends _$BookingStateCopyWithImpl<$Res>
           ? _value.loadingMyBookings
           : loadingMyBookings // ignore: cast_nullable_to_non_nullable
               as bool,
+      driverFoundOrFailure: driverFoundOrFailure == freezed
+          ? _value.driverFoundOrFailure
+          : driverFoundOrFailure // ignore: cast_nullable_to_non_nullable
+              as Option<Either<BookingFailure, DriverRecord>>,
       bookings: bookings == freezed
           ? _value.bookings
           : bookings // ignore: cast_nullable_to_non_nullable
               as List<Booking>,
+      currentBooking: currentBooking == freezed
+          ? _value.currentBooking
+          : currentBooking // ignore: cast_nullable_to_non_nullable
+              as Booking?,
       bookingFailureOrSuccessOption: bookingFailureOrSuccessOption == freezed
           ? _value.bookingFailureOrSuccessOption
           : bookingFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<BookingFailure, Unit>>,
+              as Option<Either<BookingFailure, String>>,
     ));
   }
 }
@@ -155,7 +203,9 @@ class _$_BookingState implements _BookingState {
   const _$_BookingState(
       {required this.bookingRide,
       required this.loadingMyBookings,
+      required this.driverFoundOrFailure,
       required this.bookings,
+      this.currentBooking,
       required this.bookingFailureOrSuccessOption});
 
   @override
@@ -163,13 +213,17 @@ class _$_BookingState implements _BookingState {
   @override
   final bool loadingMyBookings;
   @override
+  final Option<Either<BookingFailure, DriverRecord>> driverFoundOrFailure;
+  @override
   final List<Booking> bookings;
   @override
-  final Option<Either<BookingFailure, Unit>> bookingFailureOrSuccessOption;
+  final Booking? currentBooking;
+  @override
+  final Option<Either<BookingFailure, String>> bookingFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'BookingState(bookingRide: $bookingRide, loadingMyBookings: $loadingMyBookings, bookings: $bookings, bookingFailureOrSuccessOption: $bookingFailureOrSuccessOption)';
+    return 'BookingState(bookingRide: $bookingRide, loadingMyBookings: $loadingMyBookings, driverFoundOrFailure: $driverFoundOrFailure, bookings: $bookings, currentBooking: $currentBooking, bookingFailureOrSuccessOption: $bookingFailureOrSuccessOption)';
   }
 
   @override
@@ -181,7 +235,11 @@ class _$_BookingState implements _BookingState {
                 .equals(other.bookingRide, bookingRide) &&
             const DeepCollectionEquality()
                 .equals(other.loadingMyBookings, loadingMyBookings) &&
+            const DeepCollectionEquality()
+                .equals(other.driverFoundOrFailure, driverFoundOrFailure) &&
             const DeepCollectionEquality().equals(other.bookings, bookings) &&
+            const DeepCollectionEquality()
+                .equals(other.currentBooking, currentBooking) &&
             const DeepCollectionEquality().equals(
                 other.bookingFailureOrSuccessOption,
                 bookingFailureOrSuccessOption));
@@ -192,7 +250,9 @@ class _$_BookingState implements _BookingState {
       runtimeType,
       const DeepCollectionEquality().hash(bookingRide),
       const DeepCollectionEquality().hash(loadingMyBookings),
+      const DeepCollectionEquality().hash(driverFoundOrFailure),
       const DeepCollectionEquality().hash(bookings),
+      const DeepCollectionEquality().hash(currentBooking),
       const DeepCollectionEquality().hash(bookingFailureOrSuccessOption));
 
   @JsonKey(ignore: true)
@@ -205,8 +265,11 @@ abstract class _BookingState implements BookingState {
   const factory _BookingState(
       {required bool bookingRide,
       required bool loadingMyBookings,
+      required Option<Either<BookingFailure, DriverRecord>>
+          driverFoundOrFailure,
       required List<Booking> bookings,
-      required Option<Either<BookingFailure, Unit>>
+      Booking? currentBooking,
+      required Option<Either<BookingFailure, String>>
           bookingFailureOrSuccessOption}) = _$_BookingState;
 
   @override
@@ -214,9 +277,13 @@ abstract class _BookingState implements BookingState {
   @override
   bool get loadingMyBookings;
   @override
+  Option<Either<BookingFailure, DriverRecord>> get driverFoundOrFailure;
+  @override
   List<Booking> get bookings;
   @override
-  Option<Either<BookingFailure, Unit>> get bookingFailureOrSuccessOption;
+  Booking? get currentBooking;
+  @override
+  Option<Either<BookingFailure, String>> get bookingFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$BookingStateCopyWith<_BookingState> get copyWith =>

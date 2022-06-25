@@ -20,6 +20,7 @@ class Booking with _$Booking {
     required int duration,
     required String phone,
     required DateTime ts,
+    String? driverId,
     DateTime? date,
   }) = _Booking;
 

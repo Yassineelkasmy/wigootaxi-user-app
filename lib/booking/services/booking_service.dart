@@ -4,16 +4,17 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:taxidriver/booking/domain/booking.dart';
 import 'package:taxidriver/booking/domain/booking_failure.dart';
 import 'package:taxidriver/booking/domain/ride.dart';
+import 'package:taxidriver/driver/domain/driver_record.dart';
+import 'package:uuid/uuid.dart';
 
 class BookingService {
   final geo = Geoflutterfire();
 
   final firestore = FirebaseFirestore.instance;
-  Future<Either<BookingFailure, Unit>> bookRide({
+  Future<Either<BookingFailure, String>> bookRide({
     required Ride ride,
     required String userUid,
     required String phone,
-    required String driverId,
     required List<String> candidatesUids,
   }) async {
     final rideData = {
@@ -39,29 +40,24 @@ class BookingService {
       'durtext': ride.googelMatrix.rows.first.elements.first.duration.text,
       'type': ride.type.name,
       'phone': phone,
-      'driverId': driverId,
       'date': ride.date != null ? Timestamp.fromDate(ride.date!) : null,
       'ts': Timestamp.fromDate(DateTime.now()),
       'candidatesUids': candidatesUids,
       'userUid': userUid,
     };
     try {
-      final userDoc = await firestore
+      final rideId = Uuid().v4();
+      await firestore
           .collection('users')
           .doc(userUid)
           .collection('rides')
-          .doc()
+          .doc(rideId)
           .set(rideData);
-      await firestore.collection('booking').doc().set(rideData);
+      await firestore.collection('booking').doc(rideId).set(
+            rideData..putIfAbsent('rideId', () => rideId),
+          );
 
-      await firestore
-          .collection('drivers')
-          .doc(driverId)
-          .collection('rides')
-          .doc()
-          .set(rideData);
-
-      return right(unit);
+      return right(rideId);
     } catch (e) {
       return left(const BookingFailure.serverError());
     }
@@ -88,5 +84,33 @@ class BookingService {
     });
 
     return results;
+  }
+
+  Stream<Booking> bookingStram({
+    required String rideId,
+  }) {
+    final result =
+        firestore.collection('booking').doc(rideId).snapshots().asyncMap(
+              (doc) => Booking.fromJson(
+                (doc.data() as Map<String, dynamic>)
+                  ..putIfAbsent('id', () => doc.id),
+              ),
+            );
+    return result;
+  }
+
+  Future<Either<BookingFailure, DriverRecord>> getDriverRecord({
+    required String driverId,
+  }) async {
+    try {
+      final driverDoc = await FirebaseFirestore.instance
+          .collection('drivers')
+          .doc(driverId)
+          .get();
+      final driverRecord = DriverRecord.fromJson(driverDoc.data()!);
+      return right(driverRecord);
+    } catch (e) {
+      return left(const BookingFailure.serverError());
+    }
   }
 }
