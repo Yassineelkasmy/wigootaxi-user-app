@@ -8,7 +8,7 @@ class DriverService {
 
   final geo = Geoflutterfire();
   final locationField = 'location';
-  double radius = 1000;
+  double radius = 10;
 
   late Query<Map<String, dynamic>> collectionRef;
 
@@ -19,17 +19,12 @@ class DriverService {
     print('center laaat $lat');
     print('center looong $lng');
 
-    Stream<List<DocumentSnapshot>> stream = geo
-        .collection(
-          collectionRef: collectionRef.where(
-            'lastSeconds',
-          ),
-        )
-        .within(
-          center: center,
-          radius: radius,
-          field: locationField,
-        );
+    Stream<List<DocumentSnapshot>> stream =
+        geo.collection(collectionRef: collectionRef).within(
+              center: center,
+              radius: radius,
+              field: locationField,
+            );
 
     return stream;
   }

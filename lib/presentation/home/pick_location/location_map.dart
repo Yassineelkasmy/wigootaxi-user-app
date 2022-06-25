@@ -302,7 +302,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
             mapType: MapType.normal,
             buildingsEnabled: false,
             zoomGesturesEnabled: true,
-            zoomControlsEnabled: false,
+            zoomControlsEnabled: true,
             myLocationEnabled: true,
             indoorViewEnabled: true,
             polylines: Set<Polyline>.of(polylines.values),
