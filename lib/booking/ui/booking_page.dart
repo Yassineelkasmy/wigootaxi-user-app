@@ -39,15 +39,13 @@ class BookingPage extends HookConsumerWidget {
     ref.listen<BookingState>(bookingProvider, ((previous, next) {
       next.driverFoundOrFailure.map((option) => option.fold(
             (l) => null,
-            (success) {
-              showCupertinoDialog(
-                  context: context,
-                  builder: (context) {
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [],
-                    );
-                  });
+            (driverRecord) {
+              AutoRouter.of(context).replace(
+                ActivateLocationOrRideMapPageRoute(
+                  driverRecord: driverRecord,
+                  booking: bookingState.currentBooking!,
+                ),
+              );
             },
           ));
     }));
@@ -63,14 +61,16 @@ class BookingPage extends HookConsumerWidget {
                 : 'Réserver',
             isLoading: bookingState.bookingRide,
             onPressed: () {
-              bookingController.mapEventToState(
-                BookingEvent.bookRideRequested(
-                  ride: ride,
-                  user: user!,
-                  driverId: driverId,
-                  cnadidatesUids: cnadidatesUids,
-                ),
-              );
+              if (!bookingState.bookingRide) {
+                bookingController.mapEventToState(
+                  BookingEvent.bookRideRequested(
+                    ride: ride,
+                    user: user!,
+                    driverId: driverId,
+                    cnadidatesUids: cnadidatesUids,
+                  ),
+                );
+              }
             },
           ),
         ),

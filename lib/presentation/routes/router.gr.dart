@@ -13,9 +13,11 @@
 import 'package:auto_route/auto_route.dart' as _i17;
 import 'package:flutter/material.dart' as _i18;
 
-import '../../booking/domain/ride.dart' as _i19;
+import '../../booking/domain/booking.dart' as _i20;
+import '../../booking/domain/ride.dart' as _i21;
 import '../../booking/ui/booking_page.dart' as _i11;
 import '../../booking/ui/bookings_page.dart' as _i13;
+import '../../driver/domain/driver_record.dart' as _i19;
 import '../../ride/ui/activate_location_or_ride_map_page.dart' as _i9;
 import '../auth/login_page.dart' as _i4;
 import '../auth/phone_auth_page.dart' as _i3;
@@ -84,9 +86,13 @@ class AppRouter extends _i17.RootStackRouter {
           routeData: routeData, child: const _i8.ActivateLocationOrMapPage());
     },
     ActivateLocationOrRideMapPageRoute.name: (routeData) {
+      final args = routeData.argsAs<ActivateLocationOrRideMapPageRouteArgs>();
       return _i17.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: const _i9.ActivateLocationOrRideMapPage());
+          child: _i9.ActivateLocationOrRideMapPage(
+              key: args.key,
+              driverRecord: args.driverRecord,
+              booking: args.booking));
     },
     PickUpRootPageRoute.name: (routeData) {
       final args = routeData.argsAs<PickUpRootPageRouteArgs>(
@@ -309,12 +315,34 @@ class ActivateLocationOrMapPageRoute extends _i17.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.ActivateLocationOrRideMapPage]
-class ActivateLocationOrRideMapPageRoute extends _i17.PageRouteInfo<void> {
-  const ActivateLocationOrRideMapPageRoute()
+class ActivateLocationOrRideMapPageRoute
+    extends _i17.PageRouteInfo<ActivateLocationOrRideMapPageRouteArgs> {
+  ActivateLocationOrRideMapPageRoute(
+      {_i18.Key? key,
+      required _i19.DriverRecord driverRecord,
+      required _i20.Booking booking})
       : super(ActivateLocationOrRideMapPageRoute.name,
-            path: '/activate-location-or-ride-map-page');
+            path: '/activate-location-or-ride-map-page',
+            args: ActivateLocationOrRideMapPageRouteArgs(
+                key: key, driverRecord: driverRecord, booking: booking));
 
   static const String name = 'ActivateLocationOrRideMapPageRoute';
+}
+
+class ActivateLocationOrRideMapPageRouteArgs {
+  const ActivateLocationOrRideMapPageRouteArgs(
+      {this.key, required this.driverRecord, required this.booking});
+
+  final _i18.Key? key;
+
+  final _i19.DriverRecord driverRecord;
+
+  final _i20.Booking booking;
+
+  @override
+  String toString() {
+    return 'ActivateLocationOrRideMapPageRouteArgs{key: $key, driverRecord: $driverRecord, booking: $booking}';
+  }
 }
 
 /// generated route for
@@ -344,7 +372,7 @@ class PickUpRootPageRouteArgs {
 class BookingPageRoute extends _i17.PageRouteInfo<BookingPageRouteArgs> {
   BookingPageRoute(
       {_i18.Key? key,
-      required _i19.Ride ride,
+      required _i21.Ride ride,
       required String driverId,
       required List<String> cnadidatesUids})
       : super(BookingPageRoute.name,
@@ -367,7 +395,7 @@ class BookingPageRouteArgs {
 
   final _i18.Key? key;
 
-  final _i19.Ride ride;
+  final _i21.Ride ride;
 
   final String driverId;
 

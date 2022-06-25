@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'driver_record.freezed.dart';
@@ -15,6 +16,7 @@ class DriverRecord with _$DriverRecord {
     required String status,
   }) = _DriverRecord;
 
-  factory DriverRecord.fromJson(Map<String, dynamic> json) =>
-      _$DriverRecordFromJson(json);
+  factory DriverRecord.fromJson(Map<String, dynamic> json) {
+    return _$DriverRecordFromJson(json);
+  }
 }

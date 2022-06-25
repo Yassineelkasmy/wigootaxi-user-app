@@ -107,9 +107,21 @@ class BookingService {
           .collection('drivers')
           .doc(driverId)
           .get();
-      final driverRecord = DriverRecord.fromJson(driverDoc.data()!);
+      final location = driverDoc.get('location')['geopoint'] as GeoPoint;
+
+      print("Dpppppppc" + driverDoc.toString());
+      final driverRecord = DriverRecord.fromJson(
+        driverDoc.data()!
+          ..putIfAbsent('id', () => driverId)
+          ..putIfAbsent('lng', () => location.longitude)
+          ..putIfAbsent(
+            'lat',
+            () => location.latitude,
+          ),
+      );
       return right(driverRecord);
     } catch (e) {
+      print(e);
       return left(const BookingFailure.serverError());
     }
   }

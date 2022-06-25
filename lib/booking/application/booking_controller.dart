@@ -45,8 +45,10 @@ class BookingController extends StateNotifier<BookingState> {
             final bookingRide = booking.driverId == null;
             Either<BookingFailure, DriverRecord>? driverFoundOrFailure;
             if (!bookingRide) {
+              print("Driiiiiver ${booking.driverId}");
               driverFoundOrFailure = await _bookingService.getDriverRecord(
-                  driverId: booking.driverId!);
+                driverId: booking.driverId!,
+              );
             }
             state = state.copyWith(
               currentBooking: booking,
