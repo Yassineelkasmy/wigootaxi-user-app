@@ -399,7 +399,8 @@ class PickUpForm extends HookConsumerWidget {
                               width: double.maxFinite,
                               child: SubmitButton(
                                 isLoading: pickUpState.nearbyDrivers.isEmpty,
-                                text: 'YALLA!',
+                                text: 'Allons y!',
+                                loadingText: 'Aucun chauffeur à proximité',
                                 onPressed: () {
                                   AutoRouter.of(context).push(
                                     BookingPageRoute(

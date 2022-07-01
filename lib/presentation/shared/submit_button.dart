@@ -9,9 +9,11 @@ class SubmitButton extends StatelessWidget {
     this.isLoading = false,
     this.color,
     this.textColor,
+    this.loadingText,
   }) : super(key: key);
   final void Function() onPressed;
   final String text;
+  String? loadingText;
   final Color? color;
   final Color? textColor;
   final bool isLoading;
@@ -27,8 +29,21 @@ class SubmitButton extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: isLoading
-          ? CircularProgressIndicator(
-              color: Colors.white,
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (loadingText != null)
+                  Text(
+                    loadingText!,
+                    style: TextStyle(
+                      color: textColor,
+                    ),
+                  ),
+                10.w.horizontalSpace,
+                CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              ],
             )
           : Text(
               text,
