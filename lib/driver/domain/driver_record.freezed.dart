@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-DriverRecord _$DriverRecordFromJson(Map<String, dynamic> json) {
-  return _DriverRecord.fromJson(json);
-}
-
 /// @nodoc
 class _$DriverRecordTearOff {
   const _$DriverRecordTearOff();
@@ -28,8 +24,7 @@ class _$DriverRecordTearOff {
       required String id,
       required int lastSeconds,
       required String username,
-      required String phone,
-      required String status}) {
+      required String phone}) {
     return _DriverRecord(
       lng: lng,
       lat: lat,
@@ -37,12 +32,7 @@ class _$DriverRecordTearOff {
       lastSeconds: lastSeconds,
       username: username,
       phone: phone,
-      status: status,
     );
-  }
-
-  DriverRecord fromJson(Map<String, Object?> json) {
-    return DriverRecord.fromJson(json);
   }
 }
 
@@ -57,9 +47,7 @@ mixin _$DriverRecord {
   int get lastSeconds => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DriverRecordCopyWith<DriverRecord> get copyWith =>
       throw _privateConstructorUsedError;
@@ -76,8 +64,7 @@ abstract class $DriverRecordCopyWith<$Res> {
       String id,
       int lastSeconds,
       String username,
-      String phone,
-      String status});
+      String phone});
 }
 
 /// @nodoc
@@ -96,7 +83,6 @@ class _$DriverRecordCopyWithImpl<$Res> implements $DriverRecordCopyWith<$Res> {
     Object? lastSeconds = freezed,
     Object? username = freezed,
     Object? phone = freezed,
-    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       lng: lng == freezed
@@ -123,10 +109,6 @@ class _$DriverRecordCopyWithImpl<$Res> implements $DriverRecordCopyWith<$Res> {
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -144,8 +126,7 @@ abstract class _$DriverRecordCopyWith<$Res>
       String id,
       int lastSeconds,
       String username,
-      String phone,
-      String status});
+      String phone});
 }
 
 /// @nodoc
@@ -166,7 +147,6 @@ class __$DriverRecordCopyWithImpl<$Res> extends _$DriverRecordCopyWithImpl<$Res>
     Object? lastSeconds = freezed,
     Object? username = freezed,
     Object? phone = freezed,
-    Object? status = freezed,
   }) {
     return _then(_DriverRecord(
       lng: lng == freezed
@@ -193,16 +173,12 @@ class __$DriverRecordCopyWithImpl<$Res> extends _$DriverRecordCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_DriverRecord implements _DriverRecord {
   const _$_DriverRecord(
       {required this.lng,
@@ -210,11 +186,7 @@ class _$_DriverRecord implements _DriverRecord {
       required this.id,
       required this.lastSeconds,
       required this.username,
-      required this.phone,
-      required this.status});
-
-  factory _$_DriverRecord.fromJson(Map<String, dynamic> json) =>
-      _$$_DriverRecordFromJson(json);
+      required this.phone});
 
   @override
   final double lng;
@@ -228,12 +200,10 @@ class _$_DriverRecord implements _DriverRecord {
   final String username;
   @override
   final String phone;
-  @override
-  final String status;
 
   @override
   String toString() {
-    return 'DriverRecord(lng: $lng, lat: $lat, id: $id, lastSeconds: $lastSeconds, username: $username, phone: $phone, status: $status)';
+    return 'DriverRecord(lng: $lng, lat: $lat, id: $id, lastSeconds: $lastSeconds, username: $username, phone: $phone)';
   }
 
   @override
@@ -247,8 +217,7 @@ class _$_DriverRecord implements _DriverRecord {
             const DeepCollectionEquality()
                 .equals(other.lastSeconds, lastSeconds) &&
             const DeepCollectionEquality().equals(other.username, username) &&
-            const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.status, status));
+            const DeepCollectionEquality().equals(other.phone, phone));
   }
 
   @override
@@ -259,18 +228,12 @@ class _$_DriverRecord implements _DriverRecord {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(lastSeconds),
       const DeepCollectionEquality().hash(username),
-      const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(status));
+      const DeepCollectionEquality().hash(phone));
 
   @JsonKey(ignore: true)
   @override
   _$DriverRecordCopyWith<_DriverRecord> get copyWith =>
       __$DriverRecordCopyWithImpl<_DriverRecord>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_DriverRecordToJson(this);
-  }
 }
 
 abstract class _DriverRecord implements DriverRecord {
@@ -280,11 +243,7 @@ abstract class _DriverRecord implements DriverRecord {
       required String id,
       required int lastSeconds,
       required String username,
-      required String phone,
-      required String status}) = _$_DriverRecord;
-
-  factory _DriverRecord.fromJson(Map<String, dynamic> json) =
-      _$_DriverRecord.fromJson;
+      required String phone}) = _$_DriverRecord;
 
   @override
   double get lng;
@@ -298,8 +257,6 @@ abstract class _DriverRecord implements DriverRecord {
   String get username;
   @override
   String get phone;
-  @override
-  String get status;
   @override
   @JsonKey(ignore: true)
   _$DriverRecordCopyWith<_DriverRecord> get copyWith =>

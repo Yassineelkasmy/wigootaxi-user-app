@@ -7,6 +7,7 @@ import 'package:taxidriver/booking/domain/booking.dart';
 import 'package:taxidriver/driver/domain/driver_record.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
+import 'package:taxidriver/providers/booking_provider.dart';
 import 'package:taxidriver/ride/ui/ride_map.dart';
 import 'package:taxidriver/shared/ui/map_animation.dart';
 
@@ -23,6 +24,9 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final locationState = ref.watch(locationProvider);
     final locationController = ref.watch(locationProvider.notifier);
+
+    final bookingController = ref.watch(bookingProvider.notifier);
+    final bookingState = ref.watch(bookingProvider);
 
     return Scaffold(
       body: locationState.position != null
@@ -73,10 +77,9 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
                       fit: StackFit.passthrough,
                       children: [
                         Positioned.fill(
-                          bottom: .3.sh,
                           child: RideMap(
-                            lat: locationState.position!.latitude,
-                            long: locationState.position!.longitude,
+                            lat: bookingState.driver!.lat,
+                            long: bookingState.driver!.lng,
                             onCameraIdle: () {},
                             onCameraMove: (cameraPosition) {},
                           ),

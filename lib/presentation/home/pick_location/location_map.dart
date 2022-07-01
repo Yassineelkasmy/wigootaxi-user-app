@@ -186,24 +186,31 @@ class LocationMapState extends ConsumerState<LocationMap> {
         setState(() {});
       }
       if (previous?.nearbyDrivers.hashCode != next.nearbyDrivers.hashCode) {
-        print('droooooo:${next.nearbyDrivers.length}');
         for (var driver in next.nearbyDrivers) {
-          addMarker(
-            LatLng(
-              driver.lat,
-              driver.lng,
-            ),
-            null,
-            null,
-            // next.dropoffPlace!.vicinity,
-            driver.id,
-          );
+          if (!_markers.map((e) => e.markerId.value).contains(driver.id)) {
+            addMarker(
+              LatLng(
+                driver.lat,
+                driver.lng,
+              ),
+              null,
+              null,
+              // next.dropoffPlace!.vicinity,
+              driver.id,
+            );
+          }
         }
-        // for (var driver in previous?.nearbyDrivers ?? []) {
-        //   if (!next.nearbyDrivers.contains(driver)) {
-        //     _markers.removeWhere((mrk) => mrk.mapsId.value == driver.id);
-        //   }
-        // }
+        if (previous?.nearbyDrivers.isNotEmpty ?? false) {
+          for (var driver in previous!.nearbyDrivers) {
+            if (!next.nearbyDrivers
+                .map(
+                  (e) => e.id,
+                )
+                .contains(driver.id)) {
+              _markers.removeWhere((mrk) => mrk.mapsId.value == driver.id);
+            }
+          }
+        }
 
         setState(() {});
       }

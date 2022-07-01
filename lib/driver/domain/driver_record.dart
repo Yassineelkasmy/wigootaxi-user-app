@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'driver_record.freezed.dart';
 part 'driver_record.g.dart';
 
+@JsonSerializable()
 @freezed
 class DriverRecord with _$DriverRecord {
   const factory DriverRecord({
@@ -13,7 +13,6 @@ class DriverRecord with _$DriverRecord {
     required int lastSeconds,
     required String username,
     required String phone,
-    required String status,
   }) = _DriverRecord;
 
   factory DriverRecord.fromJson(Map<String, dynamic> json) {

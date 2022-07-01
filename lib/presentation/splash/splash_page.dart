@@ -30,7 +30,7 @@ class SplashPage extends HookConsumerWidget {
               if (_.user.isPhoneVerified) {
                 AutoRouter.of(context).push(HomePageRoute());
               } else {
-                AutoRouter.of(context).push(HomePageRoute());
+                AutoRouter.of(context).push(PhoneAuthPageRoute());
               }
             },
             unauthenticated: (unAuth) {

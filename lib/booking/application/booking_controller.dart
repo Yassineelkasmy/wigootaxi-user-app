@@ -13,6 +13,7 @@ class BookingController extends StateNotifier<BookingState> {
   BookingController() : super(BookingState.initial());
   late StreamSubscription<List<Booking>> _subscription;
   late StreamSubscription<Booking> bookingSubscription;
+  late StreamSubscription<DriverRecord> driverSubscription;
 
   initializeStream(String userUid) {
     _subscription = _bookingService.requestsStream(userUid).listen(
@@ -45,7 +46,6 @@ class BookingController extends StateNotifier<BookingState> {
             final bookingRide = booking.driverId == null;
             Either<BookingFailure, DriverRecord>? driverFoundOrFailure;
             if (!bookingRide) {
-              print("Driiiiiver ${booking.driverId}");
               driverFoundOrFailure = await _bookingService.getDriverRecord(
                 driverId: booking.driverId!,
               );

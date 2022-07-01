@@ -109,7 +109,6 @@ class BookingService {
           .get();
       final location = driverDoc.get('location')['geopoint'] as GeoPoint;
 
-      print("Dpppppppc" + driverDoc.toString());
       final driverRecord = DriverRecord.fromJson(
         driverDoc.data()!
           ..putIfAbsent('id', () => driverId)

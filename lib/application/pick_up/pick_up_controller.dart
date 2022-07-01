@@ -19,15 +19,22 @@ class PickUpController extends StateNotifier<PickUpState> {
     this._googleMatrixService,
     this._driverService,
   ) : super(PickUpState.initial()) {
-    //intitializeStream();
+    Timer.periodic(Duration(seconds: 5), (timer) {
+      refreshActiveDrivers();
+    });
   }
   final INearbySearchRepository _nearbySearchRepository;
   final IGeocodingRepository _geocodingRepository;
   final GoogleMatrixService _googleMatrixService;
   final DriverService _driverService;
-  late StreamSubscription<List<DocumentSnapshot<Object?>>> _subscription;
+  StreamSubscription<List<DocumentSnapshot<Object?>>>? _subscription;
+  bool isOnlineDriver(Driver driver) {
+    return driver.lastSeconds >
+        (DateTime.now().millisecondsSinceEpoch / 1000).round() - 20;
+  }
 
   intitializeStream() {
+    _subscription?.cancel();
     _subscription = _driverService
         .nearbyDriversStream(
       lat: state.userLat!,
@@ -49,8 +56,7 @@ class PickUpController extends StateNotifier<PickUpState> {
             id: doc.id,
             lastSeconds: lastSeconds,
           );
-          if (driver.lastSeconds >
-              (DateTime.now().millisecondsSinceEpoch / 1000).round() - 40) {
+          if (isOnlineDriver(driver)) {
             nearbyDrivers.add(driver);
           }
         }
@@ -59,6 +65,12 @@ class PickUpController extends StateNotifier<PickUpState> {
         print('drooooooovers');
       },
     );
+  }
+
+  refreshActiveDrivers() {
+    final activeNearbyDrivers =
+        state.nearbyDrivers.where((driver) => isOnlineDriver(driver));
+    state = state.copyWith(nearbyDrivers: activeNearbyDrivers.toList());
   }
 
   Future mapEventToState(PickUpEvent pickUpEvent) {

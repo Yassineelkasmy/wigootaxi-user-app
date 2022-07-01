@@ -110,7 +110,6 @@ class FireBaseAuthFacade {
     }
   }
 
-  @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
     required String email,
     required String password,
@@ -134,7 +133,6 @@ class FireBaseAuthFacade {
     }
   }
 
-  @override
   Future<Either<AuthFailure, Unit>> registerWithGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
@@ -156,7 +154,7 @@ class FireBaseAuthFacade {
             .doc(creds.user!.uid)
             .set(
           {
-            'username': creds.user!.displayName,
+            'username': creds.user!.displayName ?? 'username',
             'email': creds.user!.email,
             'isPhoneVerified': false,
             'ts': Timestamp.now(),
@@ -286,6 +284,7 @@ class FireBaseAuthFacade {
       }
       return left(AuthFailure.serverError());
     } catch (e) {
+      print(e);
       return left(AuthFailure.serverError());
     }
   }

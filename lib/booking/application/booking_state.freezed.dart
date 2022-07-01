@@ -25,6 +25,7 @@ class _$BookingStateTearOff {
           driverFoundOrFailure,
       required List<Booking> bookings,
       Booking? currentBooking,
+      DriverRecord? driver,
       required Option<Either<BookingFailure, String>>
           bookingFailureOrSuccessOption}) {
     return _BookingState(
@@ -33,6 +34,7 @@ class _$BookingStateTearOff {
       driverFoundOrFailure: driverFoundOrFailure,
       bookings: bookings,
       currentBooking: currentBooking,
+      driver: driver,
       bookingFailureOrSuccessOption: bookingFailureOrSuccessOption,
     );
   }
@@ -49,6 +51,7 @@ mixin _$BookingState {
       throw _privateConstructorUsedError;
   List<Booking> get bookings => throw _privateConstructorUsedError;
   Booking? get currentBooking => throw _privateConstructorUsedError;
+  DriverRecord? get driver => throw _privateConstructorUsedError;
   Option<Either<BookingFailure, String>> get bookingFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -68,9 +71,11 @@ abstract class $BookingStateCopyWith<$Res> {
       Option<Either<BookingFailure, DriverRecord>> driverFoundOrFailure,
       List<Booking> bookings,
       Booking? currentBooking,
+      DriverRecord? driver,
       Option<Either<BookingFailure, String>> bookingFailureOrSuccessOption});
 
   $BookingCopyWith<$Res>? get currentBooking;
+  $DriverRecordCopyWith<$Res>? get driver;
 }
 
 /// @nodoc
@@ -88,6 +93,7 @@ class _$BookingStateCopyWithImpl<$Res> implements $BookingStateCopyWith<$Res> {
     Object? driverFoundOrFailure = freezed,
     Object? bookings = freezed,
     Object? currentBooking = freezed,
+    Object? driver = freezed,
     Object? bookingFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -111,6 +117,10 @@ class _$BookingStateCopyWithImpl<$Res> implements $BookingStateCopyWith<$Res> {
           ? _value.currentBooking
           : currentBooking // ignore: cast_nullable_to_non_nullable
               as Booking?,
+      driver: driver == freezed
+          ? _value.driver
+          : driver // ignore: cast_nullable_to_non_nullable
+              as DriverRecord?,
       bookingFailureOrSuccessOption: bookingFailureOrSuccessOption == freezed
           ? _value.bookingFailureOrSuccessOption
           : bookingFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -128,6 +138,17 @@ class _$BookingStateCopyWithImpl<$Res> implements $BookingStateCopyWith<$Res> {
       return _then(_value.copyWith(currentBooking: value));
     });
   }
+
+  @override
+  $DriverRecordCopyWith<$Res>? get driver {
+    if (_value.driver == null) {
+      return null;
+    }
+
+    return $DriverRecordCopyWith<$Res>(_value.driver!, (value) {
+      return _then(_value.copyWith(driver: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -143,10 +164,13 @@ abstract class _$BookingStateCopyWith<$Res>
       Option<Either<BookingFailure, DriverRecord>> driverFoundOrFailure,
       List<Booking> bookings,
       Booking? currentBooking,
+      DriverRecord? driver,
       Option<Either<BookingFailure, String>> bookingFailureOrSuccessOption});
 
   @override
   $BookingCopyWith<$Res>? get currentBooking;
+  @override
+  $DriverRecordCopyWith<$Res>? get driver;
 }
 
 /// @nodoc
@@ -166,6 +190,7 @@ class __$BookingStateCopyWithImpl<$Res> extends _$BookingStateCopyWithImpl<$Res>
     Object? driverFoundOrFailure = freezed,
     Object? bookings = freezed,
     Object? currentBooking = freezed,
+    Object? driver = freezed,
     Object? bookingFailureOrSuccessOption = freezed,
   }) {
     return _then(_BookingState(
@@ -189,6 +214,10 @@ class __$BookingStateCopyWithImpl<$Res> extends _$BookingStateCopyWithImpl<$Res>
           ? _value.currentBooking
           : currentBooking // ignore: cast_nullable_to_non_nullable
               as Booking?,
+      driver: driver == freezed
+          ? _value.driver
+          : driver // ignore: cast_nullable_to_non_nullable
+              as DriverRecord?,
       bookingFailureOrSuccessOption: bookingFailureOrSuccessOption == freezed
           ? _value.bookingFailureOrSuccessOption
           : bookingFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -206,6 +235,7 @@ class _$_BookingState implements _BookingState {
       required this.driverFoundOrFailure,
       required this.bookings,
       this.currentBooking,
+      this.driver,
       required this.bookingFailureOrSuccessOption});
 
   @override
@@ -219,11 +249,13 @@ class _$_BookingState implements _BookingState {
   @override
   final Booking? currentBooking;
   @override
+  final DriverRecord? driver;
+  @override
   final Option<Either<BookingFailure, String>> bookingFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'BookingState(bookingRide: $bookingRide, loadingMyBookings: $loadingMyBookings, driverFoundOrFailure: $driverFoundOrFailure, bookings: $bookings, currentBooking: $currentBooking, bookingFailureOrSuccessOption: $bookingFailureOrSuccessOption)';
+    return 'BookingState(bookingRide: $bookingRide, loadingMyBookings: $loadingMyBookings, driverFoundOrFailure: $driverFoundOrFailure, bookings: $bookings, currentBooking: $currentBooking, driver: $driver, bookingFailureOrSuccessOption: $bookingFailureOrSuccessOption)';
   }
 
   @override
@@ -240,6 +272,7 @@ class _$_BookingState implements _BookingState {
             const DeepCollectionEquality().equals(other.bookings, bookings) &&
             const DeepCollectionEquality()
                 .equals(other.currentBooking, currentBooking) &&
+            const DeepCollectionEquality().equals(other.driver, driver) &&
             const DeepCollectionEquality().equals(
                 other.bookingFailureOrSuccessOption,
                 bookingFailureOrSuccessOption));
@@ -253,6 +286,7 @@ class _$_BookingState implements _BookingState {
       const DeepCollectionEquality().hash(driverFoundOrFailure),
       const DeepCollectionEquality().hash(bookings),
       const DeepCollectionEquality().hash(currentBooking),
+      const DeepCollectionEquality().hash(driver),
       const DeepCollectionEquality().hash(bookingFailureOrSuccessOption));
 
   @JsonKey(ignore: true)
@@ -269,6 +303,7 @@ abstract class _BookingState implements BookingState {
           driverFoundOrFailure,
       required List<Booking> bookings,
       Booking? currentBooking,
+      DriverRecord? driver,
       required Option<Either<BookingFailure, String>>
           bookingFailureOrSuccessOption}) = _$_BookingState;
 
@@ -282,6 +317,8 @@ abstract class _BookingState implements BookingState {
   List<Booking> get bookings;
   @override
   Booking? get currentBooking;
+  @override
+  DriverRecord? get driver;
   @override
   Option<Either<BookingFailure, String>> get bookingFailureOrSuccessOption;
   @override

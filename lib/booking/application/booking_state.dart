@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:taxidriver/booking/domain/booking.dart';
 import 'package:taxidriver/booking/domain/booking_failure.dart';
-import 'package:taxidriver/driver/domain/driver.dart';
 import 'package:taxidriver/driver/domain/driver_record.dart';
 
 part 'booking_state.freezed.dart';
@@ -15,6 +14,7 @@ class BookingState with _$BookingState {
     required Option<Either<BookingFailure, DriverRecord>> driverFoundOrFailure,
     required List<Booking> bookings,
     Booking? currentBooking,
+    DriverRecord? driver,
     required Option<Either<BookingFailure, String>>
         bookingFailureOrSuccessOption,
   }) = _BookingState;
