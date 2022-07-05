@@ -10,7 +10,7 @@ import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 import 'package:taxidriver/driver/domain/driver.dart';
 import 'package:taxidriver/driver/services/driver_service.dart';
 import 'package:taxidriver/infrastructure/matrix/google_matrix_service.dart';
-import 'package:taxidriver/booking/domain/ride.dart';
+import 'package:taxidriver/booking/domain/ride_booking.dart';
 
 class PickUpController extends StateNotifier<PickUpState> {
   PickUpController(
@@ -126,8 +126,7 @@ class PickUpController extends StateNotifier<PickUpState> {
           pickupPlaceId: state.pickupPlace!.placeId,
         );
         matrixResponse.fold((failure) => null, (googleMatrix) {
-          print(googleMatrix.rows);
-          final ride = Ride(
+          final ride = RideBooking(
             droppOff: state.dropoffPlace!,
             pickUp: state.pickupPlace!,
             type: state.rideType,
@@ -243,7 +242,7 @@ class PickUpController extends StateNotifier<PickUpState> {
             pickupPlaceId: state.pickupPlace!.placeId,
           );
           matrixResponse.fold((failure) => null, (googleMatrix) {
-            final ride = Ride(
+            final ride = RideBooking(
               droppOff: state.dropoffPlace!,
               pickUp: state.pickupPlace!,
               type: state.rideType,

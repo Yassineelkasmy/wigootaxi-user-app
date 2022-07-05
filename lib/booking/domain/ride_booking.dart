@@ -2,11 +2,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:taxidriver/domain/google_matrix/matrix_response.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 
-part 'ride.freezed.dart';
+part 'ride_booking.freezed.dart';
 
 @freezed
-class Ride with _$Ride {
-  const factory Ride({
+class RideBooking with _$RideBooking {
+  const factory RideBooking({
     required NearbySearch droppOff,
     required NearbySearch pickUp,
     required RideType type,
@@ -14,10 +14,10 @@ class Ride with _$Ride {
     required int duration,
     required int distance,
     DateTime? date,
-  }) = _Ride;
+  }) = _RideBooking;
 }
 
-String typeToString(Ride ride) {
+String typeToString(RideBooking ride) {
   return ride.type == RideType.now ? 'Maintenant' : 'Prévu le';
 }
 

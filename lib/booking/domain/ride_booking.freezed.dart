@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'ride.dart';
+part of 'ride_booking.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,10 +15,10 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$RideTearOff {
-  const _$RideTearOff();
+class _$RideBookingTearOff {
+  const _$RideBookingTearOff();
 
-  _Ride call(
+  _RideBooking call(
       {required NearbySearch droppOff,
       required NearbySearch pickUp,
       required RideType type,
@@ -26,7 +26,7 @@ class _$RideTearOff {
       required int duration,
       required int distance,
       DateTime? date}) {
-    return _Ride(
+    return _RideBooking(
       droppOff: droppOff,
       pickUp: pickUp,
       type: type,
@@ -39,10 +39,10 @@ class _$RideTearOff {
 }
 
 /// @nodoc
-const $Ride = _$RideTearOff();
+const $RideBooking = _$RideBookingTearOff();
 
 /// @nodoc
-mixin _$Ride {
+mixin _$RideBooking {
   NearbySearch get droppOff => throw _privateConstructorUsedError;
   NearbySearch get pickUp => throw _privateConstructorUsedError;
   RideType get type => throw _privateConstructorUsedError;
@@ -52,13 +52,15 @@ mixin _$Ride {
   DateTime? get date => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RideCopyWith<Ride> get copyWith => throw _privateConstructorUsedError;
+  $RideBookingCopyWith<RideBooking> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RideCopyWith<$Res> {
-  factory $RideCopyWith(Ride value, $Res Function(Ride) then) =
-      _$RideCopyWithImpl<$Res>;
+abstract class $RideBookingCopyWith<$Res> {
+  factory $RideBookingCopyWith(
+          RideBooking value, $Res Function(RideBooking) then) =
+      _$RideBookingCopyWithImpl<$Res>;
   $Res call(
       {NearbySearch droppOff,
       NearbySearch pickUp,
@@ -74,12 +76,12 @@ abstract class $RideCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
-  _$RideCopyWithImpl(this._value, this._then);
+class _$RideBookingCopyWithImpl<$Res> implements $RideBookingCopyWith<$Res> {
+  _$RideBookingCopyWithImpl(this._value, this._then);
 
-  final Ride _value;
+  final RideBooking _value;
   // ignore: unused_field
-  final $Res Function(Ride) _then;
+  final $Res Function(RideBooking) _then;
 
   @override
   $Res call({
@@ -146,9 +148,11 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
-  factory _$RideCopyWith(_Ride value, $Res Function(_Ride) then) =
-      __$RideCopyWithImpl<$Res>;
+abstract class _$RideBookingCopyWith<$Res>
+    implements $RideBookingCopyWith<$Res> {
+  factory _$RideBookingCopyWith(
+          _RideBooking value, $Res Function(_RideBooking) then) =
+      __$RideBookingCopyWithImpl<$Res>;
   @override
   $Res call(
       {NearbySearch droppOff,
@@ -168,13 +172,14 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
-    implements _$RideCopyWith<$Res> {
-  __$RideCopyWithImpl(_Ride _value, $Res Function(_Ride) _then)
-      : super(_value, (v) => _then(v as _Ride));
+class __$RideBookingCopyWithImpl<$Res> extends _$RideBookingCopyWithImpl<$Res>
+    implements _$RideBookingCopyWith<$Res> {
+  __$RideBookingCopyWithImpl(
+      _RideBooking _value, $Res Function(_RideBooking) _then)
+      : super(_value, (v) => _then(v as _RideBooking));
 
   @override
-  _Ride get _value => super._value as _Ride;
+  _RideBooking get _value => super._value as _RideBooking;
 
   @override
   $Res call({
@@ -186,7 +191,7 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
     Object? distance = freezed,
     Object? date = freezed,
   }) {
-    return _then(_Ride(
+    return _then(_RideBooking(
       droppOff: droppOff == freezed
           ? _value.droppOff
           : droppOff // ignore: cast_nullable_to_non_nullable
@@ -221,8 +226,8 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Ride implements _Ride {
-  const _$_Ride(
+class _$_RideBooking implements _RideBooking {
+  const _$_RideBooking(
       {required this.droppOff,
       required this.pickUp,
       required this.type,
@@ -248,14 +253,14 @@ class _$_Ride implements _Ride {
 
   @override
   String toString() {
-    return 'Ride(droppOff: $droppOff, pickUp: $pickUp, type: $type, googelMatrix: $googelMatrix, duration: $duration, distance: $distance, date: $date)';
+    return 'RideBooking(droppOff: $droppOff, pickUp: $pickUp, type: $type, googelMatrix: $googelMatrix, duration: $duration, distance: $distance, date: $date)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Ride &&
+            other is _RideBooking &&
             const DeepCollectionEquality().equals(other.droppOff, droppOff) &&
             const DeepCollectionEquality().equals(other.pickUp, pickUp) &&
             const DeepCollectionEquality().equals(other.type, type) &&
@@ -279,19 +284,19 @@ class _$_Ride implements _Ride {
 
   @JsonKey(ignore: true)
   @override
-  _$RideCopyWith<_Ride> get copyWith =>
-      __$RideCopyWithImpl<_Ride>(this, _$identity);
+  _$RideBookingCopyWith<_RideBooking> get copyWith =>
+      __$RideBookingCopyWithImpl<_RideBooking>(this, _$identity);
 }
 
-abstract class _Ride implements Ride {
-  const factory _Ride(
+abstract class _RideBooking implements RideBooking {
+  const factory _RideBooking(
       {required NearbySearch droppOff,
       required NearbySearch pickUp,
       required RideType type,
       required MatrixResponse googelMatrix,
       required int duration,
       required int distance,
-      DateTime? date}) = _$_Ride;
+      DateTime? date}) = _$_RideBooking;
 
   @override
   NearbySearch get droppOff;
@@ -309,5 +314,6 @@ abstract class _Ride implements Ride {
   DateTime? get date;
   @override
   @JsonKey(ignore: true)
-  _$RideCopyWith<_Ride> get copyWith => throw _privateConstructorUsedError;
+  _$RideBookingCopyWith<_RideBooking> get copyWith =>
+      throw _privateConstructorUsedError;
 }

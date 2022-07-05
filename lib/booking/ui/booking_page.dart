@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/booking/application/booking_event.dart';
 import 'package:taxidriver/booking/application/booking_state.dart';
-import 'package:taxidriver/booking/domain/ride.dart';
+import 'package:taxidriver/booking/domain/ride_booking.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/in_app_notfication.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
@@ -23,7 +23,7 @@ class BookingPage extends HookConsumerWidget {
     required this.cnadidatesUids,
   }) : super(key: key);
 
-  final Ride ride;
+  final RideBooking ride;
   final String driverId;
   final List<String> cnadidatesUids;
 

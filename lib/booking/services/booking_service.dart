@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:taxidriver/booking/domain/booking.dart';
 import 'package:taxidriver/booking/domain/booking_failure.dart';
-import 'package:taxidriver/booking/domain/ride.dart';
+import 'package:taxidriver/booking/domain/ride_booking.dart';
 import 'package:taxidriver/driver/domain/driver_record.dart';
 import 'package:uuid/uuid.dart';
 
@@ -12,7 +12,7 @@ class BookingService {
 
   final firestore = FirebaseFirestore.instance;
   Future<Either<BookingFailure, String>> bookRide({
-    required Ride ride,
+    required RideBooking ride,
     required String userUid,
     required String phone,
     required List<String> candidatesUids,
@@ -67,7 +67,7 @@ class BookingService {
     final results = firestore
         .collection('users')
         .doc(userUid)
-        .collection('rides')
+        .collection('booking')
         .orderBy("ts", descending: true)
         .snapshots()
         .asyncMap((data) {

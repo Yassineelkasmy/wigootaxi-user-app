@@ -6,7 +6,7 @@ import 'package:taxidriver/application/pick_up/pick_up_controller.dart';
 import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
-import 'package:taxidriver/booking/domain/ride.dart';
+import 'package:taxidriver/booking/domain/ride_booking.dart';
 
 class ScheduleButton extends StatelessWidget {
   const ScheduleButton({

@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:taxidriver/domain/geocoding/reverse_geocoding.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search.dart';
 import 'package:taxidriver/domain/nearby_search/nearby_search_failure.dart';
-import 'package:taxidriver/booking/domain/ride.dart';
+import 'package:taxidriver/booking/domain/ride_booking.dart';
 import 'package:taxidriver/driver/domain/driver.dart';
 
 part 'pick_up_state.freezed.dart';
@@ -34,7 +34,7 @@ class PickUpState with _$PickUpState {
     required bool loadingRideDetails,
     double? cameraLatToMove,
     double? cameraLongToMove,
-    Ride? ride,
+    RideBooking? ride,
   }) = _PickUpState;
 
   factory PickUpState.initial() => PickUpState(

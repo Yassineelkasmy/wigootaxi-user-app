@@ -19,7 +19,7 @@ class _$BookingEventTearOff {
   const _$BookingEventTearOff();
 
   BookRideRequested bookRideRequested(
-      {required Ride ride,
+      {required RideBooking ride,
       required User user,
       required String driverId,
       required List<String> cnadidatesUids}) {
@@ -49,8 +49,8 @@ const $BookingEvent = _$BookingEventTearOff();
 mixin _$BookingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)
+    required TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)
         bookRideRequested,
     required TResult Function(String userUid) bookingsRequested,
     required TResult Function() currentBookingCancelled,
@@ -58,8 +58,8 @@ mixin _$BookingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+    TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
     TResult Function()? currentBookingCancelled,
@@ -67,8 +67,8 @@ mixin _$BookingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+    TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
     TResult Function()? currentBookingCancelled,
@@ -122,9 +122,12 @@ abstract class $BookRideRequestedCopyWith<$Res> {
           BookRideRequested value, $Res Function(BookRideRequested) then) =
       _$BookRideRequestedCopyWithImpl<$Res>;
   $Res call(
-      {Ride ride, User user, String driverId, List<String> cnadidatesUids});
+      {RideBooking ride,
+      User user,
+      String driverId,
+      List<String> cnadidatesUids});
 
-  $RideCopyWith<$Res> get ride;
+  $RideBookingCopyWith<$Res> get ride;
   $UserCopyWith<$Res> get user;
 }
 
@@ -150,7 +153,7 @@ class _$BookRideRequestedCopyWithImpl<$Res>
       ride: ride == freezed
           ? _value.ride
           : ride // ignore: cast_nullable_to_non_nullable
-              as Ride,
+              as RideBooking,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -167,8 +170,8 @@ class _$BookRideRequestedCopyWithImpl<$Res>
   }
 
   @override
-  $RideCopyWith<$Res> get ride {
-    return $RideCopyWith<$Res>(_value.ride, (value) {
+  $RideBookingCopyWith<$Res> get ride {
+    return $RideBookingCopyWith<$Res>(_value.ride, (value) {
       return _then(_value.copyWith(ride: value));
     });
   }
@@ -191,7 +194,7 @@ class _$BookRideRequested implements BookRideRequested {
       required this.cnadidatesUids});
 
   @override
-  final Ride ride;
+  final RideBooking ride;
   @override
   final User user;
   @override
@@ -232,8 +235,8 @@ class _$BookRideRequested implements BookRideRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)
+    required TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)
         bookRideRequested,
     required TResult Function(String userUid) bookingsRequested,
     required TResult Function() currentBookingCancelled,
@@ -244,8 +247,8 @@ class _$BookRideRequested implements BookRideRequested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+    TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
     TResult Function()? currentBookingCancelled,
@@ -256,8 +259,8 @@ class _$BookRideRequested implements BookRideRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+    TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
     TResult Function()? currentBookingCancelled,
@@ -307,12 +310,12 @@ class _$BookRideRequested implements BookRideRequested {
 
 abstract class BookRideRequested implements BookingEvent {
   const factory BookRideRequested(
-      {required Ride ride,
+      {required RideBooking ride,
       required User user,
       required String driverId,
       required List<String> cnadidatesUids}) = _$BookRideRequested;
 
-  Ride get ride;
+  RideBooking get ride;
   User get user;
   String get driverId;
   List<String> get cnadidatesUids;
@@ -386,8 +389,8 @@ class _$BookignsRequested implements BookignsRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)
+    required TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)
         bookRideRequested,
     required TResult Function(String userUid) bookingsRequested,
     required TResult Function() currentBookingCancelled,
@@ -398,8 +401,8 @@ class _$BookignsRequested implements BookignsRequested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+    TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
     TResult Function()? currentBookingCancelled,
@@ -410,8 +413,8 @@ class _$BookignsRequested implements BookignsRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+    TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
     TResult Function()? currentBookingCancelled,
@@ -509,8 +512,8 @@ class _$CurrentBookingCancelled implements CurrentBookingCancelled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)
+    required TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)
         bookRideRequested,
     required TResult Function(String userUid) bookingsRequested,
     required TResult Function() currentBookingCancelled,
@@ -521,8 +524,8 @@ class _$CurrentBookingCancelled implements CurrentBookingCancelled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+    TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
     TResult Function()? currentBookingCancelled,
@@ -533,8 +536,8 @@ class _$CurrentBookingCancelled implements CurrentBookingCancelled {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+    TResult Function(RideBooking ride, User user, String driverId,
+            List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
     TResult Function()? currentBookingCancelled,
