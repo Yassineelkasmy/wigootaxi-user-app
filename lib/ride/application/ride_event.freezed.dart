@@ -26,8 +26,10 @@ class _$RideEventTearOff {
     return const RideDnied();
   }
 
-  RideInitilialized rideInitialized() {
-    return const RideInitilialized();
+  RideInitilialized rideInitialized(String rideId) {
+    return RideInitilialized(
+      rideId,
+    );
   }
 }
 
@@ -40,21 +42,21 @@ mixin _$RideEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() rideAccepted,
     required TResult Function() rideDenied,
-    required TResult Function() rideInitialized,
+    required TResult Function(String rideId) rideInitialized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? rideAccepted,
     TResult Function()? rideDenied,
-    TResult Function()? rideInitialized,
+    TResult Function(String rideId)? rideInitialized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? rideAccepted,
     TResult Function()? rideDenied,
-    TResult Function()? rideInitialized,
+    TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,7 +147,7 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
   TResult when<TResult extends Object?>({
     required TResult Function() rideAccepted,
     required TResult Function() rideDenied,
-    required TResult Function() rideInitialized,
+    required TResult Function(String rideId) rideInitialized,
   }) {
     return rideAccepted();
   }
@@ -155,7 +157,7 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? rideAccepted,
     TResult Function()? rideDenied,
-    TResult Function()? rideInitialized,
+    TResult Function(String rideId)? rideInitialized,
   }) {
     return rideAccepted?.call();
   }
@@ -165,7 +167,7 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? rideAccepted,
     TResult Function()? rideDenied,
-    TResult Function()? rideInitialized,
+    TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
   }) {
     if (rideAccepted != null) {
@@ -259,7 +261,7 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
   TResult when<TResult extends Object?>({
     required TResult Function() rideAccepted,
     required TResult Function() rideDenied,
-    required TResult Function() rideInitialized,
+    required TResult Function(String rideId) rideInitialized,
   }) {
     return rideDenied();
   }
@@ -269,7 +271,7 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? rideAccepted,
     TResult Function()? rideDenied,
-    TResult Function()? rideInitialized,
+    TResult Function(String rideId)? rideInitialized,
   }) {
     return rideDenied?.call();
   }
@@ -279,7 +281,7 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? rideAccepted,
     TResult Function()? rideDenied,
-    TResult Function()? rideInitialized,
+    TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
   }) {
     if (rideDenied != null) {
@@ -332,6 +334,7 @@ abstract class $RideInitilializedCopyWith<$Res> {
   factory $RideInitilializedCopyWith(
           RideInitilialized value, $Res Function(RideInitilialized) then) =
       _$RideInitilializedCopyWithImpl<$Res>;
+  $Res call({String rideId});
 }
 
 /// @nodoc
@@ -344,6 +347,18 @@ class _$RideInitilializedCopyWithImpl<$Res>
 
   @override
   RideInitilialized get _value => super._value as RideInitilialized;
+
+  @override
+  $Res call({
+    Object? rideId = freezed,
+  }) {
+    return _then(RideInitilialized(
+      rideId == freezed
+          ? _value.rideId
+          : rideId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
@@ -351,36 +366,49 @@ class _$RideInitilializedCopyWithImpl<$Res>
 class _$RideInitilialized
     with DiagnosticableTreeMixin
     implements RideInitilialized {
-  const _$RideInitilialized();
+  const _$RideInitilialized(this.rideId);
+
+  @override
+  final String rideId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RideEvent.rideInitialized()';
+    return 'RideEvent.rideInitialized(rideId: $rideId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'RideEvent.rideInitialized'));
+    properties
+      ..add(DiagnosticsProperty('type', 'RideEvent.rideInitialized'))
+      ..add(DiagnosticsProperty('rideId', rideId));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RideInitilialized);
+        (other.runtimeType == runtimeType &&
+            other is RideInitilialized &&
+            const DeepCollectionEquality().equals(other.rideId, rideId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(rideId));
+
+  @JsonKey(ignore: true)
+  @override
+  $RideInitilializedCopyWith<RideInitilialized> get copyWith =>
+      _$RideInitilializedCopyWithImpl<RideInitilialized>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() rideAccepted,
     required TResult Function() rideDenied,
-    required TResult Function() rideInitialized,
+    required TResult Function(String rideId) rideInitialized,
   }) {
-    return rideInitialized();
+    return rideInitialized(rideId);
   }
 
   @override
@@ -388,9 +416,9 @@ class _$RideInitilialized
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? rideAccepted,
     TResult Function()? rideDenied,
-    TResult Function()? rideInitialized,
+    TResult Function(String rideId)? rideInitialized,
   }) {
-    return rideInitialized?.call();
+    return rideInitialized?.call(rideId);
   }
 
   @override
@@ -398,11 +426,11 @@ class _$RideInitilialized
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? rideAccepted,
     TResult Function()? rideDenied,
-    TResult Function()? rideInitialized,
+    TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
   }) {
     if (rideInitialized != null) {
-      return rideInitialized();
+      return rideInitialized(rideId);
     }
     return orElse();
   }
@@ -443,5 +471,10 @@ class _$RideInitilialized
 }
 
 abstract class RideInitilialized implements RideEvent {
-  const factory RideInitilialized() = _$RideInitilialized;
+  const factory RideInitilialized(String rideId) = _$RideInitilialized;
+
+  String get rideId;
+  @JsonKey(ignore: true)
+  $RideInitilializedCopyWith<RideInitilialized> get copyWith =>
+      throw _privateConstructorUsedError;
 }
