@@ -44,7 +44,7 @@ class BookingPage extends HookConsumerWidget {
           next.currentBooking?.cancelled) {
         if (next.currentBooking?.cancelled == true) {
           InAppNotification.show(
-            duration: Duration(seconds: 10),
+            duration: Duration(seconds: 5),
             child: InnerNotifications(
               message:
                   "Aucun des conducteurs à proximité n'a accepté votre offre de covoiturage, essayez de faire une autre demande",
@@ -52,6 +52,8 @@ class BookingPage extends HookConsumerWidget {
             ),
             context: context,
           );
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
         }
       }
       next.driverFoundOrFailure.map(

@@ -186,7 +186,8 @@ class LocationMapState extends ConsumerState<LocationMap> {
         setState(() {});
       }
       if (previous?.nearbyDrivers.hashCode != next.nearbyDrivers.hashCode) {
-        final markersIds = _markers.map((e) => e.markerId.value);
+        //We may use this iterebale to rerender only moved drivers for performance
+        // final markersIds = _markers.map((e) => e.markerId.value);
         for (var driver in next.nearbyDrivers) {
           addMarker(
             LatLng(
