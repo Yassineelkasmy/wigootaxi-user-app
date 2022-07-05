@@ -78,8 +78,8 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
                       children: [
                         Positioned.fill(
                           child: RideMap(
-                            lat: bookingState.driver!.lat,
-                            long: bookingState.driver!.lng,
+                            lat: driverRecord.lat,
+                            long: driverRecord.lng,
                             onCameraIdle: () {},
                             onCameraMove: (cameraPosition) {},
                           ),

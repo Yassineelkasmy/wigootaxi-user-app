@@ -16,4 +16,6 @@ class BookingEvent with _$BookingEvent {
   const factory BookingEvent.bookingsRequested(
     String userUid,
   ) = BookignsRequested;
+  const factory BookingEvent.currentBookingCancelled() =
+      CurrentBookingCancelled;
 }

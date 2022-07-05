@@ -20,6 +20,7 @@ Booking _$BookingFromJson(Map<String, dynamic> json) => Booking(
       phone: json['phone'] as String,
       ts: DateTime.parse(json['ts'] as String),
       driverId: json['driverId'] as String?,
+      cancelled: json['cancelled'] as bool?,
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
     );
@@ -38,5 +39,6 @@ Map<String, dynamic> _$BookingToJson(Booking instance) => <String, dynamic>{
       'phone': instance.phone,
       'ts': instance.ts.toIso8601String(),
       'driverId': instance.driverId,
+      'cancelled': instance.cancelled,
       'date': instance.date?.toIso8601String(),
     };

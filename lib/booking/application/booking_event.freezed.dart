@@ -36,6 +36,10 @@ class _$BookingEventTearOff {
       userUid,
     );
   }
+
+  CurrentBookingCancelled currentBookingCancelled() {
+    return const CurrentBookingCancelled();
+  }
 }
 
 /// @nodoc
@@ -49,6 +53,7 @@ mixin _$BookingEvent {
             Ride ride, User user, String driverId, List<String> cnadidatesUids)
         bookRideRequested,
     required TResult Function(String userUid) bookingsRequested,
+    required TResult Function() currentBookingCancelled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$BookingEvent {
             Ride ride, User user, String driverId, List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
+    TResult Function()? currentBookingCancelled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +71,7 @@ mixin _$BookingEvent {
             Ride ride, User user, String driverId, List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
+    TResult Function()? currentBookingCancelled,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,18 +79,22 @@ mixin _$BookingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(BookRideRequested value) bookRideRequested,
     required TResult Function(BookignsRequested value) bookingsRequested,
+    required TResult Function(CurrentBookingCancelled value)
+        currentBookingCancelled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
     TResult Function(BookignsRequested value)? bookingsRequested,
+    TResult Function(CurrentBookingCancelled value)? currentBookingCancelled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
     TResult Function(BookignsRequested value)? bookingsRequested,
+    TResult Function(CurrentBookingCancelled value)? currentBookingCancelled,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -225,6 +236,7 @@ class _$BookRideRequested implements BookRideRequested {
             Ride ride, User user, String driverId, List<String> cnadidatesUids)
         bookRideRequested,
     required TResult Function(String userUid) bookingsRequested,
+    required TResult Function() currentBookingCancelled,
   }) {
     return bookRideRequested(ride, user, driverId, cnadidatesUids);
   }
@@ -236,6 +248,7 @@ class _$BookRideRequested implements BookRideRequested {
             Ride ride, User user, String driverId, List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
+    TResult Function()? currentBookingCancelled,
   }) {
     return bookRideRequested?.call(ride, user, driverId, cnadidatesUids);
   }
@@ -247,6 +260,7 @@ class _$BookRideRequested implements BookRideRequested {
             Ride ride, User user, String driverId, List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
+    TResult Function()? currentBookingCancelled,
     required TResult orElse(),
   }) {
     if (bookRideRequested != null) {
@@ -260,6 +274,8 @@ class _$BookRideRequested implements BookRideRequested {
   TResult map<TResult extends Object?>({
     required TResult Function(BookRideRequested value) bookRideRequested,
     required TResult Function(BookignsRequested value) bookingsRequested,
+    required TResult Function(CurrentBookingCancelled value)
+        currentBookingCancelled,
   }) {
     return bookRideRequested(this);
   }
@@ -269,6 +285,7 @@ class _$BookRideRequested implements BookRideRequested {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
     TResult Function(BookignsRequested value)? bookingsRequested,
+    TResult Function(CurrentBookingCancelled value)? currentBookingCancelled,
   }) {
     return bookRideRequested?.call(this);
   }
@@ -278,6 +295,7 @@ class _$BookRideRequested implements BookRideRequested {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
     TResult Function(BookignsRequested value)? bookingsRequested,
+    TResult Function(CurrentBookingCancelled value)? currentBookingCancelled,
     required TResult orElse(),
   }) {
     if (bookRideRequested != null) {
@@ -372,6 +390,7 @@ class _$BookignsRequested implements BookignsRequested {
             Ride ride, User user, String driverId, List<String> cnadidatesUids)
         bookRideRequested,
     required TResult Function(String userUid) bookingsRequested,
+    required TResult Function() currentBookingCancelled,
   }) {
     return bookingsRequested(userUid);
   }
@@ -383,6 +402,7 @@ class _$BookignsRequested implements BookignsRequested {
             Ride ride, User user, String driverId, List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
+    TResult Function()? currentBookingCancelled,
   }) {
     return bookingsRequested?.call(userUid);
   }
@@ -394,6 +414,7 @@ class _$BookignsRequested implements BookignsRequested {
             Ride ride, User user, String driverId, List<String> cnadidatesUids)?
         bookRideRequested,
     TResult Function(String userUid)? bookingsRequested,
+    TResult Function()? currentBookingCancelled,
     required TResult orElse(),
   }) {
     if (bookingsRequested != null) {
@@ -407,6 +428,8 @@ class _$BookignsRequested implements BookignsRequested {
   TResult map<TResult extends Object?>({
     required TResult Function(BookRideRequested value) bookRideRequested,
     required TResult Function(BookignsRequested value) bookingsRequested,
+    required TResult Function(CurrentBookingCancelled value)
+        currentBookingCancelled,
   }) {
     return bookingsRequested(this);
   }
@@ -416,6 +439,7 @@ class _$BookignsRequested implements BookignsRequested {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
     TResult Function(BookignsRequested value)? bookingsRequested,
+    TResult Function(CurrentBookingCancelled value)? currentBookingCancelled,
   }) {
     return bookingsRequested?.call(this);
   }
@@ -425,6 +449,7 @@ class _$BookignsRequested implements BookignsRequested {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BookRideRequested value)? bookRideRequested,
     TResult Function(BookignsRequested value)? bookingsRequested,
+    TResult Function(CurrentBookingCancelled value)? currentBookingCancelled,
     required TResult orElse(),
   }) {
     if (bookingsRequested != null) {
@@ -441,4 +466,122 @@ abstract class BookignsRequested implements BookingEvent {
   @JsonKey(ignore: true)
   $BookignsRequestedCopyWith<BookignsRequested> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CurrentBookingCancelledCopyWith<$Res> {
+  factory $CurrentBookingCancelledCopyWith(CurrentBookingCancelled value,
+          $Res Function(CurrentBookingCancelled) then) =
+      _$CurrentBookingCancelledCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CurrentBookingCancelledCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res>
+    implements $CurrentBookingCancelledCopyWith<$Res> {
+  _$CurrentBookingCancelledCopyWithImpl(CurrentBookingCancelled _value,
+      $Res Function(CurrentBookingCancelled) _then)
+      : super(_value, (v) => _then(v as CurrentBookingCancelled));
+
+  @override
+  CurrentBookingCancelled get _value => super._value as CurrentBookingCancelled;
+}
+
+/// @nodoc
+
+class _$CurrentBookingCancelled implements CurrentBookingCancelled {
+  const _$CurrentBookingCancelled();
+
+  @override
+  String toString() {
+    return 'BookingEvent.currentBookingCancelled()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CurrentBookingCancelled);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            Ride ride, User user, String driverId, List<String> cnadidatesUids)
+        bookRideRequested,
+    required TResult Function(String userUid) bookingsRequested,
+    required TResult Function() currentBookingCancelled,
+  }) {
+    return currentBookingCancelled();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+        bookRideRequested,
+    TResult Function(String userUid)? bookingsRequested,
+    TResult Function()? currentBookingCancelled,
+  }) {
+    return currentBookingCancelled?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            Ride ride, User user, String driverId, List<String> cnadidatesUids)?
+        bookRideRequested,
+    TResult Function(String userUid)? bookingsRequested,
+    TResult Function()? currentBookingCancelled,
+    required TResult orElse(),
+  }) {
+    if (currentBookingCancelled != null) {
+      return currentBookingCancelled();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BookRideRequested value) bookRideRequested,
+    required TResult Function(BookignsRequested value) bookingsRequested,
+    required TResult Function(CurrentBookingCancelled value)
+        currentBookingCancelled,
+  }) {
+    return currentBookingCancelled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(BookRideRequested value)? bookRideRequested,
+    TResult Function(BookignsRequested value)? bookingsRequested,
+    TResult Function(CurrentBookingCancelled value)? currentBookingCancelled,
+  }) {
+    return currentBookingCancelled?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BookRideRequested value)? bookRideRequested,
+    TResult Function(BookignsRequested value)? bookingsRequested,
+    TResult Function(CurrentBookingCancelled value)? currentBookingCancelled,
+    required TResult orElse(),
+  }) {
+    if (currentBookingCancelled != null) {
+      return currentBookingCancelled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CurrentBookingCancelled implements BookingEvent {
+  const factory CurrentBookingCancelled() = _$CurrentBookingCancelled;
 }

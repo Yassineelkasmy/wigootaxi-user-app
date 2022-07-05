@@ -32,6 +32,7 @@ class _$BookingTearOff {
       required String phone,
       required DateTime ts,
       String? driverId,
+      bool? cancelled,
       DateTime? date}) {
     return _Booking(
       id: id,
@@ -47,6 +48,7 @@ class _$BookingTearOff {
       phone: phone,
       ts: ts,
       driverId: driverId,
+      cancelled: cancelled,
       date: date,
     );
   }
@@ -70,6 +72,7 @@ mixin _$Booking {
   String get phone => throw _privateConstructorUsedError;
   DateTime get ts => throw _privateConstructorUsedError;
   String? get driverId => throw _privateConstructorUsedError;
+  bool? get cancelled => throw _privateConstructorUsedError;
   DateTime? get date => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -94,6 +97,7 @@ abstract class $BookingCopyWith<$Res> {
       String phone,
       DateTime ts,
       String? driverId,
+      bool? cancelled,
       DateTime? date});
 }
 
@@ -120,6 +124,7 @@ class _$BookingCopyWithImpl<$Res> implements $BookingCopyWith<$Res> {
     Object? phone = freezed,
     Object? ts = freezed,
     Object? driverId = freezed,
+    Object? cancelled = freezed,
     Object? date = freezed,
   }) {
     return _then(_value.copyWith(
@@ -175,6 +180,10 @@ class _$BookingCopyWithImpl<$Res> implements $BookingCopyWith<$Res> {
           ? _value.driverId
           : driverId // ignore: cast_nullable_to_non_nullable
               as String?,
+      cancelled: cancelled == freezed
+          ? _value.cancelled
+          : cancelled // ignore: cast_nullable_to_non_nullable
+              as bool?,
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -202,6 +211,7 @@ abstract class _$BookingCopyWith<$Res> implements $BookingCopyWith<$Res> {
       String phone,
       DateTime ts,
       String? driverId,
+      bool? cancelled,
       DateTime? date});
 }
 
@@ -229,6 +239,7 @@ class __$BookingCopyWithImpl<$Res> extends _$BookingCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? ts = freezed,
     Object? driverId = freezed,
+    Object? cancelled = freezed,
     Object? date = freezed,
   }) {
     return _then(_Booking(
@@ -284,6 +295,10 @@ class __$BookingCopyWithImpl<$Res> extends _$BookingCopyWithImpl<$Res>
           ? _value.driverId
           : driverId // ignore: cast_nullable_to_non_nullable
               as String?,
+      cancelled: cancelled == freezed
+          ? _value.cancelled
+          : cancelled // ignore: cast_nullable_to_non_nullable
+              as bool?,
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -309,6 +324,7 @@ class _$_Booking implements _Booking {
       required this.phone,
       required this.ts,
       this.driverId,
+      this.cancelled,
       this.date});
 
   @override
@@ -338,11 +354,13 @@ class _$_Booking implements _Booking {
   @override
   final String? driverId;
   @override
+  final bool? cancelled;
+  @override
   final DateTime? date;
 
   @override
   String toString() {
-    return 'Booking(id: $id, dest_name: $dest_name, dest_place_id: $dest_place_id, start_name: $start_name, start_place_id: $start_place_id, type: $type, disttext: $disttext, durtext: $durtext, distance: $distance, duration: $duration, phone: $phone, ts: $ts, driverId: $driverId, date: $date)';
+    return 'Booking(id: $id, dest_name: $dest_name, dest_place_id: $dest_place_id, start_name: $start_name, start_place_id: $start_place_id, type: $type, disttext: $disttext, durtext: $durtext, distance: $distance, duration: $duration, phone: $phone, ts: $ts, driverId: $driverId, cancelled: $cancelled, date: $date)';
   }
 
   @override
@@ -366,6 +384,7 @@ class _$_Booking implements _Booking {
             const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality().equals(other.ts, ts) &&
             const DeepCollectionEquality().equals(other.driverId, driverId) &&
+            const DeepCollectionEquality().equals(other.cancelled, cancelled) &&
             const DeepCollectionEquality().equals(other.date, date));
   }
 
@@ -385,6 +404,7 @@ class _$_Booking implements _Booking {
       const DeepCollectionEquality().hash(phone),
       const DeepCollectionEquality().hash(ts),
       const DeepCollectionEquality().hash(driverId),
+      const DeepCollectionEquality().hash(cancelled),
       const DeepCollectionEquality().hash(date));
 
   @JsonKey(ignore: true)
@@ -408,6 +428,7 @@ abstract class _Booking implements Booking {
       required String phone,
       required DateTime ts,
       String? driverId,
+      bool? cancelled,
       DateTime? date}) = _$_Booking;
 
   @override
@@ -436,6 +457,8 @@ abstract class _Booking implements Booking {
   DateTime get ts;
   @override
   String? get driverId;
+  @override
+  bool? get cancelled;
   @override
   DateTime? get date;
   @override

@@ -3,12 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:in_app_notification/in_app_notification.dart';
 import 'package:intl/intl.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/booking/application/booking_event.dart';
 import 'package:taxidriver/booking/application/booking_state.dart';
 import 'package:taxidriver/booking/domain/ride.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
+import 'package:taxidriver/presentation/shared/in_app_notfication.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
@@ -37,17 +39,34 @@ class BookingPage extends HookConsumerWidget {
     final bookingState = ref.watch(bookingProvider);
     final user = ref.watch(userProvider);
     ref.listen<BookingState>(bookingProvider, ((previous, next) {
-      next.driverFoundOrFailure.map((option) => option.fold(
-            (l) => null,
-            (driverRecord) {
-              AutoRouter.of(context).replace(
-                ActivateLocationOrRideMapPageRoute(
-                  driverRecord: driverRecord,
-                  booking: bookingState.currentBooking!,
-                ),
-              );
-            },
-          ));
+      //Listen if the booking has been cancelled
+      if (previous?.currentBooking?.cancelled !=
+          next.currentBooking?.cancelled) {
+        if (next.currentBooking?.cancelled == true) {
+          InAppNotification.show(
+            duration: Duration(seconds: 10),
+            child: InnerNotifications(
+              message:
+                  "Aucun des conducteurs à proximité n'a accepté votre offre de covoiturage, essayez de faire une autre demande",
+              isScuccess: false,
+            ),
+            context: context,
+          );
+        }
+      }
+      next.driverFoundOrFailure.map(
+        (option) => option.fold(
+          (l) => null,
+          (driverRecord) {
+            AutoRouter.of(context).replace(
+              ActivateLocationOrRideMapPageRoute(
+                driverRecord: driverRecord,
+                booking: bookingState.currentBooking!,
+              ),
+            );
+          },
+        ),
+      );
     }));
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -60,6 +79,7 @@ class BookingPage extends HookConsumerWidget {
                 ? 'Trouvez votre capitaine'
                 : 'Réserver',
             isLoading: bookingState.bookingRide,
+            loadingText: "En attente d'un chauffeur",
             onPressed: () {
               if (!bookingState.bookingRide) {
                 bookingController.mapEventToState(

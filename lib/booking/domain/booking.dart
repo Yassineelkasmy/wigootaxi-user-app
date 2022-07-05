@@ -21,6 +21,7 @@ class Booking with _$Booking {
     required String phone,
     required DateTime ts,
     String? driverId,
+    bool? cancelled,
     DateTime? date,
   }) = _Booking;
 

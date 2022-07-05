@@ -27,7 +27,6 @@ class RideMap extends ConsumerStatefulWidget {
 }
 
 class RideMapState extends ConsumerState<RideMap> {
-  final pickUpPanelController = PanelController();
   late GoogleMapController _googleMapController;
   late PolylinePoints polylinePoints;
   Map<PolylineId, Polyline> polylines = {};

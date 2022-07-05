@@ -12,7 +12,7 @@ import 'package:taxidriver/driver/domain/driver_record.dart';
 class BookingController extends StateNotifier<BookingState> {
   BookingController() : super(BookingState.initial());
   late StreamSubscription<List<Booking>> _subscription;
-  late StreamSubscription<Booking> bookingSubscription;
+  StreamSubscription<Booking>? bookingSubscription;
   late StreamSubscription<DriverRecord> driverSubscription;
 
   initializeStream(String userUid) {
@@ -28,18 +28,19 @@ class BookingController extends StateNotifier<BookingState> {
   final _bookingService = BookingService();
 
   Future mapEventToState(BookingEvent event) {
-    return event.map(
-      bookRideRequested: (event) async {
-        final ride = event.ride;
-        final user = event.user;
-        state = state.copyWith(bookingRide: true);
-        final successOrFailureOption = await _bookingService.bookRide(
-          ride: ride,
-          userUid: user.uid,
-          phone: user.phone!,
-          candidatesUids: event.cnadidatesUids,
-        );
-        successOrFailureOption.fold((l) => null, (rideId) {
+    return event.map(bookRideRequested: (event) async {
+      final ride = event.ride;
+      final user = event.user;
+      state = state.copyWith(bookingRide: true);
+      final successOrFailureOption = await _bookingService.bookRide(
+        ride: ride,
+        userUid: user.uid,
+        phone: user.phone!,
+        candidatesUids: event.cnadidatesUids,
+      );
+      successOrFailureOption.fold(
+        (l) => null,
+        (rideId) {
           bookingSubscription = _bookingService
               .bookingStram(rideId: rideId)
               .listen((booking) async {
@@ -56,11 +57,13 @@ class BookingController extends StateNotifier<BookingState> {
               driverFoundOrFailure: optionOf(driverFoundOrFailure),
             );
           });
-        });
-      },
-      bookingsRequested: (event) async {
-        initializeStream(event.userUid);
-      },
-    );
+        },
+      );
+    }, bookingsRequested: (event) async {
+      initializeStream(event.userUid);
+    }, currentBookingCancelled: (_) async {
+      bookingSubscription?.cancel();
+      state = state.copyWith(currentBooking: null);
+    });
   }
 }
