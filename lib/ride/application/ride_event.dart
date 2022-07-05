@@ -7,5 +7,5 @@ part 'ride_event.freezed.dart';
 class RideEvent with _$RideEvent {
   const factory RideEvent.rideAccepted() = RideAccepted;
   const factory RideEvent.rideDenied() = RideDnied;
-  const factory RideEvent.rideInitialized() = RideInitilialized;
+  const factory RideEvent.rideInitialized(String rideId) = RideInitilialized;
 }
