@@ -6,7 +6,6 @@ import 'package:taxidriver/application/pick_up/pick_up_event.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
 import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
 import 'package:taxidriver/presentation/home/pick_location/location_map.dart';
-import 'package:rive/rive.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 import 'package:taxidriver/shared/ui/map_animation.dart';
