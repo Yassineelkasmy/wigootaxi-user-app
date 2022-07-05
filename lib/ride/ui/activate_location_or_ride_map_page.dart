@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/location/location_event.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
-import 'package:taxidriver/booking/domain/booking.dart';
 import 'package:taxidriver/driver/domain/driver_record.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
@@ -15,10 +14,8 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
   const ActivateLocationOrRideMapPage({
     Key? key,
     required this.driverRecord,
-    required this.booking,
   }) : super(key: key);
   final DriverRecord driverRecord;
-  final Booking booking;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
