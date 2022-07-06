@@ -7,20 +7,16 @@ import 'package:taxidriver/ride/domain/ride.dart';
 import 'package:taxidriver/ride/services/ride_service.dart';
 
 class RideController extends StateNotifier<RideState> {
-  RideController(
-    RideState state, {
-    required this.rideId,
-  }) : super(state);
+  RideController() : super(RideState.initial());
 
-  final String rideId;
   StreamSubscription<Ride>? rideSubscribtion;
   final RideService _rideService = RideService();
 
-  initializeRideStream() async {
+  initializeRideStream(String rideId) async {
     rideSubscribtion?.cancel();
     rideSubscribtion = _rideService
         .rideStream(
-      rideId: this.rideId,
+      rideId: rideId,
     )
         .listen(
       (ride) {
