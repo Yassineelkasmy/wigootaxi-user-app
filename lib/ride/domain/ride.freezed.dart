@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Ride _$RideFromJson(Map<String, dynamic> json) {
+  return _Ride.fromJson(json);
+}
+
 /// @nodoc
 class _$RideTearOff {
   const _$RideTearOff();
@@ -22,8 +26,12 @@ class _$RideTearOff {
       {required DateTime ts,
       required String driverUid,
       required String userUid,
-      GeoPoint? currentDriverLocation,
-      GeoPoint? currentUserLocation,
+      double? driverLat,
+      double? driverLng,
+      double? userLat,
+      double? userLng,
+      dynamic currentDriverLocation,
+      dynamic currentUserLocation,
       bool? cancelledByUser,
       bool? cancelledByDriver,
       int? driverArriveDuration,
@@ -33,6 +41,10 @@ class _$RideTearOff {
       ts: ts,
       driverUid: driverUid,
       userUid: userUid,
+      driverLat: driverLat,
+      driverLng: driverLng,
+      userLat: userLat,
+      userLng: userLng,
       currentDriverLocation: currentDriverLocation,
       currentUserLocation: currentUserLocation,
       cancelledByUser: cancelledByUser,
@@ -41,6 +53,10 @@ class _$RideTearOff {
       driverWaitDuration: driverWaitDuration,
       rideDuration: rideDuration,
     );
+  }
+
+  Ride fromJson(Map<String, Object?> json) {
+    return Ride.fromJson(json);
   }
 }
 
@@ -52,14 +68,19 @@ mixin _$Ride {
   DateTime get ts => throw _privateConstructorUsedError;
   String get driverUid => throw _privateConstructorUsedError;
   String get userUid => throw _privateConstructorUsedError;
-  GeoPoint? get currentDriverLocation => throw _privateConstructorUsedError;
-  GeoPoint? get currentUserLocation => throw _privateConstructorUsedError;
+  double? get driverLat => throw _privateConstructorUsedError;
+  double? get driverLng => throw _privateConstructorUsedError;
+  double? get userLat => throw _privateConstructorUsedError;
+  double? get userLng => throw _privateConstructorUsedError;
+  dynamic get currentDriverLocation => throw _privateConstructorUsedError;
+  dynamic get currentUserLocation => throw _privateConstructorUsedError;
   bool? get cancelledByUser => throw _privateConstructorUsedError;
   bool? get cancelledByDriver => throw _privateConstructorUsedError;
   int? get driverArriveDuration => throw _privateConstructorUsedError;
   int? get driverWaitDuration => throw _privateConstructorUsedError;
   int? get rideDuration => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RideCopyWith<Ride> get copyWith => throw _privateConstructorUsedError;
 }
@@ -72,8 +93,12 @@ abstract class $RideCopyWith<$Res> {
       {DateTime ts,
       String driverUid,
       String userUid,
-      GeoPoint? currentDriverLocation,
-      GeoPoint? currentUserLocation,
+      double? driverLat,
+      double? driverLng,
+      double? userLat,
+      double? userLng,
+      dynamic currentDriverLocation,
+      dynamic currentUserLocation,
       bool? cancelledByUser,
       bool? cancelledByDriver,
       int? driverArriveDuration,
@@ -94,6 +119,10 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
     Object? ts = freezed,
     Object? driverUid = freezed,
     Object? userUid = freezed,
+    Object? driverLat = freezed,
+    Object? driverLng = freezed,
+    Object? userLat = freezed,
+    Object? userLng = freezed,
     Object? currentDriverLocation = freezed,
     Object? currentUserLocation = freezed,
     Object? cancelledByUser = freezed,
@@ -115,14 +144,30 @@ class _$RideCopyWithImpl<$Res> implements $RideCopyWith<$Res> {
           ? _value.userUid
           : userUid // ignore: cast_nullable_to_non_nullable
               as String,
+      driverLat: driverLat == freezed
+          ? _value.driverLat
+          : driverLat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      driverLng: driverLng == freezed
+          ? _value.driverLng
+          : driverLng // ignore: cast_nullable_to_non_nullable
+              as double?,
+      userLat: userLat == freezed
+          ? _value.userLat
+          : userLat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      userLng: userLng == freezed
+          ? _value.userLng
+          : userLng // ignore: cast_nullable_to_non_nullable
+              as double?,
       currentDriverLocation: currentDriverLocation == freezed
           ? _value.currentDriverLocation
           : currentDriverLocation // ignore: cast_nullable_to_non_nullable
-              as GeoPoint?,
+              as dynamic,
       currentUserLocation: currentUserLocation == freezed
           ? _value.currentUserLocation
           : currentUserLocation // ignore: cast_nullable_to_non_nullable
-              as GeoPoint?,
+              as dynamic,
       cancelledByUser: cancelledByUser == freezed
           ? _value.cancelledByUser
           : cancelledByUser // ignore: cast_nullable_to_non_nullable
@@ -156,8 +201,12 @@ abstract class _$RideCopyWith<$Res> implements $RideCopyWith<$Res> {
       {DateTime ts,
       String driverUid,
       String userUid,
-      GeoPoint? currentDriverLocation,
-      GeoPoint? currentUserLocation,
+      double? driverLat,
+      double? driverLng,
+      double? userLat,
+      double? userLng,
+      dynamic currentDriverLocation,
+      dynamic currentUserLocation,
       bool? cancelledByUser,
       bool? cancelledByDriver,
       int? driverArriveDuration,
@@ -179,6 +228,10 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
     Object? ts = freezed,
     Object? driverUid = freezed,
     Object? userUid = freezed,
+    Object? driverLat = freezed,
+    Object? driverLng = freezed,
+    Object? userLat = freezed,
+    Object? userLng = freezed,
     Object? currentDriverLocation = freezed,
     Object? currentUserLocation = freezed,
     Object? cancelledByUser = freezed,
@@ -200,14 +253,30 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
           ? _value.userUid
           : userUid // ignore: cast_nullable_to_non_nullable
               as String,
+      driverLat: driverLat == freezed
+          ? _value.driverLat
+          : driverLat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      driverLng: driverLng == freezed
+          ? _value.driverLng
+          : driverLng // ignore: cast_nullable_to_non_nullable
+              as double?,
+      userLat: userLat == freezed
+          ? _value.userLat
+          : userLat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      userLng: userLng == freezed
+          ? _value.userLng
+          : userLng // ignore: cast_nullable_to_non_nullable
+              as double?,
       currentDriverLocation: currentDriverLocation == freezed
           ? _value.currentDriverLocation
           : currentDriverLocation // ignore: cast_nullable_to_non_nullable
-              as GeoPoint?,
+              as dynamic,
       currentUserLocation: currentUserLocation == freezed
           ? _value.currentUserLocation
           : currentUserLocation // ignore: cast_nullable_to_non_nullable
-              as GeoPoint?,
+              as dynamic,
       cancelledByUser: cancelledByUser == freezed
           ? _value.cancelledByUser
           : cancelledByUser // ignore: cast_nullable_to_non_nullable
@@ -233,12 +302,16 @@ class __$RideCopyWithImpl<$Res> extends _$RideCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Ride implements _Ride {
   const _$_Ride(
       {required this.ts,
       required this.driverUid,
       required this.userUid,
+      this.driverLat,
+      this.driverLng,
+      this.userLat,
+      this.userLng,
       this.currentDriverLocation,
       this.currentUserLocation,
       this.cancelledByUser,
@@ -247,6 +320,8 @@ class _$_Ride implements _Ride {
       this.driverWaitDuration,
       this.rideDuration});
 
+  factory _$_Ride.fromJson(Map<String, dynamic> json) => _$$_RideFromJson(json);
+
   @override
   final DateTime ts;
   @override
@@ -254,9 +329,17 @@ class _$_Ride implements _Ride {
   @override
   final String userUid;
   @override
-  final GeoPoint? currentDriverLocation;
+  final double? driverLat;
   @override
-  final GeoPoint? currentUserLocation;
+  final double? driverLng;
+  @override
+  final double? userLat;
+  @override
+  final double? userLng;
+  @override
+  final dynamic currentDriverLocation;
+  @override
+  final dynamic currentUserLocation;
   @override
   final bool? cancelledByUser;
   @override
@@ -270,7 +353,7 @@ class _$_Ride implements _Ride {
 
   @override
   String toString() {
-    return 'Ride(ts: $ts, driverUid: $driverUid, userUid: $userUid, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, cancelledByUser: $cancelledByUser, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, rideDuration: $rideDuration)';
+    return 'Ride(ts: $ts, driverUid: $driverUid, userUid: $userUid, driverLat: $driverLat, driverLng: $driverLng, userLat: $userLat, userLng: $userLng, currentDriverLocation: $currentDriverLocation, currentUserLocation: $currentUserLocation, cancelledByUser: $cancelledByUser, cancelledByDriver: $cancelledByDriver, driverArriveDuration: $driverArriveDuration, driverWaitDuration: $driverWaitDuration, rideDuration: $rideDuration)';
   }
 
   @override
@@ -281,6 +364,10 @@ class _$_Ride implements _Ride {
             const DeepCollectionEquality().equals(other.ts, ts) &&
             const DeepCollectionEquality().equals(other.driverUid, driverUid) &&
             const DeepCollectionEquality().equals(other.userUid, userUid) &&
+            const DeepCollectionEquality().equals(other.driverLat, driverLat) &&
+            const DeepCollectionEquality().equals(other.driverLng, driverLng) &&
+            const DeepCollectionEquality().equals(other.userLat, userLat) &&
+            const DeepCollectionEquality().equals(other.userLng, userLng) &&
             const DeepCollectionEquality()
                 .equals(other.currentDriverLocation, currentDriverLocation) &&
             const DeepCollectionEquality()
@@ -303,6 +390,10 @@ class _$_Ride implements _Ride {
       const DeepCollectionEquality().hash(ts),
       const DeepCollectionEquality().hash(driverUid),
       const DeepCollectionEquality().hash(userUid),
+      const DeepCollectionEquality().hash(driverLat),
+      const DeepCollectionEquality().hash(driverLng),
+      const DeepCollectionEquality().hash(userLat),
+      const DeepCollectionEquality().hash(userLng),
       const DeepCollectionEquality().hash(currentDriverLocation),
       const DeepCollectionEquality().hash(currentUserLocation),
       const DeepCollectionEquality().hash(cancelledByUser),
@@ -315,6 +406,11 @@ class _$_Ride implements _Ride {
   @override
   _$RideCopyWith<_Ride> get copyWith =>
       __$RideCopyWithImpl<_Ride>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_RideToJson(this);
+  }
 }
 
 abstract class _Ride implements Ride {
@@ -322,13 +418,19 @@ abstract class _Ride implements Ride {
       {required DateTime ts,
       required String driverUid,
       required String userUid,
-      GeoPoint? currentDriverLocation,
-      GeoPoint? currentUserLocation,
+      double? driverLat,
+      double? driverLng,
+      double? userLat,
+      double? userLng,
+      dynamic currentDriverLocation,
+      dynamic currentUserLocation,
       bool? cancelledByUser,
       bool? cancelledByDriver,
       int? driverArriveDuration,
       int? driverWaitDuration,
       int? rideDuration}) = _$_Ride;
+
+  factory _Ride.fromJson(Map<String, dynamic> json) = _$_Ride.fromJson;
 
   @override
   DateTime get ts;
@@ -337,9 +439,17 @@ abstract class _Ride implements Ride {
   @override
   String get userUid;
   @override
-  GeoPoint? get currentDriverLocation;
+  double? get driverLat;
   @override
-  GeoPoint? get currentUserLocation;
+  double? get driverLng;
+  @override
+  double? get userLat;
+  @override
+  double? get userLng;
+  @override
+  dynamic get currentDriverLocation;
+  @override
+  dynamic get currentUserLocation;
   @override
   bool? get cancelledByUser;
   @override

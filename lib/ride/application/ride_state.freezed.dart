@@ -21,10 +21,12 @@ class _$RideStateTearOff {
   _RideState call(
       {Booking? currentBooking,
       DriverRecord? driverRecord,
+      Ride? currentRide,
       required bool initializingRide}) {
     return _RideState(
       currentBooking: currentBooking,
       driverRecord: driverRecord,
+      currentRide: currentRide,
       initializingRide: initializingRide,
     );
   }
@@ -37,6 +39,7 @@ const $RideState = _$RideStateTearOff();
 mixin _$RideState {
   Booking? get currentBooking => throw _privateConstructorUsedError;
   DriverRecord? get driverRecord => throw _privateConstructorUsedError;
+  Ride? get currentRide => throw _privateConstructorUsedError;
   bool get initializingRide => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -51,10 +54,12 @@ abstract class $RideStateCopyWith<$Res> {
   $Res call(
       {Booking? currentBooking,
       DriverRecord? driverRecord,
+      Ride? currentRide,
       bool initializingRide});
 
   $BookingCopyWith<$Res>? get currentBooking;
   $DriverRecordCopyWith<$Res>? get driverRecord;
+  $RideCopyWith<$Res>? get currentRide;
 }
 
 /// @nodoc
@@ -69,6 +74,7 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
   $Res call({
     Object? currentBooking = freezed,
     Object? driverRecord = freezed,
+    Object? currentRide = freezed,
     Object? initializingRide = freezed,
   }) {
     return _then(_value.copyWith(
@@ -80,6 +86,10 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
           ? _value.driverRecord
           : driverRecord // ignore: cast_nullable_to_non_nullable
               as DriverRecord?,
+      currentRide: currentRide == freezed
+          ? _value.currentRide
+          : currentRide // ignore: cast_nullable_to_non_nullable
+              as Ride?,
       initializingRide: initializingRide == freezed
           ? _value.initializingRide
           : initializingRide // ignore: cast_nullable_to_non_nullable
@@ -108,6 +118,17 @@ class _$RideStateCopyWithImpl<$Res> implements $RideStateCopyWith<$Res> {
       return _then(_value.copyWith(driverRecord: value));
     });
   }
+
+  @override
+  $RideCopyWith<$Res>? get currentRide {
+    if (_value.currentRide == null) {
+      return null;
+    }
+
+    return $RideCopyWith<$Res>(_value.currentRide!, (value) {
+      return _then(_value.copyWith(currentRide: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -119,12 +140,15 @@ abstract class _$RideStateCopyWith<$Res> implements $RideStateCopyWith<$Res> {
   $Res call(
       {Booking? currentBooking,
       DriverRecord? driverRecord,
+      Ride? currentRide,
       bool initializingRide});
 
   @override
   $BookingCopyWith<$Res>? get currentBooking;
   @override
   $DriverRecordCopyWith<$Res>? get driverRecord;
+  @override
+  $RideCopyWith<$Res>? get currentRide;
 }
 
 /// @nodoc
@@ -140,6 +164,7 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
   $Res call({
     Object? currentBooking = freezed,
     Object? driverRecord = freezed,
+    Object? currentRide = freezed,
     Object? initializingRide = freezed,
   }) {
     return _then(_RideState(
@@ -151,6 +176,10 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
           ? _value.driverRecord
           : driverRecord // ignore: cast_nullable_to_non_nullable
               as DriverRecord?,
+      currentRide: currentRide == freezed
+          ? _value.currentRide
+          : currentRide // ignore: cast_nullable_to_non_nullable
+              as Ride?,
       initializingRide: initializingRide == freezed
           ? _value.initializingRide
           : initializingRide // ignore: cast_nullable_to_non_nullable
@@ -163,18 +192,23 @@ class __$RideStateCopyWithImpl<$Res> extends _$RideStateCopyWithImpl<$Res>
 
 class _$_RideState implements _RideState {
   const _$_RideState(
-      {this.currentBooking, this.driverRecord, required this.initializingRide});
+      {this.currentBooking,
+      this.driverRecord,
+      this.currentRide,
+      required this.initializingRide});
 
   @override
   final Booking? currentBooking;
   @override
   final DriverRecord? driverRecord;
   @override
+  final Ride? currentRide;
+  @override
   final bool initializingRide;
 
   @override
   String toString() {
-    return 'RideState(currentBooking: $currentBooking, driverRecord: $driverRecord, initializingRide: $initializingRide)';
+    return 'RideState(currentBooking: $currentBooking, driverRecord: $driverRecord, currentRide: $currentRide, initializingRide: $initializingRide)';
   }
 
   @override
@@ -187,6 +221,8 @@ class _$_RideState implements _RideState {
             const DeepCollectionEquality()
                 .equals(other.driverRecord, driverRecord) &&
             const DeepCollectionEquality()
+                .equals(other.currentRide, currentRide) &&
+            const DeepCollectionEquality()
                 .equals(other.initializingRide, initializingRide));
   }
 
@@ -195,6 +231,7 @@ class _$_RideState implements _RideState {
       runtimeType,
       const DeepCollectionEquality().hash(currentBooking),
       const DeepCollectionEquality().hash(driverRecord),
+      const DeepCollectionEquality().hash(currentRide),
       const DeepCollectionEquality().hash(initializingRide));
 
   @JsonKey(ignore: true)
@@ -207,12 +244,15 @@ abstract class _RideState implements RideState {
   const factory _RideState(
       {Booking? currentBooking,
       DriverRecord? driverRecord,
+      Ride? currentRide,
       required bool initializingRide}) = _$_RideState;
 
   @override
   Booking? get currentBooking;
   @override
   DriverRecord? get driverRecord;
+  @override
+  Ride? get currentRide;
   @override
   bool get initializingRide;
   @override
