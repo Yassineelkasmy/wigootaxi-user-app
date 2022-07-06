@@ -22,6 +22,26 @@ class _$RideEventTearOff {
     return const RideAccepted();
   }
 
+  DriverArrived driverArrived() {
+    return const DriverArrived();
+  }
+
+  RideCancelledByUser rideCancelledByUser() {
+    return const RideCancelledByUser();
+  }
+
+  RideCancelledByDriver rideCancelledByDriver() {
+    return const RideCancelledByDriver();
+  }
+
+  UserPicked userPicked() {
+    return const UserPicked();
+  }
+
+  RideFinished rideFinished() {
+    return const RideFinished();
+  }
+
   RideDnied rideDenied() {
     return const RideDnied();
   }
@@ -41,6 +61,11 @@ mixin _$RideEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() rideAccepted,
+    required TResult Function() driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
     required TResult Function() rideDenied,
     required TResult Function(String rideId) rideInitialized,
   }) =>
@@ -48,6 +73,11 @@ mixin _$RideEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
     TResult Function()? rideDenied,
     TResult Function(String rideId)? rideInitialized,
   }) =>
@@ -55,6 +85,11 @@ mixin _$RideEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
     TResult Function()? rideDenied,
     TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
@@ -63,6 +98,12 @@ mixin _$RideEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
     required TResult Function(RideInitilialized value) rideInitialized,
   }) =>
@@ -70,6 +111,11 @@ mixin _$RideEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
     TResult Function(RideInitilialized value)? rideInitialized,
   }) =>
@@ -77,6 +123,11 @@ mixin _$RideEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
     TResult Function(RideInitilialized value)? rideInitialized,
     required TResult orElse(),
@@ -146,6 +197,11 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() rideAccepted,
+    required TResult Function() driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
     required TResult Function() rideDenied,
     required TResult Function(String rideId) rideInitialized,
   }) {
@@ -156,6 +212,11 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
     TResult Function()? rideDenied,
     TResult Function(String rideId)? rideInitialized,
   }) {
@@ -166,6 +227,11 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
     TResult Function()? rideDenied,
     TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
@@ -180,6 +246,12 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
     required TResult Function(RideInitilialized value) rideInitialized,
   }) {
@@ -190,6 +262,11 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
     TResult Function(RideInitilialized value)? rideInitialized,
   }) {
@@ -200,6 +277,11 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
     TResult Function(RideInitilialized value)? rideInitialized,
     required TResult orElse(),
@@ -213,6 +295,748 @@ class _$RideAccepted with DiagnosticableTreeMixin implements RideAccepted {
 
 abstract class RideAccepted implements RideEvent {
   const factory RideAccepted() = _$RideAccepted;
+}
+
+/// @nodoc
+abstract class $DriverArrivedCopyWith<$Res> {
+  factory $DriverArrivedCopyWith(
+          DriverArrived value, $Res Function(DriverArrived) then) =
+      _$DriverArrivedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$DriverArrivedCopyWithImpl<$Res> extends _$RideEventCopyWithImpl<$Res>
+    implements $DriverArrivedCopyWith<$Res> {
+  _$DriverArrivedCopyWithImpl(
+      DriverArrived _value, $Res Function(DriverArrived) _then)
+      : super(_value, (v) => _then(v as DriverArrived));
+
+  @override
+  DriverArrived get _value => super._value as DriverArrived;
+}
+
+/// @nodoc
+
+class _$DriverArrived with DiagnosticableTreeMixin implements DriverArrived {
+  const _$DriverArrived();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RideEvent.driverArrived()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'RideEvent.driverArrived'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is DriverArrived);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() rideAccepted,
+    required TResult Function() driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
+    required TResult Function() rideDenied,
+    required TResult Function(String rideId) rideInitialized,
+  }) {
+    return driverArrived();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+  }) {
+    return driverArrived?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (driverArrived != null) {
+      return driverArrived();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
+    required TResult Function(RideDnied value) rideDenied,
+    required TResult Function(RideInitilialized value) rideInitialized,
+  }) {
+    return driverArrived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+  }) {
+    return driverArrived?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (driverArrived != null) {
+      return driverArrived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DriverArrived implements RideEvent {
+  const factory DriverArrived() = _$DriverArrived;
+}
+
+/// @nodoc
+abstract class $RideCancelledByUserCopyWith<$Res> {
+  factory $RideCancelledByUserCopyWith(
+          RideCancelledByUser value, $Res Function(RideCancelledByUser) then) =
+      _$RideCancelledByUserCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$RideCancelledByUserCopyWithImpl<$Res>
+    extends _$RideEventCopyWithImpl<$Res>
+    implements $RideCancelledByUserCopyWith<$Res> {
+  _$RideCancelledByUserCopyWithImpl(
+      RideCancelledByUser _value, $Res Function(RideCancelledByUser) _then)
+      : super(_value, (v) => _then(v as RideCancelledByUser));
+
+  @override
+  RideCancelledByUser get _value => super._value as RideCancelledByUser;
+}
+
+/// @nodoc
+
+class _$RideCancelledByUser
+    with DiagnosticableTreeMixin
+    implements RideCancelledByUser {
+  const _$RideCancelledByUser();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RideEvent.rideCancelledByUser()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RideEvent.rideCancelledByUser'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is RideCancelledByUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() rideAccepted,
+    required TResult Function() driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
+    required TResult Function() rideDenied,
+    required TResult Function(String rideId) rideInitialized,
+  }) {
+    return rideCancelledByUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+  }) {
+    return rideCancelledByUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (rideCancelledByUser != null) {
+      return rideCancelledByUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
+    required TResult Function(RideDnied value) rideDenied,
+    required TResult Function(RideInitilialized value) rideInitialized,
+  }) {
+    return rideCancelledByUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+  }) {
+    return rideCancelledByUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (rideCancelledByUser != null) {
+      return rideCancelledByUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RideCancelledByUser implements RideEvent {
+  const factory RideCancelledByUser() = _$RideCancelledByUser;
+}
+
+/// @nodoc
+abstract class $RideCancelledByDriverCopyWith<$Res> {
+  factory $RideCancelledByDriverCopyWith(RideCancelledByDriver value,
+          $Res Function(RideCancelledByDriver) then) =
+      _$RideCancelledByDriverCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$RideCancelledByDriverCopyWithImpl<$Res>
+    extends _$RideEventCopyWithImpl<$Res>
+    implements $RideCancelledByDriverCopyWith<$Res> {
+  _$RideCancelledByDriverCopyWithImpl(
+      RideCancelledByDriver _value, $Res Function(RideCancelledByDriver) _then)
+      : super(_value, (v) => _then(v as RideCancelledByDriver));
+
+  @override
+  RideCancelledByDriver get _value => super._value as RideCancelledByDriver;
+}
+
+/// @nodoc
+
+class _$RideCancelledByDriver
+    with DiagnosticableTreeMixin
+    implements RideCancelledByDriver {
+  const _$RideCancelledByDriver();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RideEvent.rideCancelledByDriver()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RideEvent.rideCancelledByDriver'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is RideCancelledByDriver);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() rideAccepted,
+    required TResult Function() driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
+    required TResult Function() rideDenied,
+    required TResult Function(String rideId) rideInitialized,
+  }) {
+    return rideCancelledByDriver();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+  }) {
+    return rideCancelledByDriver?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (rideCancelledByDriver != null) {
+      return rideCancelledByDriver();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
+    required TResult Function(RideDnied value) rideDenied,
+    required TResult Function(RideInitilialized value) rideInitialized,
+  }) {
+    return rideCancelledByDriver(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+  }) {
+    return rideCancelledByDriver?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (rideCancelledByDriver != null) {
+      return rideCancelledByDriver(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RideCancelledByDriver implements RideEvent {
+  const factory RideCancelledByDriver() = _$RideCancelledByDriver;
+}
+
+/// @nodoc
+abstract class $UserPickedCopyWith<$Res> {
+  factory $UserPickedCopyWith(
+          UserPicked value, $Res Function(UserPicked) then) =
+      _$UserPickedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UserPickedCopyWithImpl<$Res> extends _$RideEventCopyWithImpl<$Res>
+    implements $UserPickedCopyWith<$Res> {
+  _$UserPickedCopyWithImpl(UserPicked _value, $Res Function(UserPicked) _then)
+      : super(_value, (v) => _then(v as UserPicked));
+
+  @override
+  UserPicked get _value => super._value as UserPicked;
+}
+
+/// @nodoc
+
+class _$UserPicked with DiagnosticableTreeMixin implements UserPicked {
+  const _$UserPicked();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RideEvent.userPicked()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'RideEvent.userPicked'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is UserPicked);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() rideAccepted,
+    required TResult Function() driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
+    required TResult Function() rideDenied,
+    required TResult Function(String rideId) rideInitialized,
+  }) {
+    return userPicked();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+  }) {
+    return userPicked?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (userPicked != null) {
+      return userPicked();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
+    required TResult Function(RideDnied value) rideDenied,
+    required TResult Function(RideInitilialized value) rideInitialized,
+  }) {
+    return userPicked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+  }) {
+    return userPicked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (userPicked != null) {
+      return userPicked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserPicked implements RideEvent {
+  const factory UserPicked() = _$UserPicked;
+}
+
+/// @nodoc
+abstract class $RideFinishedCopyWith<$Res> {
+  factory $RideFinishedCopyWith(
+          RideFinished value, $Res Function(RideFinished) then) =
+      _$RideFinishedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$RideFinishedCopyWithImpl<$Res> extends _$RideEventCopyWithImpl<$Res>
+    implements $RideFinishedCopyWith<$Res> {
+  _$RideFinishedCopyWithImpl(
+      RideFinished _value, $Res Function(RideFinished) _then)
+      : super(_value, (v) => _then(v as RideFinished));
+
+  @override
+  RideFinished get _value => super._value as RideFinished;
+}
+
+/// @nodoc
+
+class _$RideFinished with DiagnosticableTreeMixin implements RideFinished {
+  const _$RideFinished();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RideEvent.rideFinished()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'RideEvent.rideFinished'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is RideFinished);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() rideAccepted,
+    required TResult Function() driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
+    required TResult Function() rideDenied,
+    required TResult Function(String rideId) rideInitialized,
+  }) {
+    return rideFinished();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+  }) {
+    return rideFinished?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
+    TResult Function()? rideDenied,
+    TResult Function(String rideId)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (rideFinished != null) {
+      return rideFinished();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
+    required TResult Function(RideDnied value) rideDenied,
+    required TResult Function(RideInitilialized value) rideInitialized,
+  }) {
+    return rideFinished(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+  }) {
+    return rideFinished?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
+    TResult Function(RideDnied value)? rideDenied,
+    TResult Function(RideInitilialized value)? rideInitialized,
+    required TResult orElse(),
+  }) {
+    if (rideFinished != null) {
+      return rideFinished(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RideFinished implements RideEvent {
+  const factory RideFinished() = _$RideFinished;
 }
 
 /// @nodoc
@@ -260,6 +1084,11 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() rideAccepted,
+    required TResult Function() driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
     required TResult Function() rideDenied,
     required TResult Function(String rideId) rideInitialized,
   }) {
@@ -270,6 +1099,11 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
     TResult Function()? rideDenied,
     TResult Function(String rideId)? rideInitialized,
   }) {
@@ -280,6 +1114,11 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
     TResult Function()? rideDenied,
     TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
@@ -294,6 +1133,12 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
     required TResult Function(RideInitilialized value) rideInitialized,
   }) {
@@ -304,6 +1149,11 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
     TResult Function(RideInitilialized value)? rideInitialized,
   }) {
@@ -314,6 +1164,11 @@ class _$RideDnied with DiagnosticableTreeMixin implements RideDnied {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
     TResult Function(RideInitilialized value)? rideInitialized,
     required TResult orElse(),
@@ -405,6 +1260,11 @@ class _$RideInitilialized
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() rideAccepted,
+    required TResult Function() driverArrived,
+    required TResult Function() rideCancelledByUser,
+    required TResult Function() rideCancelledByDriver,
+    required TResult Function() userPicked,
+    required TResult Function() rideFinished,
     required TResult Function() rideDenied,
     required TResult Function(String rideId) rideInitialized,
   }) {
@@ -415,6 +1275,11 @@ class _$RideInitilialized
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
     TResult Function()? rideDenied,
     TResult Function(String rideId)? rideInitialized,
   }) {
@@ -425,6 +1290,11 @@ class _$RideInitilialized
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? rideAccepted,
+    TResult Function()? driverArrived,
+    TResult Function()? rideCancelledByUser,
+    TResult Function()? rideCancelledByDriver,
+    TResult Function()? userPicked,
+    TResult Function()? rideFinished,
     TResult Function()? rideDenied,
     TResult Function(String rideId)? rideInitialized,
     required TResult orElse(),
@@ -439,6 +1309,12 @@ class _$RideInitilialized
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RideAccepted value) rideAccepted,
+    required TResult Function(DriverArrived value) driverArrived,
+    required TResult Function(RideCancelledByUser value) rideCancelledByUser,
+    required TResult Function(RideCancelledByDriver value)
+        rideCancelledByDriver,
+    required TResult Function(UserPicked value) userPicked,
+    required TResult Function(RideFinished value) rideFinished,
     required TResult Function(RideDnied value) rideDenied,
     required TResult Function(RideInitilialized value) rideInitialized,
   }) {
@@ -449,6 +1325,11 @@ class _$RideInitilialized
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
     TResult Function(RideInitilialized value)? rideInitialized,
   }) {
@@ -459,6 +1340,11 @@ class _$RideInitilialized
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RideAccepted value)? rideAccepted,
+    TResult Function(DriverArrived value)? driverArrived,
+    TResult Function(RideCancelledByUser value)? rideCancelledByUser,
+    TResult Function(RideCancelledByDriver value)? rideCancelledByDriver,
+    TResult Function(UserPicked value)? userPicked,
+    TResult Function(RideFinished value)? rideFinished,
     TResult Function(RideDnied value)? rideDenied,
     TResult Function(RideInitilialized value)? rideInitialized,
     required TResult orElse(),
