@@ -72,6 +72,7 @@ dependencies:
   flutter_login_facebook: ^1.4.1
   geolocator: ^8.2.1
   uuid: ^3.0.6
+  flutter_isolate: ^2.0.2
 
 dev_dependencies:
   flutter_test:
