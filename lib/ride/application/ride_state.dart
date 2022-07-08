@@ -11,10 +11,12 @@ class RideState with _$RideState {
     Booking? currentBooking,
     DriverRecord? driverRecord,
     Ride? currentRide,
+    required bool rideInitialized,
     required bool initializingRide,
   }) = _RideState;
 
   factory RideState.initial() => RideState(
         initializingRide: false,
+        rideInitialized: false,
       );
 }

@@ -14,6 +14,9 @@ import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 import 'package:taxidriver/providers/booking_provider.dart';
+import 'package:taxidriver/providers/ride_provider.dart';
+import 'package:taxidriver/ride/application/ride_controller.dart';
+import 'package:taxidriver/ride/application/ride_event.dart';
 
 class BookingPage extends HookConsumerWidget {
   const BookingPage({
@@ -37,6 +40,7 @@ class BookingPage extends HookConsumerWidget {
     final bookingController = ref.watch(bookingProvider.notifier);
     final bookingState = ref.watch(bookingProvider);
     final user = ref.watch(userProvider);
+    final rideController = ref.watch(rideProvider.notifier);
     ref.listen<BookingState>(bookingProvider, ((previous, next) {
       //Listen if the booking has been cancelled
       if (previous?.currentBooking?.cancelled !=
@@ -62,6 +66,12 @@ class BookingPage extends HookConsumerWidget {
             AutoRouter.of(context).replace(
               RideRootPageRoute(
                 driverRecord: driverRecord,
+              ),
+            );
+
+            rideController.mapEventToState(
+              RideEvent.rideInitialized(
+                bookingState.currentBooking!.id,
               ),
             );
           },

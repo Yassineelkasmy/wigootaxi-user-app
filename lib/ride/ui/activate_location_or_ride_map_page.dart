@@ -6,7 +6,7 @@ import 'package:taxidriver/application/providers/location/location_provider.dart
 import 'package:taxidriver/driver/domain/driver_record.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
-import 'package:taxidriver/providers/booking_provider.dart';
+import 'package:taxidriver/providers/ride_provider.dart';
 import 'package:taxidriver/ride/ui/ride_map.dart';
 import 'package:taxidriver/shared/ui/map_animation.dart';
 
@@ -22,8 +22,8 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
     final locationState = ref.watch(locationProvider);
     final locationController = ref.watch(locationProvider.notifier);
 
-    final bookingController = ref.watch(bookingProvider.notifier);
-    final bookingState = ref.watch(bookingProvider);
+    final rideState = ref.watch(rideProvider);
+    final rideController = ref.watch(rideProvider.notifier);
 
     return Scaffold(
       body: locationState.position != null
@@ -32,43 +32,6 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
               width: double.maxFinite,
               child: Column(
                 children: [
-                  SizedBox(
-                    width: double.maxFinite,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: 20.h),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(0),
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          // 20.h.verticalSpace,
-                          // Text(
-                          //   pickUpState.pickUpChosen
-                          //       ? 'Annuler le départ'
-                          //       : pickUpState.dropOffChosen
-                          //           ? 'Annuler la destination'
-                          //           : 'Annuler',
-                          //   style: TextStyle(
-                          //     fontSize: 18,
-                          //   ),
-                          // ),
-                        ],
-                      ),
-                      onPressed: () {
-                        // if (pickUpState.dropOffChosen) {
-                        //   pickUpController
-                        //       .mapEventToState(PickUpEvent.dropOffCancelled());
-                        // } else if (pickUpState.pickUpChosen) {
-                        //   pickUpController
-                        //       .mapEventToState(PickUpEvent.pickupCancelled());
-                        // } else {
-                        //   Navigator.of(context).pop();
-                        // }
-                      },
-                    ),
-                  ),
                   Expanded(
                     child: Stack(
                       fit: StackFit.passthrough,

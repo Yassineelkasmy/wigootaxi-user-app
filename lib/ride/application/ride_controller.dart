@@ -20,7 +20,10 @@ class RideController extends StateNotifier<RideState> {
     )
         .listen(
       (ride) {
-        state = state.copyWith(currentRide: ride);
+        if (!state.rideInitialized) {
+          state = state.copyWith(rideInitialized: true);
+        }
+        state = state.copyWith(currentRide: ride, rideInitialized: true);
       },
     );
   }
@@ -29,7 +32,9 @@ class RideController extends StateNotifier<RideState> {
     return event.map(
       rideAccepted: (event) async {},
       rideDenied: (event) async {},
-      rideInitialized: (event) async {},
+      rideInitialized: (event) async {
+        initializeRideStream(event.rideId);
+      },
       driverArrived: (event) async {},
       rideCancelledByDriver: (event) async {},
       rideCancelledByUser: (event) async {},

@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:taxidriver/presentation/home/pick_location/widgets/ride_location_indicator.dart';
 import 'package:taxidriver/presentation/home/pick_location/widgets/user_location_indicator.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 
@@ -56,7 +56,11 @@ class RideMapState extends ConsumerState<RideMap> {
   }
 
   void addMarker(
-      LatLng mLatLng, String? mTitle, String? mDescription, String id) async {
+    LatLng mLatLng,
+    String? mTitle,
+    String? mDescription,
+    String id,
+  ) async {
     String assetPath = '';
     if (id == 'dropoff') {
       assetPath = 'assets/icons/flag.png';
@@ -178,7 +182,7 @@ class RideMapState extends ConsumerState<RideMap> {
           ),
         ),
         Positioned.fill(
-          child: UserLocationIndicator(),
+          child: RideLocationIndicator(),
         ),
       ],
     );

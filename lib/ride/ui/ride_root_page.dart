@@ -6,11 +6,13 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
 import 'package:taxidriver/driver/domain/driver_record.dart';
 import 'package:taxidriver/driver/ui/driver_profile.dart';
-import 'package:taxidriver/presentation/home/pick_location/pick_up_form.dart';
 import 'package:taxidriver/ride/ui/activate_location_or_ride_map_page.dart';
 
 class RideRootPage extends HookConsumerWidget {
-  RideRootPage({Key? key, required this.driverRecord}) : super(key: key);
+  RideRootPage({
+    Key? key,
+    required this.driverRecord,
+  }) : super(key: key);
   final pickUpPanelController = PanelController();
   final DriverRecord driverRecord;
   @override
