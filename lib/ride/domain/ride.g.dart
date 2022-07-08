@@ -7,7 +7,6 @@ part of 'ride.dart';
 // **************************************************************************
 
 _$_Ride _$$_RideFromJson(Map<String, dynamic> json) => _$_Ride(
-      ts: DateTime.parse(json['ts'] as String),
       driverUid: json['driverUid'] as String,
       userUid: json['userUid'] as String,
       driverLat: (json['driverLat'] as num?)?.toDouble(),
@@ -24,7 +23,6 @@ _$_Ride _$$_RideFromJson(Map<String, dynamic> json) => _$_Ride(
     );
 
 Map<String, dynamic> _$$_RideToJson(_$_Ride instance) => <String, dynamic>{
-      'ts': instance.ts.toIso8601String(),
       'driverUid': instance.driverUid,
       'userUid': instance.userUid,
       'driverLat': instance.driverLat,

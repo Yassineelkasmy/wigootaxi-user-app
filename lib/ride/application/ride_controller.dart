@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:taxidriver/constants/storage_keys.dart';
 import 'package:taxidriver/ride/application/ride_event.dart';
 import 'package:taxidriver/ride/application/ride_state.dart';
 import 'package:taxidriver/ride/domain/ride.dart';
@@ -33,6 +35,16 @@ class RideController extends StateNotifier<RideState> {
       rideAccepted: (event) async {},
       rideDenied: (event) async {},
       rideInitialized: (event) async {
+        final _prefs = await SharedPreferences.getInstance();
+
+        _prefs.setString(
+          currentRideKey,
+          event.rideId,
+        );
+        _prefs.setBool(
+          isOnlineKey,
+          true,
+        );
         initializeRideStream(event.rideId);
       },
       driverArrived: (event) async {},

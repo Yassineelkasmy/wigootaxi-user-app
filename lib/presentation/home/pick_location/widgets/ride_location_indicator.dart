@@ -30,16 +30,16 @@ class RideLocationIndicator extends HookConsumerWidget {
                     )),
                 onPressed: () {},
                 icon: Icon(
-                  Icons.timer,
+                  Icons.social_distance,
                   size: 32,
                 ),
                 label: Text(
-                  '${calculateDistance(
-                    rideState.currentRide!.driverLat!,
-                    rideState.currentRide!.driverLng!,
-                    locationState.position!.latitude,
-                    locationState.position!.longitude,
-                  )}',
+                  '${(calculateDistance(
+                        rideState.currentRide!.driverLat!,
+                        rideState.currentRide!.driverLng!,
+                        locationState.position!.latitude,
+                        locationState.position!.longitude,
+                      ) * 1000).round()} Mètres',
                   style: TextStyle(
                     fontSize: 16.sp,
                   ),

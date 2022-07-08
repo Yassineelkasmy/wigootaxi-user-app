@@ -5,7 +5,7 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 class UserService {
   UserService() {
     docRef = FirebaseFirestore.instance
-        .collection('drivers')
+        .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid);
   }
   final geo = Geoflutterfire();

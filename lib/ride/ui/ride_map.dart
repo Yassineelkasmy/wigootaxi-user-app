@@ -6,8 +6,9 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/presentation/home/pick_location/widgets/ride_location_indicator.dart';
-import 'package:taxidriver/presentation/home/pick_location/widgets/user_location_indicator.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
+import 'package:taxidriver/providers/ride_provider.dart';
+import 'package:taxidriver/ride/application/ride_state.dart';
 
 class RideMap extends ConsumerStatefulWidget {
   const RideMap({
@@ -150,6 +151,66 @@ class RideMapState extends ConsumerState<RideMap> {
   @override
   Widget build(BuildContext context) {
     //Markers listener
+
+    ref.listen<RideState>(
+      rideProvider,
+      (previous, next) async {
+        if (previous?.currentRide?.currentDriverLocation !=
+                next.currentRide?.currentDriverLocation &&
+            next.currentRide != null) {
+          LatLng driverLatLng = LatLng(
+            next.currentRide!.driverLat!,
+            next.currentRide!.driverLng!,
+          );
+
+          LatLng userLatLng = LatLng(
+            next.currentRide!.userLat!,
+            next.currentRide!.userLng!,
+          );
+          // _markers.removeWhere(
+          //   (mrk) => mrk.mapsId.value == next.currentRide!.driverUid,
+          // );
+          addMarker(
+            driverLatLng,
+            null,
+            null,
+            // next.dropoffPlace!.vicinity,
+            next.currentRide!.driverUid,
+          );
+
+          LatLngBounds bound;
+          if (driverLatLng.latitude > userLatLng.latitude &&
+              driverLatLng.longitude > userLatLng.longitude) {
+            bound =
+                LatLngBounds(southwest: userLatLng, northeast: driverLatLng);
+          } else if (driverLatLng.longitude > userLatLng.longitude) {
+            bound = LatLngBounds(
+                southwest: LatLng(driverLatLng.latitude, userLatLng.longitude),
+                northeast: LatLng(userLatLng.latitude, driverLatLng.longitude));
+          } else if (driverLatLng.latitude > userLatLng.latitude) {
+            bound = LatLngBounds(
+                southwest: LatLng(userLatLng.latitude, driverLatLng.longitude),
+                northeast: LatLng(driverLatLng.latitude, userLatLng.longitude));
+          } else {
+            bound =
+                LatLngBounds(southwest: driverLatLng, northeast: userLatLng);
+          }
+          await _createPolylines(
+            driverLatLng.latitude,
+            driverLatLng.longitude,
+            userLatLng.latitude,
+            userLatLng.longitude,
+          );
+
+          // CameraUpdate u2 = CameraUpdate.newLatLngBounds(bound, 70);
+          // _googleMapController.animateCamera(u2).then((void v) {
+          //   check(u2, _googleMapController);
+          // });
+          _setMapFitToTour(Set<Polyline>.of(polylines.values));
+          setState(() {});
+        }
+      },
+    );
 
     final cameraPosition = CameraPosition(
       target: LatLng(
