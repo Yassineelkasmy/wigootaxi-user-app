@@ -15,7 +15,6 @@ import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 import 'package:taxidriver/providers/booking_provider.dart';
 import 'package:taxidriver/providers/ride_provider.dart';
-import 'package:taxidriver/ride/application/ride_controller.dart';
 import 'package:taxidriver/ride/application/ride_event.dart';
 
 class BookingPage extends HookConsumerWidget {
