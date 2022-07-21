@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:taxidriver/constants/storage_keys.dart';
@@ -10,7 +11,7 @@ import 'package:taxidriver/ride/services/ride_service.dart';
 
 class RideController extends StateNotifier<RideState> {
   RideController() : super(RideState.initial());
-
+  final geo = Geoflutterfire();
   StreamSubscription<Ride>? rideSubscribtion;
   final RideService _rideService = RideService();
 

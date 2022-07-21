@@ -37,8 +37,8 @@ class RideLocationIndicator extends HookConsumerWidget {
                   '${(calculateDistance(
                         rideState.currentRide!.driverLat!,
                         rideState.currentRide!.driverLng!,
-                        locationState.position!.latitude,
-                        locationState.position!.longitude,
+                        rideState.currentRide!.startLat,
+                        rideState.currentRide!.startLng,
                       ) * 1000).round()} Mètres',
                   style: TextStyle(
                     fontSize: 16.sp,

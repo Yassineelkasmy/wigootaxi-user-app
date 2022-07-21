@@ -6,7 +6,6 @@ class RideService {
 
   Stream<Ride> rideStream({required String rideId}) {
     final ride = collectionRef.doc(rideId).snapshots().asyncMap((rideDoc) {
-      print("riiiiiiiiide ${rideDoc}");
       final driverLocation =
           rideDoc.get('currentDriverLocation')?['geopoint'] as GeoPoint?;
       final userLocation =
