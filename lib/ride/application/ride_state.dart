@@ -13,10 +13,12 @@ class RideState with _$RideState {
     Ride? currentRide,
     required bool rideInitialized,
     required bool initializingRide,
+    required int driverDistanceFromStart,
   }) = _RideState;
 
   factory RideState.initial() => RideState(
         initializingRide: false,
         rideInitialized: false,
+        driverDistanceFromStart: 10000,
       );
 }

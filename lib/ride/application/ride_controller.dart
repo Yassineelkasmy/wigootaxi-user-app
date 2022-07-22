@@ -8,6 +8,7 @@ import 'package:taxidriver/ride/application/ride_event.dart';
 import 'package:taxidriver/ride/application/ride_state.dart';
 import 'package:taxidriver/ride/domain/ride.dart';
 import 'package:taxidriver/ride/services/ride_service.dart';
+import 'package:taxidriver/shared/helpers/latlng_distance.dart';
 
 class RideController extends StateNotifier<RideState> {
   RideController() : super(RideState.initial());
@@ -23,10 +24,21 @@ class RideController extends StateNotifier<RideState> {
     )
         .listen(
       (ride) {
+        final distanceFromStart = calculateDistance(
+              ride.driverLat!,
+              ride.driverLng!,
+              ride.startLat,
+              ride.startLng,
+            ) *
+            1000.round();
         if (!state.rideInitialized) {
           state = state.copyWith(rideInitialized: true);
         }
-        state = state.copyWith(currentRide: ride, rideInitialized: true);
+        state = state.copyWith(
+          currentRide: ride,
+          rideInitialized: true,
+          driverDistanceFromStart: distanceFromStart.toInt(),
+        );
       },
     );
   }

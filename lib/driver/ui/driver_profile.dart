@@ -24,19 +24,6 @@ class DriverProfile extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final rideState = ref.watch(rideProvider);
     final locationState = ref.watch(locationProvider);
-    int distance;
-    try {
-      distance = (calculateDistance(
-                rideState.currentRide!.driverLat!,
-                rideState.currentRide!.driverLng!,
-                locationState.position!.latitude,
-                locationState.position!.longitude,
-              ) *
-              1000)
-          .round();
-    } catch (e) {
-      distance = 10;
-    }
 
     return MediaQuery.removePadding(
       context: context,
@@ -89,14 +76,16 @@ class DriverProfile extends HookConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: SubmitButton(
-                      onPressed: () {},
-                      text: 'Commencer',
-                      color: distance <= 5 ? Colors.green : Colors.grey,
-                    ),
-                  ),
-                  5.w.horizontalSpace,
+                  // Expanded(
+                  //   child: SubmitButton(
+                  //     onPressed: () {},
+                  //     text: 'Commencer',
+                  //     color: rideState.driverDistanceFromStart <= 30
+                  //         ? Colors.green
+                  //         : Colors.grey,
+                  //   ),
+                  // ),
+                  // 5.w.horizontalSpace,
                   Expanded(
                     child: SubmitButton(
                       onPressed: () {},
