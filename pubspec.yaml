@@ -74,6 +74,7 @@ dependencies:
   uuid: ^3.0.6
   flutter_isolate: ^2.0.2
   # circular_countdown_timer: ^0.2.2
+  firebase_messaging: ^11.4.0
 
 dev_dependencies:
   flutter_test:
