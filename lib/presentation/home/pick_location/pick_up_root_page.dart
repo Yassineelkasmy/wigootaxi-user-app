@@ -12,24 +12,37 @@ import 'package:taxidriver/presentation/home/pick_location/pick_up_form.dart';
 class PickUpRootPage extends HookConsumerWidget {
   PickUpRootPage({Key? key}) : super(key: key);
   final pickUpPanelController = PanelController();
+  bool fromCleared = false;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locationState = ref.watch(locationProvider);
     final pickupController = ref.watch(pickUpProvider.notifier);
-    pickupController.mapEventToState(PickUpEvent.formCleared());
+    final pickUpState = ref.watch(pickUpProvider);
+    if (!fromCleared) {
+      pickupController.mapEventToState(PickUpEvent.formCleared());
+      fromCleared = true;
+    }
     return WillPopScope(
       onWillPop: () async {
-        final okCancell = await showOkCancelAlertDialog(
-          context: context,
-          message: 'Êtes-vous sûr de vouloir annuler votre trajet ?',
-          title: 'Confirmation',
-          okLabel: 'Oui',
-          cancelLabel: 'Non',
-        );
-        if (okCancell.index == 0) {
-          return true;
-        } else {
+        if (pickUpState.dropOffChosen) {
+          pickupController.mapEventToState(PickUpEvent.dropOffCancelled());
           return false;
+        } else if (pickUpState.pickUpChosen) {
+          pickupController.mapEventToState(PickUpEvent.pickupCancelled());
+          return false;
+        } else {
+          final okCancell = await showOkCancelAlertDialog(
+            context: context,
+            message: 'Êtes-vous sûr de vouloir annuler votre trajet ?',
+            title: 'Confirmation',
+            okLabel: 'Oui',
+            cancelLabel: 'Non',
+          );
+          if (okCancell.index == 0) {
+            return true;
+          } else {
+            return false;
+          }
         }
       },
       child: Scaffold(
