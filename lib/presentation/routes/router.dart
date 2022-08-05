@@ -15,6 +15,8 @@ import 'package:taxidriver/presentation/intro/intro_page.dart';
 import 'package:taxidriver/presentation/onboarding/onboarding_page.dart';
 import 'package:taxidriver/presentation/splash/splash_page.dart';
 import 'package:taxidriver/ride/ui/activate_location_or_ride_map_page.dart';
+import 'package:taxidriver/ride/ui/ride_cancelled_page.dart';
+import 'package:taxidriver/ride/ui/ride_finished_page.dart';
 import 'package:taxidriver/ride/ui/ride_root_page.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
@@ -27,6 +29,8 @@ import 'package:taxidriver/ride/ui/ride_root_page.dart';
   AutoRoute(page: HomePage),
   AutoRoute(page: ActivateLocationOrMapPage),
   AutoRoute(page: ActivateLocationOrRideMapPage),
+  AutoRoute(page: RideCancelledPage),
+  AutoRoute(page: RideFinishedPage),
   AutoRoute(page: PickUpRootPage),
   AutoRoute(page: BookingPage),
   AutoRoute(page: ReservationPage),

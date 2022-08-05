@@ -36,4 +36,5 @@ class PickUpEvent with _$PickUpEvent {
   const factory PickUpEvent.pickupCancelled() = PickUpCancelled;
   const factory PickUpEvent.cameraMustMoveToRequsted(double lat, double long) =
       CametaMustMoveToRequested;
+  const factory PickUpEvent.cleared() = Cleared;
 }

@@ -14,11 +14,31 @@ class RideState with _$RideState {
     required bool rideInitialized,
     required bool initializingRide,
     required int driverDistanceFromStart,
+    required int distanceTravelled,
+    required int driverDistanceFromDestination,
+    required int userrDistanceFromStart,
+    required bool driverArrived,
+    required bool rideStarted,
+    required bool rideFinished,
+    required bool driverArrivedToDestination,
+    required bool isDriving,
+    required bool rideCancelled,
+    required bool driverCanCncell,
   }) = _RideState;
 
   factory RideState.initial() => RideState(
         initializingRide: false,
         rideInitialized: false,
+        driverArrived: false,
+        driverCanCncell: false,
+        rideStarted: false,
+        isDriving: false,
+        distanceTravelled: 0,
+        userrDistanceFromStart: 10000,
         driverDistanceFromStart: 10000,
+        driverDistanceFromDestination: 10000,
+        driverArrivedToDestination: false,
+        rideCancelled: false,
+        rideFinished: false,
       );
 }

@@ -9,6 +9,8 @@ import 'package:taxidriver/presentation/home/pick_location/widgets/ride_location
 import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/providers/ride_provider.dart';
 import 'package:taxidriver/ride/application/ride_state.dart';
+import 'package:taxidriver/ride/ui/ride_counter.dart';
+import 'package:taxidriver/shared/helpers/serialize_coordinates_path.dart';
 
 class RideMap extends ConsumerStatefulWidget {
   const RideMap({
@@ -88,6 +90,17 @@ class RideMapState extends ConsumerState<RideMap> {
     );
   }
 
+  _createRoutePolyLines(List<LatLng> cooridnates) {
+    PolylineId id = PolylineId('route');
+    Polyline polyline = Polyline(
+      polylineId: id,
+      color: Colors.green,
+      points: cooridnates,
+      width: 3,
+    );
+    polylines[id] = polyline;
+  }
+
   _createPolylines(
     double startLat,
     double startLong,
@@ -138,7 +151,7 @@ class RideMapState extends ConsumerState<RideMap> {
         LatLngBounds(
             southwest: LatLng(minLat, minLong),
             northeast: LatLng(maxLat, maxLong)),
-        50,
+        100,
       ),
     );
   }
@@ -151,6 +164,10 @@ class RideMapState extends ConsumerState<RideMap> {
   @override
   Widget build(BuildContext context) {
     //Markers listener
+
+    final rideStarted = ref.watch(
+      rideProvider.select((value) => value.rideStarted),
+    );
 
     ref.listen<RideState>(
       rideProvider,
@@ -167,6 +184,11 @@ class RideMapState extends ConsumerState<RideMap> {
             next.currentRide!.startLat!,
             next.currentRide!.startLng!,
           );
+
+          LatLng destinationLatLng = LatLng(
+            next.currentRide!.destinationLat!,
+            next.currentRide!.destinationLng!,
+          );
           // _markers.removeWhere(
           //   (mrk) => mrk.mapsId.value == next.currentRide!.driverUid,
           // );
@@ -179,36 +201,66 @@ class RideMapState extends ConsumerState<RideMap> {
           );
 
           addMarker(
+            destinationLatLng,
+            null,
+            null,
+            'dropoff',
+          );
+
+          addMarker(
             startLatLng,
             null,
             null,
             'pickup',
           );
 
+          final LatLng driverTarget =
+              rideStarted ? destinationLatLng : startLatLng;
+
           LatLngBounds bound;
-          if (driverLatLng.latitude > startLatLng.latitude &&
-              driverLatLng.longitude > startLatLng.longitude) {
+          if (driverLatLng.latitude > driverTarget.latitude &&
+              driverLatLng.longitude > driverTarget.longitude) {
             bound =
-                LatLngBounds(southwest: startLatLng, northeast: driverLatLng);
-          } else if (driverLatLng.longitude > startLatLng.longitude) {
+                LatLngBounds(southwest: driverTarget, northeast: driverLatLng);
+          } else if (driverLatLng.longitude > driverTarget.longitude) {
             bound = LatLngBounds(
-                southwest: LatLng(driverLatLng.latitude, startLatLng.longitude),
+                southwest:
+                    LatLng(driverLatLng.latitude, driverTarget.longitude),
                 northeast:
-                    LatLng(startLatLng.latitude, driverLatLng.longitude));
-          } else if (driverLatLng.latitude > startLatLng.latitude) {
+                    LatLng(driverTarget.latitude, driverLatLng.longitude));
+          } else if (driverLatLng.latitude > driverTarget.latitude) {
             bound = LatLngBounds(
-                southwest: LatLng(startLatLng.latitude, driverLatLng.longitude),
+                southwest:
+                    LatLng(driverTarget.latitude, driverLatLng.longitude),
                 northeast:
-                    LatLng(driverLatLng.latitude, startLatLng.longitude));
+                    LatLng(driverLatLng.latitude, driverTarget.longitude));
           } else {
             bound =
-                LatLngBounds(southwest: driverLatLng, northeast: startLatLng);
+                LatLngBounds(southwest: driverLatLng, northeast: driverTarget);
           }
-          await _createPolylines(
-            driverLatLng.latitude,
-            driverLatLng.longitude,
-            startLatLng.latitude,
-            startLatLng.longitude,
+
+          if (!rideStarted) {
+            await _createPolylines(
+              driverLatLng.latitude,
+              driverLatLng.longitude,
+              driverTarget.latitude,
+              driverTarget.longitude,
+            );
+          }
+
+          if (rideStarted) {
+            await _createPolylines(
+              startLatLng.latitude,
+              startLatLng.longitude,
+              destinationLatLng.latitude,
+              destinationLatLng.longitude,
+            );
+          }
+
+          await _createRoutePolyLines(
+            stringPathToCoordinates(
+              next.currentRide!.path,
+            ),
           );
 
           // CameraUpdate u2 = CameraUpdate.newLatLngBounds(bound, 70);
@@ -252,7 +304,7 @@ class RideMapState extends ConsumerState<RideMap> {
           ),
         ),
         Positioned.fill(
-          child: RideLocationIndicator(),
+          child: rideStarted ? RideCounter() : RideLocationIndicator(),
         ),
       ],
     );

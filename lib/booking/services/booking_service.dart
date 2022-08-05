@@ -20,6 +20,8 @@ class BookingService {
     final rideData = {
       'start_place_id': ride.pickUp.placeId,
       'start_name': ride.pickUp.name,
+      'startLat': ride.pickUp.geometry.location.lat,
+      'startLng': ride.pickUp.geometry.location.lng,
       'start': geo
           .point(
             latitude: ride.pickUp.geometry.location.lat,

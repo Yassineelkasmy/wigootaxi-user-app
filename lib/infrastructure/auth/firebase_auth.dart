@@ -156,6 +156,7 @@ class FireBaseAuthFacade {
           {
             'username': creds.user!.displayName ?? 'username',
             'email': creds.user!.email,
+            'phone': "",
             'isPhoneVerified': false,
             'ts': Timestamp.now(),
           },

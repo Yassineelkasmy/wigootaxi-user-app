@@ -39,6 +39,7 @@ class PickUpRootPage extends HookConsumerWidget {
             cancelLabel: 'Non',
           );
           if (okCancell.index == 0) {
+            pickupController.mapEventToState(PickUpEvent.cleared());
             return true;
           } else {
             return false;

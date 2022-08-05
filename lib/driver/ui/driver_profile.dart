@@ -1,14 +1,17 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
 import 'package:taxidriver/driver/domain/driver_record.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 import 'package:taxidriver/providers/ride_provider.dart';
-import 'package:taxidriver/shared/helpers/latlng_distance.dart';
+import 'package:taxidriver/ride/application/ride_event.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DriverProfile extends HookConsumerWidget {
@@ -24,6 +27,7 @@ class DriverProfile extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final rideState = ref.watch(rideProvider);
     final locationState = ref.watch(locationProvider);
+    final rideController = ref.watch(rideProvider.notifier);
 
     return MediaQuery.removePadding(
       context: context,
@@ -88,12 +92,44 @@ class DriverProfile extends HookConsumerWidget {
                   // 5.w.horizontalSpace,
                   Expanded(
                     child: SubmitButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showOkCancelAlertDialog(
+                          context: context,
+                          message: 'Voulez-vous vraiment annuler le trajet?',
+                          title: 'Confirmation',
+                          okLabel: 'Oui',
+                          cancelLabel: 'Non',
+                        ).then((okCancell) {
+                          if (okCancell.index == 0) {
+                            rideController.mapEventToState(
+                              RideEvent.rideCancelledByUser(),
+                            );
+                            AutoRouter.of(context).replace(HomePageRoute());
+                          }
+                        });
+                      },
                       text: 'Anuller',
                     ),
-                  )
+                  ),
                 ],
-              )
+              ),
+              10.h.verticalSpace,
+              Center(
+                child: Text(
+                  rideState.rideStarted
+                      ? "Vous êtes en route avec le chauffeur, assurez-vous de prendre les mesures de sécurité"
+                      : (rideState.driverArrived && !rideState.rideStarted)
+                          ? "Le chauffeur vous attend, dépêchez-vous jusqu'au point de départ"
+                          : (!rideState.driverArrived)
+                              ? "Le conducteur est en route vers le point de départ"
+                              : '',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

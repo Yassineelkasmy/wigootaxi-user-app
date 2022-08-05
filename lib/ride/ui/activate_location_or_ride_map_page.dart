@@ -1,12 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/location/location_event.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
 import 'package:taxidriver/driver/domain/driver_record.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
 import 'package:taxidriver/providers/ride_provider.dart';
+import 'package:taxidriver/ride/application/ride_event.dart';
+import 'package:taxidriver/ride/application/ride_state.dart';
 import 'package:taxidriver/ride/ui/ride_map.dart';
 import 'package:taxidriver/shared/ui/map_animation.dart';
 
@@ -24,6 +28,35 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
 
     final rideState = ref.watch(rideProvider);
     final rideController = ref.watch(rideProvider.notifier);
+
+    ref.listen<RideState>(
+      rideProvider,
+      (previous, next) {
+        if (next.rideCancelled) {
+          rideController.mapEventToState(RideEvent.rideCleared());
+
+          AutoRouter.of(context).replace(HomePageRoute());
+          AutoRouter.of(context).push(
+            RideCancelledPageRoute(message: 'Le chuffeur a annulé le voyage'),
+          );
+        }
+
+        if (next.rideFinished) {
+          rideController.mapEventToState(RideEvent.rideCleared());
+
+          AutoRouter.of(context).replace(HomePageRoute());
+          AutoRouter.of(context).push(
+            RideFinishedPageRoute(
+              startname: next.currentRide!.start_name!,
+              destname: next.currentRide!.dest_name!,
+              totalPrice: ((next.distanceTravelled / 1000) * 20),
+              totalDistance: next.distanceTravelled,
+              totalDuration: next.currentRide!.totalDuration!,
+            ),
+          );
+        }
+      },
+    );
 
     return Scaffold(
       body: locationState.position != null
