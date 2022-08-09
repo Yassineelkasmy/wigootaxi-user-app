@@ -29,7 +29,7 @@ class Home extends HookConsumerWidget {
         menuPressed: () {
           drawerScaffoldController.openDrawer();
         },
-        photoURL: '',
+        photoURL: user?.photoURL ?? '',
       ),
       body: ListView(
         children: [
