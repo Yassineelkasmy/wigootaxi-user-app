@@ -62,9 +62,9 @@ class LocationController extends StateNotifier<LocationState> {
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
-    if (!isSpawned) {
-      FlutterIsolate.spawn(locationIsolate, '');
-    }
+    // if (!isSpawned) {
+    //   FlutterIsolate.spawn(locationIsolate, '');
+    // }
     return await Geolocator.getCurrentPosition();
   }
 }

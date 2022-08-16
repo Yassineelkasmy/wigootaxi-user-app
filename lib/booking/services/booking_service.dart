@@ -49,12 +49,7 @@ class BookingService {
     };
     try {
       final rideId = Uuid().v4();
-      await firestore
-          .collection('users')
-          .doc(userUid)
-          .collection('rides')
-          .doc(rideId)
-          .set(rideData);
+
       await firestore.collection('booking').doc(rideId).set(
             rideData..putIfAbsent('rideId', () => rideId),
           );

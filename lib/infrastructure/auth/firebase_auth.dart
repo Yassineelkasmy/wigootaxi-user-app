@@ -162,6 +162,7 @@ class FireBaseAuthFacade {
           },
           SetOptions(
             mergeFields: [
+              'username',
               'isPhoneVerified',
               'ts',
             ],
