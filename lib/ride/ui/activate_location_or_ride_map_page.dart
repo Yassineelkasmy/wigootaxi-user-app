@@ -49,7 +49,8 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
             RideFinishedPageRoute(
               startname: next.currentRide!.start_name!,
               destname: next.currentRide!.dest_name!,
-              totalPrice: ((next.distanceTravelled / 1000) * 20),
+              totalPrice: ((next.distanceTravelled / 1000) *
+                  rideState.currentRide!.price_per_km),
               totalDistance: next.distanceTravelled,
               totalDuration: next.currentRide!.totalDuration!,
             ),
