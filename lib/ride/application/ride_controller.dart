@@ -53,13 +53,7 @@ class RideController extends StateNotifier<RideState> {
               ride.destinationLng,
             ) *
             1000.round();
-        final userDistanceFromStart = calculateDistance(
-              ride.userLat!,
-              ride.userLng!,
-              ride.startLat,
-              ride.startLng,
-            ) *
-            1000.round();
+
         final distanceTravelled = pathDistance(
           stringPathToCoordinates(ride.path),
         );
@@ -72,7 +66,6 @@ class RideController extends StateNotifier<RideState> {
               (ride.cancelledByDriver ?? false),
           rideInitialized: true,
           driverDistanceFromStart: driverDistanceFromStart.toInt(),
-          userrDistanceFromStart: userDistanceFromStart.toInt(),
           distanceTravelled: distanceTravelled,
           driverDistanceFromDestination: driverDistanceFromDestination.toInt(),
         );
