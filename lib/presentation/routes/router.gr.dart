@@ -11,12 +11,13 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i20;
+import 'package:flutter/foundation.dart' as _i22;
 import 'package:flutter/material.dart' as _i21;
 
-import '../../booking/domain/ride_booking.dart' as _i23;
+import '../../booking/domain/ride_booking.dart' as _i24;
 import '../../booking/ui/booking_page.dart' as _i13;
 import '../../booking/ui/bookings_page.dart' as _i15;
-import '../../driver/domain/driver_record.dart' as _i22;
+import '../../driver/domain/driver_record.dart' as _i23;
 import '../../ride/ui/activate_location_or_ride_map_page.dart' as _i9;
 import '../../ride/ui/ride_cancelled_page.dart' as _i10;
 import '../../ride/ui/ride_finished_page.dart' as _i11;
@@ -205,7 +206,7 @@ class SplashPageRoute extends _i20.PageRouteInfo<void> {
 class PhoneVerificationPageRoute
     extends _i20.PageRouteInfo<PhoneVerificationPageRouteArgs> {
   PhoneVerificationPageRoute(
-      {_i21.Key? key,
+      {_i22.Key? key,
       required String phoneNumber,
       required String phone,
       required String verificationId})
@@ -227,7 +228,7 @@ class PhoneVerificationPageRouteArgs {
       required this.phone,
       required this.verificationId});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   final String phoneNumber;
 
@@ -244,7 +245,7 @@ class PhoneVerificationPageRouteArgs {
 /// generated route for
 /// [_i3.PhoneAuthPage]
 class PhoneAuthPageRoute extends _i20.PageRouteInfo<PhoneAuthPageRouteArgs> {
-  PhoneAuthPageRoute({_i21.Key? key})
+  PhoneAuthPageRoute({_i22.Key? key})
       : super(PhoneAuthPageRoute.name,
             path: '/phone-auth-page', args: PhoneAuthPageRouteArgs(key: key));
 
@@ -254,7 +255,7 @@ class PhoneAuthPageRoute extends _i20.PageRouteInfo<PhoneAuthPageRouteArgs> {
 class PhoneAuthPageRouteArgs {
   const PhoneAuthPageRouteArgs({this.key});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   @override
   String toString() {
@@ -265,7 +266,7 @@ class PhoneAuthPageRouteArgs {
 /// generated route for
 /// [_i4.LoginPage]
 class LoginPageRoute extends _i20.PageRouteInfo<LoginPageRouteArgs> {
-  LoginPageRoute({_i21.Key? key})
+  LoginPageRoute({_i22.Key? key})
       : super(LoginPageRoute.name,
             path: '/login-page', args: LoginPageRouteArgs(key: key));
 
@@ -275,7 +276,7 @@ class LoginPageRoute extends _i20.PageRouteInfo<LoginPageRouteArgs> {
 class LoginPageRouteArgs {
   const LoginPageRouteArgs({this.key});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   @override
   String toString() {
@@ -294,7 +295,7 @@ class IntroPageRoute extends _i20.PageRouteInfo<void> {
 /// generated route for
 /// [_i6.SignUpPage]
 class SignUpPageRoute extends _i20.PageRouteInfo<SignUpPageRouteArgs> {
-  SignUpPageRoute({_i21.Key? key})
+  SignUpPageRoute({_i22.Key? key})
       : super(SignUpPageRoute.name,
             path: '/sign-up-page', args: SignUpPageRouteArgs(key: key));
 
@@ -304,7 +305,7 @@ class SignUpPageRoute extends _i20.PageRouteInfo<SignUpPageRouteArgs> {
 class SignUpPageRouteArgs {
   const SignUpPageRouteArgs({this.key});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   @override
   String toString() {
@@ -315,7 +316,7 @@ class SignUpPageRouteArgs {
 /// generated route for
 /// [_i7.HomePage]
 class HomePageRoute extends _i20.PageRouteInfo<HomePageRouteArgs> {
-  HomePageRoute({_i21.Key? key})
+  HomePageRoute({_i22.Key? key})
       : super(HomePageRoute.name,
             path: '/home-page', args: HomePageRouteArgs(key: key));
 
@@ -325,7 +326,7 @@ class HomePageRoute extends _i20.PageRouteInfo<HomePageRouteArgs> {
 class HomePageRouteArgs {
   const HomePageRouteArgs({this.key});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   @override
   String toString() {
@@ -348,7 +349,7 @@ class ActivateLocationOrMapPageRoute extends _i20.PageRouteInfo<void> {
 class ActivateLocationOrRideMapPageRoute
     extends _i20.PageRouteInfo<ActivateLocationOrRideMapPageRouteArgs> {
   ActivateLocationOrRideMapPageRoute(
-      {_i21.Key? key, required _i22.DriverRecord driverRecord})
+      {_i22.Key? key, required _i23.DriverRecord driverRecord})
       : super(ActivateLocationOrRideMapPageRoute.name,
             path: '/activate-location-or-ride-map-page',
             args: ActivateLocationOrRideMapPageRouteArgs(
@@ -361,9 +362,9 @@ class ActivateLocationOrRideMapPageRouteArgs {
   const ActivateLocationOrRideMapPageRouteArgs(
       {this.key, required this.driverRecord});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
-  final _i22.DriverRecord driverRecord;
+  final _i23.DriverRecord driverRecord;
 
   @override
   String toString() {
@@ -375,7 +376,7 @@ class ActivateLocationOrRideMapPageRouteArgs {
 /// [_i10.RideCancelledPage]
 class RideCancelledPageRoute
     extends _i20.PageRouteInfo<RideCancelledPageRouteArgs> {
-  RideCancelledPageRoute({_i21.Key? key, required String message})
+  RideCancelledPageRoute({_i22.Key? key, required String message})
       : super(RideCancelledPageRoute.name,
             path: '/ride-cancelled-page',
             args: RideCancelledPageRouteArgs(key: key, message: message));
@@ -386,7 +387,7 @@ class RideCancelledPageRoute
 class RideCancelledPageRouteArgs {
   const RideCancelledPageRouteArgs({this.key, required this.message});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   final String message;
 
@@ -401,7 +402,7 @@ class RideCancelledPageRouteArgs {
 class RideFinishedPageRoute
     extends _i20.PageRouteInfo<RideFinishedPageRouteArgs> {
   RideFinishedPageRoute(
-      {_i21.Key? key,
+      {_i22.Key? key,
       required String startname,
       required String destname,
       required int totalDistance,
@@ -429,7 +430,7 @@ class RideFinishedPageRouteArgs {
       required this.totalDuration,
       required this.totalPrice});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   final String startname;
 
@@ -450,7 +451,7 @@ class RideFinishedPageRouteArgs {
 /// generated route for
 /// [_i12.PickUpRootPage]
 class PickUpRootPageRoute extends _i20.PageRouteInfo<PickUpRootPageRouteArgs> {
-  PickUpRootPageRoute({_i21.Key? key})
+  PickUpRootPageRoute({_i22.Key? key})
       : super(PickUpRootPageRoute.name,
             path: '/pick-up-root-page',
             args: PickUpRootPageRouteArgs(key: key));
@@ -461,7 +462,7 @@ class PickUpRootPageRoute extends _i20.PageRouteInfo<PickUpRootPageRouteArgs> {
 class PickUpRootPageRouteArgs {
   const PickUpRootPageRouteArgs({this.key});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   @override
   String toString() {
@@ -473,8 +474,8 @@ class PickUpRootPageRouteArgs {
 /// [_i13.BookingPage]
 class BookingPageRoute extends _i20.PageRouteInfo<BookingPageRouteArgs> {
   BookingPageRoute(
-      {_i21.Key? key,
-      required _i23.RideBooking ride,
+      {_i22.Key? key,
+      required _i24.RideBooking ride,
       required String driverId,
       required List<String> cnadidatesUids})
       : super(BookingPageRoute.name,
@@ -495,9 +496,9 @@ class BookingPageRouteArgs {
       required this.driverId,
       required this.cnadidatesUids});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
-  final _i23.RideBooking ride;
+  final _i24.RideBooking ride;
 
   final String driverId;
 
@@ -521,7 +522,7 @@ class ReservationPageRoute extends _i20.PageRouteInfo<void> {
 /// generated route for
 /// [_i15.BookingsPage]
 class BookingsPageRoute extends _i20.PageRouteInfo<BookingsPageRouteArgs> {
-  BookingsPageRoute({_i21.Key? key, bool fromBooking = false})
+  BookingsPageRoute({_i22.Key? key, bool fromBooking = false})
       : super(BookingsPageRoute.name,
             path: '/bookings-page',
             args: BookingsPageRouteArgs(key: key, fromBooking: fromBooking));
@@ -532,7 +533,7 @@ class BookingsPageRoute extends _i20.PageRouteInfo<BookingsPageRouteArgs> {
 class BookingsPageRouteArgs {
   const BookingsPageRouteArgs({this.key, this.fromBooking = false});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   final bool fromBooking;
 
@@ -545,7 +546,7 @@ class BookingsPageRouteArgs {
 /// generated route for
 /// [_i16.RideRootPage]
 class RideRootPageRoute extends _i20.PageRouteInfo<RideRootPageRouteArgs> {
-  RideRootPageRoute({_i21.Key? key, required _i22.DriverRecord driverRecord})
+  RideRootPageRoute({_i22.Key? key, required _i23.DriverRecord driverRecord})
       : super(RideRootPageRoute.name,
             path: '/ride-root-page',
             args: RideRootPageRouteArgs(key: key, driverRecord: driverRecord));
@@ -556,9 +557,9 @@ class RideRootPageRoute extends _i20.PageRouteInfo<RideRootPageRouteArgs> {
 class RideRootPageRouteArgs {
   const RideRootPageRouteArgs({this.key, required this.driverRecord});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
-  final _i22.DriverRecord driverRecord;
+  final _i23.DriverRecord driverRecord;
 
   @override
   String toString() {
@@ -579,7 +580,7 @@ class OnBoardingPageRoute extends _i20.PageRouteInfo<void> {
 /// [_i18.SendMessagePage]
 class SendMessagePageRoute
     extends _i20.PageRouteInfo<SendMessagePageRouteArgs> {
-  SendMessagePageRoute({_i21.Key? key})
+  SendMessagePageRoute({_i22.Key? key})
       : super(SendMessagePageRoute.name,
             path: '/send-message-page',
             args: SendMessagePageRouteArgs(key: key));
@@ -590,7 +591,7 @@ class SendMessagePageRoute
 class SendMessagePageRouteArgs {
   const SendMessagePageRouteArgs({this.key});
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   @override
   String toString() {
