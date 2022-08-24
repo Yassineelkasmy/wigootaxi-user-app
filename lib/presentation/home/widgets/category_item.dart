@@ -7,44 +7,49 @@ class CategoryItem extends StatelessWidget {
     required this.icon,
     required this.color,
     required this.text,
+    required this.onPressed,
   }) : super(key: key);
   final String icon;
   final String text;
   final Color color;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     final raduis = Radius.circular(15.r);
     return Padding(
       padding: EdgeInsets.only(right: 15.w),
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(15.r),
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.only(
-                topLeft: raduis,
-                bottomLeft: raduis,
-                bottomRight: raduis,
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(15.r),
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.only(
+                  topLeft: raduis,
+                  bottomLeft: raduis,
+                  bottomRight: raduis,
+                ),
+              ),
+              child: Image.asset(
+                'assets/icons/$icon.png',
+                height: 36.h,
+                width: 36.w,
               ),
             ),
-            child: Image.asset(
-              'assets/icons/$icon.png',
-              height: 36.h,
-              width: 36.w,
-            ),
-          ),
-          10.verticalSpace,
-          Text(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black87,
-              fontSize: 14.sp,
-            ),
-          )
-        ],
+            10.verticalSpace,
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 14.sp,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

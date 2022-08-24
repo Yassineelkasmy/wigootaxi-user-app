@@ -8,7 +8,15 @@ class ProfileController extends StateNotifier<ProfileState> {
   ProfileController(this._profileService, this._metricsService)
       : super(ProfileState.initial()) {
     mapEventToState(ProfileEvent.metricsRequested());
+    refresh();
   }
+
+  void refresh() {
+    mapEventToState(ProfileEvent.finishedRidesRequested());
+    mapEventToState(ProfileEvent.userCancelledRidesRequested());
+    mapEventToState(ProfileEvent.driverCancelledRidesRequested());
+  }
+
   final ProfileService _profileService;
   final MetricsService _metricsService;
 

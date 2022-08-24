@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/home/widgets/app_bar.dart';
 import 'package:taxidriver/presentation/home/widgets/categories_list_view.dart';
+import 'package:taxidriver/presentation/home/widgets/category_item.dart';
 import 'package:taxidriver/presentation/home/widgets/home_button.dart';
 import 'package:taxidriver/presentation/home/widgets/home_icon.dart';
 import 'package:taxidriver/presentation/home/widgets/top_box.dart';
@@ -38,9 +39,7 @@ class Home extends HookConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildTopBox(context, () {
-                  AutoRouter.of(context).push(PickUpRootPageRoute());
-                }),
+                buildTopBox(context, () {}),
                 20.verticalSpace,
                 Row(
                   children: [
@@ -53,7 +52,48 @@ class Home extends HookConsumerWidget {
                   ],
                 ),
                 10.verticalSpace,
-                buildCategories(context),
+                SizedBox(
+                  height: 96.h,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      CategoryItem(
+                        onPressed: () {
+                          AutoRouter.of(context).push(PickUpRootPageRoute());
+                        },
+                        icon: 'car',
+                        text: 'Voiture',
+                        color: Colors.brown.shade200,
+                      ),
+                      CategoryItem(
+                        onPressed: () {},
+                        icon: 'card',
+                        text: 'Crédit',
+                        color: Colors.purple,
+                      ),
+                      CategoryItem(
+                        onPressed: () {},
+                        icon: 'wheel',
+                        text: 'Pilotes',
+                        color: Colors.redAccent,
+                      ),
+                      CategoryItem(
+                        onPressed: () {},
+                        icon: 'bookmark',
+                        text: 'Mes lieux',
+                        color: Colors.blueAccent,
+                      ),
+                      CategoryItem(
+                        onPressed: () {
+                          AutoRouter.of(context).push(MyRidesPageRoute());
+                        },
+                        icon: 'history',
+                        text: 'Historique',
+                        color: Colors.yellow,
+                      ),
+                    ],
+                  ),
+                ),
                 5.h.verticalSpace,
               ],
             ),

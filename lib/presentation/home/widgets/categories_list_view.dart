@@ -11,6 +11,7 @@ Widget buildCategories(BuildContext context) {
       children: categories
           .map(
             (category) => CategoryItem(
+              onPressed: () {},
               color: category.color,
               icon: category.icon,
               text: category.name,
