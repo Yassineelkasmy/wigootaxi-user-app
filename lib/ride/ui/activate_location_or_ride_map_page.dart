@@ -52,7 +52,6 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
               totalPrice: ((next.distanceTravelled / 1000) *
                   rideState.currentRide!.price_per_km),
               totalDistance: next.distanceTravelled,
-              totalDuration: next.currentRide!.totalDuration!,
             ),
           );
         }

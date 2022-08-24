@@ -8,14 +8,12 @@ class RideFinishedPage extends StatelessWidget {
     required this.startname,
     required this.destname,
     required this.totalDistance,
-    required this.totalDuration,
     required this.totalPrice,
   }) : super(key: key);
   final String startname;
   final String destname;
   final double totalPrice;
   final int totalDistance;
-  final int totalDuration;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -111,14 +109,6 @@ class RideFinishedPage extends StatelessWidget {
                   'assets/icons/duration.png',
                   height: 24.h,
                   width: 24.w,
-                ),
-                4.w.horizontalSpace,
-                Text(
-                  'Durée : ${Duration(seconds: totalDuration).inMinutes}:${(Duration(seconds: totalDuration).inSeconds % 60).toString().padLeft(2, '0')}',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
               ],
             ),
