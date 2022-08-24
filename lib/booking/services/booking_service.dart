@@ -43,7 +43,7 @@ class BookingService {
       'type': ride.type.name,
       'phone': phone,
       'date': ride.date != null ? Timestamp.fromDate(ride.date!) : null,
-      'ts': Timestamp.fromDate(DateTime.now()),
+      'ts': FieldValue.serverTimestamp(),
       'candidatesUids': candidatesUids,
       'userUid': userUid,
     };

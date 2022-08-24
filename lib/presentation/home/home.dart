@@ -78,7 +78,9 @@ class Home extends HookConsumerWidget {
                         color: Colors.redAccent,
                       ),
                       CategoryItem(
-                        onPressed: () {},
+                        onPressed: () {
+                          AutoRouter.of(context).push(MyLocationsPageRoute());
+                        },
                         icon: 'bookmark',
                         text: 'Mes lieux',
                         color: Colors.blueAccent,

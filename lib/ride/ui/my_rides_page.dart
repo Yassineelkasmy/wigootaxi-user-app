@@ -6,28 +6,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
-import 'package:taxidriver/profile/application/profile_event.dart';
 import 'package:taxidriver/providers/profile_provider.dart';
 import 'package:taxidriver/ride/domain/ride.dart';
 
 class MyRidesPage extends HookConsumerWidget {
   MyRidesPage({Key? key}) : super(key: key);
 
-  bool initilaized = false;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profileState = ref.watch(profileProvider);
     final profileController = ref.read(profileProvider.notifier);
     final currentIndex = useState(0);
-
-    if (!initilaized) {
-      profileController.mapEventToState(ProfileEvent.finishedRidesRequested());
-      profileController
-          .mapEventToState(ProfileEvent.driverCancelledRidesRequested());
-      profileController
-          .mapEventToState(ProfileEvent.userCancelledRidesRequested());
-      initilaized = true;
-    }
 
     return Scaffold(
       appBar: AppBar(

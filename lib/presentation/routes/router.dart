@@ -15,6 +15,7 @@ import 'package:taxidriver/presentation/intro/intro_page.dart';
 import 'package:taxidriver/presentation/onboarding/onboarding_page.dart';
 import 'package:taxidriver/presentation/splash/splash_page.dart';
 import 'package:taxidriver/ride/ui/activate_location_or_ride_map_page.dart';
+import 'package:taxidriver/ride/ui/my_locations_page.dart';
 import 'package:taxidriver/ride/ui/my_ride_page.dart';
 import 'package:taxidriver/ride/ui/my_rides_page.dart';
 import 'package:taxidriver/ride/ui/ride_cancelled_page.dart';
@@ -41,6 +42,7 @@ import 'package:taxidriver/ride/ui/ride_root_page.dart';
   AutoRoute(page: OnBoardingPage),
   AutoRoute(page: SendMessagePage),
   AutoRoute(page: MessageSentPage),
+  AutoRoute(page: MyLocationsPage),
   AutoRoute(page: MyRidesPage),
   AutoRoute(page: MyRidePage),
   AutoRoute(page: MessageSentPage),
