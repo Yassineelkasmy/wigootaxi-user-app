@@ -33,6 +33,10 @@ class _$ProfileEventTearOff {
   MetricsRequested metricsRequested() {
     return const MetricsRequested();
   }
+
+  MyDriversRequested myDriversRequested() {
+    return const MyDriversRequested();
+  }
 }
 
 /// @nodoc
@@ -46,6 +50,7 @@ mixin _$ProfileEvent {
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
     required TResult Function() metricsRequested,
+    required TResult Function() myDriversRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +59,7 @@ mixin _$ProfileEvent {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +68,7 @@ mixin _$ProfileEvent {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,6 +81,7 @@ mixin _$ProfileEvent {
     required TResult Function(DriverCancelledRidesRequested value)
         driverCancelledRidesRequested,
     required TResult Function(MetricsRequested value) metricsRequested,
+    required TResult Function(MyDriversRequested value) myDriversRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,6 +92,7 @@ mixin _$ProfileEvent {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,6 +103,7 @@ mixin _$ProfileEvent {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,6 +170,7 @@ class _$FinishedRidesRequested implements FinishedRidesRequested {
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
     required TResult Function() metricsRequested,
+    required TResult Function() myDriversRequested,
   }) {
     return finishedRidesRequested();
   }
@@ -171,6 +182,7 @@ class _$FinishedRidesRequested implements FinishedRidesRequested {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
   }) {
     return finishedRidesRequested?.call();
   }
@@ -182,6 +194,7 @@ class _$FinishedRidesRequested implements FinishedRidesRequested {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
     required TResult orElse(),
   }) {
     if (finishedRidesRequested != null) {
@@ -200,6 +213,7 @@ class _$FinishedRidesRequested implements FinishedRidesRequested {
     required TResult Function(DriverCancelledRidesRequested value)
         driverCancelledRidesRequested,
     required TResult Function(MetricsRequested value) metricsRequested,
+    required TResult Function(MyDriversRequested value) myDriversRequested,
   }) {
     return finishedRidesRequested(this);
   }
@@ -213,6 +227,7 @@ class _$FinishedRidesRequested implements FinishedRidesRequested {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
   }) {
     return finishedRidesRequested?.call(this);
   }
@@ -226,6 +241,7 @@ class _$FinishedRidesRequested implements FinishedRidesRequested {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
     required TResult orElse(),
   }) {
     if (finishedRidesRequested != null) {
@@ -287,6 +303,7 @@ class _$UserCancelledRidesRequested implements UserCancelledRidesRequested {
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
     required TResult Function() metricsRequested,
+    required TResult Function() myDriversRequested,
   }) {
     return userCancelledRidesRequested();
   }
@@ -298,6 +315,7 @@ class _$UserCancelledRidesRequested implements UserCancelledRidesRequested {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
   }) {
     return userCancelledRidesRequested?.call();
   }
@@ -309,6 +327,7 @@ class _$UserCancelledRidesRequested implements UserCancelledRidesRequested {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
     required TResult orElse(),
   }) {
     if (userCancelledRidesRequested != null) {
@@ -327,6 +346,7 @@ class _$UserCancelledRidesRequested implements UserCancelledRidesRequested {
     required TResult Function(DriverCancelledRidesRequested value)
         driverCancelledRidesRequested,
     required TResult Function(MetricsRequested value) metricsRequested,
+    required TResult Function(MyDriversRequested value) myDriversRequested,
   }) {
     return userCancelledRidesRequested(this);
   }
@@ -340,6 +360,7 @@ class _$UserCancelledRidesRequested implements UserCancelledRidesRequested {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
   }) {
     return userCancelledRidesRequested?.call(this);
   }
@@ -353,6 +374,7 @@ class _$UserCancelledRidesRequested implements UserCancelledRidesRequested {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
     required TResult orElse(),
   }) {
     if (userCancelledRidesRequested != null) {
@@ -415,6 +437,7 @@ class _$DriverCancelledRidesRequested implements DriverCancelledRidesRequested {
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
     required TResult Function() metricsRequested,
+    required TResult Function() myDriversRequested,
   }) {
     return driverCancelledRidesRequested();
   }
@@ -426,6 +449,7 @@ class _$DriverCancelledRidesRequested implements DriverCancelledRidesRequested {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
   }) {
     return driverCancelledRidesRequested?.call();
   }
@@ -437,6 +461,7 @@ class _$DriverCancelledRidesRequested implements DriverCancelledRidesRequested {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
     required TResult orElse(),
   }) {
     if (driverCancelledRidesRequested != null) {
@@ -455,6 +480,7 @@ class _$DriverCancelledRidesRequested implements DriverCancelledRidesRequested {
     required TResult Function(DriverCancelledRidesRequested value)
         driverCancelledRidesRequested,
     required TResult Function(MetricsRequested value) metricsRequested,
+    required TResult Function(MyDriversRequested value) myDriversRequested,
   }) {
     return driverCancelledRidesRequested(this);
   }
@@ -468,6 +494,7 @@ class _$DriverCancelledRidesRequested implements DriverCancelledRidesRequested {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
   }) {
     return driverCancelledRidesRequested?.call(this);
   }
@@ -481,6 +508,7 @@ class _$DriverCancelledRidesRequested implements DriverCancelledRidesRequested {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
     required TResult orElse(),
   }) {
     if (driverCancelledRidesRequested != null) {
@@ -540,6 +568,7 @@ class _$MetricsRequested implements MetricsRequested {
     required TResult Function() userCancelledRidesRequested,
     required TResult Function() driverCancelledRidesRequested,
     required TResult Function() metricsRequested,
+    required TResult Function() myDriversRequested,
   }) {
     return metricsRequested();
   }
@@ -551,6 +580,7 @@ class _$MetricsRequested implements MetricsRequested {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
   }) {
     return metricsRequested?.call();
   }
@@ -562,6 +592,7 @@ class _$MetricsRequested implements MetricsRequested {
     TResult Function()? userCancelledRidesRequested,
     TResult Function()? driverCancelledRidesRequested,
     TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
     required TResult orElse(),
   }) {
     if (metricsRequested != null) {
@@ -580,6 +611,7 @@ class _$MetricsRequested implements MetricsRequested {
     required TResult Function(DriverCancelledRidesRequested value)
         driverCancelledRidesRequested,
     required TResult Function(MetricsRequested value) metricsRequested,
+    required TResult Function(MyDriversRequested value) myDriversRequested,
   }) {
     return metricsRequested(this);
   }
@@ -593,6 +625,7 @@ class _$MetricsRequested implements MetricsRequested {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
   }) {
     return metricsRequested?.call(this);
   }
@@ -606,6 +639,7 @@ class _$MetricsRequested implements MetricsRequested {
     TResult Function(DriverCancelledRidesRequested value)?
         driverCancelledRidesRequested,
     TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
     required TResult orElse(),
   }) {
     if (metricsRequested != null) {
@@ -617,4 +651,134 @@ class _$MetricsRequested implements MetricsRequested {
 
 abstract class MetricsRequested implements ProfileEvent {
   const factory MetricsRequested() = _$MetricsRequested;
+}
+
+/// @nodoc
+abstract class $MyDriversRequestedCopyWith<$Res> {
+  factory $MyDriversRequestedCopyWith(
+          MyDriversRequested value, $Res Function(MyDriversRequested) then) =
+      _$MyDriversRequestedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$MyDriversRequestedCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res>
+    implements $MyDriversRequestedCopyWith<$Res> {
+  _$MyDriversRequestedCopyWithImpl(
+      MyDriversRequested _value, $Res Function(MyDriversRequested) _then)
+      : super(_value, (v) => _then(v as MyDriversRequested));
+
+  @override
+  MyDriversRequested get _value => super._value as MyDriversRequested;
+}
+
+/// @nodoc
+
+class _$MyDriversRequested implements MyDriversRequested {
+  const _$MyDriversRequested();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.myDriversRequested()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is MyDriversRequested);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() finishedRidesRequested,
+    required TResult Function() userCancelledRidesRequested,
+    required TResult Function() driverCancelledRidesRequested,
+    required TResult Function() metricsRequested,
+    required TResult Function() myDriversRequested,
+  }) {
+    return myDriversRequested();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? finishedRidesRequested,
+    TResult Function()? userCancelledRidesRequested,
+    TResult Function()? driverCancelledRidesRequested,
+    TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
+  }) {
+    return myDriversRequested?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? finishedRidesRequested,
+    TResult Function()? userCancelledRidesRequested,
+    TResult Function()? driverCancelledRidesRequested,
+    TResult Function()? metricsRequested,
+    TResult Function()? myDriversRequested,
+    required TResult orElse(),
+  }) {
+    if (myDriversRequested != null) {
+      return myDriversRequested();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FinishedRidesRequested value)
+        finishedRidesRequested,
+    required TResult Function(UserCancelledRidesRequested value)
+        userCancelledRidesRequested,
+    required TResult Function(DriverCancelledRidesRequested value)
+        driverCancelledRidesRequested,
+    required TResult Function(MetricsRequested value) metricsRequested,
+    required TResult Function(MyDriversRequested value) myDriversRequested,
+  }) {
+    return myDriversRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(FinishedRidesRequested value)? finishedRidesRequested,
+    TResult Function(UserCancelledRidesRequested value)?
+        userCancelledRidesRequested,
+    TResult Function(DriverCancelledRidesRequested value)?
+        driverCancelledRidesRequested,
+    TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
+  }) {
+    return myDriversRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FinishedRidesRequested value)? finishedRidesRequested,
+    TResult Function(UserCancelledRidesRequested value)?
+        userCancelledRidesRequested,
+    TResult Function(DriverCancelledRidesRequested value)?
+        driverCancelledRidesRequested,
+    TResult Function(MetricsRequested value)? metricsRequested,
+    TResult Function(MyDriversRequested value)? myDriversRequested,
+    required TResult orElse(),
+  }) {
+    if (myDriversRequested != null) {
+      return myDriversRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MyDriversRequested implements ProfileEvent {
+  const factory MyDriversRequested() = _$MyDriversRequested;
 }

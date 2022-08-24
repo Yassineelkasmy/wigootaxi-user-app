@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:taxidriver/profile/domain/user_driver.dart';
 import 'package:taxidriver/ride/domain/ride.dart';
 import 'package:taxidriver/ride/domain/ride_failure.dart';
 
@@ -31,19 +32,38 @@ class ProfileService {
       return left(RideFailure.serverError());
     }
   }
-}
 
-Ride docDataToRide(QueryDocumentSnapshot<Map<String, dynamic>> rideDoc) {
-  final destinationLocation =
-      rideDoc.get('destination')?['geopoint'] as GeoPoint?;
-  final startLocation = rideDoc.get('start')?['geopoint'] as GeoPoint?;
+  Future<Either<RideFailure, List<UserDriver>>> getUserDrivers() async {
+    try {
+      final driversDocs = await FirebaseFirestore.instance
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('drivers')
+          .get();
+      final userDrivers = driversDocs.docs
+          .map(
+            (doc) => UserDriver.fromJson(
+              doc.data(),
+            ),
+          )
+          .toList();
+      return right(userDrivers);
+    } catch (e) {
+      return left(const RideFailure.serverError());
+    }
+  }
 
-  return Ride.fromJson(
-    rideDoc.data()
-      ..putIfAbsent('destinationLng', () => destinationLocation?.longitude)
-      ..putIfAbsent('destinationLat', () => destinationLocation?.latitude)
-      ..putIfAbsent('startLng', () => startLocation?.longitude)
-      ..putIfAbsent('startLat', () => startLocation?.latitude)
-      ..putIfAbsent('id', () => rideDoc.id),
-  );
+  Ride docDataToRide(QueryDocumentSnapshot<Map<String, dynamic>> rideDoc) {
+    final destinationLocation =
+        rideDoc.get('destination')?['geopoint'] as GeoPoint?;
+    final startLocation = rideDoc.get('start')?['geopoint'] as GeoPoint?;
+
+    return Ride.fromJson(
+      rideDoc.data()
+        ..putIfAbsent('destinationLng', () => destinationLocation?.longitude)
+        ..putIfAbsent('destinationLat', () => destinationLocation?.latitude)
+        ..putIfAbsent('startLng', () => startLocation?.longitude)
+        ..putIfAbsent('startLat', () => startLocation?.latitude)
+        ..putIfAbsent('id', () => rideDoc.id),
+    );
+  }
 }

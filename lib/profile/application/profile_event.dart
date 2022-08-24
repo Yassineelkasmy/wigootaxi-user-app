@@ -11,4 +11,5 @@ class ProfileEvent with _$ProfileEvent {
       DriverCancelledRidesRequested;
 
   const factory ProfileEvent.metricsRequested() = MetricsRequested;
+  const factory ProfileEvent.myDriversRequested() = MyDriversRequested;
 }

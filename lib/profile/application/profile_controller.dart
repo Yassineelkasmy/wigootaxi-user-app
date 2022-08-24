@@ -55,6 +55,7 @@ class ProfileController extends StateNotifier<ProfileState> {
           (rides) => state = state.copyWith(driverCancelledRides: rides),
         );
       },
+      myDriversRequested: (event) async {},
     );
   }
 }
