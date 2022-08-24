@@ -1,4 +1,5 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/domain/auth/user.dart';
+import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 
 SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
@@ -97,6 +99,9 @@ SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
                 color: Colors.white,
               ),
             ),
+            onTap: () {
+              AutoRouter.of(context).push(MyRidesPageRoute());
+            },
           ),
           ListTile(
             leading: Icon(
