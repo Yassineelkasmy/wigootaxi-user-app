@@ -23,12 +23,14 @@ class _$ProfileStateTearOff {
       required List<Ride> finishedRides,
       required List<Ride> userCancelledRides,
       required List<Ride> driverCancelledRides,
+      required List<UserDriver> userDrivers,
       required bool isLoading}) {
     return _ProfileState(
       metrics: metrics,
       finishedRides: finishedRides,
       userCancelledRides: userCancelledRides,
       driverCancelledRides: driverCancelledRides,
+      userDrivers: userDrivers,
       isLoading: isLoading,
     );
   }
@@ -43,6 +45,7 @@ mixin _$ProfileState {
   List<Ride> get finishedRides => throw _privateConstructorUsedError;
   List<Ride> get userCancelledRides => throw _privateConstructorUsedError;
   List<Ride> get driverCancelledRides => throw _privateConstructorUsedError;
+  List<UserDriver> get userDrivers => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -60,6 +63,7 @@ abstract class $ProfileStateCopyWith<$Res> {
       List<Ride> finishedRides,
       List<Ride> userCancelledRides,
       List<Ride> driverCancelledRides,
+      List<UserDriver> userDrivers,
       bool isLoading});
 
   $MetricsCopyWith<$Res>? get metrics;
@@ -79,6 +83,7 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
     Object? finishedRides = freezed,
     Object? userCancelledRides = freezed,
     Object? driverCancelledRides = freezed,
+    Object? userDrivers = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
@@ -98,6 +103,10 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
           ? _value.driverCancelledRides
           : driverCancelledRides // ignore: cast_nullable_to_non_nullable
               as List<Ride>,
+      userDrivers: userDrivers == freezed
+          ? _value.userDrivers
+          : userDrivers // ignore: cast_nullable_to_non_nullable
+              as List<UserDriver>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -129,6 +138,7 @@ abstract class _$ProfileStateCopyWith<$Res>
       List<Ride> finishedRides,
       List<Ride> userCancelledRides,
       List<Ride> driverCancelledRides,
+      List<UserDriver> userDrivers,
       bool isLoading});
 
   @override
@@ -151,6 +161,7 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
     Object? finishedRides = freezed,
     Object? userCancelledRides = freezed,
     Object? driverCancelledRides = freezed,
+    Object? userDrivers = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_ProfileState(
@@ -170,6 +181,10 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
           ? _value.driverCancelledRides
           : driverCancelledRides // ignore: cast_nullable_to_non_nullable
               as List<Ride>,
+      userDrivers: userDrivers == freezed
+          ? _value.userDrivers
+          : userDrivers // ignore: cast_nullable_to_non_nullable
+              as List<UserDriver>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -186,6 +201,7 @@ class _$_ProfileState implements _ProfileState {
       required this.finishedRides,
       required this.userCancelledRides,
       required this.driverCancelledRides,
+      required this.userDrivers,
       required this.isLoading});
 
   @override
@@ -197,11 +213,13 @@ class _$_ProfileState implements _ProfileState {
   @override
   final List<Ride> driverCancelledRides;
   @override
+  final List<UserDriver> userDrivers;
+  @override
   final bool isLoading;
 
   @override
   String toString() {
-    return 'ProfileState(metrics: $metrics, finishedRides: $finishedRides, userCancelledRides: $userCancelledRides, driverCancelledRides: $driverCancelledRides, isLoading: $isLoading)';
+    return 'ProfileState(metrics: $metrics, finishedRides: $finishedRides, userCancelledRides: $userCancelledRides, driverCancelledRides: $driverCancelledRides, userDrivers: $userDrivers, isLoading: $isLoading)';
   }
 
   @override
@@ -216,6 +234,8 @@ class _$_ProfileState implements _ProfileState {
                 .equals(other.userCancelledRides, userCancelledRides) &&
             const DeepCollectionEquality()
                 .equals(other.driverCancelledRides, driverCancelledRides) &&
+            const DeepCollectionEquality()
+                .equals(other.userDrivers, userDrivers) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading));
   }
 
@@ -226,6 +246,7 @@ class _$_ProfileState implements _ProfileState {
       const DeepCollectionEquality().hash(finishedRides),
       const DeepCollectionEquality().hash(userCancelledRides),
       const DeepCollectionEquality().hash(driverCancelledRides),
+      const DeepCollectionEquality().hash(userDrivers),
       const DeepCollectionEquality().hash(isLoading));
 
   @JsonKey(ignore: true)
@@ -240,6 +261,7 @@ abstract class _ProfileState implements ProfileState {
       required List<Ride> finishedRides,
       required List<Ride> userCancelledRides,
       required List<Ride> driverCancelledRides,
+      required List<UserDriver> userDrivers,
       required bool isLoading}) = _$_ProfileState;
 
   @override
@@ -250,6 +272,8 @@ abstract class _ProfileState implements ProfileState {
   List<Ride> get userCancelledRides;
   @override
   List<Ride> get driverCancelledRides;
+  @override
+  List<UserDriver> get userDrivers;
   @override
   bool get isLoading;
   @override

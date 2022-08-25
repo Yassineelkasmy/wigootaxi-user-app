@@ -15,6 +15,7 @@ class ProfileController extends StateNotifier<ProfileState> {
     mapEventToState(ProfileEvent.finishedRidesRequested());
     mapEventToState(ProfileEvent.userCancelledRidesRequested());
     mapEventToState(ProfileEvent.driverCancelledRidesRequested());
+    mapEventToState(ProfileEvent.myDriversRequested());
   }
 
   final ProfileService _profileService;
@@ -55,7 +56,12 @@ class ProfileController extends StateNotifier<ProfileState> {
           (rides) => state = state.copyWith(driverCancelledRides: rides),
         );
       },
-      myDriversRequested: (event) async {},
+      myDriversRequested: (event) async {
+        final myDriversOrFailure = await _profileService.getUserDrivers();
+        myDriversOrFailure.map(
+          (userDrivers) => state = state.copyWith(userDrivers: userDrivers),
+        );
+      },
     );
   }
 }

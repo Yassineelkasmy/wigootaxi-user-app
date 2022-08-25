@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/home/widgets/app_bar.dart';
-import 'package:taxidriver/presentation/home/widgets/categories_list_view.dart';
 import 'package:taxidriver/presentation/home/widgets/category_item.dart';
 import 'package:taxidriver/presentation/home/widgets/home_button.dart';
 import 'package:taxidriver/presentation/home/widgets/home_icon.dart';
@@ -72,7 +71,9 @@ class Home extends HookConsumerWidget {
                         color: Colors.purple,
                       ),
                       CategoryItem(
-                        onPressed: () {},
+                        onPressed: () {
+                          AutoRouter.of(context).push(MyDriversPageRoute());
+                        },
                         icon: 'wheel',
                         text: 'Pilotes',
                         color: Colors.redAccent,

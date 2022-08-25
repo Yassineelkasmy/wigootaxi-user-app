@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:taxidriver/profile/domain/metrics.dart';
+import 'package:taxidriver/profile/domain/user_driver.dart';
 import 'package:taxidriver/ride/domain/ride.dart';
 
 part 'profile_state.freezed.dart';
@@ -11,6 +12,7 @@ class ProfileState with _$ProfileState {
     required List<Ride> finishedRides,
     required List<Ride> userCancelledRides,
     required List<Ride> driverCancelledRides,
+    required List<UserDriver> userDrivers,
     required bool isLoading,
   }) = _ProfileState;
 
@@ -19,5 +21,6 @@ class ProfileState with _$ProfileState {
         isLoading: false,
         userCancelledRides: [],
         driverCancelledRides: [],
+        userDrivers: [],
       );
 }

@@ -36,6 +36,7 @@ class ProfileService {
   Future<Either<RideFailure, List<UserDriver>>> getUserDrivers() async {
     try {
       final driversDocs = await FirebaseFirestore.instance
+          .collection('users')
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .collection('drivers')
           .get();
