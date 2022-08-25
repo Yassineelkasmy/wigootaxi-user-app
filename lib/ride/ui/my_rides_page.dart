@@ -308,7 +308,7 @@ ListView buildDriverCancelledRides(List<Ride> rides) {
                       ),
                     ),
                     Text(
-                      (ride.cancelledByDriver ?? false) ? 'Vous' : 'Client',
+                      (ride.cancelledByUser ?? false) ? 'Vous' : 'Chauffeur',
                       style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,

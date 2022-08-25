@@ -102,77 +102,78 @@ class Home extends HookConsumerWidget {
             ),
           ),
           Card(
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  10.verticalSpace,
-                  Padding(
-                    padding: kPadding,
-                    child: Text(
-                      "Commencez votre voyage",
-                      style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 16.sp,
-                      ),
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                10.verticalSpace,
+                Padding(
+                  padding: kPadding,
+                  child: Text(
+                    "Commencez votre voyage",
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 16.sp,
                     ),
                   ),
-                  EnhanceStepper(
-                    currentStep: 0,
-                    stepIconSize: 36,
-                    controlsBuilder: (_, __) {
-                      return Row();
-                    },
-                    physics: ClampingScrollPhysics(),
-                    steps: [
-                      EnhanceStep(
-                        icon: buildHomeIcon('home_icon2'),
-                        title: GestureDetector(
-                          onTap: () {
-                            AutoRouter.of(context)
-                                .push(ActivateLocationOrMapPageRoute());
-                          },
-                          child: Text(
-                            "Choisissez Votre Point De Retrait",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        subtitle: Text(
-                          "Tanger, Val Flueri",
+                ),
+                EnhanceStepper(
+                  currentStep: 0,
+                  stepIconSize: 36,
+                  controlsBuilder: (_, __) {
+                    return Row();
+                  },
+                  physics: ClampingScrollPhysics(),
+                  steps: [
+                    EnhanceStep(
+                      icon: buildHomeIcon('home_icon2'),
+                      title: GestureDetector(
+                        onTap: () {
+                          AutoRouter.of(context)
+                              .push(ActivateLocationOrMapPageRoute());
+                        },
+                        child: Text(
+                          "Choisissez Votre Point De Retrait",
                           style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                        content: SizedBox(),
-                      ),
-                      EnhanceStep(
-                        icon: buildHomeIcon('home_icon1'),
-                        title: Text(
-                          "Choisissez Votre Destination",
-                          style: TextStyle(
-                            fontSize: 14.sp,
                             color: Colors.black,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        content: Text('content'),
-                        subtitle: Text(
-                          "Tanger, Val Flueri",
-                          style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+                      ),
+                      subtitle: Text(
+                        "Tanger, Val Flueri",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14.sp,
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              )),
+                      content: SizedBox(),
+                    ),
+                    EnhanceStep(
+                      icon: buildHomeIcon('home_icon1'),
+                      title: Text(
+                        "Choisissez Votre Destination",
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      content: Text('content'),
+                      subtitle: Text(
+                        "Tanger, Val Flueri",
+                        style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
           5.h.verticalSpace,
           Card(
             elevation: 2,
