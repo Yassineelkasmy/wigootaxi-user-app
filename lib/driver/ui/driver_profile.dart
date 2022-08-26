@@ -108,7 +108,7 @@ class DriverProfile extends HookConsumerWidget {
                           }
                         });
                       },
-                      text: 'Anuller',
+                      text: 'Annuler',
                     ),
                   ),
                 ],
