@@ -191,14 +191,14 @@ class AppRouter extends _i24.RootStackRouter {
 
   @override
   List<_i24.RouteConfig> get routes => [
-        _i24.RouteConfig(SplashPageRoute.name, path: '/splash-page'),
+        _i24.RouteConfig(SplashPageRoute.name, path: '/'),
         _i24.RouteConfig(PhoneVerificationPageRoute.name,
             path: '/phone-verification-page'),
         _i24.RouteConfig(PhoneAuthPageRoute.name, path: '/phone-auth-page'),
         _i24.RouteConfig(LoginPageRoute.name, path: '/login-page'),
         _i24.RouteConfig(IntroPageRoute.name, path: '/intro-page'),
         _i24.RouteConfig(SignUpPageRoute.name, path: '/sign-up-page'),
-        _i24.RouteConfig(HomePageRoute.name, path: '/'),
+        _i24.RouteConfig(HomePageRoute.name, path: '/home-page'),
         _i24.RouteConfig(ActivateLocationOrMapPageRoute.name,
             path: '/activate-location-or-map-page'),
         _i24.RouteConfig(ActivateLocationOrRideMapPageRoute.name,
@@ -226,7 +226,7 @@ class AppRouter extends _i24.RootStackRouter {
 /// generated route for
 /// [_i1.SplashPage]
 class SplashPageRoute extends _i24.PageRouteInfo<void> {
-  const SplashPageRoute() : super(SplashPageRoute.name, path: '/splash-page');
+  const SplashPageRoute() : super(SplashPageRoute.name, path: '/');
 
   static const String name = 'SplashPageRoute';
 }
@@ -347,7 +347,8 @@ class SignUpPageRouteArgs {
 /// [_i7.HomePage]
 class HomePageRoute extends _i24.PageRouteInfo<HomePageRouteArgs> {
   HomePageRoute({_i25.Key? key})
-      : super(HomePageRoute.name, path: '/', args: HomePageRouteArgs(key: key));
+      : super(HomePageRoute.name,
+            path: '/home-page', args: HomePageRouteArgs(key: key));
 
   static const String name = 'HomePageRoute';
 }
