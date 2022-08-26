@@ -41,151 +41,155 @@ class LoginPage extends HookConsumerWidget {
         ),
         child: SizedBox(
           width: double.maxFinite,
-          child: Column(
-            children: [
-              buildLogo(white: false),
-              ReactiveForm(
-                formGroup: loginForm,
-                child: Column(
-                  children: [
-                    Material(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: ReactiveTextField(
-                        formControlName: 'email',
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            CupertinoIcons.profile_circled,
-                            color: kPrimaryColor,
-                          ),
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                            borderSide: BorderSide.none,
-                          ),
-                          labelText: "Nom d'utilisateur",
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                            borderSide: BorderSide.none,
-                          ),
-                        ),
-                      ),
-                    ),
-                    10.verticalSpace,
-                    Material(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: ReactiveTextField(
-                        formControlName: 'password',
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            CupertinoIcons.padlock,
-                            color: kPrimaryColor,
-                          ),
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                            borderSide: BorderSide.none,
-                          ),
-                          labelText: 'Mot de passe',
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                            borderSide: BorderSide.none,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: TextButton(
-                        child: Text(
-                          "Mot de passe oublié ?",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                        onPressed: () => {},
-                      ),
-                    ),
-                    10.verticalSpace,
-                    SizedBox(
-                      width: double.maxFinite,
-                      child: SubmitButton(
-                        isLoading: authFormState.isSubmitting,
-                        onPressed: () {
-                          final email =
-                              loginForm.findControl('email')!.value as String;
-                          final password = loginForm
-                              .findControl('password')!
-                              .value as String;
-
-                          authFormController.mapEventToState(
-                            AuthFormEvent.signInWithEmailAndPasswordPressed(
-                              email,
-                              password,
-                            ),
-                          );
-                        },
-                        text: "CONNEXION",
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              20.verticalSpace,
-              SocialMedia(
-                onFacebookPressed: () {
-                  authFormController.mapEventToState(
-                      const AuthFormEvent.signInWithFacebookPressed());
-                },
-                onGooglePressed: () {
-                  authFormController.mapEventToState(
-                      const AuthFormEvent.signInWithGooglePresseed());
-                },
-                text: "SE CONNECTER AVEC",
-              ),
-              Expanded(child: SizedBox()),
-              Padding(
-                padding: EdgeInsets.only(bottom: 20.h),
-                child: RichText(
-                  text: TextSpan(
-                    text: "Vous n'a avez pas de compte ? ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.sp,
-                    ),
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                40.h.verticalSpace,
+                buildLogo(white: false),
+                40.h.verticalSpace,
+                ReactiveForm(
+                  formGroup: loginForm,
+                  child: Column(
                     children: [
-                      TextSpan(
-                        text: "S'inscrire",
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
+                      Material(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () =>
-                              AutoRouter.of(context).replace(SignUpPageRoute()),
-                      )
+                        child: ReactiveTextField(
+                          formControlName: 'email',
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              CupertinoIcons.profile_circled,
+                              color: kPrimaryColor,
+                            ),
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            labelText: "Nom d'utilisateur",
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                      10.verticalSpace,
+                      Material(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: ReactiveTextField(
+                          formControlName: 'password',
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              CupertinoIcons.padlock,
+                              color: kPrimaryColor,
+                            ),
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            labelText: 'Mot de passe',
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: TextButton(
+                          child: Text(
+                            "Mot de passe oublié ?",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.sp,
+                            ),
+                          ),
+                          onPressed: () => {},
+                        ),
+                      ),
+                      10.verticalSpace,
+                      SizedBox(
+                        width: double.maxFinite,
+                        child: SubmitButton(
+                          isLoading: authFormState.isSubmitting,
+                          onPressed: () {
+                            final email =
+                                loginForm.findControl('email')!.value as String;
+                            final password = loginForm
+                                .findControl('password')!
+                                .value as String;
+          
+                            authFormController.mapEventToState(
+                              AuthFormEvent.signInWithEmailAndPasswordPressed(
+                                email,
+                                password,
+                              ),
+                            );
+                          },
+                          text: "CONNEXION",
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              ),
-            ],
+                20.verticalSpace,
+                SocialMedia(
+                  onFacebookPressed: () {
+                    authFormController.mapEventToState(
+                        const AuthFormEvent.signInWithFacebookPressed());
+                  },
+                  onGooglePressed: () {
+                    authFormController.mapEventToState(
+                        const AuthFormEvent.signInWithGooglePresseed());
+                  },
+                  text: "SE CONNECTER AVEC",
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 20.h),
+                  child: RichText(
+                    text: TextSpan(
+                      text: "Vous n'a avez pas de compte ? ",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.sp,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "S'inscrire",
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () =>
+                                AutoRouter.of(context).replace(SignUpPageRoute()),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

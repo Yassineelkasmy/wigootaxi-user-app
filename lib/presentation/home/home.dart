@@ -43,7 +43,7 @@ class Home extends HookConsumerWidget {
                 Row(
                   children: [
                     Text(
-                      "OPTION",
+                      "OPTIONS",
                       style: TextStyle(
                         color: Colors.grey,
                       ),

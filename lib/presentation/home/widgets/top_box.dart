@@ -26,7 +26,7 @@ Widget buildTopBox(BuildContext context, void Function() onPressed) {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
-                  "Commencer Votre Voyage",
+                  "Découvrir les meilleurs offres",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,

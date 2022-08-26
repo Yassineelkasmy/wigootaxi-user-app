@@ -8,13 +8,15 @@ Widget buildLogo({bool white = true, BoxFit? fit}) {
       ? Image.asset(
           "assets/images/$logoAsset",
           fit: fit,
+          color: Colors.white,
+          width: 0.8.sw,
         )
       : Padding(
-          padding: EdgeInsets.all(60.sp),
+          padding: EdgeInsets.all(0.sp),
           child: Image.asset(
             "assets/images/$logoAsset",
             fit: fit,
-            height: 0.25.sh,
+          width: 0.8.sw,
           ),
         );
 }

@@ -24,13 +24,13 @@ import 'package:taxidriver/ride/ui/ride_finished_page.dart';
 import 'package:taxidriver/ride/ui/ride_root_page.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
-  AutoRoute(page: SplashPage, initial: true),
+  AutoRoute(page: SplashPage),
   AutoRoute(page: PhoneVerificationPage),
   AutoRoute(page: PhoneAuthPage),
   AutoRoute(page: LoginPage),
   AutoRoute(page: IntroPage),
   AutoRoute(page: SignUpPage),
-  AutoRoute(page: HomePage),
+  AutoRoute(page: HomePage, initial: true),
   AutoRoute(page: ActivateLocationOrMapPage),
   AutoRoute(page: ActivateLocationOrRideMapPage),
   AutoRoute(page: RideCancelledPage),

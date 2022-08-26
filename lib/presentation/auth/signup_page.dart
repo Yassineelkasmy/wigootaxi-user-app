@@ -66,208 +66,213 @@ class SignUpPage extends HookConsumerWidget {
           ),
           child: SizedBox(
             width: double.maxFinite,
-            child: Column(
-              children: [
-                buildLogo(white: false),
-                ReactiveForm(
-                  formGroup: signUpForm,
-                  child: Column(
-                    children: [
-                      Material(
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: ReactiveTextField(
-                          formControlName: 'username',
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              CupertinoIcons.profile_circled,
-                              color: kPrimaryColor,
-                            ),
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                            labelText: "Nom d'utilisateur",
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
+            child: SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  40.h.verticalSpace,
+                  buildLogo(white: false),
+                  40.h.verticalSpace,
+                  ReactiveForm(
+                    formGroup: signUpForm,
+                    child: Column(
+                      children: [
+                        Material(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
                           ),
-                        ),
-                      ),
-                      10.h.verticalSpace,
-                      Material(
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: ReactiveTextField(
-                          formControlName: 'email',
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              CupertinoIcons.mail,
-                              color: kPrimaryColor,
-                            ),
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                            labelText: "Email",
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                      10.h.verticalSpace,
-                      Material(
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: ReactiveTextField(
-                          formControlName: 'password',
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              CupertinoIcons.padlock,
-                              color: kPrimaryColor,
-                            ),
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                            labelText: 'Mot de passe',
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                      10.h.verticalSpace,
-                      Material(
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: ReactiveTextField(
-                          formControlName: 'confirmation',
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              CupertinoIcons.padlock,
-                              color: kPrimaryColor,
-                            ),
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                            labelText: 'Confirmation du mot de passe',
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                      20.h.verticalSpace,
-                      SizedBox(
-                        width: double.maxFinite,
-                        child: SubmitButton(
-                          isLoading: authFormState.isSubmitting,
-                          onPressed: () async {
-                            final username = signUpForm
-                                .findControl('username')!
-                                .value as String;
-
-                            final email = signUpForm.findControl('email')!.value
-                                as String;
-                            final password = signUpForm
-                                .findControl('password')!
-                                .value as String;
-
-                            await authFormController.mapEventToState(
-                              AuthFormEvent.registerWithEmailAndPasswordPressed(
-                                email,
-                                password,
-                                username,
+                          child: ReactiveTextField(
+                            formControlName: 'username',
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                CupertinoIcons.profile_circled,
+                                color: kPrimaryColor,
                               ),
-                            );
-
-                            authController.mapEventToState(
-                              AuthEvent.authCheckRequested(),
-                            );
-                          },
-                          text: "SUIVANT",
+                              fillColor: Colors.white,
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                              labelText: "Nom d'utilisateur",
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      10.h.verticalSpace,
-                    ],
-                  ),
-                ),
-                SocialMedia(
-                  onFacebookPressed: () {
-                    authFormController.mapEventToState(
-                      const AuthFormEvent.registerWithFacebookPressed(),
-                    );
-                  },
-                  onGooglePressed: () {
-                    authFormController.mapEventToState(
-                        const AuthFormEvent.registerWithGooglePressed());
-                  },
-                  text: "S'INSCRIRE AVEC",
-                ),
-                40.h.verticalSpace,
-                RichText(
-                  text: TextSpan(
-                    text: "Vous avez déjà un compte ? ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.sp,
+                        10.h.verticalSpace,
+                        Material(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: ReactiveTextField(
+                            formControlName: 'email',
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                CupertinoIcons.mail,
+                                color: kPrimaryColor,
+                              ),
+                              fillColor: Colors.white,
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                              labelText: "Email",
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                        10.h.verticalSpace,
+                        Material(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: ReactiveTextField(
+                            formControlName: 'password',
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                CupertinoIcons.padlock,
+                                color: kPrimaryColor,
+                              ),
+                              fillColor: Colors.white,
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                              labelText: 'Mot de passe',
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                        10.h.verticalSpace,
+                        Material(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: ReactiveTextField(
+                            formControlName: 'confirmation',
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                CupertinoIcons.padlock,
+                                color: kPrimaryColor,
+                              ),
+                              fillColor: Colors.white,
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                              labelText: 'Confirmation du mot de passe',
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                        20.h.verticalSpace,
+                        SizedBox(
+                          width: double.maxFinite,
+                          child: SubmitButton(
+                            isLoading: authFormState.isSubmitting,
+                            onPressed: () async {
+                              final username = signUpForm
+                                  .findControl('username')!
+                                  .value as String;
+            
+                              final email = signUpForm.findControl('email')!.value
+                                  as String;
+                              final password = signUpForm
+                                  .findControl('password')!
+                                  .value as String;
+            
+                              await authFormController.mapEventToState(
+                                AuthFormEvent.registerWithEmailAndPasswordPressed(
+                                  email,
+                                  password,
+                                  username,
+                                ),
+                              );
+            
+                              authController.mapEventToState(
+                                AuthEvent.authCheckRequested(),
+                              );
+                            },
+                            text: "SUIVANT",
+                          ),
+                        ),
+                        10.h.verticalSpace,
+                      ],
                     ),
-                    children: [
-                      TextSpan(
-                        text: "Connexion",
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () =>
-                              AutoRouter.of(context).replace(LoginPageRoute()),
-                      )
-                    ],
                   ),
-                ),
-              ],
+                  SocialMedia(
+                    onFacebookPressed: () {
+                      authFormController.mapEventToState(
+                        const AuthFormEvent.registerWithFacebookPressed(),
+                      );
+                    },
+                    onGooglePressed: () {
+                      authFormController.mapEventToState(
+                          const AuthFormEvent.registerWithGooglePressed());
+                    },
+                    text: "S'INSCRIRE AVEC",
+                  ),
+                  40.h.verticalSpace,
+                  RichText(
+                    text: TextSpan(
+                      text: "Vous avez déjà un compte ? ",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.sp,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "Connexion",
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () =>
+                                AutoRouter.of(context).replace(LoginPageRoute()),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

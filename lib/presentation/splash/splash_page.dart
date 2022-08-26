@@ -66,6 +66,7 @@ class SplashPage extends HookConsumerWidget {
                   Align(
                     alignment: Alignment.topCenter,
                     child: buildLogo(),
+                    
                   ),
                   SizedBox(
                     height: 20,
