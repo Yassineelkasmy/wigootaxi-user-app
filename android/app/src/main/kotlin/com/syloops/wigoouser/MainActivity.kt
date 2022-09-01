@@ -1,4 +1,4 @@
-package com.example.taxidriver
+package com.syloops.wigoouser
 
 import io.flutter.embedding.android.FlutterActivity
 
