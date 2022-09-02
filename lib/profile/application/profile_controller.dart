@@ -43,6 +43,11 @@ class ProfileController extends StateNotifier<ProfileState> {
             userProfile: userProfile,
           ),
         );
+      } else {
+        state = state.copyWith(
+          driverRecord: null,
+          userProfile: userProfile,
+        );
       }
 
       state = state.copyWith(userProfile: userProfile);
