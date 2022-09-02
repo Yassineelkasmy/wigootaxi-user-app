@@ -116,7 +116,7 @@ ListView buildFinishedRides(List<Ride> rides) {
                       ),
                     ),
                     Text(
-                      '${ride.totalPrice} MAD',
+                      '${ride.totalPrice?.toStringAsFixed(2)} MAD',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),

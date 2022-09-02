@@ -64,7 +64,7 @@ class Home extends HookConsumerWidget {
                       CategoryItem(
                         onPressed: () {
                           if (profileState.driverRecord != null) {
-                            AutoRouter.of(context).replace(
+                            AutoRouter.of(context).push(
                               RideRootPageRoute(
                                 driverRecord: profileState.driverRecord!,
                               ),
