@@ -67,9 +67,11 @@ class HomePage extends HookConsumerWidget {
                       ),
                     );
 
-                    rideController.mapEventToState(RideEvent.rideInitialized(
-                      profileState.userProfile.currentRideId!,
-                    ));
+                    rideController.mapEventToState(
+                      RideEvent.rideInitialized(
+                        profileState.userProfile.currentRideId!,
+                      ),
+                    );
                   },
                   child: Icon(
                     Icons.drive_eta,

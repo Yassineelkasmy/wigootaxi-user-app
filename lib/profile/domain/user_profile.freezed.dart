@@ -22,10 +22,12 @@ UserProfile _$UserProfileFromJson(Map<String, dynamic> json) {
 class _$UserProfileTearOff {
   const _$UserProfileTearOff();
 
-  _UserProfile call({String? currentRideId, String? currentDriverId}) {
+  _UserProfile call(
+      {String? currentRideId, String? currentDriverId, String? username}) {
     return _UserProfile(
       currentRideId: currentRideId,
       currentDriverId: currentDriverId,
+      username: username,
     );
   }
 
@@ -41,6 +43,7 @@ const $UserProfile = _$UserProfileTearOff();
 mixin _$UserProfile {
   String? get currentRideId => throw _privateConstructorUsedError;
   String? get currentDriverId => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +56,7 @@ abstract class $UserProfileCopyWith<$Res> {
   factory $UserProfileCopyWith(
           UserProfile value, $Res Function(UserProfile) then) =
       _$UserProfileCopyWithImpl<$Res>;
-  $Res call({String? currentRideId, String? currentDriverId});
+  $Res call({String? currentRideId, String? currentDriverId, String? username});
 }
 
 /// @nodoc
@@ -68,6 +71,7 @@ class _$UserProfileCopyWithImpl<$Res> implements $UserProfileCopyWith<$Res> {
   $Res call({
     Object? currentRideId = freezed,
     Object? currentDriverId = freezed,
+    Object? username = freezed,
   }) {
     return _then(_value.copyWith(
       currentRideId: currentRideId == freezed
@@ -77,6 +81,10 @@ class _$UserProfileCopyWithImpl<$Res> implements $UserProfileCopyWith<$Res> {
       currentDriverId: currentDriverId == freezed
           ? _value.currentDriverId
           : currentDriverId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -89,7 +97,7 @@ abstract class _$UserProfileCopyWith<$Res>
           _UserProfile value, $Res Function(_UserProfile) then) =
       __$UserProfileCopyWithImpl<$Res>;
   @override
-  $Res call({String? currentRideId, String? currentDriverId});
+  $Res call({String? currentRideId, String? currentDriverId, String? username});
 }
 
 /// @nodoc
@@ -106,6 +114,7 @@ class __$UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
   $Res call({
     Object? currentRideId = freezed,
     Object? currentDriverId = freezed,
+    Object? username = freezed,
   }) {
     return _then(_UserProfile(
       currentRideId: currentRideId == freezed
@@ -116,6 +125,10 @@ class __$UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
           ? _value.currentDriverId
           : currentDriverId // ignore: cast_nullable_to_non_nullable
               as String?,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -123,7 +136,8 @@ class __$UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserProfile implements _UserProfile {
-  const _$_UserProfile({this.currentRideId, this.currentDriverId});
+  const _$_UserProfile(
+      {this.currentRideId, this.currentDriverId, this.username});
 
   factory _$_UserProfile.fromJson(Map<String, dynamic> json) =>
       _$$_UserProfileFromJson(json);
@@ -132,10 +146,12 @@ class _$_UserProfile implements _UserProfile {
   final String? currentRideId;
   @override
   final String? currentDriverId;
+  @override
+  final String? username;
 
   @override
   String toString() {
-    return 'UserProfile(currentRideId: $currentRideId, currentDriverId: $currentDriverId)';
+    return 'UserProfile(currentRideId: $currentRideId, currentDriverId: $currentDriverId, username: $username)';
   }
 
   @override
@@ -146,14 +162,16 @@ class _$_UserProfile implements _UserProfile {
             const DeepCollectionEquality()
                 .equals(other.currentRideId, currentRideId) &&
             const DeepCollectionEquality()
-                .equals(other.currentDriverId, currentDriverId));
+                .equals(other.currentDriverId, currentDriverId) &&
+            const DeepCollectionEquality().equals(other.username, username));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(currentRideId),
-      const DeepCollectionEquality().hash(currentDriverId));
+      const DeepCollectionEquality().hash(currentDriverId),
+      const DeepCollectionEquality().hash(username));
 
   @JsonKey(ignore: true)
   @override
@@ -167,8 +185,10 @@ class _$_UserProfile implements _UserProfile {
 }
 
 abstract class _UserProfile implements UserProfile {
-  const factory _UserProfile({String? currentRideId, String? currentDriverId}) =
-      _$_UserProfile;
+  const factory _UserProfile(
+      {String? currentRideId,
+      String? currentDriverId,
+      String? username}) = _$_UserProfile;
 
   factory _UserProfile.fromJson(Map<String, dynamic> json) =
       _$_UserProfile.fromJson;
@@ -177,6 +197,8 @@ abstract class _UserProfile implements UserProfile {
   String? get currentRideId;
   @override
   String? get currentDriverId;
+  @override
+  String? get username;
   @override
   @JsonKey(ignore: true)
   _$UserProfileCopyWith<_UserProfile> get copyWith =>

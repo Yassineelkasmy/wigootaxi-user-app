@@ -8,6 +8,7 @@ class UserProfile with _$UserProfile {
   const factory UserProfile({
     String? currentRideId,
     String? currentDriverId,
+    String? username,
   }) = _UserProfile;
 
   factory UserProfile.fromJson(Map<String, dynamic> json) =>

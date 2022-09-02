@@ -9,9 +9,12 @@ import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/domain/auth/user.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
+import 'package:taxidriver/providers/profile_provider.dart';
 
 SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
   final autFormController = ref.watch(authFormProvider.notifier);
+  final profileState = ref.watch(profileProvider);
+
   return SideDrawer(
     percentage: 0.6,
     direction: Direction.left,
@@ -43,8 +46,8 @@ SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Bonjour,",
+                  Text(
+                    "Bonjour, ${profileState.userProfile.username}",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
