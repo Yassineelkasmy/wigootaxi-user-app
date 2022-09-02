@@ -56,46 +56,44 @@ class ProfileController extends StateNotifier<ProfileState> {
   }
 
   Future mapEventToState(ProfileEvent event) {
-    return event.map(
-      metricsRequested: (event) async {
-        final metricsOrFailure = await _metricsService.getMetrics();
-        metricsOrFailure.map(
-          (metrics) => state = state.copyWith(metrics: metrics),
-        );
-      },
-      finishedRidesRequested: (event) async {
-        final ridesOrFailure = await _profileService.getRidesWithCanncellOption(
-          option: 'finished',
-        );
+    return event.map(metricsRequested: (event) async {
+      final metricsOrFailure = await _metricsService.getMetrics();
+      metricsOrFailure.map(
+        (metrics) => state = state.copyWith(metrics: metrics),
+      );
+    }, finishedRidesRequested: (event) async {
+      final ridesOrFailure = await _profileService.getRidesWithCanncellOption(
+        option: 'finished',
+      );
 
-        ridesOrFailure.map(
-          (rides) => state = state.copyWith(finishedRides: rides),
-        );
-      },
-      userCancelledRidesRequested: (event) async {
-        final ridesOrFailure = await _profileService.getRidesWithCanncellOption(
-          option: 'cancelledByUser',
-        );
+      ridesOrFailure.map(
+        (rides) => state = state.copyWith(finishedRides: rides),
+      );
+    }, userCancelledRidesRequested: (event) async {
+      final ridesOrFailure = await _profileService.getRidesWithCanncellOption(
+        option: 'cancelledByUser',
+      );
 
-        ridesOrFailure.map(
-          (rides) => state = state.copyWith(userCancelledRides: rides),
-        );
-      },
-      driverCancelledRidesRequested: (event) async {
-        final ridesOrFailure = await _profileService.getRidesWithCanncellOption(
-          option: 'cancelledByDriver',
-        );
+      ridesOrFailure.map(
+        (rides) => state = state.copyWith(userCancelledRides: rides),
+      );
+    }, driverCancelledRidesRequested: (event) async {
+      final ridesOrFailure = await _profileService.getRidesWithCanncellOption(
+        option: 'cancelledByDriver',
+      );
 
-        ridesOrFailure.map(
-          (rides) => state = state.copyWith(driverCancelledRides: rides),
-        );
-      },
-      myDriversRequested: (event) async {
-        final myDriversOrFailure = await _profileService.getUserDrivers();
-        myDriversOrFailure.map(
-          (userDrivers) => state = state.copyWith(userDrivers: userDrivers),
-        );
-      },
-    );
+      ridesOrFailure.map(
+        (rides) => state = state.copyWith(driverCancelledRides: rides),
+      );
+    }, myDriversRequested: (event) async {
+      final myDriversOrFailure = await _profileService.getUserDrivers();
+      myDriversOrFailure.map(
+        (userDrivers) => state = state.copyWith(userDrivers: userDrivers),
+      );
+    }, rideCleared: (event) async {
+      state = state.copyWith(
+        driverRecord: null,
+      );
+    });
   }
 }

@@ -4,6 +4,8 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:taxidriver/constants/storage_keys.dart';
+import 'package:taxidriver/profile/application/profile_controller.dart';
+import 'package:taxidriver/profile/application/profile_event.dart';
 import 'package:taxidriver/ride/application/ride_event.dart';
 import 'package:taxidriver/ride/application/ride_state.dart';
 import 'package:taxidriver/ride/domain/ride.dart';
@@ -12,7 +14,8 @@ import 'package:taxidriver/shared/helpers/latlng_distance.dart';
 import 'package:taxidriver/shared/helpers/serialize_coordinates_path.dart';
 
 class RideController extends StateNotifier<RideState> {
-  RideController() : super(RideState.initial());
+  RideController(this.profileController) : super(RideState.initial());
+  final ProfileController profileController;
   final geo = Geoflutterfire();
   Ride? currentRide;
 
@@ -70,6 +73,12 @@ class RideController extends StateNotifier<RideState> {
           driverDistanceFromDestination: driverDistanceFromDestination.toInt(),
         );
         currentRide = ride;
+
+        if (state.rideCancelled ||
+            state.rideFinished ||
+            (ride.cancelledByDriver ?? false)) {
+          profileController.mapEventToState(ProfileEvent.rideCleared());
+        }
       },
     );
   }
