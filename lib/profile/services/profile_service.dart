@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:taxidriver/domain/auth/user.dart';
 import 'package:taxidriver/profile/domain/user_driver.dart';
+import 'package:taxidriver/profile/domain/user_profile.dart';
 import 'package:taxidriver/ride/domain/ride.dart';
 import 'package:taxidriver/ride/domain/ride_failure.dart';
 
@@ -65,6 +67,18 @@ class ProfileService {
         ..putIfAbsent('startLng', () => startLocation?.longitude)
         ..putIfAbsent('startLat', () => startLocation?.latitude)
         ..putIfAbsent('id', () => rideDoc.id),
+    );
+  }
+
+  Stream<UserProfile> profileStream() {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .snapshots()
+        .asyncMap(
+      (userDoc) {
+        return UserProfile.fromJson(userDoc.data() as Map<String, dynamic>);
+      },
     );
   }
 }

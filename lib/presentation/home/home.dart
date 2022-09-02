@@ -13,6 +13,9 @@ import 'package:taxidriver/presentation/home/widgets/top_box.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
+import 'package:taxidriver/providers/profile_provider.dart';
+import 'package:taxidriver/providers/ride_provider.dart';
+import 'package:taxidriver/ride/application/ride_event.dart';
 
 class Home extends HookConsumerWidget {
   Home({
@@ -24,6 +27,8 @@ class Home extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider);
+    final profileState = ref.watch(profileProvider);
+    final rideController = ref.read(rideProvider.notifier);
     return Scaffold(
       appBar: buildAppBar(
         menuPressed: () {
@@ -58,7 +63,21 @@ class Home extends HookConsumerWidget {
                     children: [
                       CategoryItem(
                         onPressed: () {
-                          AutoRouter.of(context).push(PickUpRootPageRoute());
+                          if (profileState.driverRecord != null) {
+                            AutoRouter.of(context).replace(
+                              RideRootPageRoute(
+                                driverRecord: profileState.driverRecord!,
+                              ),
+                            );
+
+                            rideController.mapEventToState(
+                              RideEvent.rideInitialized(
+                                profileState.userProfile.currentRideId!,
+                              ),
+                            );
+                          } else {
+                            AutoRouter.of(context).push(PickUpRootPageRoute());
+                          }
                         },
                         icon: 'car',
                         text: 'Voiture',

@@ -1,12 +1,17 @@
+import 'dart:async';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:taxidriver/booking/services/booking_service.dart';
 import 'package:taxidriver/profile/application/profile_event.dart';
 import 'package:taxidriver/profile/application/profile_state.dart';
 import 'package:taxidriver/profile/services/metrics_service.dart';
 import 'package:taxidriver/profile/services/profile_service.dart';
 
 class ProfileController extends StateNotifier<ProfileState> {
-  ProfileController(this._profileService, this._metricsService)
+  ProfileController(
+      this._profileService, this._metricsService, this._bookingService)
       : super(ProfileState.initial()) {
+    initilializeUserStream();
     mapEventToState(ProfileEvent.metricsRequested());
     refresh();
   }
@@ -20,6 +25,30 @@ class ProfileController extends StateNotifier<ProfileState> {
 
   final ProfileService _profileService;
   final MetricsService _metricsService;
+  final BookingService _bookingService;
+  StreamSubscription? userSubscription;
+
+  initilializeUserStream() {
+    userSubscription?.cancel();
+    userSubscription =
+        _profileService.profileStream().listen((userProfile) async {
+      if (userProfile.currentDriverId != null) {
+        final driverFoundOrFailure = await _bookingService.getDriverRecord(
+          driverId: userProfile.currentDriverId!,
+        );
+
+        driverFoundOrFailure.map(
+          (driverRecord) => state = state.copyWith(
+            driverRecord: driverRecord,
+            userProfile: userProfile,
+          ),
+        );
+      }
+
+      state = state.copyWith(userProfile: userProfile);
+      print("dddddddddddd$userProfile");
+    });
+  }
 
   Future mapEventToState(ProfileEvent event) {
     return event.map(
