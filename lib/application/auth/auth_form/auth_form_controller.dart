@@ -20,6 +20,7 @@ class AuthFormController extends StateNotifier<AuthFormState> {
       signInWithGooglePresseed: (_) async {
         state = state.copyWith(
           isSubmitting: true,
+          authFailureOrSuccessOption: none(),
         );
         final authFailureOrSuccess = await _authFacade.signInWithGoogle();
         state = state.copyWith(
@@ -31,7 +32,10 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         );
       },
       signInWithFacebookPressed: (_) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
 
         final authFailureOrSuccess = await _authFacade.signInWithFacebook();
         state = state.copyWith(
@@ -53,6 +57,7 @@ class AuthFormController extends StateNotifier<AuthFormState> {
       registerWithGooglePressed: (_) async {
         state = state.copyWith(
           isSubmitting: true,
+          authFailureOrSuccessOption: none(),
         );
         final authFailureOrSuccess = await _authFacade.registerWithGoogle();
         state = state.copyWith(
@@ -66,7 +71,10 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         state = state.copyWith(isSubmitting: false);
       },
       registerWithFacebookPressed: (_) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
 
         final authFailureOrSuccess = await _authFacade.registerWithFacebook();
         state = state.copyWith(
@@ -79,7 +87,10 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         state = state.copyWith(isSubmitting: false);
       },
       registerWithEmailAndPasswordPressed: (event) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
         final registerWithSuccessOrFailure =
             await _authFacade.registerWithEmailAndPassword(
           email: event.email,
@@ -92,10 +103,16 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         );
       },
       phoneNumberSubmitted: (event) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
       },
       signInWithEmailAndPasswordPressed: (event) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
         final successOrFailure = await _authFacade.signInWithEmailAndPassword(
           email: event.email,
           password: event.password,
