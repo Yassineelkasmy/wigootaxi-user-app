@@ -44,8 +44,11 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         state = state.copyWith(isSubmitting: false);
       },
       signOutPressed: (_) async {
-        _authStateController.mapEventToState(AuthEvent.signedOut());
-        _authFacade.signOut();
+        await _authFacade.signOut();
+
+        await _authStateController.mapEventToState(AuthEvent.signedOut());
+
+        checkAuthState();
       },
       registerWithGooglePressed: (_) async {
         state = state.copyWith(
@@ -83,7 +86,10 @@ class AuthFormController extends StateNotifier<AuthFormState> {
           password: event.password,
           username: event.username,
         );
-        state = state.copyWith(isSubmitting: false);
+        state = state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption: optionOf(registerWithSuccessOrFailure),
+        );
       },
       phoneNumberSubmitted: (event) async {
         state = state.copyWith(isSubmitting: true);
@@ -96,7 +102,10 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         );
         successOrFailure.fold((l) => null, (success) => checkAuthState());
 
-        state = state.copyWith(isSubmitting: false);
+        state = state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption: optionOf(successOrFailure),
+        );
       },
     );
   }

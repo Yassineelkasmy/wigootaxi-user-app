@@ -52,7 +52,7 @@ class FireBaseAuthFacade {
 
       final authMethod = await checkAuthMethod(googleUser.email);
       if (authMethod != SignInMethod.google) {
-        return left(AuthFailure.invalidCredentials());
+        return left(AuthFailure.goolgeAccountNotRegistered());
       }
 
       final googleAuthentication = await googleUser.authentication;

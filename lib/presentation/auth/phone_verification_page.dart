@@ -25,9 +25,10 @@ class PhoneVerificationPage extends HookConsumerWidget {
   final String phone;
   final String verificationId;
   final controller = TextEditingController();
-
+  late ValueNotifier<bool> isLoading;
   Future<void> verifyPhone(String pin, AuthController authController) async {
     if (pin.length == 6) {
+      isLoading.value = true;
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId,
         smsCode: pin,
@@ -46,13 +47,15 @@ class PhoneVerificationPage extends HookConsumerWidget {
         });
       }
       authController.mapEventToState(AuthEvent.authCheckRequested());
+
+      isLoading.value = false;
     }
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authController = ref.watch(authtProvider.notifier);
-    final isLoading = useState(false);
+    isLoading = useState(false);
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(

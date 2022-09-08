@@ -4,12 +4,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:in_app_notification/in_app_notification.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/application/auth/auth_event.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
+import 'package:taxidriver/application/auth/auth_form/auth_form_state.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/auth/widgets/social_media_button.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
+import 'package:taxidriver/presentation/shared/in_app_notfication.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 
@@ -50,6 +53,41 @@ class SignUpPage extends HookConsumerWidget {
     final authFormController = ref.watch(authFormProvider.notifier);
     final authFormState = ref.watch(authFormProvider);
     final authController = ref.watch(authtProvider.notifier);
+
+    ref.listen<AuthFormState>(
+      authFormProvider,
+      (previous, next) {
+        next.authFailureOrSuccessOption.map(
+          (failure) => failure.fold(
+            (failure) {
+              final message = failure.map(
+                cancelledByUser: (_) => "Annulé par l'utilisateur",
+                serverError: (_) => "Erreur du serveur",
+                emailAlreadyInUse: (_) => "Email déjà utilisé",
+                invalidCredentials: (_) =>
+                    "Les informations d'identification invalides",
+                userDisabled: (_) => "Utilisateur désactivé",
+                userNotVerified: (_) => "Utilisateur non vérifié",
+                invalidPinCode: (_) => "Code PIN invalide",
+                phoneAlreadyInUse: (_) => "Téléphone déjà utilisé",
+                goolgeAccountNotRegistered: (_) =>
+                    "Compte Google non inscrit, Créez d'abord un compte avec Google",
+              );
+
+              InAppNotification.show(
+                duration: Duration(seconds: 3),
+                child: InnerNotifications(
+                  message: message,
+                  isScuccess: false,
+                ),
+                context: context,
+              );
+            },
+            (_) => null,
+          ),
+        );
+      },
+    );
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -211,21 +249,23 @@ class SignUpPage extends HookConsumerWidget {
                               final username = signUpForm
                                   .findControl('username')!
                                   .value as String;
-            
-                              final email = signUpForm.findControl('email')!.value
-                                  as String;
+
+                              final email = signUpForm
+                                  .findControl('email')!
+                                  .value as String;
                               final password = signUpForm
                                   .findControl('password')!
                                   .value as String;
-            
+
                               await authFormController.mapEventToState(
-                                AuthFormEvent.registerWithEmailAndPasswordPressed(
+                                AuthFormEvent
+                                    .registerWithEmailAndPasswordPressed(
                                   email,
                                   password,
                                   username,
                                 ),
                               );
-            
+
                               authController.mapEventToState(
                                 AuthEvent.authCheckRequested(),
                               );
@@ -239,8 +279,14 @@ class SignUpPage extends HookConsumerWidget {
                   ),
                   SocialMedia(
                     onFacebookPressed: () {
-                      authFormController.mapEventToState(
-                        const AuthFormEvent.registerWithFacebookPressed(),
+                      InAppNotification.show(
+                        duration: Duration(seconds: 3),
+                        child: InnerNotifications(
+                          message:
+                              "Une erreur s'est produite, réessayez plus tard",
+                          isScuccess: false,
+                        ),
+                        context: context,
                       );
                     },
                     onGooglePressed: () {
@@ -265,8 +311,8 @@ class SignUpPage extends HookConsumerWidget {
                             fontWeight: FontWeight.bold,
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () =>
-                                AutoRouter.of(context).replace(LoginPageRoute()),
+                            ..onTap = () => AutoRouter.of(context)
+                                .replace(LoginPageRoute()),
                         )
                       ],
                     ),

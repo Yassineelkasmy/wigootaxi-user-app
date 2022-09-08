@@ -2,6 +2,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
@@ -129,10 +130,10 @@ SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
                 cancelLabel: 'Non',
               ).then((okCancell) {
                 if (okCancell.index == 0) {
-                  AutoRouter.of(context)
-                      .popUntilRouteWithName(IntroPageRoute.name);
                   autFormController
                       .mapEventToState(const AuthFormEvent.signOutPressed());
+
+                  Phoenix.rebirth(context);
                 }
               });
             },
