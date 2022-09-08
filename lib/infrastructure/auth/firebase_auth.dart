@@ -65,6 +65,7 @@ class FireBaseAuthFacade {
       final d = await _firebaseAuth.signInWithCredential(authCredential);
       return right(unit);
     } on FirebaseAuthException catch (_) {
+      print(_.code);
       return left(const AuthFailure.serverError());
     }
   }

@@ -30,7 +30,7 @@ class AuthController extends StateNotifier<AuthState> {
         state = AuthState.authenticated(user);
       });
     }, signedOut: (_) async {
-      state = AuthState.unauthenticated(false);
+      // state = AuthState.unauthenticated(false);
     });
   }
 }

@@ -129,6 +129,8 @@ SideDrawer buildSideDrawer(User user, WidgetRef ref, BuildContext context) {
                 cancelLabel: 'Non',
               ).then((okCancell) {
                 if (okCancell.index == 0) {
+                  AutoRouter.of(context)
+                      .popUntilRouteWithName(IntroPageRoute.name);
                   autFormController
                       .mapEventToState(const AuthFormEvent.signOutPressed());
                 }
