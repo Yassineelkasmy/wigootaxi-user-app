@@ -102,8 +102,12 @@ class PhoneAuthPage extends HookConsumerWidget {
                       await FirebaseAuth.instance.verifyPhoneNumber(
                         phoneNumber: phoneNumber,
                         verificationCompleted:
-                            (PhoneAuthCredential credential) {},
+                            (PhoneAuthCredential credential) {
+                          isLoading.value = false;
+                        },
                         verificationFailed: (FirebaseAuthException e) {
+                          isLoading.value = false;
+
                           InAppNotification.show(
                             duration: Duration(seconds: 3),
                             child: InnerNotifications(
@@ -114,6 +118,8 @@ class PhoneAuthPage extends HookConsumerWidget {
                           );
                         },
                         codeSent: (String verificationId, int? resendToken) {
+                          isLoading.value = false;
+
                           AutoRouter.of(context).push(
                             PhoneVerificationPageRoute(
                               phoneNumber: phoneNumber,
@@ -122,13 +128,13 @@ class PhoneAuthPage extends HookConsumerWidget {
                             ),
                           );
                         },
-                        codeAutoRetrievalTimeout: (String verificationId) {},
+                        codeAutoRetrievalTimeout: (String verificationId) {
+                          isLoading.value = false;
+                        },
                       );
                     } catch (e) {
-                      print(e);
                       isLoading.value = false;
                     }
-                    isLoading.value = false;
                   } else {
                     InAppNotification.show(
                       duration: Duration(seconds: 3),
@@ -148,7 +154,6 @@ class PhoneAuthPage extends HookConsumerWidget {
               width: double.maxFinite,
               child: SubmitButton(
                 color: Colors.red,
-                isLoading: isLoading.value,
                 onPressed: () async {
                   autFormController.mapEventToState(
                     const AuthFormEvent.signOutPressed(),
