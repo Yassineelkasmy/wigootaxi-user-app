@@ -52,7 +52,7 @@ class FireBaseAuthFacade {
 
       final authMethod = await checkAuthMethod(googleUser.email);
       if (authMethod != SignInMethod.google) {
-        return left(AuthFailure.invalidCredentials());
+        return left(AuthFailure.goolgeAccountNotRegistered());
       }
 
       final googleAuthentication = await googleUser.authentication;
@@ -65,6 +65,7 @@ class FireBaseAuthFacade {
       final d = await _firebaseAuth.signInWithCredential(authCredential);
       return right(unit);
     } on FirebaseAuthException catch (_) {
+      print(_.code);
       return left(const AuthFailure.serverError());
     }
   }

@@ -4,11 +4,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:in_app_notification/in_app_notification.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
+import 'package:taxidriver/application/auth/auth_form/auth_form_state.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/auth/widgets/social_media_button.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
+import 'package:taxidriver/presentation/shared/in_app_notfication.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 
@@ -26,6 +29,40 @@ class LoginPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final authFormController = ref.watch(authFormProvider.notifier);
     final authFormState = ref.watch(authFormProvider);
+    ref.listen<AuthFormState>(
+      authFormProvider,
+      (previous, next) {
+        next.authFailureOrSuccessOption.map(
+          (failure) => failure.fold(
+            (failure) {
+              final message = failure.map(
+                cancelledByUser: (_) => "Annulé par l'utilisateur",
+                serverError: (_) => "Erreur du serveur",
+                emailAlreadyInUse: (_) => "Email déjà utilisé",
+                invalidCredentials: (_) =>
+                    "Les informations d'identification invalides",
+                userDisabled: (_) => "Utilisateur désactivé",
+                userNotVerified: (_) => "Utilisateur non vérifié",
+                invalidPinCode: (_) => "Code PIN invalide",
+                phoneAlreadyInUse: (_) => "Téléphone déjà utilisé",
+                goolgeAccountNotRegistered: (_) =>
+                    "Compte Google non inscrit, Créez d'abord un compte avec Google",
+              );
+
+              InAppNotification.show(
+                duration: Duration(seconds: 3),
+                child: InnerNotifications(
+                  message: message,
+                  isScuccess: false,
+                ),
+                context: context,
+              );
+            },
+            (_) => null,
+          ),
+        );
+      },
+    );
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -138,7 +175,7 @@ class LoginPage extends HookConsumerWidget {
                             final password = loginForm
                                 .findControl('password')!
                                 .value as String;
-          
+
                             authFormController.mapEventToState(
                               AuthFormEvent.signInWithEmailAndPasswordPressed(
                                 email,
@@ -155,8 +192,15 @@ class LoginPage extends HookConsumerWidget {
                 20.verticalSpace,
                 SocialMedia(
                   onFacebookPressed: () {
-                    authFormController.mapEventToState(
-                        const AuthFormEvent.signInWithFacebookPressed());
+                    InAppNotification.show(
+                      duration: Duration(seconds: 3),
+                      child: InnerNotifications(
+                        message:
+                            "Une erreur s'est produite, réessayez plus tard",
+                        isScuccess: false,
+                      ),
+                      context: context,
+                    );
                   },
                   onGooglePressed: () {
                     authFormController.mapEventToState(
@@ -181,8 +225,8 @@ class LoginPage extends HookConsumerWidget {
                             fontWeight: FontWeight.bold,
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () =>
-                                AutoRouter.of(context).replace(SignUpPageRoute()),
+                            ..onTap = () => AutoRouter.of(context)
+                                .replace(SignUpPageRoute()),
                         )
                       ],
                     ),

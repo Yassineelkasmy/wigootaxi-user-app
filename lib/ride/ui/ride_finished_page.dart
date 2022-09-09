@@ -14,6 +14,8 @@ class RideFinishedPage extends StatelessWidget {
   final String destname;
   final double totalPrice;
   final int totalDistance;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

@@ -17,7 +17,9 @@ void locationIsolate(String message) async {
   final userService = UserService();
 
   final locationController = LocationController(isSpawned: true);
-  await locationController.mapEventToState(LocationEvent.locationRequested());
+  await locationController.mapEventToState(LocationEvent.locationRequested(
+    pressed: false,
+  ));
 
   Timer.periodic(
     Duration(seconds: 5),
@@ -28,7 +30,9 @@ void locationIsolate(String message) async {
       print("isolate " + prefs.getBool(isOnlineKey).toString());
 
       if (newIsOnline) {
-        locationController.mapEventToState(LocationEvent.locationRequested());
+        locationController.mapEventToState(LocationEvent.locationRequested(
+          pressed: false,
+        ));
         userService.updateLocation(
           lat: locationController.state.position?.latitude ?? 0,
           lng: locationController.state.position?.longitude ?? 0,

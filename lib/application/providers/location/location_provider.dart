@@ -9,7 +9,9 @@ final locationProvider =
     final locationController = LocationController();
     return locationController
       ..mapEventToState(
-        const LocationEvent.locationRequested(),
+        const LocationEvent.locationRequested(
+          pressed: false,
+        ),
       );
   },
 );

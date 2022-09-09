@@ -20,6 +20,7 @@ class AuthFormController extends StateNotifier<AuthFormState> {
       signInWithGooglePresseed: (_) async {
         state = state.copyWith(
           isSubmitting: true,
+          authFailureOrSuccessOption: none(),
         );
         final authFailureOrSuccess = await _authFacade.signInWithGoogle();
         state = state.copyWith(
@@ -31,6 +32,11 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         );
       },
       signInWithFacebookPressed: (_) async {
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
+
         final authFailureOrSuccess = await _authFacade.signInWithFacebook();
         state = state.copyWith(
           authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
@@ -39,14 +45,19 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         authFailureOrSuccess.map(
           (r) => checkAuthState(),
         );
+        state = state.copyWith(isSubmitting: false);
       },
       signOutPressed: (_) async {
         await _authFacade.signOut();
-        _authStateController.mapEventToState(AuthEvent.signedOut());
+
+        await _authStateController.mapEventToState(AuthEvent.signedOut());
+
+        checkAuthState();
       },
       registerWithGooglePressed: (_) async {
         state = state.copyWith(
           isSubmitting: true,
+          authFailureOrSuccessOption: none(),
         );
         final authFailureOrSuccess = await _authFacade.registerWithGoogle();
         state = state.copyWith(
@@ -56,8 +67,15 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         authFailureOrSuccess.map(
           (r) => checkAuthState(),
         );
+
+        state = state.copyWith(isSubmitting: false);
       },
       registerWithFacebookPressed: (_) async {
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
+
         final authFailureOrSuccess = await _authFacade.registerWithFacebook();
         state = state.copyWith(
           authFailureOrSuccessOption: optionOf(authFailureOrSuccess),
@@ -66,29 +84,45 @@ class AuthFormController extends StateNotifier<AuthFormState> {
         authFailureOrSuccess.map(
           (r) => checkAuthState(),
         );
+        state = state.copyWith(isSubmitting: false);
       },
       registerWithEmailAndPasswordPressed: (event) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
         final registerWithSuccessOrFailure =
             await _authFacade.registerWithEmailAndPassword(
           email: event.email,
           password: event.password,
           username: event.username,
         );
-        state = state.copyWith(isSubmitting: false);
+        state = state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption: optionOf(registerWithSuccessOrFailure),
+        );
       },
       phoneNumberSubmitted: (event) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
       },
       signInWithEmailAndPasswordPressed: (event) async {
-        state = state.copyWith(isSubmitting: true);
+        state = state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
         final successOrFailure = await _authFacade.signInWithEmailAndPassword(
           email: event.email,
           password: event.password,
         );
         successOrFailure.fold((l) => null, (success) => checkAuthState());
 
-        state = state.copyWith(isSubmitting: false);
+        state = state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption: optionOf(successOrFailure),
+        );
       },
     );
   }

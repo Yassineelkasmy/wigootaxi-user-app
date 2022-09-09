@@ -51,7 +51,6 @@ class ProfileController extends StateNotifier<ProfileState> {
       }
 
       state = state.copyWith(userProfile: userProfile);
-      print("dddddddddddd$userProfile");
     });
   }
 

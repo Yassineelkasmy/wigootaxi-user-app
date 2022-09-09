@@ -82,7 +82,7 @@ class HomePage extends HookConsumerWidget {
             : null,
         controller: _drawerScaffoldController,
         drawers: [
-          buildSideDrawer(user ?? protoUser, ref, context),
+          if (user != null) buildSideDrawer(user, ref, context),
         ],
         bottomNavigationBar: BottomNavBar(
           onTap: (i) {

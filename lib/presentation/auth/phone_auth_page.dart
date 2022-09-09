@@ -3,11 +3,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:in_app_notification/in_app_notification.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:taxidriver/application/auth/auth_form/auth_form_event.dart';
 import 'package:taxidriver/application/providers/auth/auth_providers.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
+import 'package:taxidriver/presentation/shared/in_app_notfication.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/colors.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
@@ -20,8 +24,9 @@ class PhoneAuthPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = useState(false);
 
-    final authFormController = ref.watch(authFormProvider.notifier);
     final authFormState = ref.watch(authFormProvider);
+    final autFormController = ref.watch(authFormProvider.notifier);
+
     final phoneForm = FormGroup({
       'phone': FormControl<String>(
         validators: [
@@ -87,19 +92,34 @@ class PhoneAuthPage extends HookConsumerWidget {
                 isLoading: isLoading.value,
                 onPressed: () async {
                   final phone = controller.text;
-                  if (phone.length >= 10) {
+
+                  final phoneInt = int.tryParse(phone);
+                  if (phone.length >= 10 || phoneInt == null) {
                     isLoading.value = true;
                     final phoneNumber = '+212${phone.substring(1)}';
-                    print(phoneNumber);
 
                     try {
                       await FirebaseAuth.instance.verifyPhoneNumber(
                         phoneNumber: phoneNumber,
                         verificationCompleted:
-                            (PhoneAuthCredential credential) {},
-                        verificationFailed: (FirebaseAuthException e) {},
+                            (PhoneAuthCredential credential) {
+                          isLoading.value = false;
+                        },
+                        verificationFailed: (FirebaseAuthException e) {
+                          isLoading.value = false;
+
+                          InAppNotification.show(
+                            duration: Duration(seconds: 3),
+                            child: InnerNotifications(
+                              message: 'Phone number is already in use',
+                              isScuccess: false,
+                            ),
+                            context: context,
+                          );
+                        },
                         codeSent: (String verificationId, int? resendToken) {
-                          print(verificationId);
+                          isLoading.value = false;
+
                           AutoRouter.of(context).push(
                             PhoneVerificationPageRoute(
                               phoneNumber: phoneNumber,
@@ -108,16 +128,40 @@ class PhoneAuthPage extends HookConsumerWidget {
                             ),
                           );
                         },
-                        codeAutoRetrievalTimeout: (String verificationId) {},
+                        codeAutoRetrievalTimeout: (String verificationId) {
+                          isLoading.value = false;
+                        },
                       );
                     } catch (e) {
-                      print(e);
                       isLoading.value = false;
                     }
-                    isLoading.value = false;
+                  } else {
+                    InAppNotification.show(
+                      duration: Duration(seconds: 3),
+                      child: InnerNotifications(
+                        message: 'Le numéro de téléphone est invalide',
+                        isScuccess: false,
+                      ),
+                      context: context,
+                    );
                   }
                 },
                 text: 'VERIFIER',
+              ),
+            ),
+            20.h.verticalSpace,
+            SizedBox(
+              width: double.maxFinite,
+              child: SubmitButton(
+                color: Colors.red,
+                onPressed: () async {
+                  autFormController.mapEventToState(
+                    const AuthFormEvent.signOutPressed(),
+                  );
+
+                  Phoenix.rebirth(context);
+                },
+                text: "Se déconnecter",
               ),
             ),
           ],
