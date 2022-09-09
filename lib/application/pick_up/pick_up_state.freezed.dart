@@ -32,6 +32,7 @@ class _$PickUpStateTearOff {
       required RideType rideType,
       DateTime? rideDateTime,
       required List<NearbySearch> places,
+      required bool pickUpFompIsOpen,
       required bool isSwipping,
       double? cameraLat,
       double? cameraLong,
@@ -56,6 +57,7 @@ class _$PickUpStateTearOff {
       rideType: rideType,
       rideDateTime: rideDateTime,
       places: places,
+      pickUpFompIsOpen: pickUpFompIsOpen,
       isSwipping: isSwipping,
       cameraLat: cameraLat,
       cameraLong: cameraLong,
@@ -91,6 +93,7 @@ mixin _$PickUpState {
   RideType get rideType => throw _privateConstructorUsedError;
   DateTime? get rideDateTime => throw _privateConstructorUsedError;
   List<NearbySearch> get places => throw _privateConstructorUsedError;
+  bool get pickUpFompIsOpen => throw _privateConstructorUsedError;
   bool get isSwipping => throw _privateConstructorUsedError;
   double? get cameraLat => throw _privateConstructorUsedError;
   double? get cameraLong => throw _privateConstructorUsedError;
@@ -127,6 +130,7 @@ abstract class $PickUpStateCopyWith<$Res> {
       RideType rideType,
       DateTime? rideDateTime,
       List<NearbySearch> places,
+      bool pickUpFompIsOpen,
       bool isSwipping,
       double? cameraLat,
       double? cameraLong,
@@ -168,6 +172,7 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
     Object? rideType = freezed,
     Object? rideDateTime = freezed,
     Object? places = freezed,
+    Object? pickUpFompIsOpen = freezed,
     Object? isSwipping = freezed,
     Object? cameraLat = freezed,
     Object? cameraLong = freezed,
@@ -230,6 +235,10 @@ class _$PickUpStateCopyWithImpl<$Res> implements $PickUpStateCopyWith<$Res> {
           ? _value.places
           : places // ignore: cast_nullable_to_non_nullable
               as List<NearbySearch>,
+      pickUpFompIsOpen: pickUpFompIsOpen == freezed
+          ? _value.pickUpFompIsOpen
+          : pickUpFompIsOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSwipping: isSwipping == freezed
           ? _value.isSwipping
           : isSwipping // ignore: cast_nullable_to_non_nullable
@@ -355,6 +364,7 @@ abstract class _$PickUpStateCopyWith<$Res>
       RideType rideType,
       DateTime? rideDateTime,
       List<NearbySearch> places,
+      bool pickUpFompIsOpen,
       bool isSwipping,
       double? cameraLat,
       double? cameraLong,
@@ -403,6 +413,7 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
     Object? rideType = freezed,
     Object? rideDateTime = freezed,
     Object? places = freezed,
+    Object? pickUpFompIsOpen = freezed,
     Object? isSwipping = freezed,
     Object? cameraLat = freezed,
     Object? cameraLong = freezed,
@@ -465,6 +476,10 @@ class __$PickUpStateCopyWithImpl<$Res> extends _$PickUpStateCopyWithImpl<$Res>
           ? _value.places
           : places // ignore: cast_nullable_to_non_nullable
               as List<NearbySearch>,
+      pickUpFompIsOpen: pickUpFompIsOpen == freezed
+          ? _value.pickUpFompIsOpen
+          : pickUpFompIsOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSwipping: isSwipping == freezed
           ? _value.isSwipping
           : isSwipping // ignore: cast_nullable_to_non_nullable
@@ -529,6 +544,7 @@ class _$_PickUpState implements _PickUpState {
       required this.rideType,
       this.rideDateTime,
       required this.places,
+      required this.pickUpFompIsOpen,
       required this.isSwipping,
       this.cameraLat,
       this.cameraLong,
@@ -567,6 +583,8 @@ class _$_PickUpState implements _PickUpState {
   @override
   final List<NearbySearch> places;
   @override
+  final bool pickUpFompIsOpen;
+  @override
   final bool isSwipping;
   @override
   final double? cameraLat;
@@ -591,7 +609,7 @@ class _$_PickUpState implements _PickUpState {
 
   @override
   String toString() {
-    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, nearbyDrivers: $nearbyDrivers, nearBysearchSuccessOrFailureOption: $nearBysearchSuccessOrFailureOption, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, mainFormLocation: $mainFormLocation, reverseGeocodingResult: $reverseGeocodingResult, rideType: $rideType, rideDateTime: $rideDateTime, places: $places, isSwipping: $isSwipping, cameraLat: $cameraLat, cameraLong: $cameraLong, userLat: $userLat, userLong: $userLong, dropOffChosen: $dropOffChosen, pickUpChosen: $pickUpChosen, loadingRideDetails: $loadingRideDetails, cameraLatToMove: $cameraLatToMove, cameraLongToMove: $cameraLongToMove, ride: $ride)';
+    return 'PickUpState(isGeocodingFromMapLoaidng: $isGeocodingFromMapLoaidng, isNearbyPlacesLoading: $isNearbyPlacesLoading, nearbyQuery: $nearbyQuery, nearbyDrivers: $nearbyDrivers, nearBysearchSuccessOrFailureOption: $nearBysearchSuccessOrFailureOption, dropoffPlace: $dropoffPlace, pickupPlace: $pickupPlace, mainFormLocation: $mainFormLocation, reverseGeocodingResult: $reverseGeocodingResult, rideType: $rideType, rideDateTime: $rideDateTime, places: $places, pickUpFompIsOpen: $pickUpFompIsOpen, isSwipping: $isSwipping, cameraLat: $cameraLat, cameraLong: $cameraLong, userLat: $userLat, userLong: $userLong, dropOffChosen: $dropOffChosen, pickUpChosen: $pickUpChosen, loadingRideDetails: $loadingRideDetails, cameraLatToMove: $cameraLatToMove, cameraLongToMove: $cameraLongToMove, ride: $ride)';
   }
 
   @override
@@ -622,6 +640,8 @@ class _$_PickUpState implements _PickUpState {
             const DeepCollectionEquality()
                 .equals(other.rideDateTime, rideDateTime) &&
             const DeepCollectionEquality().equals(other.places, places) &&
+            const DeepCollectionEquality()
+                .equals(other.pickUpFompIsOpen, pickUpFompIsOpen) &&
             const DeepCollectionEquality()
                 .equals(other.isSwipping, isSwipping) &&
             const DeepCollectionEquality().equals(other.cameraLat, cameraLat) &&
@@ -657,6 +677,7 @@ class _$_PickUpState implements _PickUpState {
         const DeepCollectionEquality().hash(rideType),
         const DeepCollectionEquality().hash(rideDateTime),
         const DeepCollectionEquality().hash(places),
+        const DeepCollectionEquality().hash(pickUpFompIsOpen),
         const DeepCollectionEquality().hash(isSwipping),
         const DeepCollectionEquality().hash(cameraLat),
         const DeepCollectionEquality().hash(cameraLong),
@@ -691,6 +712,7 @@ abstract class _PickUpState implements PickUpState {
       required RideType rideType,
       DateTime? rideDateTime,
       required List<NearbySearch> places,
+      required bool pickUpFompIsOpen,
       required bool isSwipping,
       double? cameraLat,
       double? cameraLong,
@@ -728,6 +750,8 @@ abstract class _PickUpState implements PickUpState {
   DateTime? get rideDateTime;
   @override
   List<NearbySearch> get places;
+  @override
+  bool get pickUpFompIsOpen;
   @override
   bool get isSwipping;
   @override

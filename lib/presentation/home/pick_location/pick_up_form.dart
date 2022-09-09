@@ -7,6 +7,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:taxidriver/application/location/location_state.dart';
 import 'package:taxidriver/application/pick_up/pick_up_event.dart';
+import 'package:taxidriver/application/pick_up/pick_up_state.dart';
 import 'package:taxidriver/application/providers/location/location_provider.dart';
 import 'package:taxidriver/application/providers/pick_ip/pick_up.provider.dart';
 import 'package:taxidriver/presentation/home/pick_location/widgets/schedule_button.dart';
@@ -32,6 +33,12 @@ class PickUpForm extends HookConsumerWidget {
     final pickUpState = ref.watch(pickUpProvider);
     final locationState = ref.watch(locationProvider);
     final isPanelOpen = useState<bool>(false);
+
+    ref.listen<PickUpState>(pickUpProvider, (previous, next) {
+      if (isPanelOpen.value != next.pickUpFompIsOpen) {
+        isPanelOpen.value = next.pickUpFompIsOpen;
+      }
+    });
     ref.listen<LocationState>(
       locationProvider,
       (prevLocationState, nextLocationState) {
@@ -172,7 +179,10 @@ class PickUpForm extends HookConsumerWidget {
                               ),
                               10.h.verticalSpace,
                               if (!isPanelOpen.value)
-                                SizedBox(
+                                AnimatedContainer(
+                                  duration: Duration(
+                                    milliseconds: 500,
+                                  ),
                                   width: double.maxFinite,
                                   child: SubmitButton(
                                     text: !pickUpState.dropOffChosen
@@ -243,11 +253,9 @@ class PickUpForm extends HookConsumerWidget {
                                                 pickedPlace.name;
                                             final locationVicinity =
                                                 pickedPlace.vicinity;
-                                            final placeId = pickedPlace.placeId;
                                             final locationGeometry =
                                                 pickedPlace.geometry;
-                                            final locationTypes =
-                                                pickedPlace.types;
+
                                             return ListTile(
                                               onTap: () {
                                                 queryController.text =
@@ -255,37 +263,6 @@ class PickUpForm extends HookConsumerWidget {
                                                 panelController.close();
                                                 isPanelOpen.value = false;
 
-                                                // if (!pickUpState
-                                                //     .dropOffChosen) {
-                                                //   pickUpController
-                                                //       .mapEventToState(
-                                                //     PickUpEvent
-                                                //         .dropoffChoosen(
-                                                //       NearbySearch(
-                                                //         name: locationName,
-                                                //         placeId: placeId,
-                                                //         vicinity:
-                                                //             locationVicinity,
-                                                //         geometry:
-                                                //             locationGeometry,
-                                                //         types: locationTypes,
-                                                //       ),
-                                                //     ),
-                                                //   );
-                                                // } else if (!pickUpState
-                                                //     .pickUpChosen) {
-                                                //   PickUpEvent.pickupChoosen(
-                                                //     NearbySearch(
-                                                //       name: locationName,
-                                                //       placeId: placeId,
-                                                //       vicinity:
-                                                //           locationVicinity,
-                                                //       geometry:
-                                                //           locationGeometry,
-                                                //       types: locationTypes,
-                                                //     ),
-                                                //   );
-                                                // }
                                                 pickUpController
                                                     .mapEventToState(
                                                   PickUpEvent

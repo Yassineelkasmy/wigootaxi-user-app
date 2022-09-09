@@ -1,5 +1,6 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -24,6 +25,12 @@ class PickUpRootPage extends HookConsumerWidget {
     }
     return WillPopScope(
       onWillPop: () async {
+        if (pickUpPanelController.isPanelOpen) {
+          pickUpPanelController.close();
+
+          pickupController.mapEventToState(PickUpEvent.pickUpFormClosed());
+          return false;
+        }
         if (pickUpState.dropOffChosen) {
           pickupController.mapEventToState(PickUpEvent.dropOffCancelled());
           return false;

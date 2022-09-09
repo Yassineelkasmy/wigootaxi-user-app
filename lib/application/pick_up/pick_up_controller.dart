@@ -348,6 +348,9 @@ class PickUpController extends StateNotifier<PickUpState> {
         },
         cleared: (event) async {
           state = PickUpState.initial();
+        },
+        pickUpFormClosed: (event) async {
+          state = state.copyWith(pickUpFompIsOpen: false);
         });
   }
 }
