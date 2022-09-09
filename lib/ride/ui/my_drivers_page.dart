@@ -24,53 +24,65 @@ class MyDriversPage extends HookConsumerWidget {
               itemBuilder: (context, index) {
                 final userDriver = profileState.userDrivers[index];
 
-                return ExpansionTile(
-                  title: Text(userDriver.username),
-                  subtitle: Row(
-                    children: [
-                      Text('La dernière course'),
-                      5.w.horizontalSpace,
-                      Text(DateFormat("yyyy/MM/dd")
-                          .format(userDriver.lastRideTs)),
-                    ],
-                  ),
-                  children: [
-                    ListTile(
-                        title: Text(
-                          'Courses: ${userDriver.rides}',
+                return Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(12.r),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.r)),
+                      child: ExpansionTile(
+                        title: Text(userDriver.username),
+                        subtitle: Row(
+                          children: [
+                            Text('La dernière course'),
+                            5.w.horizontalSpace,
+                            Text(DateFormat("yyyy/MM/dd")
+                                .format(userDriver.lastRideTs)),
+                          ],
                         ),
-                        leading: Icon(
-                          Icons.drive_eta,
-                          color: kPrimaryColor,
-                        )),
-                    ListTile(
-                      title: Row(
                         children: [
-                          Text(
-                            'Téléphone: ${userDriver.phone}',
-                          ),
-                          10.w.horizontalSpace,
-                          IconButton(
-                            color: kPrimaryColor,
-                            onPressed: () async {
-                              launch('tel://${userDriver.phone}');
-                            },
-                            icon: Icon(
-                              Icons.phone,
+                          ListTile(
+                              title: Text(
+                                'Courses: ${userDriver.rides}',
+                              ),
+                              leading: Icon(
+                                Icons.drive_eta,
+                                color: kPrimaryColor,
+                              )),
+                          ListTile(
+                            title: Row(
+                              children: [
+                                Text(
+                                  'Téléphone: ${userDriver.phone}',
+                                ),
+                                10.w.horizontalSpace,
+                                IconButton(
+                                  color: kPrimaryColor,
+                                  onPressed: () async {
+                                    launch('tel://${userDriver.phone}');
+                                  },
+                                  icon: Icon(
+                                    Icons.phone,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            leading: Icon(
+                              Icons.contact_phone,
+                              color: kPrimaryColor,
                             ),
                           ),
                         ],
-                      ),
-                      leading: Icon(
-                        Icons.contact_phone,
-                        color: kPrimaryColor,
+                        iconColor: kPrimaryColor,
+                        leading: Icon(
+                          Icons.person,
+                          color: kPrimaryColor,
+                        ),
                       ),
                     ),
-                  ],
-                  iconColor: kPrimaryColor,
-                  leading: Icon(
-                    Icons.person,
-                    color: kPrimaryColor,
                   ),
                 );
               },

@@ -25,15 +25,23 @@ class MyLocationsPage extends HookConsumerWidget {
         child: ListView.builder(
           itemBuilder: (context, index) {
             final ride = profileState.finishedRides[index];
-            return ListTile(
-              onTap: () {},
-              leading: Icon(
-                Icons.location_history,
-                color: kPrimaryColor,
-              ),
-              title: Text(ride.dest_name!),
-              subtitle: Text(
-                DateFormat('yyyy/MM/dd HH:mm').format(ride.ts),
+            return Material(
+              elevation: 5,
+              borderRadius: BorderRadius.circular(12.r),
+              child: Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(12.r)),
+                padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.location_history,
+                    color: kPrimaryColor,
+                  ),
+                  title: Text(ride.dest_name!),
+                  subtitle: Text(
+                    DateFormat('dd/MM/yyyy HH:mm').format(ride.ts),
+                  ),
+                ),
               ),
             );
           },
