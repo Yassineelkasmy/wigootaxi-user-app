@@ -15,7 +15,7 @@ class MyRidesPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profileState = ref.watch(profileProvider);
-    final profileController = ref.read(profileProvider.notifier);
+
     final currentIndex = useState(0);
 
     return Scaffold(
@@ -272,7 +272,7 @@ ListView buildDriverCancelledRides(List<Ride> rides) {
                       ),
                     ),
                     Text(
-                      '${(ride.price_per_km * ride.distance / 1000)} MAD',
+                      '${(ride.price_per_km * ride.distance / 1000).toStringAsFixed(2)} MAD',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),

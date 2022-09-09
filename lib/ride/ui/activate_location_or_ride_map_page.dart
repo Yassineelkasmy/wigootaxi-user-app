@@ -8,6 +8,8 @@ import 'package:taxidriver/driver/domain/driver_record.dart';
 import 'package:taxidriver/presentation/routes/router.gr.dart';
 import 'package:taxidriver/presentation/shared/submit_button.dart';
 import 'package:taxidriver/presentation/theme/spacings.dart';
+import 'package:taxidriver/profile/application/profile_event.dart';
+import 'package:taxidriver/providers/profile_provider.dart';
 import 'package:taxidriver/providers/ride_provider.dart';
 import 'package:taxidriver/ride/application/ride_event.dart';
 import 'package:taxidriver/ride/application/ride_state.dart';
@@ -28,6 +30,7 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
 
     final rideState = ref.watch(rideProvider);
     final rideController = ref.watch(rideProvider.notifier);
+    final profileController = ref.read(profileProvider.notifier);
 
     ref.listen<RideState>(
       rideProvider,
@@ -39,6 +42,8 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
           AutoRouter.of(context).push(
             RideCancelledPageRoute(message: 'Le chuffeur a annulé le voyage'),
           );
+
+          profileController.refresh();
         }
 
         if (next.rideFinished) {
@@ -54,6 +59,8 @@ class ActivateLocationOrRideMapPage extends HookConsumerWidget {
               totalDistance: next.distanceTravelled,
             ),
           );
+
+          profileController.refresh();
         }
       },
     );
