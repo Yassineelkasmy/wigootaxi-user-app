@@ -1,9 +1,9 @@
-import 'package:flutter_isolate/flutter_isolate.dart';
+import 'package:android_intent_plus/android_intent.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:taxidriver/application/location/location_event.dart';
 import 'package:taxidriver/application/location/location_state.dart';
-import 'package:taxidriver/isolates/location_isolate.dart';
+import 'package:platform/platform.dart';
 
 class LocationController extends StateNotifier<LocationState> {
   LocationController({this.isSpawned = false}) : super(LocationState.initial());
@@ -13,10 +13,12 @@ class LocationController extends StateNotifier<LocationState> {
 
   Future mapEventToState(LocationEvent event) {
     return event.map(
-      locationRequested: (locationRequested) async {
+      locationRequested: (event) async {
         state = state.copyWith(isRequesting: true);
 
-        final position = await _determinePosition();
+        final position = await _determinePosition(
+          pressed: event.pressed,
+        );
         state = state.copyWith(
           // locationData: _locationData,
           position: position,
@@ -28,17 +30,28 @@ class LocationController extends StateNotifier<LocationState> {
     );
   }
 
-  Future<Position> _determinePosition() async {
+  Future<Position?> _determinePosition({required bool pressed}) async {
     bool serviceEnabled;
     LocationPermission permission;
 
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
+      if (!pressed) {
+        await Future.delayed(
+          Duration(seconds: 3),
+        );
+      }
+
       // Location services are not enabled don't continue
       // accessing the position and request users of the
       // App to enable the location services.
-      return Future.error('Location services are disabled.');
+      if (const LocalPlatform().isAndroid) {
+        AndroidIntent intent = AndroidIntent(
+          action: 'android.settings.LOCATION_SOURCE_SETTINGS',
+        );
+        await intent.launch();
+      }
     }
 
     permission = await Geolocator.checkPermission();
