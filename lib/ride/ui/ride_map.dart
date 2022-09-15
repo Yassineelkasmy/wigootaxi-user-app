@@ -36,6 +36,9 @@ class RideMapState extends ConsumerState<RideMap> {
   final Set<Marker> _markers = {};
   List<LatLng> polylineCoordinates = [];
 
+  bool driverPolyLinesCreated = false;
+  bool destinationPolylinesCreated = false;
+
   Future<Uint8List> getBytesFromAsset(
       {required String path, required int width}) async {
     ByteData data = await rootBundle.load(path);
@@ -240,21 +243,27 @@ class RideMapState extends ConsumerState<RideMap> {
           }
 
           if (!rideStarted) {
-            await _createPolylines(
-              driverLatLng.latitude,
-              driverLatLng.longitude,
-              driverTarget.latitude,
-              driverTarget.longitude,
-            );
+            if (!driverPolyLinesCreated) {
+              await _createPolylines(
+                driverLatLng.latitude,
+                driverLatLng.longitude,
+                driverTarget.latitude,
+                driverTarget.longitude,
+              );
+              driverPolyLinesCreated = true;
+            }
           }
 
           if (rideStarted) {
-            await _createPolylines(
-              startLatLng.latitude,
-              startLatLng.longitude,
-              destinationLatLng.latitude,
-              destinationLatLng.longitude,
-            );
+            if (!destinationPolylinesCreated) {
+              await _createPolylines(
+                startLatLng.latitude,
+                startLatLng.longitude,
+                destinationLatLng.latitude,
+                destinationLatLng.longitude,
+              );
+              destinationPolylinesCreated = true;
+            }
           }
 
           await _createRoutePolyLines(

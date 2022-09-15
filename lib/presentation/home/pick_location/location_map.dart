@@ -98,6 +98,7 @@ class LocationMapState extends ConsumerState<LocationMap> {
       PointLatLng(startLat, startLong),
       PointLatLng(endLat, endLong),
       travelMode: TravelMode.driving,
+
       avoidTolls: true,
     );
     if (result.points.isNotEmpty) {
