@@ -8,7 +8,7 @@ class DriverService {
 
   final geo = Geoflutterfire();
   final locationField = 'location';
-  double radius = 30;
+  double radius = 50;
 
   late Query<Map<String, dynamic>> collectionRef;
 
