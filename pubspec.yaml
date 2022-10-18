@@ -77,6 +77,7 @@ dependencies:
   im_animations: ^0.1.2
   flutter_phoenix: ^1.1.0
   android_intent_plus: ^3.1.1+1
+  upgrader: ^4.6.1
 
 dev_dependencies:
   flutter_test:
